@@ -5,6 +5,23 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import List, Optional
 
+from ..utils.exceptions import TranscriptionServiceError, AuthenticationError
+
+
+class TranscriptionJobError(TranscriptionServiceError):
+    """Raised when transcription job fails."""
+    pass
+
+
+class TranscriptionTimeoutError(TranscriptionServiceError):
+    """Raised when transcription job times out."""
+    pass
+
+
+class AudioUploadError(TranscriptionServiceError):
+    """Raised when audio upload fails."""
+    pass
+
 
 @dataclass
 class TranscriptionConfig:

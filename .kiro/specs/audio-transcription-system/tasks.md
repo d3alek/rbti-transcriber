@@ -32,7 +32,7 @@
     - Implement fail-fast validation as specified
     - _Requirements: 5.1, 5.5_
 
-- [x] 4. Create transcription service clients
+- [ ] 4. Create transcription service clients
   - [x] 4.1 Implement abstract transcription client interface
     - Define base class with common methods for both services
     - Create data models for transcription config and results
@@ -51,67 +51,67 @@
     - Integrate custom vocabulary support with 1000 term limit
     - _Requirements: 2.1, 2.2, 2.3, 3.1, 3.4_
 
-- [ ] 5. Implement custom glossary management
-  - [ ] 5.1 Create glossary loader and validator
+- [x] 5. Implement custom glossary management
+  - [x] 5.1 Create glossary loader and validator
     - Load terms from text files (one term per line)
     - Validate and limit to 1000 terms maximum
     - Implement truncation with warnings for oversized glossaries
     - _Requirements: 3.1, 3.3, 3.4_
 
-  - [ ] 5.2 Integrate glossary with transcription services
+  - [x] 5.2 Integrate glossary with transcription services
     - Apply custom vocabulary to AssemblyAI requests
     - Apply custom vocabulary to Deepgram requests
     - Handle service-specific vocabulary formatting
     - _Requirements: 3.2, 3.5_
 
-- [ ] 6. Build output formatters
-  - [ ] 6.1 Implement HTML formatter with rich styling
+- [x] 6. Build output formatters
+  - [x] 6.1 Implement HTML formatter with rich styling
     - Create HTML templates with embedded CSS
     - Add speaker identification with distinct colors
     - Implement timestamp markers every 30 seconds
     - Format paragraph breaks and speech flow
     - _Requirements: 4.1, 4.2, 4.3, 4.4, 6.1_
 
-  - [ ] 6.2 Implement Markdown formatter
+  - [x] 6.2 Implement Markdown formatter
     - Create markdown output with speaker headers
     - Add timestamp markers as blockquotes
     - Preserve paragraph structure and line breaks
     - Ensure compatibility with standard markdown parsers
     - _Requirements: 4.1, 4.2, 4.3, 4.4, 6.1_
 
-  - [ ] 6.3 Add format-only mode for cached responses
+  - [x] 6.3 Add format-only mode for cached responses
     - Implement cache reader for stored JSON responses
     - Create formatter that works from cached data only
     - Add validation for cache integrity and completeness
     - _Requirements: 6.4, 6.5_
 
-- [ ] 7. Create CLI interface and orchestration
-  - [ ] 7.1 Build Click-based command line interface
+- [x] 7. Create CLI interface and orchestration
+  - [x] 7.1 Build Click-based command line interface
     - Implement main CLI with all required options (service, mode, format, etc.)
     - Add argument validation and help text
     - Create service selection logic (AssemblyAI/Deepgram)
     - _Requirements: 1.1, 6.2_
 
-  - [ ] 7.2 Implement progress tracking and reporting
+  - [x] 7.2 Implement progress tracking and reporting
     - Create progress indicators for file processing
     - Add real-time status updates during transcription
     - Generate summary reports of successful/failed transcriptions
     - _Requirements: 5.2, 5.3_
 
-  - [ ] 7.3 Add comprehensive error handling
+  - [x] 7.3 Add comprehensive error handling
     - Implement fail-fast error handling for all failure modes
     - Create clear error messages for service unavailability
     - Add logging for debugging and audit trails
     - _Requirements: 5.1, 5.4_
 
-- [ ] 8. Integration and workflow orchestration
-  - [ ] 8.1 Wire together transcription workflow
+- [x] 8. Integration and workflow orchestration
+  - [x] 8.1 Wire together transcription workflow
     - Connect file processing, transcription, and formatting components
     - Implement main processing loop with error handling
     - Add resume capability integration
     - _Requirements: 1.2, 1.4, 1.5, 5.6_
 
-  - [ ] 8.2 Implement format-only workflow
+  - [x] 8.2 Implement format-only workflow
     - Create separate workflow for cache-based formatting
     - Connect cache reader with formatters
     - Add validation for format-only mode requirements

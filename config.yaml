@@ -1,0 +1,41 @@
+transcription:
+  default_service: assemblyai
+  speaker_diarization: true
+  max_speakers: 3
+  confidence_threshold: 0.8
+
+services:
+  assemblyai:
+    api_base_url: https://api.assemblyai.com/v2
+    supports_custom_vocabulary: true
+    supports_speaker_diarization: true
+  deepgram:
+    api_base_url: https://api.deepgram.com/v1
+    supports_custom_vocabulary: true
+    supports_speaker_diarization: true
+
+output:
+  formats:
+    - html
+    - markdown
+  timestamp_interval: 30
+  speaker_colors:
+    - "#2E86AB"
+    - "#A23B72"
+    - "#F18F01"
+  cache_responses: true
+
+formatting:
+  html:
+    embed_css: true
+    speaker_styling: true
+    timestamp_links: true
+  markdown:
+    speaker_headers: true
+    timestamp_blockquotes: true
+    preserve_paragraphs: true
+
+glossary:
+  files: []
+  max_terms: 1000
+  warn_on_truncation: true

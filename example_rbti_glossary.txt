@@ -1,0 +1,63 @@
+# RBTI (Reams Biological Theory of Ionization) Glossary
+# One term per line, lines starting with # are comments
+
+# Core RBTI concepts
+RBTI
+Reams Biological Theory of Ionization
+Carey Reams
+Dr. Carey Reams
+biological ionization
+ionization
+
+# RBTI measurements
+urine pH
+saliva pH
+conductivity
+cell debris
+nitrate nitrogen
+ammonia nitrogen
+total carbohydrate
+brix reading
+
+# RBTI terminology
+cation
+anion
+milhouse
+resistance
+conductance
+ohms
+refractometer
+pH meter
+
+# Health concepts
+biological age
+energy level
+mineral deficiency
+enzyme activity
+cellular energy
+metabolic efficiency
+
+# RBTI ranges and values
+perfect range
+ideal numbers
+energy range
+healing range
+zone one
+zone two
+zone three
+
+# Common supplements mentioned
+calcium
+magnesium
+potassium
+phosphorus
+manganese
+iron
+vitamin C
+lemon water
+
+# RBTI practitioners and locations
+Reams Institute
+biological consultant
+RBTI practitioner
+energy consultant

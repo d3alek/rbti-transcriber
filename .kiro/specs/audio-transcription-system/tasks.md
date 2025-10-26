@@ -104,7 +104,7 @@
     - Add logging for debugging and audit trails
     - _Requirements: 5.1, 5.4_
 
-- [x] 8. Integration and workflow orchestration
+- [ ] 8. Integration and workflow orchestration
   - [x] 8.1 Wire together transcription workflow
     - Connect file processing, transcription, and formatting components
     - Implement main processing loop with error handling

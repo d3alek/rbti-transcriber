@@ -6,14 +6,14 @@
   - Set up configuration management with YAML support
   - _Requirements: 1.1, 1.3_
 
-- [ ] 2. Implement file processing and directory management
-  - [ ] 2.1 Create file scanner and validator for MP3 files
+- [x] 2. Implement file processing and directory management
+  - [x] 2.1 Create file scanner and validator for MP3 files
     - Implement directory scanning to find all MP3 files
     - Add audio file format validation using file headers
     - Create output directory structure (html/, markdown/, cache/, metadata/)
     - _Requirements: 1.1, 1.2, 1.3, 6.6_
 
-  - [ ] 2.2 Implement resume logic and cache detection
+  - [x] 2.2 Implement resume logic and cache detection
     - Build logic to detect existing transcription files
     - Create cache manager for raw service responses
     - Implement skip logic for already processed files

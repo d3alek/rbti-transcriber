@@ -44,10 +44,10 @@ class TranscriptionOrchestrator:
         self.audio_validator: Optional[AudioValidator] = None
         self.progress_tracker: Optional[ProgressTracker] = None
     
-    def setup_audio_processing(self, enable_compression: bool = False) -> None:
+    def setup_audio_processing(self, enable_compression: bool = False, compression_format: str = 'mp3') -> None:
         """Set up audio processing components."""
         if enable_compression:
-            self.audio_processor = AudioProcessor(self.output_dir / "compressed")
+            self.audio_processor = AudioProcessor(self.output_dir / "compressed", compression_format)
         
         self.audio_validator = AudioValidator(self.audio_processor)
     
@@ -57,7 +57,8 @@ class TranscriptionOrchestrator:
         service: str,
         output_formats: List[str],
         glossary_files: Optional[List[Path]] = None,
-        compress_audio: bool = False
+        compress_audio: bool = False,
+        compression_format: str = 'm4a'
     ) -> Dict[str, Any]:
         """Run the complete transcription workflow."""
         
@@ -77,7 +78,7 @@ class TranscriptionOrchestrator:
         
         try:
             # Step 1: Setup and validation
-            self.setup_audio_processing(compress_audio)
+            self.setup_audio_processing(compress_audio, compression_format)
             self.output_manager.create_output_structure()
             
             # Step 2: Scan for MP3 files
@@ -260,35 +261,87 @@ class TranscriptionOrchestrator:
         start_time = time.time()
         
         try:
+            # Get original file size
+            original_size_mb = audio_file.stat().st_size / (1024 * 1024)
+            
+            if self.verbose:
+                print(f"📄 Processing {audio_file.name} ({original_size_mb:.1f} MB)")
+            
             # Step 1: Compress audio if needed
             file_to_transcribe = audio_file
             if self.audio_processor:
-                needs_compression, _ = self.audio_processor.needs_compression(audio_file)
+                needs_compression, audio_info = self.audio_processor.needs_compression(audio_file)
+                
+                if self.verbose:
+                    print(f"🔍 Audio analysis: {audio_info['bitrate_kbps']} kbps, {audio_info['duration_seconds']:.1f}s")
+                
                 if needs_compression:
+                    if self.verbose:
+                        print(f"🗜️  Compressing audio (target: {self.audio_processor.TARGET_BITRATE} kbps)...")
+                    
                     file_to_transcribe = self.audio_processor.compress_audio(audio_file)
+                    compressed_size_mb = file_to_transcribe.stat().st_size / (1024 * 1024)
+                    compression_ratio = (1 - compressed_size_mb / original_size_mb) * 100
+                    
+                    if self.verbose:
+                        print(f"✅ Compressed: {original_size_mb:.1f} MB → {compressed_size_mb:.1f} MB ({compression_ratio:.1f}% reduction)")
+                else:
+                    if self.verbose:
+                        print(f"ℹ️  No compression needed (bitrate already optimal)")
             
-            # Step 2: Transcribe
+            # Step 2: Upload and transcribe
+            final_size_mb = file_to_transcribe.stat().st_size / (1024 * 1024)
+            
+            if self.verbose:
+                print(f"📤 Uploading to {service.upper()} ({final_size_mb:.1f} MB)...")
+            
+            upload_start = time.time()
+            
             if service == 'assemblyai':
                 result = await client.transcribe_file(file_to_transcribe, transcription_config)
             else:  # deepgram
                 result = await client.transcribe_file(file_to_transcribe, transcription_config)
             
-            # Step 3: Cache result
-            self.cache_manager.save_result(
-                audio_file, service, transcription_config.__dict__, result
-            )
+            upload_time = time.time() - upload_start
+            
+            if self.verbose:
+                print(f"✅ Transcription completed in {upload_time:.1f}s")
+                print(f"📊 Confidence: {result.confidence:.1%}, Duration: {result.audio_duration:.1f}s")
+                print(f"👥 Found {len(set(s.speaker for s in result.speakers))} speakers, {len(result.speakers)} segments")
+            
+            # Step 3: Cache result (always save, even if formatting fails)
+            try:
+                self.cache_manager.save_result(
+                    audio_file, service, transcription_config.__dict__, result
+                )
+                
+                if self.verbose:
+                    print(f"💾 Cached transcription result")
+            except Exception as cache_error:
+                if self.verbose:
+                    print(f"⚠️  Failed to cache result: {cache_error}")
             
             # Step 4: Format output
+            if self.verbose:
+                print(f"🎨 Formatting output ({', '.join(output_formats)})...")
+            
             format_result = self.formatter_factory.format_from_result(
-                result, audio_file, output_formats, self.output_manager
+                result, audio_file, output_formats, self.output_manager, service
             )
             
             file_result['success'] = format_result['success']
             file_result['formatted_files'] = format_result['formatted_files']
             file_result['errors'] = format_result['errors']
             file_result['processing_time'] = time.time() - start_time
+            
+            if self.verbose and format_result['success']:
+                for format_type, output_path in format_result['formatted_files'].items():
+                    output_size_kb = Path(output_path).stat().st_size / 1024
+                    print(f"📝 Created {format_type.upper()}: {Path(output_path).name} ({output_size_kb:.1f} KB)")
         
         except Exception as e:
+            if self.verbose:
+                print(f"❌ Error processing {audio_file.name}: {str(e)}")
             file_result['errors'].append(str(e))
             file_result['processing_time'] = time.time() - start_time
         

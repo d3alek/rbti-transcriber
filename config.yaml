@@ -13,6 +13,12 @@ services:
     api_base_url: https://api.deepgram.com/v1
     supports_custom_vocabulary: true
     supports_speaker_diarization: true
+  openai:
+    api_base_url: https://api.openai.com/v1
+    model: gpt-4o-transcribe
+    supports_custom_vocabulary: false
+    supports_speaker_diarization: true
+    max_file_size_mb: 25
 
 output:
   formats:

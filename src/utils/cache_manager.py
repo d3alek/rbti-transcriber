@@ -166,12 +166,12 @@ class ResumeManager:
         # Check if we have cached transcription result
         has_cache = self.cache_manager.is_cached(audio_file, service, config)
         
-        # Check if all requested output formats exist
-        existing_outputs = self.output_manager.get_existing_files(audio_file)
+        # Check if all requested output formats exist for this service
+        existing_outputs = self.output_manager.get_existing_files(audio_file, service)
         has_all_outputs = all(existing_outputs.get(fmt, False) for fmt in output_formats)
         
-        # Skip if we have cache OR all outputs exist
-        return has_cache or has_all_outputs
+        # Skip if we have cache AND all outputs exist for this service
+        return has_cache and has_all_outputs
     
     def get_processing_status(self, audio_files: List[Path], service: str, 
                             config: Dict[str, Any], output_formats: List[str]) -> Dict[str, Any]:

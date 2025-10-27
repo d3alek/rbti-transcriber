@@ -1,0 +1,25 @@
+{
+  "batch_progress": {
+    "total_files": 1,
+    "completed_files": 1,
+    "failed_files": 0,
+    "skipped_files": 0,
+    "start_time": 1761533743.4154341,
+    "end_time": 1761534195.202154
+  },
+  "file_progress": {
+    "test_audio/RBTI-Animal-Husbandry-T01.mp3": {
+      "status": "completed",
+      "start_time": 1761533743.4464858,
+      "end_time": 1761534195.2019625,
+      "error_message": null,
+      "file_size_mb": 140.06927013397217,
+      "processing_time": 451.7550239562988,
+      "output_formats": [
+        "html",
+        "markdown"
+      ]
+    }
+  },
+  "last_updated": 1761534195.2021592
+}

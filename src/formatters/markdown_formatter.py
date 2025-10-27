@@ -1,7 +1,7 @@
 """Markdown formatter for transcription results."""
 
 from pathlib import Path
-from typing import Dict, Any, List
+from typing import Dict, Any, List, Optional
 from datetime import datetime
 
 from .base_formatter import BaseFormatter
@@ -146,43 +146,72 @@ class MarkdownFormatter(BaseFormatter):
         ]
     
     def _build_speaker_transcript_section(self, result: TranscriptionResult) -> List[str]:
-        """Build speaker transcript section with headers and timestamps."""
+        """Build speaker transcript section with paragraph-based formatting."""
         markdown_parts = ["## Speaker Transcript", ""]
         
-        last_timestamp_marker = 0.0
+        # Group segments by speaker into paragraphs with timestamps
         current_speaker = None
+        current_paragraph = []
+        current_paragraph_start_time = None
+        last_timestamp_marker = -1.0  # Start with -1 so first paragraph always gets timestamp
         
         for segment in result.speakers:
-            # Add timestamp marker if needed
-            if self.timestamp_blockquotes and self._should_add_timestamp_marker(segment.start_time, last_timestamp_marker):
-                timestamp_marker = self._format_timestamp(segment.start_time)
-                markdown_parts.append(f"> ⏰ **{timestamp_marker}**")
-                markdown_parts.append("")
-                last_timestamp_marker = segment.start_time
-            
-            # Add speaker header if speaker changed
-            if self.speaker_headers and segment.speaker != current_speaker:
+            # If speaker changed, finish current paragraph and start new one
+            if segment.speaker != current_speaker:
+                if current_paragraph and current_paragraph_start_time is not None:
+                    # Check if we need a timestamp marker for this paragraph
+                    needs_timestamp = (self.timestamp_blockquotes and 
+                                     self._should_add_timestamp_marker(current_paragraph_start_time, last_timestamp_marker, interval=120))
+                    if needs_timestamp:
+                        last_timestamp_marker = current_paragraph_start_time
+                    
+                    # Finish previous speaker's paragraph
+                    self._add_speaker_paragraph_md(markdown_parts, current_speaker, current_paragraph,
+                                                  current_paragraph_start_time if needs_timestamp else None)
+                    current_paragraph = []
+                
                 current_speaker = segment.speaker
-                speaker_name = self._format_speaker_name(segment.speaker)
-                markdown_parts.append(f"### {speaker_name}")
-                markdown_parts.append("")
+                current_paragraph_start_time = segment.start_time
             
-            # Format segment with timestamp and confidence
-            start_time = self._format_timestamp(segment.start_time)
-            end_time = self._format_timestamp(segment.end_time)
-            confidence_indicator = self._format_confidence_indicator(segment.confidence)
-            
-            # Add timestamp info
-            markdown_parts.append(f"**[{start_time} - {end_time}]** {confidence_indicator}")
-            markdown_parts.append("")
-            
-            # Add text content, split into paragraphs if enabled
-            paragraphs = self._split_into_paragraphs(segment.text)
-            for paragraph in paragraphs:
-                markdown_parts.append(paragraph)
-                markdown_parts.append("")  # Empty line between paragraphs
+            # Add segment text to current paragraph
+            current_paragraph.append(segment.text.strip())
+        
+        # Add final paragraph
+        if current_paragraph and current_paragraph_start_time is not None:
+            needs_timestamp = (self.timestamp_blockquotes and 
+                             self._should_add_timestamp_marker(current_paragraph_start_time, last_timestamp_marker, interval=120))
+            self._add_speaker_paragraph_md(markdown_parts, current_speaker, current_paragraph,
+                                          current_paragraph_start_time if needs_timestamp else None)
         
         return markdown_parts
+    
+    def _add_speaker_paragraph_md(self, markdown_parts: List[str], speaker: str, texts: List[str], timestamp: Optional[float] = None):
+        """Add a speaker paragraph with combined text in Markdown."""
+        if not texts:
+            return
+        
+        # Add speaker header with optional timestamp
+        if self.speaker_headers:
+            speaker_name = self._format_speaker_name(speaker)
+            if timestamp is not None:
+                timestamp_marker = self._format_timestamp(timestamp)
+                markdown_parts.append(f"### {speaker_name} ⏰ {timestamp_marker}")
+            else:
+                markdown_parts.append(f"### {speaker_name}")
+            markdown_parts.append("")
+        
+        # Combine and split into natural paragraphs
+        combined_text = ' '.join(texts)
+        paragraphs = self._split_into_paragraphs(combined_text)
+        
+        for paragraph in paragraphs:
+            if paragraph.strip():
+                markdown_parts.append(paragraph.strip())
+                markdown_parts.append("")  # Empty line between paragraphs
+    
+    def _should_add_timestamp_marker(self, current_time: float, last_marker_time: float, interval: int = 120) -> bool:
+        """Check if a timestamp marker should be added (default every 2 minutes)."""
+        return current_time - last_marker_time >= interval
     
     def _build_full_transcript_section(self, result: TranscriptionResult) -> List[str]:
         """Build full transcript section without speaker labels."""

@@ -69,7 +69,7 @@ class FormatterFactory:
             for format_type in output_formats:
                 try:
                     formatter = self.create_formatter(format_type)
-                    output_path = output_manager.get_output_path(audio_file, format_type)
+                    output_path = output_manager.get_output_path(audio_file, format_type, service)
                     
                     # Ensure output directory exists
                     output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -89,7 +89,7 @@ class FormatterFactory:
         return result
     
     def format_from_result(self, transcription_result: TranscriptionResult, audio_file: Path,
-                          output_formats: List[str], output_manager) -> Dict[str, Any]:
+                          output_formats: List[str], output_manager, service: str = None) -> Dict[str, Any]:
         """Format transcription result in multiple formats."""
         result = {
             'audio_file': str(audio_file),
@@ -101,7 +101,7 @@ class FormatterFactory:
         for format_type in output_formats:
             try:
                 formatter = self.create_formatter(format_type)
-                output_path = output_manager.get_output_path(audio_file, format_type)
+                output_path = output_manager.get_output_path(audio_file, format_type, service)
                 
                 # Ensure output directory exists
                 output_path.parent.mkdir(parents=True, exist_ok=True)

@@ -6,7 +6,7 @@
   - Set up configuration management with YAML support
   - _Requirements: 1.1, 1.3_
 
-- [ ] 2. Implement file processing and directory management
+- [x] 2. Implement file processing and directory management
   - [x] 2.1 Create file scanner and validator for MP3 files
     - Implement directory scanning to find all MP3 files
     - Add audio file format validation using file headers
@@ -32,7 +32,7 @@
     - Implement fail-fast validation as specified
     - _Requirements: 5.1, 5.5_
 
-- [ ] 4. Create transcription service clients
+- [x] 4. Create transcription service clients
   - [x] 4.1 Implement abstract transcription client interface
     - Define base class with common methods for both services
     - Create data models for transcription config and results

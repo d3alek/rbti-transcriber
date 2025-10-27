@@ -1,7 +1,7 @@
 """HTML formatter for transcription results with rich styling."""
 
 from pathlib import Path
-from typing import Dict, Any, List
+from typing import Dict, Any, List, Optional
 import html
 from datetime import datetime
 
@@ -89,16 +89,16 @@ class HTMLFormatter(BaseFormatter):
                 margin-bottom: 30px;
             }
             
-            .speaker-segment {
-                margin-bottom: 25px;
-                padding: 20px;
+            .speaker-paragraph {
+                margin-bottom: 30px;
+                padding: 25px;
                 border-radius: 8px;
                 border-left: 5px solid;
                 background: #fafafa;
                 transition: all 0.3s ease;
             }
             
-            .speaker-segment:hover {
+            .speaker-paragraph:hover {
                 background: #f0f0f0;
                 transform: translateX(5px);
             }
@@ -132,6 +132,16 @@ class HTMLFormatter(BaseFormatter):
             
             .timestamp-link:hover {
                 background: rgba(0,0,0,0.2);
+            }
+            
+            .paragraph-timestamp {
+                background: rgba(0,0,0,0.1);
+                padding: 4px 8px;
+                border-radius: 4px;
+                font-size: 0.85em;
+                font-family: 'Courier New', monospace;
+                color: #666;
+                margin-left: 15px;
             }
             
             .speaker-text {
@@ -223,6 +233,17 @@ class HTMLFormatter(BaseFormatter):
         """Check if a timestamp marker should be added."""
         return current_time - last_marker_time >= self.timestamp_interval
     
+    def _format_timestamp(self, seconds: float) -> str:
+        """Format timestamp as MM:SS or HH:MM:SS."""
+        hours = int(seconds // 3600)
+        minutes = int((seconds % 3600) // 60)
+        secs = int(seconds % 60)
+        
+        if hours > 0:
+            return f"{hours:02d}:{minutes:02d}:{secs:02d}"
+        else:
+            return f"{minutes:02d}:{secs:02d}"
+    
     def format(self, result: TranscriptionResult, output_path: Path) -> None:
         """Format transcription result as HTML and save to output path."""
         # Group speakers and assign colors
@@ -306,44 +327,97 @@ class HTMLFormatter(BaseFormatter):
         """
     
     def _build_transcript_section(self, result: TranscriptionResult, speaker_colors: Dict[str, str]) -> str:
-        """Build main transcript section with speaker segments."""
+        """Build main transcript section with speaker paragraphs."""
         html_parts = ['<div class="transcript-container">']
         html_parts.append('<h2>Speaker Transcript</h2>')
         
-        last_timestamp_marker = 0.0
+        # Group segments by speaker into paragraphs with timestamps
+        current_speaker = None
+        current_paragraph = []
+        current_paragraph_start_time = None
         
         for segment in result.speakers:
-            # Add timestamp marker if needed
-            if self._should_add_timestamp_marker(segment.start_time, last_timestamp_marker):
-                marker_time = self._format_timestamp(segment.start_time)
-                html_parts.append(f'<div class="timestamp-marker">🕐 {marker_time}</div>')
-                last_timestamp_marker = segment.start_time
+            # If speaker changed, finish current paragraph and start new one
+            if segment.speaker != current_speaker:
+                if current_paragraph and current_paragraph_start_time is not None:
+                    # Add timestamp to every paragraph
+                    self._add_speaker_paragraph(html_parts, current_speaker, current_paragraph, speaker_colors, 
+                                              current_paragraph_start_time)
+                    current_paragraph = []
+                
+                current_speaker = segment.speaker
+                current_paragraph_start_time = segment.start_time
             
-            # Speaker segment
-            speaker_color = speaker_colors.get(segment.speaker, "#666666")
-            confidence_class = self._get_confidence_class(segment.confidence)
-            
-            segment_html = f"""
-            <div class="speaker-segment" style="border-left-color: {speaker_color};">
-                <div class="speaker-header">
-                    <span class="speaker-name" style="color: {speaker_color};">
-                        {html.escape(segment.speaker)}
-                    </span>
-                    <span class="timestamp">
-                        {self._format_timestamp(segment.start_time)} - {self._format_timestamp(segment.end_time)}
-                    </span>
-                    <span class="confidence-indicator {confidence_class}" 
-                          title="Confidence: {segment.confidence:.1%}"></span>
-                </div>
-                <div class="speaker-text">
-                    {html.escape(segment.text)}
-                </div>
-            </div>
-            """
-            html_parts.append(segment_html)
+            # Add segment text to current paragraph
+            current_paragraph.append(segment.text.strip())
+        
+        # Add final paragraph
+        if current_paragraph and current_paragraph_start_time is not None:
+            self._add_speaker_paragraph(html_parts, current_speaker, current_paragraph, speaker_colors,
+                                      current_paragraph_start_time)
         
         html_parts.append('</div>')
         return "\n".join(html_parts)
+    
+    def _add_speaker_paragraph(self, html_parts: List[str], speaker: str, texts: List[str], speaker_colors: Dict[str, str], timestamp: Optional[float] = None):
+        """Add a speaker paragraph with combined text and optional timestamp."""
+        if not texts:
+            return
+        
+        speaker_color = speaker_colors.get(speaker, "#666666")
+        combined_text = ' '.join(texts)
+        
+        # Split into natural paragraphs (on sentence boundaries)
+        paragraphs = self._split_into_paragraphs(combined_text)
+        
+        for i, paragraph in enumerate(paragraphs):
+            if paragraph.strip():
+                # Add timestamp only to the first paragraph of this speaker section
+                timestamp_html = ""
+                if timestamp is not None and i == 0:
+                    marker_time = self._format_timestamp(timestamp)
+                    timestamp_html = f'<span class="paragraph-timestamp">🕐 {marker_time}</span>'
+                
+                paragraph_html = f"""
+                <div class="speaker-paragraph" style="border-left-color: {speaker_color};">
+                    <div class="speaker-header">
+                        <span class="speaker-name" style="color: {speaker_color};">
+                            {html.escape(speaker)}
+                        </span>
+                        {timestamp_html}
+                    </div>
+                    <div class="speaker-text">
+                        {html.escape(paragraph.strip())}
+                    </div>
+                </div>
+                """
+                html_parts.append(paragraph_html)
+    
+    def _split_into_paragraphs(self, text: str) -> List[str]:
+        """Split text into natural paragraphs."""
+        # Split on sentence endings followed by multiple spaces or new topics
+        import re
+        
+        # Simple paragraph splitting - every 3-4 sentences or on topic changes
+        sentences = re.split(r'(?<=[.!?])\s+', text)
+        paragraphs = []
+        current_paragraph = []
+        
+        for i, sentence in enumerate(sentences):
+            current_paragraph.append(sentence)
+            
+            # Start new paragraph every 3-4 sentences or if sentence is very long
+            if (len(current_paragraph) >= 3 and len(' '.join(current_paragraph)) > 200) or len(' '.join(current_paragraph)) > 400:
+                paragraphs.append(' '.join(current_paragraph))
+                current_paragraph = []
+        
+        # Add remaining sentences
+        if current_paragraph:
+            paragraphs.append(' '.join(current_paragraph))
+        
+        return paragraphs if paragraphs else [text]
+    
+
     
     def _build_full_transcript_section(self, result: TranscriptionResult) -> str:
         """Build full transcript section without speaker labels."""

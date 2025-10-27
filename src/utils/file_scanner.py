@@ -30,9 +30,25 @@ class MP3FileScanner:
         """Scan directory for MP3 files and return list of valid files."""
         mp3_files = []
         
-        # Find all .mp3 files recursively
+        # Directories to exclude from scanning
+        exclude_dirs = {
+            'transcriptions',  # Output directory
+            'compressed',      # Compressed files directory
+            'cache',          # Cache directory
+            'metadata'        # Metadata directory
+        }
+        
+        # Find all .mp3 files recursively, excluding output directories
         for file_path in self.base_directory.rglob("*.mp3"):
             if file_path.is_file():
+                # Check if file is in an excluded directory
+                if any(excluded_dir in file_path.parts for excluded_dir in exclude_dirs):
+                    continue
+                
+                # Check if file is a compressed file (ends with _compressed.mp3)
+                if file_path.name.endswith('_compressed.mp3'):
+                    continue
+                
                 try:
                     if self.validate_mp3_file(file_path):
                         mp3_files.append(file_path)
@@ -115,31 +131,37 @@ class OutputDirectoryManager:
             except OSError as e:
                 raise FileSystemError(f"Cannot create directory {directory}: {e}")
     
-    def get_output_path(self, input_file: Path, format_type: str) -> Path:
+    def get_output_path(self, input_file: Path, format_type: str, service: str = None) -> Path:
         """Get output path for a given input file and format type."""
         stem = input_file.stem
         
+        # Add service name to filename for comparison
+        if service:
+            filename_base = f"{stem}_{service}"
+        else:
+            filename_base = stem
+        
         if format_type == "html":
-            return self.html_dir / f"{stem}.html"
+            return self.html_dir / f"{filename_base}.html"
         elif format_type == "markdown":
-            return self.markdown_dir / f"{stem}.md"
+            return self.markdown_dir / f"{filename_base}.md"
         elif format_type == "cache":
-            return self.cache_dir / f"{stem}.json"
+            return self.cache_dir / f"{filename_base}.json"
         elif format_type == "metadata":
-            return self.metadata_dir / f"{stem}_metadata.json"
+            return self.metadata_dir / f"{filename_base}_metadata.json"
         else:
             raise ValueError(f"Unknown format type: {format_type}")
     
-    def file_exists(self, input_file: Path, format_type: str) -> bool:
+    def file_exists(self, input_file: Path, format_type: str, service: str = None) -> bool:
         """Check if output file already exists for given input and format."""
-        output_path = self.get_output_path(input_file, format_type)
+        output_path = self.get_output_path(input_file, format_type, service)
         return output_path.exists() and output_path.stat().st_size > 0
     
-    def get_existing_files(self, input_file: Path) -> Dict[str, bool]:
+    def get_existing_files(self, input_file: Path, service: str = None) -> Dict[str, bool]:
         """Get status of all output files for a given input file."""
         return {
-            'html': self.file_exists(input_file, 'html'),
-            'markdown': self.file_exists(input_file, 'markdown'),
-            'cache': self.file_exists(input_file, 'cache'),
-            'metadata': self.file_exists(input_file, 'metadata')
+            'html': self.file_exists(input_file, 'html', service),
+            'markdown': self.file_exists(input_file, 'markdown', service),
+            'cache': self.file_exists(input_file, 'cache', service),
+            'metadata': self.file_exists(input_file, 'metadata', service)
         }

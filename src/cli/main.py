@@ -4,7 +4,7 @@ import click
 import asyncio
 import os
 from pathlib import Path
-from typing import Optional, List
+from typing import Optional, List, Dict, Any
 
 from ..utils.config import ConfigManager
 from ..utils.file_scanner import MP3FileScanner, OutputDirectoryManager
@@ -22,7 +22,7 @@ from ..utils.exceptions import (
 @click.command()
 @click.argument('audio_directory', type=click.Path(exists=True, path_type=Path))
 @click.option('--service', 
-              type=click.Choice(['assemblyai', 'deepgram']), 
+              type=click.Choice(['assemblyai', 'deepgram', 'openai']), 
               help='Transcription service to use (default from config)')
 @click.option('--mode', 
               type=click.Choice(['transcribe', 'format-only']), 
@@ -34,7 +34,12 @@ from ..utils.exceptions import (
               help='Output format for transcriptions')
 @click.option('--compress-audio', 
               is_flag=True, 
+              default=True,
               help='Compress audio files before upload to reduce upload time')
+@click.option('--compression-format',
+              type=click.Choice(['mp3', 'm4a']),
+              default='m4a',
+              help='Audio compression format (default: m4a for better efficiency)')
 @click.option('--glossary', 
               type=click.Path(exists=True, path_type=Path), 
               multiple=True,
@@ -54,6 +59,9 @@ from ..utils.exceptions import (
 @click.option('--verbose', '-v',
               is_flag=True,
               help='Enable verbose output')
+@click.option('--force',
+              is_flag=True,
+              help='Force re-transcription even if cached results exist')
 @click.option('--create-default-glossary',
               type=click.Path(path_type=Path),
               help='Create default RBTI glossary file and exit')
@@ -63,12 +71,14 @@ def transcribe(
     mode: str,
     output_format: str,
     compress_audio: bool,
+    compression_format: str,
     glossary: tuple,
     api_key: Optional[str],
     config: Optional[Path],
     output_dir: Optional[Path],
     fail_fast: bool,
     verbose: bool,
+    force: bool,
     create_default_glossary: Optional[Path]
 ) -> None:
     """Transcribe MP3 files in the specified directory.
@@ -105,6 +115,21 @@ def transcribe(
         # Convert glossary tuple to list of Paths
         glossary_files = [Path(g) for g in glossary] if glossary else []
         
+        # Use extracted glossary by default if no glossary specified
+        if not glossary_files:
+            default_glossary = Path("extracted_rbti_glossary.txt")
+            if default_glossary.exists():
+                glossary_files = [default_glossary]
+                if verbose:
+                    click.echo(f"📚 Using default extracted glossary: {default_glossary}")
+            else:
+                # Fallback to example glossary
+                example_glossary = Path("example_rbti_glossary.txt")
+                if example_glossary.exists():
+                    glossary_files = [example_glossary]
+                    if verbose:
+                        click.echo(f"📚 Using example glossary: {example_glossary}")
+        
         if verbose:
             click.echo("🔧 Configuration:")
             click.echo(f"  Audio Directory: {audio_directory}")
@@ -116,10 +141,19 @@ def transcribe(
             click.echo(f"  Glossary Files: {len(glossary_files)}")
             click.echo(f"  Fail Fast: {fail_fast}")
         
+        # Clear cache if force flag is used
+        if force and mode == 'transcribe':
+            cache_dir = output_dir / "cache"
+            if cache_dir.exists():
+                import shutil
+                shutil.rmtree(cache_dir)
+                if verbose:
+                    click.echo("🗑️  Cleared cache directory (force mode)")
+
         # Run the appropriate workflow using orchestrator
         asyncio.run(_run_orchestrated_workflow(
             audio_directory, output_dir, service, output_formats,
-            compress_audio, glossary_files, config_manager,
+            compress_audio, compression_format, glossary_files, config_manager,
             mode, fail_fast, verbose
         ))
     
@@ -147,7 +181,7 @@ def _parse_output_formats(output_format: str) -> List[str]:
 
 async def _run_orchestrated_workflow(
     audio_directory: Path, output_dir: Path, service: str, 
-    output_formats: List[str], compress_audio: bool, 
+    output_formats: List[str], compress_audio: bool, compression_format: str,
     glossary_files: List[Path], config_manager: ConfigManager,
     mode: str, fail_fast: bool, verbose: bool
 ) -> None:
@@ -168,7 +202,8 @@ async def _run_orchestrated_workflow(
             service=service,
             output_formats=output_formats,
             glossary_files=glossary_files,
-            compress_audio=compress_audio
+            compress_audio=compress_audio,
+            compression_format=compression_format
         )
     else:  # format-only
         result = await orchestrator.run_format_only_workflow(

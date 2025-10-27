@@ -130,3 +130,13 @@ class ConfigManager:
     def config(self) -> Dict[str, Any]:
         """Get the full configuration dictionary."""
         return self._config.copy()
+
+
+# Backward compatibility function
+def load_config(config_path: Optional[Path] = None) -> ConfigManager:
+    """Load configuration and return ConfigManager instance.
+    
+    This function provides backward compatibility for existing code
+    that expects a load_config function.
+    """
+    return ConfigManager(config_path)

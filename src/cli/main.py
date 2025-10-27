@@ -22,7 +22,7 @@ from ..utils.exceptions import (
 @click.command()
 @click.argument('audio_directory', type=click.Path(exists=True, path_type=Path))
 @click.option('--service', 
-              type=click.Choice(['assemblyai', 'deepgram', 'openai']), 
+              type=click.Choice(['assemblyai', 'deepgram']), 
               help='Transcription service to use (default from config)')
 @click.option('--mode', 
               type=click.Choice(['transcribe', 'format-only']), 
@@ -36,10 +36,6 @@ from ..utils.exceptions import (
               is_flag=True, 
               default=True,
               help='Compress audio files before upload to reduce upload time')
-@click.option('--compression-format',
-              type=click.Choice(['mp3', 'm4a']),
-              default='m4a',
-              help='Audio compression format (default: m4a for better efficiency)')
 @click.option('--glossary', 
               type=click.Path(exists=True, path_type=Path), 
               multiple=True,
@@ -71,7 +67,6 @@ def transcribe(
     mode: str,
     output_format: str,
     compress_audio: bool,
-    compression_format: str,
     glossary: tuple,
     api_key: Optional[str],
     config: Optional[Path],
@@ -153,7 +148,7 @@ def transcribe(
         # Run the appropriate workflow using orchestrator
         asyncio.run(_run_orchestrated_workflow(
             audio_directory, output_dir, service, output_formats,
-            compress_audio, compression_format, glossary_files, config_manager,
+            compress_audio, glossary_files, config_manager,
             mode, fail_fast, verbose
         ))
     
@@ -181,7 +176,7 @@ def _parse_output_formats(output_format: str) -> List[str]:
 
 async def _run_orchestrated_workflow(
     audio_directory: Path, output_dir: Path, service: str, 
-    output_formats: List[str], compress_audio: bool, compression_format: str,
+    output_formats: List[str], compress_audio: bool,
     glossary_files: List[Path], config_manager: ConfigManager,
     mode: str, fail_fast: bool, verbose: bool
 ) -> None:
@@ -202,8 +197,7 @@ async def _run_orchestrated_workflow(
             service=service,
             output_formats=output_formats,
             glossary_files=glossary_files,
-            compress_audio=compress_audio,
-            compression_format=compression_format
+            compress_audio=compress_audio
         )
     else:  # format-only
         result = await orchestrator.run_format_only_workflow(

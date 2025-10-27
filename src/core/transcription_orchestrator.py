@@ -44,10 +44,10 @@ class TranscriptionOrchestrator:
         self.audio_validator: Optional[AudioValidator] = None
         self.progress_tracker: Optional[ProgressTracker] = None
     
-    def setup_audio_processing(self, enable_compression: bool = False, compression_format: str = 'mp3') -> None:
+    def setup_audio_processing(self, enable_compression: bool = False) -> None:
         """Set up audio processing components."""
         if enable_compression:
-            self.audio_processor = AudioProcessor(self.output_dir / "compressed", compression_format)
+            self.audio_processor = AudioProcessor(self.output_dir / "compressed")
         
         self.audio_validator = AudioValidator(self.audio_processor)
     
@@ -57,8 +57,7 @@ class TranscriptionOrchestrator:
         service: str,
         output_formats: List[str],
         glossary_files: Optional[List[Path]] = None,
-        compress_audio: bool = False,
-        compression_format: str = 'm4a'
+        compress_audio: bool = False
     ) -> Dict[str, Any]:
         """Run the complete transcription workflow."""
         
@@ -78,7 +77,7 @@ class TranscriptionOrchestrator:
         
         try:
             # Step 1: Setup and validation
-            self.setup_audio_processing(compress_audio, compression_format)
+            self.setup_audio_processing(compress_audio)
             self.output_manager.create_output_structure()
             
             # Step 2: Scan for MP3 files

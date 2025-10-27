@@ -13,16 +13,11 @@ from .exceptions import AudioValidationError, FileSystemError
 class AudioProcessor:
     """Audio processor with FFmpeg integration for compression and analysis."""
     
-    TARGET_BITRATE = 64  # Target bitrate in kbps (optimized for speech)
+    TARGET_BITRATE = 32  # Target bitrate in kbps (optimized for speech)
     
-    def __init__(self, compressed_cache_dir: Path, output_format: str = 'mp3'):
+    def __init__(self, compressed_cache_dir: Path):
         self.compressed_cache_dir = Path(compressed_cache_dir)
         self.compressed_cache_dir.mkdir(parents=True, exist_ok=True)
-        self.output_format = output_format.lower()
-        
-        # Validate output format
-        if self.output_format not in ['mp3', 'm4a']:
-            raise ValueError(f"Unsupported output format: {output_format}. Supported: mp3, m4a")
         
         # Check if FFmpeg is available
         if not self._check_ffmpeg_available():
@@ -35,9 +30,9 @@ class AudioProcessor:
     def _get_compressed_cache_path(self, input_file: Path) -> Path:
         """Get cache path for compressed audio file."""
         # Create hash based on file path and modification time
-        file_info = f"{input_file}_{input_file.stat().st_mtime}_{input_file.stat().st_size}_{self.output_format}"
+        file_info = f"{input_file}_{input_file.stat().st_mtime}_{input_file.stat().st_size}"
         file_hash = hashlib.md5(file_info.encode()).hexdigest()[:12]
-        return self.compressed_cache_dir / f"{input_file.stem}_{file_hash}_compressed.{self.output_format}"
+        return self.compressed_cache_dir / f"{input_file.stem}_{file_hash}_compressed.mp3"
     
     def analyze_audio_bitrate(self, audio_file: Path) -> Dict[str, Any]:
         """Analyze audio file to get bitrate and other properties."""
@@ -121,32 +116,14 @@ class AudioProcessor:
             return input_file
         
         try:
-            # Compress using FFmpeg with format-specific optimization
-            if self.output_format == 'm4a':
-                # M4A/AAC compression (better efficiency than MP3)
-                # TEMPORARY: Limit to 1390 seconds for OpenAI model constraint
-                cmd = [
-                    'ffmpeg',
-                    '-i', str(input_file),
-                    '-t', '1390',    # Limit to 1390 seconds (safely under OpenAI model max)
-                    '-codec:a', 'aac',
-                    '-b:a', f'{self.TARGET_BITRATE}k',
-                    '-ar', '16000',  # 16kHz sample rate (optimal for speech)
-                    '-ac', '1',      # Convert to mono for speech
-                    '-y',            # Overwrite output file
-                    str(compressed_path)
-                ]
-            else:
-                # MP3 compression
-                # TEMPORARY: Limit to 1390 seconds for OpenAI model constraint
-                cmd = [
-                    'ffmpeg',
-                    '-i', str(input_file),
-                    '-t', '1390',    # Limit to 1390 seconds (safely under OpenAI model max)
-                    '-codec:a', 'mp3',
-                    '-b:a', f'{self.TARGET_BITRATE}k',
-                    '-ar', '16000',  # 16kHz sample rate (optimal for speech)
-                    '-ac', '1',      # Convert to mono for speech
+            # Compress using FFmpeg with aggressive speech optimization
+            cmd = [
+                'ffmpeg',
+                '-i', str(input_file),
+                '-codec:a', 'mp3',
+                '-b:a', f'{self.TARGET_BITRATE}k',
+                '-ar', '16000',  # 16kHz sample rate (optimal for speech)
+                '-ac', '1',      # Convert to mono for speech
                     '-q:a', '9',     # Lower quality for smaller size (good for speech)
                     '-compression_level', '9',  # Maximum compression
                     '-y',            # Overwrite output file
@@ -195,64 +172,43 @@ class AudioProcessor:
         current_time = time.time()
         max_age_seconds = max_age_days * 24 * 60 * 60
         
-        # Clean both MP3 and M4A compressed files
-        for pattern in ["*_compressed.mp3", "*_compressed.m4a"]:
-            for compressed_file in self.compressed_cache_dir.glob(pattern):
-                try:
-                    if current_time - compressed_file.stat().st_mtime > max_age_seconds:
-                        compressed_file.unlink()
-                except OSError:
-                    continue
+        for compressed_file in self.compressed_cache_dir.glob("*_compressed.mp3"):
+            try:
+                if current_time - compressed_file.stat().st_mtime > max_age_seconds:
+                    compressed_file.unlink()
+            except OSError:
+                continue
     
     def get_cache_stats(self) -> Dict[str, Any]:
         """Get statistics about compressed file cache."""
-        # Count both MP3 and M4A compressed files
-        compressed_files = []
-        for pattern in ["*_compressed.mp3", "*_compressed.m4a"]:
-            compressed_files.extend(self.compressed_cache_dir.glob(pattern))
-        
+        compressed_files = list(self.compressed_cache_dir.glob("*_compressed.mp3"))
         total_size = sum(f.stat().st_size for f in compressed_files)
         
         return {
             'total_compressed_files': len(compressed_files),
             'total_cache_size_bytes': total_size,
             'total_cache_size_mb': round(total_size / (1024 * 1024), 2),
-            'cache_directory': str(self.compressed_cache_dir),
-            'output_format': self.output_format
+            'cache_directory': str(self.compressed_cache_dir)
         }
     
     def _compress_ultra_aggressive(self, input_file: Path, initial_compressed: Path, target_size_mb: float) -> Path:
         """Apply ultra-aggressive compression for very large files."""
-        if self.output_format == 'm4a':
-            ultra_compressed_path = initial_compressed.with_suffix('.ultra.m4a')
-            # Ultra-aggressive M4A/AAC compression for speech
-            cmd = [
-                'ffmpeg',
-                '-i', str(input_file),
-                '-codec:a', 'aac',
-                '-b:a', '16k',       # Very low bitrate for speech
-                '-ar', '8000',       # 8kHz sample rate (minimum for speech)
-                '-ac', '1',          # Mono
-                '-af', 'highpass=f=80,lowpass=f=3400',  # Filter for speech frequencies
-                '-y',
-                str(ultra_compressed_path)
-            ]
-        else:
-            ultra_compressed_path = initial_compressed.with_suffix('.ultra.mp3')
-            # Ultra-aggressive MP3 compression for speech
-            cmd = [
-                'ffmpeg',
-                '-i', str(input_file),
-                '-codec:a', 'mp3',
-                '-b:a', '16k',       # Very low bitrate for speech
-                '-ar', '8000',       # 8kHz sample rate (minimum for speech)
-                '-ac', '1',          # Mono
-                '-q:a', '9',         # Lowest quality
-                '-compression_level', '9',
-                '-af', 'highpass=f=80,lowpass=f=3400',  # Filter for speech frequencies
-                '-y',
-                str(ultra_compressed_path)
-            ]
+        ultra_compressed_path = initial_compressed.with_suffix('.ultra.mp3')
+        
+        # Ultra-aggressive MP3 compression for speech
+        cmd = [
+            'ffmpeg',
+            '-i', str(input_file),
+            '-codec:a', 'mp3',
+            '-b:a', '16k',       # Very low bitrate for speech
+            '-ar', '8000',       # 8kHz sample rate (minimum for speech)
+            '-ac', '1',          # Mono
+            '-q:a', '9',         # Lowest quality
+            '-compression_level', '9',
+            '-af', 'highpass=f=80,lowpass=f=3400',  # Filter for speech frequencies
+            '-y',
+            str(ultra_compressed_path)
+        ]
         
         try:
             result = subprocess.run(cmd, capture_output=True, text=True, check=True)

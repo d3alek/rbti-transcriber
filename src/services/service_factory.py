@@ -6,7 +6,6 @@ from typing import Optional, List, Dict, Any
 from .transcription_client import TranscriptionClient
 from .assemblyai_client import AssemblyAIClient
 from .deepgram_client import DeepgramClient
-from .openai_client import OpenAIClient
 from ..utils.glossary_manager import GlossaryManager
 from ..utils.exceptions import ConfigurationError, AuthenticationError
 
@@ -14,7 +13,7 @@ from ..utils.exceptions import ConfigurationError, AuthenticationError
 class TranscriptionServiceFactory:
     """Factory for creating and configuring transcription service clients."""
     
-    SUPPORTED_SERVICES = ['assemblyai', 'deepgram', 'openai']
+    SUPPORTED_SERVICES = ['assemblyai', 'deepgram']
     
     def __init__(self, config_manager):
         self.config_manager = config_manager
@@ -39,13 +38,11 @@ class TranscriptionServiceFactory:
             client = AssemblyAIClient(api_key)
         elif service == 'deepgram':
             client = DeepgramClient(api_key)
-        elif service == 'openai':
-            client = OpenAIClient(api_key)
         else:
             raise ConfigurationError(f"Service implementation not found: {service}")
         
-        # Apply glossary if provided (skip for OpenAI as it doesn't support custom vocabulary)
-        if glossary_files and service != 'openai':
+        # Apply glossary if provided
+        if glossary_files:
             self._apply_glossary_to_client(client, service, glossary_files)
         
         return client
@@ -110,8 +107,6 @@ class TranscriptionServiceFactory:
             return common_languages
         elif service == 'deepgram':
             return common_languages + ['ru', 'ru-RU', 'ar', 'ar-SA']
-        elif service == 'openai':
-            return common_languages + ['ru', 'ru-RU', 'ar', 'ar-SA', 'hi', 'hi-IN']
         else:
             return ['en']
     

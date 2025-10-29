@@ -6,6 +6,104 @@ This document provides a comprehensive analysis of the raw Deepgram API response
 
 The cached Deepgram response contains multiple layers of data, from high-level metadata to granular word-level timing information. This rich structure enables sophisticated transcript editing and playback features.
 
+## Cache File Structure
+
+The transcription system stores Deepgram responses in cache files with the following structure:
+
+```json
+{
+  "audio_file": "test_audio/RBTI-Animal-Husbandry-T01.mp3",
+  "service": "deepgram",
+  "config": {
+    "speaker_labels": true,
+    "custom_vocabulary": [],
+    "punctuate": true,
+    "format_text": true,
+    "language_code": "en",
+    "max_speakers": 3
+  },
+  "timestamp": "2025-10-29T05:39:10.849061",
+  "result": {
+    "text": "Full processed transcript text...",
+    "speakers": [
+      {
+        "speaker": "Speaker 0",
+        "start_time": 0.48,
+        "end_time": 2.08,
+        "text": "I'd like to welcome all of you",
+        "confidence": 0.98527277
+      }
+    ],
+    "confidence": 0.9943198,
+    "audio_duration": 3670.043,
+    "processing_time": 21.011720895767212,
+    "raw_response": {
+      "metadata": {
+        "request_id": "a621a3ad-2808-4652-b233-3bea95b017a5",
+        "sha256": "9a0040b8f1fb0e0d9cc58cbb78401481b5e6a7f7f158556e82c9ed280af16e21",
+        "created": "2025-10-29T03:39:03.035Z",
+        "duration": 3671.748,
+        "channels": 1,
+        "models": ["2187e11a-3532-4498-b076-81fa530bdd49"],
+        "model_info": {
+          "2187e11a-3532-4498-b076-81fa530bdd49": {
+            "name": "general-nova-3",
+            "version": "2025-07-31.0",
+            "arch": "nova-3"
+          }
+        }
+      },
+      "results": {
+        "channels": [
+          {
+            "alternatives": [
+              {
+                "transcript": "Full continuous transcript text...",
+                "words": [
+                  {
+                    "word": "welcome",
+                    "start": 0.48,
+                    "end": 0.8,
+                    "confidence": 0.99,
+                    "speaker": 0,
+                    "speaker_confidence": 0.89,
+                    "punctuated_word": "welcome"
+                  }
+                ],
+                "paragraphs": {
+                  "transcript": "Paragraph-segmented text...",
+                  "paragraphs": [
+                    {
+                      "sentences": [
+                        {
+                          "text": "Sentence text...",
+                          "start": 0.48,
+                          "end": 10.5,
+                          "words": [...],
+                          "speaker": 0,
+                          "id": "unique-sentence-id"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+### Key Structure Notes
+
+1. **Nested Raw Response**: The actual Deepgram API response is nested under `result.raw_response`
+2. **Processed Data**: The `result` level contains processed/formatted data for easier consumption
+3. **Application Metadata**: Top-level fields contain transcription system metadata
+4. **Version Management**: This structure enables the version management system to initialize from cache
+
 ## Top-Level Response Fields
 
 ### Application Metadata

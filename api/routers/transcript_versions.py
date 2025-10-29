@@ -14,7 +14,8 @@ from ..models import (
     VersionListResponse, TranscriptLoadResponse, ParagraphData,
     ParagraphUpdateRequest, APIResponse, ErrorResponse, ValidationResult
 )
-from ..services import DeepgramVersionManager, TranscriptProcessor
+from ..services import DeepgramVersionManager, TranscriptProcessor, AudioFileManager
+from ..config import get_settings
 
 logger = logging.getLogger(__name__)
 
@@ -23,18 +24,54 @@ router = APIRouter(prefix="/api/transcripts", tags=["transcript-versions"])
 # Dependency to get version manager
 def get_version_manager() -> DeepgramVersionManager:
     """Get version manager instance."""
-    return DeepgramVersionManager()
+    settings = get_settings()
+    # Use the same base path as the audio directory for transcriptions
+    transcriptions_path = settings.audio_directory / "transcriptions"
+    return DeepgramVersionManager(str(transcriptions_path))
 
 # Dependency to get transcript processor
 def get_transcript_processor() -> TranscriptProcessor:
     """Get transcript processor instance."""
     return TranscriptProcessor()
 
+# Dependency to get file manager
+def get_file_manager() -> AudioFileManager:
+    """Get file manager instance."""
+    settings = get_settings()
+    return AudioFileManager(settings.audio_directory)
+
+# Helper function to get audio file path from hash
+async def get_audio_file_path(audio_hash: str, file_manager: AudioFileManager) -> str:
+    """
+    Get the actual audio file path from the hash.
+    
+    Args:
+        audio_hash: Hash identifier for the audio file
+        file_manager: File manager instance
+        
+    Returns:
+        Actual file path
+        
+    Raises:
+        HTTPException: If file not found
+    """
+    # Get file info by hash (which is used as file ID)
+    file_info = await file_manager.get_file_info(audio_hash)
+    
+    if file_info is None:
+        raise HTTPException(
+            status_code=404,
+            detail=f"Audio file not found for hash: {audio_hash}"
+        )
+    
+    return file_info.path
+
 
 @router.get("/{audio_hash}/versions", response_model=VersionListResponse)
 async def list_versions(
     audio_hash: str = Path(..., description="Audio file hash identifier"),
-    version_manager: DeepgramVersionManager = Depends(get_version_manager)
+    version_manager: DeepgramVersionManager = Depends(get_version_manager),
+    file_manager: AudioFileManager = Depends(get_file_manager)
 ):
     """
     List all available versions for a transcript.
@@ -42,13 +79,14 @@ async def list_versions(
     Args:
         audio_hash: Hash identifier for the audio file
         version_manager: Version manager service
+        file_manager: File manager service
         
     Returns:
         List of available versions with metadata
     """
     try:
-        # Reconstruct audio file path from hash (simplified)
-        audio_file = f"audio_{audio_hash}"
+        # Get actual audio file path from hash
+        audio_file = await get_audio_file_path(audio_hash, file_manager)
         
         # Load versions
         versions = version_manager.load_versions(audio_file)
@@ -72,6 +110,8 @@ async def list_versions(
             current_version=current_version
         )
         
+    except HTTPException:
+        raise
     except Exception as e:
         logger.error(f"Error listing versions for {audio_hash}: {e}")
         raise HTTPException(status_code=500, detail=f"Failed to list versions: {str(e)}")
@@ -81,7 +121,8 @@ async def list_versions(
 async def save_version(
     audio_hash: str = Path(..., description="Audio file hash identifier"),
     request: VersionSaveRequest = ...,
-    version_manager: DeepgramVersionManager = Depends(get_version_manager)
+    version_manager: DeepgramVersionManager = Depends(get_version_manager),
+    file_manager: AudioFileManager = Depends(get_file_manager)
 ):
     """
     Save a new version of a transcript.
@@ -90,13 +131,14 @@ async def save_version(
         audio_hash: Hash identifier for the audio file
         request: Version save request with changes and response data
         version_manager: Version manager service
+        file_manager: File manager service
         
     Returns:
         Success response with version filename
     """
     try:
-        # Reconstruct audio file path from hash
-        audio_file = f"audio_{audio_hash}"
+        # Get actual audio file path from hash
+        audio_file = await get_audio_file_path(audio_hash, file_manager)
         
         # Validate the Deepgram response structure
         processor = TranscriptProcessor()
@@ -132,7 +174,8 @@ async def load_version(
     audio_hash: str = Path(..., description="Audio file hash identifier"),
     version_id: int = Path(..., description="Version number to load"),
     version_manager: DeepgramVersionManager = Depends(get_version_manager),
-    processor: TranscriptProcessor = Depends(get_transcript_processor)
+    processor: TranscriptProcessor = Depends(get_transcript_processor),
+    file_manager: AudioFileManager = Depends(get_file_manager)
 ):
     """
     Load a specific version of a transcript.
@@ -147,8 +190,8 @@ async def load_version(
         Transcript data with paragraphs and metadata
     """
     try:
-        # Reconstruct audio file path from hash
-        audio_file = f"audio_{audio_hash}"
+        # Get actual audio file path from hash
+        audio_file = await get_audio_file_path(audio_hash, file_manager)
         
         # Load the specific version
         response = version_manager.get_version(audio_file, version_id)
@@ -192,7 +235,8 @@ async def load_version(
 async def delete_version(
     audio_hash: str = Path(..., description="Audio file hash identifier"),
     version_id: int = Path(..., description="Version number to delete"),
-    version_manager: DeepgramVersionManager = Depends(get_version_manager)
+    version_manager: DeepgramVersionManager = Depends(get_version_manager),
+    file_manager: AudioFileManager = Depends(get_file_manager)
 ):
     """
     Delete a specific version of a transcript.
@@ -213,8 +257,8 @@ async def delete_version(
                 detail="Cannot delete original version (version 0)"
             )
         
-        # Reconstruct audio file path from hash
-        audio_file = f"audio_{audio_hash}"
+        # Get actual audio file path from hash
+        audio_file = await get_audio_file_path(audio_hash, file_manager)
         
         # Delete the version
         success = version_manager.delete_version(audio_file, version_id)
@@ -241,7 +285,8 @@ async def delete_version(
 async def load_latest_version(
     audio_hash: str = Path(..., description="Audio file hash identifier"),
     version_manager: DeepgramVersionManager = Depends(get_version_manager),
-    processor: TranscriptProcessor = Depends(get_transcript_processor)
+    processor: TranscriptProcessor = Depends(get_transcript_processor),
+    file_manager: AudioFileManager = Depends(get_file_manager)
 ):
     """
     Load the latest version of a transcript.
@@ -250,13 +295,14 @@ async def load_latest_version(
         audio_hash: Hash identifier for the audio file
         version_manager: Version manager service
         processor: Transcript processor service
+        file_manager: File manager service
         
     Returns:
         Latest transcript data with paragraphs and metadata
     """
     try:
-        # Reconstruct audio file path from hash
-        audio_file = f"audio_{audio_hash}"
+        # Get actual audio file path from hash
+        audio_file = await get_audio_file_path(audio_hash, file_manager)
         
         # Load the latest version
         response = version_manager.get_latest_version(audio_file)
@@ -303,7 +349,8 @@ async def load_latest_version(
 @router.post("/{audio_hash}/initialize", response_model=APIResponse)
 async def initialize_from_cache(
     audio_hash: str = Path(..., description="Audio file hash identifier"),
-    version_manager: DeepgramVersionManager = Depends(get_version_manager)
+    version_manager: DeepgramVersionManager = Depends(get_version_manager),
+    file_manager: AudioFileManager = Depends(get_file_manager)
 ):
     """
     Initialize version 0 from existing cache file.
@@ -311,13 +358,14 @@ async def initialize_from_cache(
     Args:
         audio_hash: Hash identifier for the audio file
         version_manager: Version manager service
+        file_manager: File manager service
         
     Returns:
         Success response if initialized
     """
     try:
-        # Reconstruct audio file path from hash
-        audio_file = f"audio_{audio_hash}"
+        # Get actual audio file path from hash
+        audio_file = await get_audio_file_path(audio_hash, file_manager)
         
         # Try to initialize from cache
         filename = version_manager.initialize_from_cache(audio_file)
@@ -344,7 +392,8 @@ async def initialize_from_cache(
 @router.get("/{audio_hash}/storage-info")
 async def get_storage_info(
     audio_hash: str = Path(..., description="Audio file hash identifier"),
-    version_manager: DeepgramVersionManager = Depends(get_version_manager)
+    version_manager: DeepgramVersionManager = Depends(get_version_manager),
+    file_manager: AudioFileManager = Depends(get_file_manager)
 ):
     """
     Get storage information for a transcript's versions.
@@ -357,8 +406,8 @@ async def get_storage_info(
         Storage information including file count and sizes
     """
     try:
-        # Reconstruct audio file path from hash
-        audio_file = f"audio_{audio_hash}"
+        # Get actual audio file path from hash
+        audio_file = await get_audio_file_path(audio_hash, file_manager)
         
         # Get storage info
         storage_info = version_manager.get_storage_info(audio_file)

@@ -243,9 +243,11 @@ class DeepgramVersionManager:
             with open(version_file, 'r', encoding='utf-8') as f:
                 version_data = json.load(f)
             
-            return version_data["response"]
+            # Convert dictionary to DeepgramResponse object
+            response_dict = version_data["response"]
+            return DeepgramResponse(**response_dict)
             
-        except (json.JSONDecodeError, IOError, KeyError) as e:
+        except (json.JSONDecodeError, IOError, KeyError):
             return None
     
     def delete_version(self, audio_file: str, version: int) -> bool:
@@ -313,34 +315,50 @@ class DeepgramVersionManager:
         if self.get_version(audio_file, 0) is not None:
             return None
         
-        # Look for cached response
-        audio_hash = self._get_audio_hash(audio_file)
-        cache_file = self.cache_dir / f"{audio_hash}.json"
-        
-        if not cache_file.exists():
-            return None
-        
+        # Look for cached response by scanning all cache files
+        # since the cache file names are hashed differently
         try:
-            with open(cache_file, 'r', encoding='utf-8') as f:
-                cached_data = json.load(f)
+            for cache_file in self.cache_dir.glob("*.json"):
+                try:
+                    with open(cache_file, 'r', encoding='utf-8') as f:
+                        cached_data = json.load(f)
+                    
+                    # Check if this cache file matches our audio file
+                    if cached_data.get('audio_file') == audio_file:
+                        # Extract the raw Deepgram response
+                        deepgram_response = None
+                        
+                        if "raw_response" in cached_data:
+                            deepgram_response = cached_data["raw_response"]
+                        elif "result" in cached_data and cached_data.get("service") == "deepgram":
+                            result = cached_data["result"]
+                            
+                            # Check if raw_response is nested inside result
+                            if isinstance(result, dict) and "raw_response" in result:
+                                deepgram_response = result["raw_response"]
+                            elif isinstance(result, dict) and "metadata" in result and "results" in result:
+                                deepgram_response = result
+                            else:
+                                # Skip this cache file as it doesn't have raw Deepgram data
+                                continue
+                        else:
+                            continue
+                        
+                        if deepgram_response:
+                            # Save as version 0 (original)
+                            return self.save_version(
+                                audio_file, 
+                                deepgram_response, 
+                                "Original Deepgram response from cache"
+                            )
+                        
+                except (json.JSONDecodeError, IOError, KeyError):
+                    # Skip corrupted cache files
+                    continue
             
-            # Extract the raw Deepgram response
-            if "raw_response" in cached_data:
-                deepgram_response = cached_data["raw_response"]
-            elif "result" in cached_data:
-                # Handle older format
-                deepgram_response = cached_data["result"]
-            else:
-                return None
+            return None
             
-            # Save as version 0 (original)
-            return self.save_version(
-                audio_file, 
-                deepgram_response, 
-                "Original Deepgram response"
-            )
-            
-        except (json.JSONDecodeError, IOError, KeyError) as e:
+        except Exception:
             return None
     
     def get_version_count(self, audio_file: str) -> int:

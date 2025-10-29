@@ -79,16 +79,22 @@ class TranscriptProcessor:
                 sentence_end = 0.0
                 sentence_speaker = None
                 
+                # Get words for this sentence from the alternative.words based on timing
+                sentence_words_data = []
+                for word_data in alternative.words:
+                    if sentence["start"] <= word_data.start <= sentence["end"]:
+                        sentence_words_data.append(word_data)
+                
                 # Process words in sentence
-                for word_data in sentence["words"]:
+                for word_data in sentence_words_data:
                     word = WordData(
-                        word=word_data["word"],
-                        start=word_data["start"],
-                        end=word_data["end"],
-                        confidence=word_data["confidence"],
-                        speaker=word_data.get("speaker", 0),
-                        speaker_confidence=word_data.get("speaker_confidence", 1.0),
-                        punctuated_word=word_data.get("punctuated_word", word_data["word"]),
+                        word=word_data.word,
+                        start=word_data.start,
+                        end=word_data.end,
+                        confidence=word_data.confidence,
+                        speaker=getattr(word_data, "speaker", 0),
+                        speaker_confidence=getattr(word_data, "speaker_confidence", 1.0),
+                        punctuated_word=getattr(word_data, "punctuated_word", word_data.word),
                         index=word_index
                     )
                     

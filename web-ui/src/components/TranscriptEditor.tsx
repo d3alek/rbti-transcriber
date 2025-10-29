@@ -29,7 +29,7 @@ const TranscriptEditor: React.FC<TranscriptEditorComponentProps> = ({
   file,
   onError
 }) => {
-  const audioHash = file.hash || file.name;
+  const audioHash = file.id;
   const audioFile = file.path;
   // State management
   const [state, setState] = useState<TranscriptEditorState>({
@@ -274,7 +274,7 @@ const TranscriptEditor: React.FC<TranscriptEditorComponentProps> = ({
         {/* Audio Player */}
         <Paper sx={{ p: 2 }}>
           <AudioPlayer
-            audioFile={audioFile}
+            audioFile={`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/files/${audioHash}/audio`}
             currentTime={state.currentPlaybackTime}
             onTimeUpdate={handleTimeUpdate}
             onSeek={handleSeek}

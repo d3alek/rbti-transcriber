@@ -12,17 +12,12 @@ class ConfigManager:
     
     DEFAULT_CONFIG = {
         'transcription': {
-            'default_service': 'assemblyai',
+            'default_service': 'deepgram',
             'speaker_diarization': True,
             'max_speakers': 3,
             'confidence_threshold': 0.8
         },
         'services': {
-            'assemblyai': {
-                'api_base_url': 'https://api.assemblyai.com/v2',
-                'supports_custom_vocabulary': True,
-                'supports_speaker_diarization': True
-            },
             'deepgram': {
                 'api_base_url': 'https://api.deepgram.com/v1',
                 'supports_custom_vocabulary': True,

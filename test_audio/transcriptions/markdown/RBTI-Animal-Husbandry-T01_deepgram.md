@@ -1,7 +1,7 @@
 # Audio Transcription: RBTI-Animal-Husbandry-T01_deepgram
 
-**Generated:** 2025-10-26 10:48:17  
-**Duration:** 00:00  
+**Generated:** 2025-10-29 05:39:11  
+**Duration:** 01:01:10  
 **Speakers:** 2  
 **Overall Confidence:** 99.4%  
 
@@ -9,7 +9,7 @@
 
 | Metric | Value |
 |--------|-------|
-| Audio Duration | 00:00 |
+| Audio Duration | 01:01:10 |
 | Processing Time | 00:21 |
 | Number of Speakers | 2 |
 | Total Segments | 1117 |

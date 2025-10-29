@@ -7,7 +7,7 @@ from contextlib import asynccontextmanager
 import uvicorn
 from pathlib import Path
 
-from .routers import files, transcription, export, publication
+from .routers import files, transcription, export, publication, transcript_versions
 from .services.websocket_manager import WebSocketManager
 from .config import get_settings
 
@@ -51,6 +51,7 @@ app.include_router(files.router, prefix="/api/files", tags=["files"])
 app.include_router(transcription.router, prefix="/api/transcribe", tags=["transcription"])
 app.include_router(export.router, prefix="/api/export", tags=["export"])
 app.include_router(publication.router, prefix="/api/publish", tags=["publication"])
+app.include_router(transcript_versions.router, tags=["transcript-versions"])
 
 # Make websocket manager available to routers
 app.state.websocket_manager = websocket_manager

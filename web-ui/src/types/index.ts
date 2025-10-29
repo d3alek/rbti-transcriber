@@ -2,10 +2,22 @@
  * TypeScript type definitions for the transcription web UI.
  */
 
+// Export Deepgram-specific types first
+export * from './deepgram';
+
+// Export validation types (excluding conflicting ones)
+export type { 
+  ValidationError, 
+  ValidationWarning, 
+  DeepgramValidator,
+  TranscriptError 
+} from './validation';
+
 export interface AudioFile {
   id: string;
   name: string;
   path: string;
+  hash?: string;
   size: number;
   duration: number;
   has_transcription: boolean;
@@ -48,7 +60,7 @@ export interface TranscriptionJob {
 
 export interface TranscriptionRequest {
   file_id: string;
-  service: 'assemblyai' | 'deepgram';
+  service: 'deepgram';
   compress_audio: boolean;
   output_formats: string[];
 }

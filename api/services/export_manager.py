@@ -126,7 +126,7 @@ class ExportManager:
     def _load_transcription(self, audio_file: Path):
         """Load transcription from cache."""
         # Try to find cached transcription for any service
-        for service in ['deepgram', 'assemblyai']:
+        for service in ['deepgram']:
             cache_key = self._get_cache_key(audio_file, service)
             cached_result = self.cache_manager.get_result(cache_key)
             if cached_result:

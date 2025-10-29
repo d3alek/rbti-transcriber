@@ -187,17 +187,8 @@ class GlossaryManager:
         if not self.loaded_terms:
             return []
         
-        # Different services may have different formatting requirements
-        if service.lower() == 'assemblyai':
-            # AssemblyAI prefers individual words and short phrases
-            return self.loaded_terms[:1000]  # Enforce limit
-        
-        elif service.lower() == 'deepgram':
-            # Deepgram uses keywords format
-            return self.loaded_terms[:1000]  # Enforce limit
-        
-        else:
-            return self.loaded_terms[:1000]
+        # Deepgram uses keywords format
+        return self.loaded_terms[:1000]  # Enforce limit
     
     def get_glossary_stats(self) -> Dict[str, Any]:
         """Get statistics about loaded glossary."""

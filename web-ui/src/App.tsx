@@ -51,10 +51,7 @@ function App() {
     setCurrentView('editor');
   };
 
-  const handleBackToFiles = () => {
-    setSelectedFile(null);
-    setCurrentView('files');
-  };
+
 
   const handleTranscriptionStart = (request: TranscriptionRequest) => {
     console.log('Starting transcription:', request);
@@ -76,7 +73,7 @@ function App() {
         return selectedFile ? (
           <TranscriptEditor
             file={selectedFile}
-            onBack={handleBackToFiles}
+            onError={(error) => console.error('Transcript error:', error)}
           />
         ) : (
           <Box p={3}>

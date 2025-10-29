@@ -63,7 +63,7 @@ export const FileManager: React.FC<FileManagerProps> = ({ onFileSelect, onTransc
   const [searchTerm, setSearchTerm] = useState('');
   const [transcribeDialogOpen, setTranscribeDialogOpen] = useState(false);
   const [selectedFile, setSelectedFile] = useState<AudioFile | null>(null);
-  const [transcriptionService, setTranscriptionService] = useState<'assemblyai' | 'deepgram'>('deepgram');
+  const transcriptionService = 'deepgram'; // Always use Deepgram
   const [viewMode, setViewMode] = useState<'table' | 'grid'>('table');
   const [statusFilter, setStatusFilter] = useState<string>('all');
   const [sortBy, setSortBy] = useState<'name' | 'size' | 'duration' | 'modified'>('name');
@@ -473,18 +473,12 @@ export const FileManager: React.FC<FileManagerProps> = ({ onFileSelect, onTransc
               </Box>
             </Box>
 
-            {/* Service Selection */}
-            <FormControl fullWidth sx={{ mb: 2 }}>
-              <InputLabel>Transcription Service</InputLabel>
-              <Select
-                value={transcriptionService}
-                label="Transcription Service"
-                onChange={(e) => setTranscriptionService(e.target.value as 'assemblyai' | 'deepgram')}
-              >
-                <MenuItem value="deepgram">Deepgram (Recommended)</MenuItem>
-                <MenuItem value="assemblyai">AssemblyAI</MenuItem>
-              </Select>
-            </FormControl>
+            {/* Deepgram Service Info */}
+            <Box sx={{ mb: 2, p: 2, bgcolor: 'primary.light', borderRadius: 1 }}>
+              <Typography variant="body2" color="primary.contrastText">
+                🎯 Using Deepgram for high-quality transcription with superior speaker diarization
+              </Typography>
+            </Box>
 
             {/* Audio Compression */}
             <FormControlLabel

@@ -296,10 +296,8 @@ class TranscriptionOrchestrator:
             
             upload_start = time.time()
             
-            if service == 'assemblyai':
-                result = await client.transcribe_file(file_to_transcribe, transcription_config)
-            else:  # deepgram
-                result = await client.transcribe_file(file_to_transcribe, transcription_config)
+            # Use Deepgram for transcription
+            result = await client.transcribe_file(file_to_transcribe, transcription_config)
             
             upload_time = time.time() - upload_start
             

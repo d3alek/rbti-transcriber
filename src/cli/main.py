@@ -22,8 +22,9 @@ from ..utils.exceptions import (
 @click.command()
 @click.argument('audio_directory', type=click.Path(exists=True, path_type=Path))
 @click.option('--service', 
-              type=click.Choice(['assemblyai', 'deepgram']), 
-              help='Transcription service to use (default from config)')
+              type=click.Choice(['deepgram']), 
+              default='deepgram',
+              help='Transcription service (Deepgram only)')
 @click.option('--mode', 
               type=click.Choice(['transcribe', 'format-only']), 
               default='transcribe', 
@@ -98,7 +99,7 @@ def transcribe(
         
         # Determine service to use
         if not service:
-            service = config_manager.get('transcription.default_service', 'assemblyai')
+            service = config_manager.get('transcription.default_service', 'deepgram')
         
         # Set up output directory
         if not output_dir:

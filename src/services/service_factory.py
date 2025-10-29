@@ -4,7 +4,6 @@ from pathlib import Path
 from typing import Optional, List, Dict, Any
 
 from .transcription_client import TranscriptionClient
-from .assemblyai_client import AssemblyAIClient
 from .deepgram_client import DeepgramClient
 from ..utils.glossary_manager import GlossaryManager
 from ..utils.exceptions import ConfigurationError, AuthenticationError
@@ -13,7 +12,7 @@ from ..utils.exceptions import ConfigurationError, AuthenticationError
 class TranscriptionServiceFactory:
     """Factory for creating and configuring transcription service clients."""
     
-    SUPPORTED_SERVICES = ['assemblyai', 'deepgram']
+    SUPPORTED_SERVICES = ['deepgram']
     
     def __init__(self, config_manager):
         self.config_manager = config_manager
@@ -33,13 +32,11 @@ class TranscriptionServiceFactory:
         if not api_key:
             raise AuthenticationError(f"No API key found for {service}. Set {service.upper()}_API_KEY environment variable.")
         
-        # Create the appropriate client
-        if service == 'assemblyai':
-            client = AssemblyAIClient(api_key)
-        elif service == 'deepgram':
+        # Create the Deepgram client
+        if service == 'deepgram':
             client = DeepgramClient(api_key)
         else:
-            raise ConfigurationError(f"Service implementation not found: {service}")
+            raise ConfigurationError(f"Only Deepgram service is supported. Received: {service}")
         
         # Apply glossary if provided
         if glossary_files:
@@ -103,9 +100,7 @@ class TranscriptionServiceFactory:
             'zh', 'zh-CN', 'zh-TW'
         ]
         
-        if service == 'assemblyai':
-            return common_languages
-        elif service == 'deepgram':
+        if service == 'deepgram':
             return common_languages + ['ru', 'ru-RU', 'ar', 'ar-SA']
         else:
             return ['en']

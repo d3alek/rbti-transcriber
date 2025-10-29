@@ -190,7 +190,7 @@ class AudioFileManager:
             
             # Delete cached transcriptions for all services
             deleted_any = False
-            for service in ['deepgram', 'assemblyai']:
+            for service in ['deepgram']:
                 cache_key = self._get_cache_key(file_path, service)
                 if self.cache_manager.delete_result(cache_key):
                     deleted_any = True

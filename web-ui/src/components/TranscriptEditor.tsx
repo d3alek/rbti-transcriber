@@ -1,299 +1,334 @@
 /**
- * Transcript Editor component using BBC react-transcript-editor.
+ * TranscriptEditor Component
+ * 
+ * Main component for editing transcripts with real-time audio synchronization,
+ * paragraph-based editing, and version management.
  */
 
-import React, { useState, useEffect, useRef } from 'react';
-import {
-  Box,
-  Typography,
-  Button,
-  Paper,
-  CircularProgress,
-  Alert,
-  AppBar,
-  Toolbar,
-  IconButton,
+import React, { useState, useEffect, useCallback, useRef } from 'react';
+import { Box, Container, Paper, Typography, Alert, CircularProgress } from '@mui/material';
+import type { 
+  DeepgramVersion, 
+  ParagraphData, 
+  TranscriptEditorState,
+  WordData,
+  DeepgramResponse 
+} from '../types/deepgram';
+import { transcriptVersionsApi } from '../services/transcriptVersionsApi';
+import ParagraphEditor from './ParagraphEditor';
+import AudioPlayer from './AudioPlayer';
+import VersionManager from './VersionManager';
 
-} from '@mui/material';
-import {
-  ArrowBack as BackIcon,
-  Save as SaveIcon,
-  GetApp as ExportIcon,
-  Public as PublishIcon,
-
-} from '@mui/icons-material';
-
-import type { AudioFile, TranscriptionData } from '../types';
-import { apiService } from '../services/api';
-import { BBCTranscriptEditor } from './BBCTranscriptEditor';
-import { AudioPlayer, type AudioPlayerRef } from './AudioPlayer';
-
-interface TranscriptEditorProps {
-  file: AudioFile;
-  onBack: () => void;
+interface TranscriptEditorComponentProps {
+  file: { path: string; name: string; hash?: string };
+  onBack?: () => void;
+  onError?: (error: string) => void;
 }
 
-export const TranscriptEditor: React.FC<TranscriptEditorProps> = ({ file, onBack }) => {
-  const [transcriptionData, setTranscriptionData] = useState<TranscriptionData | null>(null);
-  const [loading, setLoading] = useState(true);
+const TranscriptEditor: React.FC<TranscriptEditorComponentProps> = ({
+  file,
+  onError
+}) => {
+  const audioHash = file.hash || file.name;
+  const audioFile = file.path;
+  // State management
+  const [state, setState] = useState<TranscriptEditorState>({
+    currentPlaybackTime: 0,
+    activeWordIndex: -1,
+    editingParagraph: null,
+    paragraphs: [],
+    hasUnsavedChanges: false
+  });
+
+  const [versions, setVersions] = useState<DeepgramVersion[]>([]);
+  const [currentVersion, setCurrentVersion] = useState<number>(0);
+  const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const [saving, setSaving] = useState(false);
-  const [isPlaying] = useState(false);
-  const [currentTime, setCurrentTime] = useState(0);
-  const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
-  const [editedTranscription, setEditedTranscription] = useState<TranscriptionData | null>(null);
-  const [audioUrl, setAudioUrl] = useState<string | null>(null);
-  const audioPlayerRef = useRef<AudioPlayerRef>(null);
+  const [audioDuration, setAudioDuration] = useState<number>(0);
+  const [overallConfidence, setOverallConfidence] = useState<number>(0);
 
+  // Refs for performance optimization
+  const paragraphsRef = useRef<ParagraphData[]>([]);
+  const wordsRef = useRef<WordData[]>([]);
+  const currentResponseRef = useRef<DeepgramResponse | null>(null);
+
+  // Load versions on component mount
   useEffect(() => {
-    loadTranscription();
-    // Set up audio URL - proxy will route to FastAPI backend
-    setAudioUrl(`/api/files/${file.id}/audio`);
-  }, [file.id]);
+    loadVersions();
+  }, [audioHash]);
 
-  // Auto-save effect
+  // Update refs when paragraphs change
   useEffect(() => {
-    if (hasUnsavedChanges && editedTranscription) {
-      const autoSaveTimer = setTimeout(() => {
-        handleAutoSave();
-      }, 2000); // Auto-save after 2 seconds of inactivity
+    paragraphsRef.current = state.paragraphs;
+    
+    // Flatten all words for efficient lookup
+    const allWords: WordData[] = [];
+    state.paragraphs.forEach(paragraph => {
+      allWords.push(...paragraph.words);
+    });
+    wordsRef.current = allWords;
+  }, [state.paragraphs]);
 
-      return () => clearTimeout(autoSaveTimer);
-    }
-  }, [hasUnsavedChanges, editedTranscription]);
-
-  const loadTranscription = async () => {
+  const loadVersions = async () => {
     try {
       setLoading(true);
       setError(null);
-      const data = await apiService.getTranscription(file.id);
-      setTranscriptionData(data);
-      setEditedTranscription(data); // Initialize edited version
-      setHasUnsavedChanges(false);
+
+      // First try to initialize from cache if no versions exist
+      try {
+        await transcriptVersionsApi.initializeFromCache(audioHash);
+      } catch (initError) {
+        // Ignore initialization errors - versions might already exist
+      }
+
+      // Load available versions
+      const versionsResponse = await transcriptVersionsApi.listVersions(audioHash);
+      const versionsList = versionsResponse.versions.map(v => ({
+        version: v.version,
+        filename: v.filename,
+        timestamp: v.timestamp,
+        changes: v.changes,
+        response: {} as DeepgramResponse // Will be loaded when needed
+      }));
+
+      setVersions(versionsList);
+      
+      if (versionsList.length > 0) {
+        // Load the latest version
+        const latestVersion = Math.max(...versionsList.map(v => v.version));
+        await loadVersion(latestVersion);
+      } else {
+        setError('No transcript versions found. Please ensure the audio file has been transcribed.');
+      }
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to load transcription');
+      const errorMessage = err instanceof Error ? err.message : 'Failed to load versions';
+      setError(errorMessage);
+      onError?.(errorMessage);
     } finally {
       setLoading(false);
     }
   };
 
-  const handleSave = async () => {
-    if (!editedTranscription) return;
-    
-    setSaving(true);
+  const loadVersion = async (versionNumber: number) => {
     try {
-      await apiService.saveTranscription(file.id, editedTranscription);
-      setTranscriptionData(editedTranscription);
-      setHasUnsavedChanges(false);
-      console.log('Transcription saved successfully');
+      setLoading(true);
+      
+      const response = await transcriptVersionsApi.loadVersion(audioHash, versionNumber);
+      
+      // Update state with loaded data
+      setState(prev => ({
+        ...prev,
+        paragraphs: response.paragraphs,
+        hasUnsavedChanges: false,
+        editingParagraph: null
+      }));
+
+      setCurrentVersion(versionNumber);
+      setAudioDuration(response.audio_duration);
+      setOverallConfidence(response.confidence);
+
+      // Store the response for editing operations
+      // Note: We would need to fetch the full response separately for editing
+      
     } catch (err) {
-      console.error('Failed to save:', err);
-      setError(err instanceof Error ? err.message : 'Failed to save transcription');
+      const errorMessage = err instanceof Error ? err.message : 'Failed to load version';
+      setError(errorMessage);
+      onError?.(errorMessage);
     } finally {
-      setSaving(false);
+      setLoading(false);
     }
   };
 
-  const handleAutoSave = async () => {
-    if (!editedTranscription || saving) return;
-    
-    try {
-      await apiService.saveTranscription(file.id, editedTranscription);
-      setTranscriptionData(editedTranscription);
-      setHasUnsavedChanges(false);
-      console.log('Auto-saved transcription');
-    } catch (err) {
-      console.error('Auto-save failed:', err);
+  const handleVersionChange = useCallback(async (version: number) => {
+    if (state.hasUnsavedChanges) {
+      const confirmSwitch = window.confirm(
+        'You have unsaved changes. Switching versions will lose these changes. Continue?'
+      );
+      if (!confirmSwitch) return;
     }
-  };
 
+    await loadVersion(version);
+  }, [state.hasUnsavedChanges, audioHash]);
 
-
-  const handleExport = async (format: 'html' | 'markdown' | 'txt') => {
-    try {
-      const response = await apiService.exportTranscription(file.id, format);
-      console.log('Export created:', response);
-      // TODO: Handle download
-    } catch (err) {
-      console.error('Export failed:', err);
+  const handleSaveVersion = useCallback(async () => {
+    if (!currentResponseRef.current) {
+      setError('No response data available for saving');
+      return;
     }
-  };
 
-  const handlePublish = async () => {
     try {
-      const response = await apiService.publishTranscription(file.id, {
-        file_id: file.id,
-        title: file.name.replace('.mp3', ''),
-        description: `Transcription of ${file.name}`,
-        tags: [],
+      const changes = prompt('Describe the changes made in this version:');
+      if (changes === null) return; // User cancelled
+
+      await transcriptVersionsApi.saveVersion(audioHash, {
+        changes: changes || 'Manual edit',
+        response: currentResponseRef.current
       });
-      console.log('Published:', response);
+
+      // Reload versions to get the updated list
+      await loadVersions();
+      
+      setState(prev => ({
+        ...prev,
+        hasUnsavedChanges: false
+      }));
+
     } catch (err) {
-      console.error('Publish failed:', err);
+      const errorMessage = err instanceof Error ? err.message : 'Failed to save version';
+      setError(errorMessage);
+      onError?.(errorMessage);
     }
-  };
+  }, [audioHash]);
 
+  const handleTimeUpdate = useCallback((time: number) => {
+    setState(prev => ({ ...prev, currentPlaybackTime: time }));
 
+    // Find the active word at current time
+    const activeWord = wordsRef.current.find(word => 
+      word.start <= time && word.end >= time
+    );
 
-  const formatFileSize = (bytes: number): string => {
-    const mb = bytes / (1024 * 1024);
-    return `${mb.toFixed(1)} MB`;
-  };
-
-  const formatDuration = (seconds: number): string => {
-    if (seconds === 0) return 'Unknown';
-    const hours = Math.floor(seconds / 3600);
-    const minutes = Math.floor((seconds % 3600) / 60);
-    const secs = Math.floor(seconds % 60);
-    
-    if (hours > 0) {
-      return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+    if (activeWord && activeWord.index !== undefined) {
+      setState(prev => ({ ...prev, activeWordIndex: activeWord.index! }));
     }
-    return `${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-  };
+  }, []);
+
+  const handleSeek = useCallback((time: number) => {
+    setState(prev => ({ ...prev, currentPlaybackTime: time }));
+  }, []);
+
+  const handleParagraphEdit = useCallback(async (paragraphId: string, newText: string) => {
+    try {
+      // Update local state immediately for responsive UI
+      setState(prev => ({
+        ...prev,
+        paragraphs: prev.paragraphs.map(p => 
+          p.id === paragraphId ? { ...p, text: newText } : p
+        ),
+        hasUnsavedChanges: true
+      }));
+
+      // TODO: Update the Deepgram response with new text
+      // This would require calling the paragraph update API and recalculating timing
+      
+    } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : 'Failed to update paragraph';
+      setError(errorMessage);
+      onError?.(errorMessage);
+    }
+  }, []);
+
+  const handleStartEdit = useCallback((paragraphId: string) => {
+    setState(prev => ({ ...prev, editingParagraph: paragraphId }));
+  }, []);
+
+  const handleEndEdit = useCallback(() => {
+    setState(prev => ({ ...prev, editingParagraph: null }));
+  }, []);
+
+  const handleWordClick = useCallback((word: WordData) => {
+    // Seek to the word's start time
+    handleSeek(word.start);
+  }, [handleSeek]);
 
   if (loading) {
     return (
       <Box display="flex" justifyContent="center" alignItems="center" minHeight="400px">
         <CircularProgress />
+        <Typography variant="body1" sx={{ ml: 2 }}>
+          Loading transcript...
+        </Typography>
       </Box>
     );
   }
 
   if (error) {
     return (
-      <Box>
-        <AppBar position="static" color="default" elevation={1}>
-          <Toolbar>
-            <IconButton edge="start" onClick={onBack}>
-              <BackIcon />
-            </IconButton>
-            <Typography variant="h6" sx={{ flexGrow: 1 }}>
-              {file.name}
-            </Typography>
-          </Toolbar>
-        </AppBar>
-        <Box p={3}>
-          <Alert severity="error">{error}</Alert>
-        </Box>
-      </Box>
+      <Container maxWidth="lg">
+        <Alert severity="error" sx={{ mt: 2 }}>
+          {error}
+        </Alert>
+      </Container>
     );
   }
 
   return (
-    <Box>
-      {/* Header */}
-      <AppBar position="static" color="default" elevation={1}>
-        <Toolbar>
-          <IconButton edge="start" onClick={onBack}>
-            <BackIcon />
-          </IconButton>
-          <Box sx={{ flexGrow: 1 }}>
-            <Typography variant="h6">{file.name}</Typography>
-            <Typography variant="caption" color="text.secondary">
-              {formatFileSize(file.size)} • {formatDuration(file.duration)}
-              {transcriptionData && (
-                <> • Confidence: {Math.round((transcriptionData.confidence || 0) * 100)}%</>
-              )}
-              {hasUnsavedChanges && (
-                <> • <span style={{ color: '#ff9800' }}>Unsaved changes</span></>
-              )}
-            </Typography>
-          </Box>
-          <Box sx={{ display: 'flex', gap: 1 }}>
-            <Button
-              variant="outlined"
-              startIcon={<ExportIcon />}
-              onClick={() => handleExport('html')}
-            >
-              Export
-            </Button>
-            <Button
-              variant="outlined"
-              startIcon={<PublishIcon />}
-              onClick={handlePublish}
-            >
-              Publish
-            </Button>
-            <Button
-              variant="contained"
-              startIcon={<SaveIcon />}
-              onClick={handleSave}
-              disabled={saving || !hasUnsavedChanges}
-              color={hasUnsavedChanges ? 'warning' : 'primary'}
-            >
-              {saving ? 'Saving...' : hasUnsavedChanges ? 'Save Changes' : 'Saved'}
-            </Button>
-          </Box>
-        </Toolbar>
-      </AppBar>
-
-      {/* Content */}
-      <Box p={3}>
-        {transcriptionData ? (
-          <Box>
-            {/* Audio Player Section */}
-            <Box sx={{ mb: 3 }}>
-              <Typography variant="h6" gutterBottom>
-                Audio Player
+    <Container maxWidth="xl" sx={{ py: 2 }}>
+      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+        {/* Header */}
+        <Paper sx={{ p: 2 }}>
+          <Typography variant="h4" gutterBottom>
+            Transcript Editor
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            Audio: {audioFile} | Duration: {Math.round(audioDuration)}s | 
+            Confidence: {Math.round(overallConfidence * 100)}%
+            {state.hasUnsavedChanges && (
+              <Typography component="span" color="warning.main" sx={{ ml: 1 }}>
+                • Unsaved changes
               </Typography>
-              {audioUrl ? (
-                <AudioPlayer
-                  ref={audioPlayerRef}
-                  audioFile={audioUrl}
-                  currentTime={currentTime}
-                  onTimeUpdate={setCurrentTime}
-                  onSeek={setCurrentTime}
-                  duration={file.duration}
-                />
-              ) : (
-                <Paper sx={{ p: 2 }}>
-                  <Typography color="text.secondary">
-                    Audio file not available for playback
-                  </Typography>
-                </Paper>
-              )}
-            </Box>
+            )}
+          </Typography>
+        </Paper>
 
-            {/* Transcript Content */}
-            <Paper sx={{ p: 2 }}>
+        {/* Audio Player */}
+        <Paper sx={{ p: 2 }}>
+          <AudioPlayer
+            audioFile={audioFile}
+            currentTime={state.currentPlaybackTime}
+            onTimeUpdate={handleTimeUpdate}
+            onSeek={handleSeek}
+            duration={audioDuration}
+          />
+        </Paper>
+
+        {/* Main Content */}
+        <Box sx={{ display: 'flex', gap: 2, flexDirection: { xs: 'column', md: 'row' } }}>
+          {/* Transcript Content */}
+          <Box sx={{ flex: 1, minWidth: 0 }}>
+            <Paper sx={{ p: 2, maxHeight: '70vh', overflow: 'auto' }}>
               <Typography variant="h6" gutterBottom>
                 Transcript
               </Typography>
               
-              {/* Enhanced Transcript Editor */}
-              {editedTranscription?.speakers && editedTranscription.speakers.length > 0 ? (
-                <BBCTranscriptEditor
-                  transcriptionData={editedTranscription}
-                  onTranscriptChange={(updatedData) => {
-                    setEditedTranscription(updatedData);
-                    setHasUnsavedChanges(true);
-                  }}
-                  currentTime={currentTime}
-                  onSeek={setCurrentTime}
-                  onPlaySegment={(startTime, endTime) => {
-                    // Play specific segment using the audio player
-                    if (audioPlayerRef.current) {
-                      audioPlayerRef.current.playSegment(startTime, endTime);
-                    }
-                  }}
-                  isPlaying={isPlaying}
+              {state.paragraphs.map((paragraph) => (
+                <ParagraphEditor
+                  key={paragraph.id}
+                  paragraph={paragraph}
+                  isEditing={state.editingParagraph === paragraph.id}
+                  currentPlaybackTime={state.currentPlaybackTime}
+                  onEdit={handleParagraphEdit}
+                  onStartEdit={handleStartEdit}
+                  onEndEdit={handleEndEdit}
+                  showConfidenceIndicators={true}
+                  onWordClick={handleWordClick}
                 />
-              ) : (
-                <Box sx={{ p: 3, textAlign: 'center' }}>
-                  <Typography variant="body1" color="text.secondary">
-                    {editedTranscription?.text || 'No transcription content available'}
-                  </Typography>
-                </Box>
+              ))}
+
+              {state.paragraphs.length === 0 && (
+                <Typography variant="body2" color="text.secondary" textAlign="center">
+                  No transcript content available
+                </Typography>
               )}
             </Paper>
           </Box>
-        ) : (
-          <Alert severity="info">
-            No transcription data available for this file.
-          </Alert>
-        )}
+
+          {/* Version Manager Sidebar */}
+          <Box sx={{ width: { xs: '100%', md: '300px' }, flexShrink: 0 }}>
+            <VersionManager
+              versions={versions}
+              currentVersion={currentVersion}
+              onVersionSelect={handleVersionChange}
+              onSaveVersion={handleSaveVersion}
+              canSave={state.hasUnsavedChanges}
+              isLoading={loading}
+            />
+          </Box>
+        </Box>
       </Box>
-    </Box>
+    </Container>
   );
 };
+
+export default TranscriptEditor;
+export { TranscriptEditor };

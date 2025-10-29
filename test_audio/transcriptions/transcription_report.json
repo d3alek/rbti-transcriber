@@ -8,14 +8,14 @@
     "progress_percentage": 100.0
   },
   "timing": {
-    "start_time": "2025-10-27T04:55:43.415434",
-    "end_time": "2025-10-27T05:03:15.202154",
-    "elapsed_time_seconds": 451.78671979904175,
-    "elapsed_time_formatted": "0:07:31"
+    "start_time": "2025-10-29T05:38:45.734900",
+    "end_time": "2025-10-29T05:39:11.069936",
+    "elapsed_time_seconds": 25.33503532409668,
+    "elapsed_time_formatted": "0:00:25"
   },
   "performance": {
-    "files_per_minute": 0.13281534641174061,
-    "mb_per_minute": 18.603348634483186,
+    "files_per_minute": 2.368649820346641,
+    "mb_per_minute": 331.7750515389183,
     "total_size_processed_mb": 140.06927013397217,
     "average_file_size_mb": 140.06927013397217
   },

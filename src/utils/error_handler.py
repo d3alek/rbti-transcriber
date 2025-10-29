@@ -225,10 +225,7 @@ def handle_service_unavailable(service: str, error: Exception,
         error_handler.logger.critical(f"   Please check your {service.upper()}_API_KEY environment variable")
         error_handler.logger.critical(f"   You can get an API key from:")
         
-        if service == 'assemblyai':
-            error_handler.logger.critical(f"   https://www.assemblyai.com/")
-        elif service == 'deepgram':
-            error_handler.logger.critical(f"   https://deepgram.com/")
+        error_handler.logger.critical(f"   https://deepgram.com/")
     
     elif isinstance(error, TranscriptionServiceError):
         error_handler.logger.error(f"❌ {service} service error: {error}")

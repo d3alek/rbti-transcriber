@@ -33,10 +33,7 @@ from ..utils.exceptions import (
               type=click.Choice(['html', 'markdown', 'both']), 
               default='both', 
               help='Output format for transcriptions')
-@click.option('--compress-audio', 
-              is_flag=True, 
-              default=True,
-              help='Compress audio files before upload to reduce upload time')
+
 @click.option('--glossary', 
               type=click.Path(exists=True, path_type=Path), 
               multiple=True,
@@ -67,7 +64,6 @@ def transcribe(
     service: Optional[str],
     mode: str,
     output_format: str,
-    compress_audio: bool,
     glossary: tuple,
     api_key: Optional[str],
     config: Optional[Path],
@@ -107,6 +103,9 @@ def transcribe(
         
         # Parse output formats
         output_formats = _parse_output_formats(output_format)
+        
+        # Always compress audio to save bandwidth
+        compress_audio = True
         
         # Convert glossary tuple to list of Paths
         glossary_files = [Path(g) for g in glossary] if glossary else []

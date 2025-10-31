@@ -1,14 +1,13 @@
 """FastAPI backend for transcription web UI."""
 
-from fastapi import FastAPI, WebSocket, WebSocketDisconnect
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from contextlib import asynccontextmanager
 import uvicorn
 from pathlib import Path
 
-from .routers import files, transcription, export, publication, transcript_versions
-from .services.websocket_manager import WebSocketManager
+from .routers import files, transcription, directory_scanner, transcription_service, transcripts, audio
 from .config import get_settings
 
 
@@ -43,18 +42,13 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# WebSocket manager for real-time updates
-websocket_manager = WebSocketManager()
-
 # Include routers
 app.include_router(files.router, prefix="/api/files", tags=["files"])
 app.include_router(transcription.router, prefix="/api/transcribe", tags=["transcription"])
-app.include_router(export.router, prefix="/api/export", tags=["export"])
-app.include_router(publication.router, prefix="/api/publish", tags=["publication"])
-app.include_router(transcript_versions.router, tags=["transcript-versions"])
-
-# Make websocket manager available to routers
-app.state.websocket_manager = websocket_manager
+app.include_router(directory_scanner.router, prefix="/api/directory", tags=["directory-scanner"])
+app.include_router(transcription_service.router, prefix="/api/transcription", tags=["transcription-service"])
+app.include_router(transcripts.router, prefix="/api/transcripts", tags=["transcripts"])
+app.include_router(audio.router, prefix="/api/audio", tags=["audio"])
 
 
 @app.get("/")
@@ -69,31 +63,7 @@ async def health_check():
     return {"status": "healthy"}
 
 
-@app.websocket("/ws/transcription/{job_id}")
-async def websocket_transcription_endpoint(websocket: WebSocket, job_id: str):
-    """WebSocket endpoint for transcription progress updates."""
-    await websocket_manager.connect_transcription(websocket, job_id)
-    try:
-        while True:
-            # Keep connection alive and handle any client messages
-            data = await websocket.receive_text()
-            # Echo back for now (can be used for client-side commands)
-            await websocket.send_text(f"Received: {data}")
-    except WebSocketDisconnect:
-        websocket_manager.disconnect_transcription(websocket, job_id)
 
-
-@app.websocket("/ws/files")
-async def websocket_files_endpoint(websocket: WebSocket):
-    """WebSocket endpoint for file list updates."""
-    await websocket_manager.connect_files(websocket)
-    try:
-        while True:
-            # Keep connection alive
-            data = await websocket.receive_text()
-            await websocket.send_text(f"Files connection active: {data}")
-    except WebSocketDisconnect:
-        websocket_manager.disconnect_files(websocket)
 
 
 if __name__ == "__main__":

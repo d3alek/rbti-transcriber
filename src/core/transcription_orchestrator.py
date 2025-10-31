@@ -29,15 +29,17 @@ class TranscriptionOrchestrator:
         self.fail_fast = fail_fast
         
         # Initialize core components
-        self.output_manager = OutputDirectoryManager(self.output_dir)
-        self.cache_manager = CacheManager(self.output_dir / "cache")
-        self.resume_manager = ResumeManager(self.cache_manager, self.output_manager)
+        # Note: output_manager is now created per-file in the new structure
+        self.cache_manager = CacheManager(self.output_dir / "cache")  # Keep global cache for now
         self.service_factory = TranscriptionServiceFactory(config_manager)
-        self.formatter_factory = FormatterFactory(config_manager, self.cache_manager)
         self.error_handler = ErrorHandler(
             log_file=self.output_dir / "transcription.log",
             verbose=verbose
         )
+        
+        # Create a simplified resume manager that works with the new structure
+        from ..utils.cache_manager import ResumeManager
+        self.resume_manager = ResumeManager(self.cache_manager, None)  # We'll handle resume logic differently
         
         # Optional components
         self.audio_processor: Optional[AudioProcessor] = None
@@ -47,7 +49,8 @@ class TranscriptionOrchestrator:
     def setup_audio_processing(self, enable_compression: bool = False) -> None:
         """Set up audio processing components."""
         if enable_compression:
-            self.audio_processor = AudioProcessor(self.output_dir / "compressed")
+            # Use a temporary directory for audio processing, files will be moved to correct locations
+            self.audio_processor = AudioProcessor(self.output_dir / "temp_compressed")
         
         self.audio_validator = AudioValidator(self.audio_processor)
     
@@ -78,7 +81,6 @@ class TranscriptionOrchestrator:
         try:
             # Step 1: Setup and validation
             self.setup_audio_processing(compress_audio)
-            self.output_manager.create_output_structure()
             
             # Step 2: Scan for MP3 files
             if self.verbose:
@@ -114,17 +116,22 @@ class TranscriptionOrchestrator:
                 if self.verbose:
                     print(f"✅ {len(mp3_files)} files passed validation")
             
-            # Step 4: Check resume status
+            # Step 4: Check resume status (simplified for new structure)
             transcription_config = self._build_transcription_config()
-            resume_status = self.resume_manager.get_processing_status(
-                mp3_files, service, transcription_config.__dict__, output_formats
-            )
+            files_to_process = []
+            skipped_count = 0
             
-            workflow_result['skipped_files'] = resume_status['skipped_files']
-            files_to_process = resume_status['pending_list']
+            for audio_file in mp3_files:
+                # Check if transcription already exists in new structure
+                output_manager = OutputDirectoryManager(audio_file)
+                if output_manager.transcription_exists():
+                    skipped_count += 1
+                    if self.verbose:
+                        print(f"⏭️  Skipping {audio_file.name} (already transcribed)")
+                else:
+                    files_to_process.append(audio_file)
             
-            if self.verbose and resume_status['skipped_files'] > 0:
-                print(f"⏭️  Skipping {resume_status['skipped_files']} already processed files")
+            workflow_result['skipped_files'] = skipped_count
             
             if not files_to_process:
                 if self.verbose:
@@ -245,14 +252,15 @@ class TranscriptionOrchestrator:
         client,
         service: str,
         transcription_config: TranscriptionConfig,
-        output_formats: List[str]
+        output_formats: List[str]  # Ignored in new structure
     ) -> Dict[str, Any]:
-        """Process a single audio file through the complete workflow."""
+        """Process a single audio file through the simplified workflow."""
         
         file_result = {
             'success': False,
             'audio_file': str(audio_file),
-            'formatted_files': {},
+            'transcription_file': None,
+            'compressed_file': None,
             'errors': [],
             'processing_time': 0.0
         }
@@ -260,39 +268,61 @@ class TranscriptionOrchestrator:
         start_time = time.time()
         
         try:
+            # Create output manager for this specific audio file
+            output_manager = OutputDirectoryManager(audio_file)
+            output_manager.create_output_structure()
+            
             # Get original file size
             original_size_mb = audio_file.stat().st_size / (1024 * 1024)
             
             if self.verbose:
                 print(f"📄 Processing {audio_file.name} ({original_size_mb:.1f} MB)")
+                print(f"📁 Output: {output_manager.seminar_group_dir.name}/")
             
-            # Step 1: Compress audio if needed
+            # Step 1: Determine which file to use for transcription (compress if needed)
             file_to_transcribe = audio_file
+            compressed_audio_path = output_manager.get_compressed_audio_path()
+            
             if self.audio_processor:
-                needs_compression, audio_info = self.audio_processor.needs_compression(audio_file)
-                
-                if self.verbose:
-                    print(f"🔍 Audio analysis: {audio_info['bitrate_kbps']} kbps, {audio_info['duration_seconds']:.1f}s")
-                
-                if needs_compression:
+                try:
                     if self.verbose:
-                        print(f"🗜️  Compressing audio (target: {self.audio_processor.TARGET_BITRATE} kbps)...")
+                        print(f"🗜️  Compressing audio for transcription and storage...")
                     
-                    file_to_transcribe = self.audio_processor.compress_audio(audio_file)
-                    compressed_size_mb = file_to_transcribe.stat().st_size / (1024 * 1024)
+                    # Always compress for transcription to save bandwidth
+                    compressed_file = self.audio_processor.compress_audio(audio_file, force=True)
+                    
+                    # Move compressed file to correct location
+                    import shutil
+                    shutil.move(str(compressed_file), str(compressed_audio_path))
+                    
+                    # Use compressed file for transcription
+                    file_to_transcribe = compressed_audio_path
+                    
+                    compressed_size_mb = compressed_audio_path.stat().st_size / (1024 * 1024)
                     compression_ratio = (1 - compressed_size_mb / original_size_mb) * 100
                     
                     if self.verbose:
                         print(f"✅ Compressed: {original_size_mb:.1f} MB → {compressed_size_mb:.1f} MB ({compression_ratio:.1f}% reduction)")
-                else:
+                        print(f"💾 Saved: {compressed_audio_path.relative_to(audio_file.parent)}")
+                        print(f"📤 Will upload compressed file to save bandwidth")
+                    
+                    file_result['compressed_file'] = str(compressed_audio_path)
+                    
+                except Exception as compression_error:
                     if self.verbose:
-                        print(f"ℹ️  No compression needed (bitrate already optimal)")
+                        print(f"⚠️  Compression failed: {compression_error}")
+                        print(f"📤 Will upload original file instead")
+                    # Fall back to original file if compression fails
+                    file_to_transcribe = audio_file
+            else:
+                if self.verbose:
+                    print(f"ℹ️  Audio compression disabled")
             
-            # Step 2: Upload and transcribe
-            final_size_mb = file_to_transcribe.stat().st_size / (1024 * 1024)
+            # Step 2: Upload and transcribe (use compressed file if available)
+            upload_size_mb = file_to_transcribe.stat().st_size / (1024 * 1024)
             
             if self.verbose:
-                print(f"📤 Uploading to {service.upper()} ({final_size_mb:.1f} MB)...")
+                print(f"📤 Uploading to {service.upper()} ({upload_size_mb:.1f} MB)...")
             
             upload_start = time.time()
             
@@ -306,35 +336,54 @@ class TranscriptionOrchestrator:
                 print(f"📊 Confidence: {result.confidence:.1%}, Duration: {result.audio_duration:.1f}s")
                 print(f"👥 Found {len(set(s.speaker for s in result.speakers))} speakers, {len(result.speakers)} segments")
             
-            # Step 3: Cache result (always save, even if formatting fails)
+            # Step 3: Save raw Deepgram response to correct location
+            transcription_path = output_manager.get_transcription_path()
+            
             try:
-                self.cache_manager.save_result(
-                    audio_file, service, transcription_config.__dict__, result
-                )
+                import json
+                
+                # Create the complete response structure matching the cache format
+                transcription_data = {
+                    "audio_file": str(audio_file),
+                    "service": service,
+                    "config": transcription_config.__dict__,
+                    "timestamp": time.strftime("%Y-%m-%dT%H:%M:%S.%f")[:-3] + "Z",
+                    "result": {
+                        "text": result.text,
+                        "speakers": [
+                            {
+                                "speaker": segment.speaker,
+                                "start_time": segment.start_time,
+                                "end_time": segment.end_time,
+                                "text": segment.text,
+                                "confidence": segment.confidence
+                            }
+                            for segment in result.speakers
+                        ],
+                        "confidence": result.confidence,
+                        "audio_duration": result.audio_duration,
+                        "processing_time": result.processing_time,
+                        "raw_response": result.raw_response  # Include the complete raw Deepgram response
+                    }
+                }
+                
+                with open(transcription_path, 'w', encoding='utf-8') as f:
+                    json.dump(transcription_data, f, indent=2, ensure_ascii=False)
+                
+                file_result['transcription_file'] = str(transcription_path)
+                file_result['success'] = True
                 
                 if self.verbose:
-                    print(f"💾 Cached transcription result")
-            except Exception as cache_error:
+                    transcription_size_kb = transcription_path.stat().st_size / 1024
+                    print(f"💾 Saved transcription: {transcription_path.relative_to(audio_file.parent)} ({transcription_size_kb:.1f} KB)")
+                
+            except Exception as save_error:
+                error_msg = f"Failed to save transcription: {save_error}"
+                file_result['errors'].append(error_msg)
                 if self.verbose:
-                    print(f"⚠️  Failed to cache result: {cache_error}")
+                    print(f"❌ {error_msg}")
             
-            # Step 4: Format output
-            if self.verbose:
-                print(f"🎨 Formatting output ({', '.join(output_formats)})...")
-            
-            format_result = self.formatter_factory.format_from_result(
-                result, audio_file, output_formats, self.output_manager, service
-            )
-            
-            file_result['success'] = format_result['success']
-            file_result['formatted_files'] = format_result['formatted_files']
-            file_result['errors'] = format_result['errors']
             file_result['processing_time'] = time.time() - start_time
-            
-            if self.verbose and format_result['success']:
-                for format_type, output_path in format_result['formatted_files'].items():
-                    output_size_kb = Path(output_path).stat().st_size / 1024
-                    print(f"📝 Created {format_type.upper()}: {Path(output_path).name} ({output_size_kb:.1f} KB)")
         
         except Exception as e:
             if self.verbose:

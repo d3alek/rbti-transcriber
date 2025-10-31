@@ -1,0 +1,8 @@
+
+> audio-transcription-web-manager@1.0.0 type-check /home/alek/rbti-bot/transcriber/web-ui
+> tsc --noEmit
+
+src/components/FileManager/AudioFileList.tsx(176,34): error TS2551: Property 'totalFiles' does not exist on type 'DirectoryScanResult'. Did you mean 'total_files'?
+src/components/FileManager/AudioFileList.tsx(212,86): error TS2551: Property 'totalFiles' does not exist on type 'DirectoryScanResult'. Did you mean 'total_files'?
+src/components/FileManager/AudioFileList.tsx(234,47): error TS2551: Property 'transcriptionStatus' does not exist on type 'AudioFileInfo'. Did you mean 'transcription_status'?
+src/components/FileManager/StatusIndicators.tsx(39,18): error TS2551: Property 'transcriptionStatus' does not exist on type 'AudioFileInfo'. Did you mean 'transcription_status'?

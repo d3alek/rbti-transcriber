@@ -18,18 +18,16 @@
 - **GitPython** - Git integration for publishing
 - **httpx** - Async HTTP client
 
-### Frontend Stack
+### Frontend Stack (Planned)
 - **React 19** - UI framework
 - **TypeScript** - Type-safe JavaScript
 - **Vite** - Build tool and dev server
 - **Material-UI (MUI)** - Component library
-- **Custom Transcript Editor** - Specialized transcript editing component optimized for Deepgram responses
+- **react-transcript-editor** - BBC's transcript editing component for word-level editing
 
 ## External Services
-- **AssemblyAI** - Primary transcription service
-- **Deepgram** - Alternative transcription service  
-- **OpenAI** - Additional transcription option
-- **FFmpeg** - Audio compression (optional)
+- **Deepgram** - Primary transcription service (Nova-3 model)
+- **FFmpeg** - Audio compression for web delivery
 
 ## Common Commands
 
@@ -39,8 +37,12 @@
 pip install -r requirements.txt
 pip install -r api/requirements.txt
 
-# Frontend dependencies
+# Frontend dependencies (when web-ui is created)
 cd web-ui && npm install
+
+# Initialize react-transcript-editor submodule
+git submodule update --init --recursive
+cd react-transcript-editor && npm install
 ```
 
 ### Running Services
@@ -53,17 +55,23 @@ python start_api.py
 # or
 uvicorn api.main:app --reload --port 8000
 
-# Frontend dev server
+# Frontend dev server (when web-ui is created)
 cd web-ui && npm run dev
+
+# Test react-transcript-editor demo
+cd react-transcript-editor && npm start
 ```
 
 ### Building
 ```bash
-# Frontend build
+# Frontend build (when web-ui is created)
 cd web-ui && npm run build
 
 # Python package
 python setup.py sdist bdist_wheel
+
+# react-transcript-editor component
+cd react-transcript-editor && npm run build:component
 ```
 
 ### Testing
@@ -71,11 +79,15 @@ python setup.py sdist bdist_wheel
 # Python tests
 pytest tests/
 
-# Frontend linting
+# Frontend linting (when web-ui is created)
 cd web-ui && npm run lint
+
+# Test installation
+python test_installation.py
 ```
 
 ## Configuration
 - **config.yaml** - Main application configuration
-- **.env** - API keys and environment variables
-- **web-ui/vite.config.ts** - Frontend build configuration
+- **.env** - API keys and environment variables (Deepgram API key)
+- **web-ui/vite.config.ts** - Frontend build configuration (when created)
+- **react-transcript-editor/.nvmrc** - Node version specification for transcript editor

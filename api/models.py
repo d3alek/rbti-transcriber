@@ -1,7 +1,7 @@
 """Pydantic models for the API."""
 
 from pydantic import BaseModel
-from typing import Optional, List, Literal
+from typing import Optional, List, Literal, Dict
 from datetime import datetime
 from enum import Enum
 
@@ -71,6 +71,17 @@ class TranscriptionData(BaseModel):
     processing_time: float
 
 
+class TranscriptionResult(BaseModel):
+    """Result of transcription operation."""
+    success: bool
+    audio_file: str
+    result: Optional[TranscriptionData] = None
+    error: Optional[str] = None
+    processing_time: float
+    cache_file: Optional[str] = None
+    compressed_audio: Optional[str] = None
+
+
 class PublicationRequest(BaseModel):
     """Publication request model."""
     file_id: str
@@ -113,26 +124,7 @@ class WordData(BaseModel):
     index: Optional[int] = None
 
 
-class SentenceData(BaseModel):
-    """Sentence-level data with word breakdown."""
-    id: str
-    text: str
-    start: float
-    end: float
-    words: List[WordData]
-    speaker: int
 
-
-class ParagraphData(BaseModel):
-    """Paragraph-level data for editor display."""
-    id: str
-    text: str
-    start_time: float
-    end_time: float
-    speaker: int
-    sentences: List[SentenceData]
-    words: List[WordData]
-    confidence: float
 
 
 class DeepgramMetadata(BaseModel):
@@ -169,29 +161,7 @@ class DeepgramResponse(BaseModel):
     results: DeepgramResults
 
 
-class VersionInfo(BaseModel):
-    """Version metadata information."""
-    version: int
-    filename: str
-    timestamp: str
-    changes: str
-    file_size: int
 
-
-class VersionMetadata(BaseModel):
-    """Version management metadata."""
-    versions: List[VersionInfo]
-    current_version: int
-    last_modified: str
-
-
-class DeepgramVersion(BaseModel):
-    """Complete version data including response."""
-    version: int
-    filename: str
-    timestamp: str
-    changes: str
-    response: DeepgramResponse
 
 
 class CachedTranscriptionResponse(BaseModel):
@@ -222,18 +192,7 @@ class VersionSaveRequest(BaseModel):
     response: DeepgramResponse
 
 
-class VersionListResponse(BaseModel):
-    """Response with list of available versions."""
-    versions: List[VersionInfo]
-    current_version: int
 
-
-class TranscriptLoadResponse(BaseModel):
-    """Response when loading a transcript version."""
-    version: int
-    paragraphs: List[ParagraphData]
-    audio_duration: float
-    confidence: float
 
 
 class ValidationError(BaseModel):
@@ -248,3 +207,97 @@ class ValidationResult(BaseModel):
     is_valid: bool
     errors: List[ValidationError]
     warnings: List[ValidationError]
+
+
+# Directory Scanning Models for FileSystemScanner
+
+class DirectoryScanRequest(BaseModel):
+    """Request to scan a directory for audio files."""
+    directory_path: str
+
+
+class SeminarGroupInfo(BaseModel):
+    """Information about a seminar group."""
+    name: str
+    file_count: int
+    transcribed_count: int
+    total_size: int
+    total_duration: float
+
+
+class AudioFileDetail(BaseModel):
+    """Detailed audio file information from directory scan."""
+    path: str
+    filename: str
+    size: int
+    duration: float
+    file_id: str
+    last_modified: str
+    seminar_group: str
+    transcription_status: str
+    transcription_files: List[str]
+    cache_files: List[str]
+    last_transcription_attempt: Optional[str] = None
+    transcription_error: Optional[str] = None
+    has_compressed_version: bool
+    compressed_size: Optional[int] = None
+    compressed_path: Optional[str] = None
+    compression_ratio: Optional[float] = None
+
+
+class DirectoryScanResult(BaseModel):
+    """Result of directory scanning operation."""
+    directory: str
+    total_files: int
+    transcribed_files: int
+    audio_files: List[AudioFileDetail]
+    seminar_groups: List[str]
+    groups_detail: Dict[str, List[AudioFileDetail]]
+    scan_timestamp: str
+
+
+class AudioMetadataResponse(BaseModel):
+    """Response containing audio file metadata."""
+    path: str
+    filename: str
+    size: int
+    duration: float
+    last_modified: str
+    format_info: Optional[dict] = None
+
+
+class TranscriptionStatusDetail(BaseModel):
+    """Detailed transcription status information."""
+    transcription_status: str
+    transcription_files: List[str]
+    cache_files: List[str]
+    last_transcription_attempt: Optional[str] = None
+    transcription_error: Optional[str] = None
+
+
+# File System Validation Models (for optional task 2.3)
+
+class DirectoryPermissions(BaseModel):
+    """Directory permission check results."""
+    path: str
+    exists: bool
+    is_directory: bool
+    readable: bool
+    writable: bool
+    executable: bool
+    errors: List[str]
+
+
+class AudioFormatValidation(BaseModel):
+    """Audio format validation results."""
+    path: str
+    is_valid: bool
+    format: Optional[str] = None
+    errors: List[str]
+
+
+class TranscriptionFileIntegrity(BaseModel):
+    """Transcription file integrity check results."""
+    path: str
+    is_valid: bool
+    errors: List[str]

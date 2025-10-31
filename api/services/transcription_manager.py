@@ -17,17 +17,17 @@ from src.services.transcription_client import TranscriptionConfig
 
 from ..models import TranscriptionRequest, TranscriptionProgress, TranscriptionStatus
 from ..config import Settings
-from .websocket_manager import WebSocketManager
+
 
 
 class WebTranscriptionManager:
     """Manages transcription jobs for the web interface."""
     
-    def __init__(self, settings: Settings, websocket_manager: Optional[WebSocketManager] = None):
+    def __init__(self, settings: Settings):
         self.settings = settings
         self.config_manager = ConfigManager(settings.config_file)
         self.active_jobs: Dict[str, TranscriptionProgress] = {}
-        self.websocket_manager = websocket_manager
+
         self.max_concurrent_jobs = 3  # Limit concurrent transcriptions
         self.job_queue = asyncio.Queue()
         self.processing_jobs = set()
@@ -117,17 +117,10 @@ class WebTranscriptionManager:
             self.processing_jobs.discard(job_id)
     
     async def _broadcast_progress(self, job_id: str):
-        """Broadcast job progress via WebSocket."""
-        if self.websocket_manager and job_id in self.active_jobs:
+        """Log job progress (WebSocket functionality removed for simplicity)."""
+        if job_id in self.active_jobs:
             job = self.active_jobs[job_id]
-            progress_data = {
-                "job_id": job.job_id,
-                "status": job.status.value,
-                "progress": job.progress,
-                "message": job.message,
-                "error": job.error
-            }
-            await self.websocket_manager.broadcast_transcription_progress(job_id, progress_data)
+            print(f"📊 Job {job_id}: {job.status.value} - {job.progress}% - {job.message}")
     
     async def _run_transcription(self, job_id: str, request: TranscriptionRequest):
         """Run the actual transcription process."""

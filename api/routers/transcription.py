@@ -8,7 +8,7 @@ import asyncio
 from ..models import TranscriptionRequest, TranscriptionProgress, APIResponse, TranscriptionStatus
 from ..config import get_settings
 from ..services.transcription_manager import WebTranscriptionManager
-from ..services.websocket_manager import WebSocketManager
+
 
 router = APIRouter()
 
@@ -21,8 +21,7 @@ def get_transcription_manager(request: Request) -> WebTranscriptionManager:
     global transcription_manager
     if transcription_manager is None:
         settings = get_settings()
-        websocket_manager = getattr(request.app.state, 'websocket_manager', None)
-        transcription_manager = WebTranscriptionManager(settings, websocket_manager)
+        transcription_manager = WebTranscriptionManager(settings)
     return transcription_manager
 
 

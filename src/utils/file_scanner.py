@@ -106,23 +106,23 @@ class MP3FileScanner:
 
 
 class OutputDirectoryManager:
-    """Manages output directory structure for transcription results."""
+    """
+    Manages output directory structure for transcription results.
+    Updated to match design.md structure: seminar_group/transcriptions/ and seminar_group/compressed/
+    """
     
-    def __init__(self, base_directory: Path):
-        self.base_directory = Path(base_directory)
-        self.html_dir = self.base_directory / "html"
-        self.markdown_dir = self.base_directory / "markdown"
-        self.cache_dir = self.base_directory / "cache"
-        self.metadata_dir = self.base_directory / "metadata"
+    def __init__(self, audio_file_path: Path):
+        """Initialize with the audio file path to determine seminar group structure."""
+        self.audio_file = Path(audio_file_path)
+        self.seminar_group_dir = self.audio_file.parent
+        self.transcriptions_dir = self.seminar_group_dir / "transcriptions"
+        self.compressed_dir = self.seminar_group_dir / "compressed"
     
     def create_output_structure(self) -> None:
-        """Create the complete output directory structure."""
+        """Create the output directory structure for this seminar group."""
         directories = [
-            self.base_directory,
-            self.html_dir,
-            self.markdown_dir,
-            self.cache_dir,
-            self.metadata_dir
+            self.transcriptions_dir,
+            self.compressed_dir
         ]
         
         for directory in directories:
@@ -131,37 +131,28 @@ class OutputDirectoryManager:
             except OSError as e:
                 raise FileSystemError(f"Cannot create directory {directory}: {e}")
     
-    def get_output_path(self, input_file: Path, format_type: str, service: str = None) -> Path:
-        """Get output path for a given input file and format type."""
-        stem = input_file.stem
-        
-        # Add service name to filename for comparison
-        if service:
-            filename_base = f"{stem}_{service}"
-        else:
-            filename_base = stem
-        
-        if format_type == "html":
-            return self.html_dir / f"{filename_base}.html"
-        elif format_type == "markdown":
-            return self.markdown_dir / f"{filename_base}.md"
-        elif format_type == "cache":
-            return self.cache_dir / f"{filename_base}.json"
-        elif format_type == "metadata":
-            return self.metadata_dir / f"{filename_base}_metadata.json"
-        else:
-            raise ValueError(f"Unknown format type: {format_type}")
+    def get_transcription_path(self, service: str = "deepgram") -> Path:
+        """Get path for the raw transcription JSON file."""
+        stem = self.audio_file.stem
+        return self.transcriptions_dir / f"{stem}.json"
     
-    def file_exists(self, input_file: Path, format_type: str, service: str = None) -> bool:
-        """Check if output file already exists for given input and format."""
-        output_path = self.get_output_path(input_file, format_type, service)
-        return output_path.exists() and output_path.stat().st_size > 0
+    def get_compressed_audio_path(self) -> Path:
+        """Get path for the compressed audio file."""
+        return self.compressed_dir / self.audio_file.name
     
-    def get_existing_files(self, input_file: Path, service: str = None) -> Dict[str, bool]:
-        """Get status of all output files for a given input file."""
+    def transcription_exists(self) -> bool:
+        """Check if transcription JSON file exists."""
+        transcription_path = self.get_transcription_path()
+        return transcription_path.exists() and transcription_path.stat().st_size > 0
+    
+    def compressed_audio_exists(self) -> bool:
+        """Check if compressed audio file exists."""
+        compressed_path = self.get_compressed_audio_path()
+        return compressed_path.exists() and compressed_path.stat().st_size > 0
+    
+    def get_existing_files(self) -> Dict[str, bool]:
+        """Get status of output files for this audio file."""
         return {
-            'html': self.file_exists(input_file, 'html', service),
-            'markdown': self.file_exists(input_file, 'markdown', service),
-            'cache': self.file_exists(input_file, 'cache', service),
-            'metadata': self.file_exists(input_file, 'metadata', service)
+            'transcription': self.transcription_exists(),
+            'compressed_audio': self.compressed_audio_exists()
         }

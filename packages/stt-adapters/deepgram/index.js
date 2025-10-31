@@ -5,14 +5,35 @@
 
 import generateEntitiesRanges from '../generate-entities-ranges/index.js';
 
+// Configuration: Maximum paragraph duration in seconds
+const MAX_PARAGRAPH_DURATION_SECONDS = 60; // 1 minute
+// When approaching the limit, allow up to this multiplier to find a natural break point (full stop)
+const DURATION_FLEXIBILITY_MULTIPLIER = 1.2; // Allow up to 20% over limit to find full stop
+
+/**
+ * Check if an utterance's text ends with a sentence-ending punctuation (full stop, question mark, exclamation)
+ * @param {array} wordsInUtterance - array of word objects from the utterance
+ * @return {boolean} - true if the utterance ends with sentence-ending punctuation
+ */
+const endsWithFullStop = (wordsInUtterance) => {
+  if (!wordsInUtterance || wordsInUtterance.length === 0) {
+    return false;
+  }
+  const lastWord = wordsInUtterance[wordsInUtterance.length - 1];
+  const lastChar = lastWord.punct ? lastWord.punct.slice(-1) : '';
+  return /[.?!]/.test(lastChar);
+};
+
 /**
  * Groups words by Deepgram utterance segments, coalescing consecutive utterances
- * from the same speaker into longer paragraphs
+ * from the same speaker into longer paragraphs, but breaking when paragraph exceeds max duration.
+ * Tries to break on full stops when possible for more natural paragraph endings.
  * @param {array} words - array of word objects from Deepgram transcript
  * @param {array} utterances - array of utterance objects from Deepgram result.speakers
+ * @param {number} maxParagraphDurationSeconds - maximum duration for a paragraph in seconds
  * @return {array} - array of paragraph objects with words, text, and speaker attributes
  */
-const groupWordsInParagraphsByUtterances = (words, utterances) => {
+const groupWordsInParagraphsByUtterances = (words, utterances, maxParagraphDurationSeconds = MAX_PARAGRAPH_DURATION_SECONDS) => {
   const results = [];
   
   if (!utterances || utterances.length === 0) {
@@ -21,6 +42,7 @@ const groupWordsInParagraphsByUtterances = (words, utterances) => {
   }
 
   let currentParagraph = null;
+  const hardMaximumDuration = maxParagraphDurationSeconds * DURATION_FLEXIBILITY_MULTIPLIER;
 
   utterances.forEach((utterance) => {
     // Find words that overlap with this utterance's time range
@@ -39,8 +61,34 @@ const groupWordsInParagraphsByUtterances = (words, utterances) => {
       // Use speaker label from utterance (e.g., "Speaker 0", "Speaker 1")
       const speakerLabel = utterance.speaker || 'TBC';
       
-      // If this is the first utterance or speaker changed, start a new paragraph
-      if (!currentParagraph || currentParagraph.speaker !== speakerLabel) {
+      // Calculate current paragraph duration if it exists
+      const paragraphStart = currentParagraph ? currentParagraph.words[0].start : utterance.start_time;
+      const paragraphEnd = utterance.end_time;
+      const paragraphDuration = paragraphEnd - paragraphStart;
+      
+      // Check if speaker changed
+      const speakerChanged = currentParagraph && currentParagraph.speaker !== speakerLabel;
+      
+      // Check if we're at or over the duration limit
+      const atDurationLimit = paragraphDuration >= maxParagraphDurationSeconds;
+      
+      // Check if we've exceeded the hard maximum (can't continue looking for full stop)
+      const exceededHardMaximum = paragraphDuration >= hardMaximumDuration;
+      
+      // Check if current utterance ends with a full stop
+      const endsWithPeriod = endsWithFullStop(wordsInUtterance);
+      
+      // Decide whether to break:
+      // 1. Always break on speaker change
+      // 2. Break if we've exceeded hard maximum (must break)
+      // 3. Break if at duration limit AND ends with full stop (natural break point)
+      const shouldStartNewParagraph = 
+        !currentParagraph || 
+        speakerChanged ||
+        exceededHardMaximum ||
+        (atDurationLimit && endsWithPeriod);
+      
+      if (shouldStartNewParagraph) {
         // Save previous paragraph if it exists
         if (currentParagraph) {
           results.push(currentParagraph);
@@ -53,7 +101,7 @@ const groupWordsInParagraphsByUtterances = (words, utterances) => {
           speaker: speakerLabel
         };
       } else {
-        // Same speaker: append to current paragraph
+        // Same speaker and within duration limit (or at limit but can continue for full stop): append to current paragraph
         currentParagraph.words.push(...wordsInUtterance);
         currentParagraph.text = currentParagraph.words.map(word => word.punct).join(' ');
       }
@@ -116,8 +164,9 @@ const deepgramToDraft = (deepgramJson) => {
     return results;
   }
 
-  // Group words by utterance segments
-  const wordsByParagraphs = groupWordsInParagraphsByUtterances(words, utterances);
+  // Group words by utterance segments, breaking paragraphs at max duration (default 60 seconds)
+  // Will try to break on full stops when approaching the limit
+  const wordsByParagraphs = groupWordsInParagraphsByUtterances(words, utterances, MAX_PARAGRAPH_DURATION_SECONDS);
 
   // Convert each paragraph to a DraftJS content block
   wordsByParagraphs.forEach((paragraph, i) => {

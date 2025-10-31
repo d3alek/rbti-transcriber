@@ -6,6 +6,7 @@ import ibmToDraft from './ibm/index';
 import digitalPaperEditToDraft from './digital-paper-edit/index';
 import createEntityMap from './create-entity-map/index';
 import gcpSttToDraft from './google-stt/index';
+import deepgramToDraft from './deepgram/index';
 
 /**
  * Adapters for STT conversion
@@ -45,6 +46,11 @@ const sttJsonAdapter = (transcriptData, sttJsonType) => {
 
   case 'google-stt':
     blocks = gcpSttToDraft(transcriptData);
+
+    return { blocks, entityMap: createEntityMap(blocks) };
+
+  case 'deepgram':
+    blocks = deepgramToDraft(transcriptData);
 
     return { blocks, entityMap: createEntityMap(blocks) };
 

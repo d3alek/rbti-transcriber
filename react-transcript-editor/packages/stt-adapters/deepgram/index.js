@@ -110,13 +110,16 @@ const groupWordsInParagraphsByUtterances = (words, utterances, maxParagraphDurat
       });
       
       // If there are missing words, look for them near the utterance (before or after)
+      // BUT: Be conservative - only add words that are very close in time to avoid
+      // pulling words from adjacent utterances incorrectly
       if (missingWords.length > 0) {
         const utteranceStartTime = utterance.start_time;
         const utteranceEndTime = utterance.end_time;
         
         // Look for words that:
         // 1. Match the missing words from utterance text
-        // 2. Are close in time to the utterance (within 2 seconds before or 6 seconds after)
+        // 2. Are very close in time to the utterance (within 1 second before or 3 seconds after)
+        //    - Shorter window to avoid pulling words from adjacent utterances
         // 3. Haven't been consumed yet
         const candidateWords = words.filter(word => {
           if (consumedWords.has(word.start)) {
@@ -126,14 +129,19 @@ const groupWordsInParagraphsByUtterances = (words, utterances, maxParagraphDurat
           // Clean word text to match missing words format (no punctuation)
           const wordText = word.word.toLowerCase().replace(/[.,!?;:]/g, '');
           const wordPunct = word.punct.toLowerCase().replace(/[.,!?;:]/g, '');
-          // Match if cleaned word text or punct equals any missing word
-          const isMissing = missingWords.some(mw => wordText === mw || wordPunct === mw);
           
-          // Allow words slightly before utterance start (for cases like "Doctor Scott?" split)
-          // or after utterance end (for cases like "thing" completing a sentence)
-          const isCloseInTime = (word.start >= utteranceStartTime - 2.0 && word.start < utteranceEndTime + 6.0);
+          // Check if this word matches any missing word
+          const matchedMissing = missingWords.find(mw => wordText === mw || wordPunct === mw);
           
-          return isMissing && isCloseInTime;
+          if (!matchedMissing) {
+            return false;
+          }
+          
+          // Tighter time window: only 1 second before or 3 seconds after
+          // This prevents pulling words from distant utterances
+          const isCloseInTime = (word.start >= utteranceStartTime - 1.0 && word.start < utteranceEndTime + 3.0);
+          
+          return isCloseInTime;
         });
         
         // Add candidate words that seem to complete the utterance
@@ -144,6 +152,9 @@ const groupWordsInParagraphsByUtterances = (words, utterances, maxParagraphDurat
           // Create a set of word start times already in wordsInUtterance to avoid duplicates
           const existingStartTimes = new Set(wordsInUtterance.map(w => w.start));
           
+          // Track which missing words we've satisfied
+          const satisfiedMissing = new Set();
+          
           // Add words until we hit a sentence boundary
           // Trust the utterance text - if it says the word should be there, include it
           // even if word-level speaker assignment differs (Deepgram can be wrong about word-level)
@@ -152,6 +163,20 @@ const groupWordsInParagraphsByUtterances = (words, utterances, maxParagraphDurat
             if (existingStartTimes.has(candidate.start)) {
               continue;
             }
+            
+            // Find which missing word this candidate matches
+            const wordText = candidate.word.toLowerCase().replace(/[.,!?;:]/g, '');
+            const wordPunct = candidate.punct.toLowerCase().replace(/[.,!?;:]/g, '');
+            const matchedMissing = missingWords.find(mw => 
+              (wordText === mw || wordPunct === mw) && !satisfiedMissing.has(mw)
+            );
+            
+            if (!matchedMissing) {
+              continue;
+            }
+            
+            // Mark this missing word as satisfied
+            satisfiedMissing.add(matchedMissing);
             
             // Add this word if it's in the utterance text
             wordsInUtterance.push(candidate);

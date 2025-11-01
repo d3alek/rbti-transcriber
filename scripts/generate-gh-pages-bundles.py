@@ -202,6 +202,38 @@ def find_compressed_audio(transcription_path: Path) -> Optional[Path]:
     return None
 
 
+def extract_speaker_number(speaker_identifier) -> int:
+    """Extract speaker number from various identifier formats.
+    
+    Handles:
+    - "Speaker 0", "Speaker 1" -> extracts number
+    - Integer values -> returns directly
+    - String names (e.g., "Reams") -> maps to 0 (can be improved with mapping)
+    - Other strings -> tries to convert to int, defaults to 0
+    """
+    if isinstance(speaker_identifier, int):
+        return speaker_identifier
+    
+    if isinstance(speaker_identifier, str):
+        # Try "Speaker N" format
+        if speaker_identifier.startswith('Speaker '):
+            try:
+                return int(speaker_identifier.replace('Speaker ', ''))
+            except ValueError:
+                pass
+        
+        # Try to convert string directly to int
+        try:
+            return int(speaker_identifier)
+        except ValueError:
+            # If it's a name or other non-numeric string, default to 0
+            # In the future, we could maintain a mapping of names to numbers
+            return 0
+    
+    # Default fallback
+    return 0
+
+
 def load_transcript_json(transcription_path: Path) -> Dict:
     """Load and transform transcript JSON for react-transcript-editor."""
     with open(transcription_path, 'r', encoding='utf-8') as f:
@@ -241,16 +273,32 @@ def load_transcript_json(transcription_path: Path) -> Dict:
     speakers_list = data.get('speakers', []) or data.get('result', {}).get('speakers', [])
     unique_speakers = sorted(set(w.get('speaker', 0) for w in words))
     
+    # Create a mapping from speaker identifiers to numbers for consistency
+    speaker_id_to_num = {}
+    next_speaker_num = 0
+    for speaker_id in unique_speakers:
+        if speaker_id not in speaker_id_to_num:
+            speaker_id_to_num[speaker_id] = next_speaker_num
+            next_speaker_num += 1
+    
+    # Also map all speaker identifiers from speakers_list
+    for seg in speakers_list:
+        speaker_id = seg.get('speaker', 'Speaker 0')
+        if speaker_id not in speaker_id_to_num:
+            speaker_id_to_num[speaker_id] = next_speaker_num
+            next_speaker_num += 1
+    
     segmentation = {
         'metadata': {'version': '0.0.10'},
         '@type': 'AudioFile',
-        'speakers': [{'@id': f'S{sp}', 'gender': 'U'} for sp in unique_speakers],
+        'speakers': [{'@id': f'S{sp}', 'gender': 'U'} for sp in range(len(speaker_id_to_num))],
         'segments': []
     }
     
     # Build segments from speaker segments
     for speaker_seg in speakers_list:
-        speaker_num = int(speaker_seg.get('speaker', 'Speaker 0').replace('Speaker ', '')) if isinstance(speaker_seg.get('speaker'), str) else speaker_seg.get('speaker', 0)
+        speaker_id = speaker_seg.get('speaker', 'Speaker 0')
+        speaker_num = speaker_id_to_num.get(speaker_id, extract_speaker_number(speaker_id))
         segmentation['segments'].append({
             '@type': 'Segment',
             'start': speaker_seg.get('start_time', 0),
@@ -263,10 +311,8 @@ def load_transcript_json(transcription_path: Path) -> Dict:
     transformed_speakers = []
     for seg in speakers_list:
         speaker_str = seg.get('speaker', 'Speaker 0')
-        if isinstance(speaker_str, str) and speaker_str.startswith('Speaker '):
-            speaker_num = int(speaker_str.replace('Speaker ', ''))
-        else:
-            speaker_num = int(speaker_str) if isinstance(speaker_str, (int, str)) else 0
+        # Use the mapping to get consistent speaker numbers
+        speaker_num = speaker_id_to_num.get(speaker_str, extract_speaker_number(speaker_str))
         
         transformed_speakers.append({
             'speaker': speaker_str,

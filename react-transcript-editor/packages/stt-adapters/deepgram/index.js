@@ -6,9 +6,7 @@
 import generateEntitiesRanges from '../generate-entities-ranges/index.js';
 
 // Configuration: Maximum paragraph duration in seconds
-const MAX_PARAGRAPH_DURATION_SECONDS = 60; // 1 minute
-// When approaching the limit, allow up to this multiplier to find a natural break point (full stop)
-const DURATION_FLEXIBILITY_MULTIPLIER = 1.2; // Allow up to 20% over limit to find full stop
+const MAX_PARAGRAPH_DURATION_SECONDS = 30; // 30 seconds (half a minute)
 
 /**
  * Check if an utterance's text ends with a sentence-ending punctuation (full stop, question mark, exclamation)
@@ -25,11 +23,12 @@ const endsWithFullStop = (wordsInUtterance) => {
 };
 
 /**
- * Groups words by Deepgram utterance segments, splitting on sentence boundaries (full stops).
- * Always breaks paragraphs on sentence-ending punctuation (. ? !) while respecting speaker boundaries.
+ * Groups words by Deepgram utterance segments, combining sentences into paragraphs.
+ * Splits on sentence boundaries (full stops) and combines sentences into paragraphs
+ * based on time duration (default 30 seconds). Always ends paragraphs at full stops.
  * @param {array} words - array of word objects from Deepgram transcript
  * @param {array} utterances - array of utterance objects from Deepgram result.speakers
- * @param {number} maxParagraphDurationSeconds - maximum duration for a paragraph in seconds (not currently used, but kept for compatibility)
+ * @param {number} maxParagraphDurationSeconds - maximum duration for a paragraph in seconds
  * @return {array} - array of paragraph objects with words, text, and speaker attributes
  */
 const groupWordsInParagraphsByUtterances = (words, utterances, maxParagraphDurationSeconds = MAX_PARAGRAPH_DURATION_SECONDS) => {
@@ -41,6 +40,7 @@ const groupWordsInParagraphsByUtterances = (words, utterances, maxParagraphDurat
   }
 
   let currentParagraph = null;
+  let currentSentence = null;
 
   utterances.forEach((utterance) => {
     // Find words that overlap with this utterance's time range
@@ -64,42 +64,94 @@ const groupWordsInParagraphsByUtterances = (words, utterances, maxParagraphDurat
       
       // Always break on speaker change
       if (speakerChanged) {
+        if (currentSentence) {
+          // Add current sentence to paragraph if exists
+          if (currentParagraph) {
+            currentParagraph.words.push(...currentSentence.words);
+            currentParagraph.text = currentParagraph.words.map(w => w.punct).join(' ');
+          } else {
+            currentParagraph = {
+              words: [...currentSentence.words],
+              text: currentSentence.words.map(w => w.punct).join(' '),
+              speaker: currentSentence.speaker
+            };
+          }
+          currentSentence = null;
+        }
         if (currentParagraph) {
           results.push(currentParagraph);
         }
         currentParagraph = null;
       }
       
-      // Split words in this utterance into sentences (break on . ? !)
-      // Process words one at a time to detect sentence boundaries
-      wordsInUtterance.forEach((word, wordIndex) => {
+      // Process words to build sentences and paragraphs
+      wordsInUtterance.forEach((word) => {
         // Check if this word ends a sentence (ends with . ? !)
-        // Check the last character of the punctuated word
         const endsSentence = word.punct && /[.?!]$/.test(word.punct.trim());
         
-        // If we don't have a current paragraph, start a new one
-        if (!currentParagraph) {
-          currentParagraph = {
+        // Start a new sentence if we don't have one
+        if (!currentSentence) {
+          currentSentence = {
             words: [],
-            text: '',
             speaker: speakerLabel
           };
         }
         
-        // Add word to current paragraph
-        currentParagraph.words.push(word);
-        currentParagraph.text = currentParagraph.words.map(w => w.punct).join(' ');
+        // Add word to current sentence
+        currentSentence.words.push(word);
         
-        // If this word ends a sentence, finalize the paragraph and start a new one
+        // If sentence ends, check if we should add it to current paragraph or start a new one
         if (endsSentence) {
-          results.push(currentParagraph);
-          currentParagraph = null; // Will start new paragraph on next word
+          // Start a new paragraph if we don't have one
+          if (!currentParagraph) {
+            currentParagraph = {
+              words: [...currentSentence.words],
+              text: currentSentence.words.map(w => w.punct).join(' '),
+              speaker: speakerLabel
+            };
+          } else {
+            // Check if adding this sentence would exceed the duration limit
+            const paragraphStart = currentParagraph.words[0].start;
+            const sentenceEnd = currentSentence.words[currentSentence.words.length - 1].end;
+            const paragraphDuration = sentenceEnd - paragraphStart;
+            
+            if (paragraphDuration >= maxParagraphDurationSeconds) {
+              // Duration limit reached - finalize current paragraph and start a new one
+              results.push(currentParagraph);
+              currentParagraph = {
+                words: [...currentSentence.words],
+                text: currentSentence.words.map(w => w.punct).join(' '),
+                speaker: speakerLabel
+              };
+            } else {
+              // Add sentence to current paragraph
+              currentParagraph.words.push(...currentSentence.words);
+              currentParagraph.text = currentParagraph.words.map(w => w.punct).join(' ');
+            }
+          }
+          
+          // Reset sentence for next one
+          currentSentence = null;
         }
       });
     }
   });
 
-  // Add the last paragraph if it exists (might not end with punctuation)
+  // Handle any remaining sentence
+  if (currentSentence) {
+    if (currentParagraph) {
+      currentParagraph.words.push(...currentSentence.words);
+      currentParagraph.text = currentParagraph.words.map(w => w.punct).join(' ');
+    } else {
+      currentParagraph = {
+        words: [...currentSentence.words],
+        text: currentSentence.words.map(w => w.punct).join(' '),
+        speaker: currentSentence.speaker
+      };
+    }
+  }
+
+  // Add the last paragraph if it exists
   if (currentParagraph) {
     results.push(currentParagraph);
   }

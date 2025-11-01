@@ -32,20 +32,7 @@ const updateSpeakerName = (oldName, newName, state) => {
 
 
 class WrapperBlock extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      start: 0,
-      timecodeOffset: this.props.blockProps.timecodeOffset
-    };
-  }
-
-  componentDidMount() {
-    const { block } = this.props;
-    const start = block.getData().get('start');
-    this.setState({ start });
-  }
+  // No longer need state - all data comes from props via block.getData()
   
   // reducing unnecessary re-renders
   shouldComponentUpdate = (nextProps) => {
@@ -130,22 +117,24 @@ class WrapperBlock extends React.Component {
   };
 
   handleTimecodeClick = () => {
-    this.props.blockProps.onWordClick(this.state.start);
+    const start = this.props.block.getData().get('start');
+    this.props.blockProps.onWordClick(start);
     if (this.props.blockProps.handleAnalyticsEvents) {
       this.props.blockProps.handleAnalyticsEvents({
         category: 'WrapperBlock',
         action: 'handleTimecodeClick',
         name: 'onWordClick',
-        value: secondsToTimecode(this.state.start)
+        value: secondsToTimecode(start)
       });
     }
   };
 
   render() {
-    // Get current speaker from block data instead of stale state
+    // Get current speaker and start from block data instead of stale state
     const currentSpeaker = this.props.block.getData().get('speaker');
+    const currentStart = this.props.block.getData().get('start');
     
-    let startTimecode = this.state.start;
+    let startTimecode = currentStart;
     if (this.props.blockProps.timecodeOffset) {
       startTimecode += this.props.blockProps.timecodeOffset;
     }

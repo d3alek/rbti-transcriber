@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Box, AppBar, Toolbar, IconButton, Button, CircularProgress, Snackbar, Typography } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
 import { ArrowBack, Save } from '@material-ui/icons';
@@ -22,10 +22,11 @@ export const TranscriptEditor: React.FC<TranscriptEditorProps> = ({
 }) => {
   const [originalData, setOriginalData] = useState<CorrectedDeepgramResponse | null>(null);
   const [transcriptData, setTranscriptData] = useState<ReactTranscriptEditorData | null>(null);
-  const [draftJsData, setDraftJsData] = useState<any>(null); // Store DraftJS blocks from auto-save
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [hasUnsavedChanges, setHasUnsavedChanges] = useState<boolean>(false);
   const [isSaving, setIsSaving] = useState<boolean>(false);
+  
+  // Ref to access the react-transcript-editor instance to read content on demand
+  const transcriptEditorRef = useRef<any>(null);
   const [notification, setNotification] = useState<{ open: boolean; message: string; severity: 'success' | 'error' | 'info' }>({
     open: false,
     message: '',
@@ -144,15 +145,6 @@ export const TranscriptEditor: React.FC<TranscriptEditorProps> = ({
     };
   }, [transcriptData]);
 
-  // Handle auto-save changes from the transcript editor
-  // Note: react-transcript-editor returns DraftJS format when autoSaveContentType="draftjs"
-  const handleAutoSaveChanges = useCallback((data: any) => {
-    // react-transcript-editor returns { data: blockData, ext: 'json' } for draftjs
-    // Just store the reference - heavy processing happens on manual save only
-    setDraftJsData(data);
-    setHasUnsavedChanges(true);
-  }, []);
-
   // Handle manual save
   const handleSave = useCallback(async () => {
     if (!originalData || !transcriptData) {
@@ -163,19 +155,22 @@ export const TranscriptEditor: React.FC<TranscriptEditorProps> = ({
     try {
       setIsSaving(true);
 
-      // If we have DraftJS data from auto-save, extract the updated words from it
+      // Get current editor content directly from the transcript editor
       let updatedTranscriptData = transcriptData;
-      if (draftJsData) {
-        const extracted = extractWordsFromDraftJS(draftJsData);
-        if (extracted) {
-          updatedTranscriptData = extracted;
-          console.log('📦 Extracted data from DraftJS:', {
-            wordsCount: extracted.words?.length,
-            speakerNames: extracted.speaker_names,
-            sampleWord: extracted.words?.[0]
-          });
-        } else {
-          console.warn('⚠️ Failed to extract data from DraftJS');
+      if (transcriptEditorRef.current) {
+        const currentDraftJsData = transcriptEditorRef.current.getEditorContent('draftjs');
+        if (currentDraftJsData) {
+          const extracted = extractWordsFromDraftJS(currentDraftJsData);
+          if (extracted) {
+            updatedTranscriptData = extracted;
+            console.log('📦 Extracted data from DraftJS:', {
+              wordsCount: extracted.words?.length,
+              speakerNames: extracted.speaker_names,
+              sampleWord: extracted.words?.[0]
+            });
+          } else {
+            console.warn('⚠️ Failed to extract data from DraftJS');
+          }
         }
       }
 
@@ -207,9 +202,8 @@ export const TranscriptEditor: React.FC<TranscriptEditorProps> = ({
         throw new Error(response.error || 'Failed to save corrections');
       }
 
-      // Update original data and clear unsaved changes flag
+      // Update original data
       setOriginalData(correctedResponse);
-      setHasUnsavedChanges(false);
       setIsSaving(false);
 
       showNotification('Changes saved successfully', 'success');
@@ -218,7 +212,7 @@ export const TranscriptEditor: React.FC<TranscriptEditorProps> = ({
       setIsSaving(false);
       showNotification(`Failed to save changes: ${errorMessage}`, 'error');
     }
-  }, [originalData, transcriptData, draftJsData, extractWordsFromDraftJS, audioFile.path, apiClient, showNotification]);
+  }, [originalData, transcriptData, extractWordsFromDraftJS, audioFile.path, apiClient, showNotification]);
 
   if (isLoading) {
     return (
@@ -269,7 +263,7 @@ export const TranscriptEditor: React.FC<TranscriptEditorProps> = ({
             color="primary"
             startIcon={<Save />}
             onClick={handleSave}
-            disabled={!hasUnsavedChanges || isSaving}
+            disabled={isSaving}
           >
             {isSaving ? 'Saving...' : 'Save Edits'}
           </Button>
@@ -279,12 +273,11 @@ export const TranscriptEditor: React.FC<TranscriptEditorProps> = ({
       {/* Transcript Editor */}
       <Box style={{ height: 'calc(100vh - 64px)' }}>
         <TranscriptEditorComponent
+          ref={transcriptEditorRef}
           transcriptData={transcriptData}
           mediaUrl={mediaUrl}
           isEditable={true}
           sttJsonType="deepgram"
-          handleAutoSaveChanges={handleAutoSaveChanges}
-          autoSaveContentType="draftjs"
           title={audioFile.filename}
           fileName={audioFile.filename}
           mediaType="audio"

@@ -1,0 +1,70 @@
+name: Publish Transcriptions to GitHub Pages
+
+on:
+  push:
+    paths:
+      - '**/transcriptions/*.json'
+      - '.github/workflows/publish-to-gh-pages.yml'
+      - 'scripts/generate-gh-pages-bundles.py'
+      - 'scripts/generate-index-page.py'
+  workflow_dispatch:  # Allow manual triggering
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write  # Required to push to gh-pages branch
+      pages: write     # Required for GitHub Pages
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch all history for proper git operations
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      
+      - name: Install Python dependencies
+        run: |
+          pip install -r requirements.txt || true
+          pip install beautifulsoup4 lxml || true
+      
+      - name: Install react-transcript-editor dependencies
+        working-directory: ./react-transcript-editor
+        run: npm ci
+      
+      # Build browser-compatible UMD bundle for GitHub Pages
+      # This creates a bundle that can be loaded directly in HTML via <script> tag
+      # Note: We skip the component build (npm run build:component) as we only need the browser bundle
+      - name: Build browser bundle for react-transcript-editor
+        run: |
+          cd react-transcript-editor
+          npm install --save-dev webpack webpack-cli babel-loader @babel/core @babel/preset-env @babel/preset-react style-loader css-loader sass-loader node-sass || true
+          node ../scripts/build-browser-bundle.js || echo "Browser bundle build skipped"
+      
+      - name: Generate bundles and index
+        run: |
+          python scripts/generate-gh-pages-bundles.py
+          python scripts/generate-index-page.py
+      
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+      
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './gh-pages-output'
+      
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+

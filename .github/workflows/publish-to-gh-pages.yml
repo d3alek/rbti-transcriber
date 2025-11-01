@@ -40,7 +40,12 @@ jobs:
       
       - name: Install react-transcript-editor dependencies
         working-directory: ./react-transcript-editor
-        run: npm ci
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci
+          else
+            npm install
+          fi
       
       # Build browser-compatible UMD bundle for GitHub Pages
       # This creates a bundle that can be loaded directly in HTML via <script> tag

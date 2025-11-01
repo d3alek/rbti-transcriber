@@ -278,6 +278,7 @@ export const TranscriptEditor: React.FC<TranscriptEditorProps> = ({
           mediaUrl={mediaUrl}
           isEditable={true}
           sttJsonType="deepgram"
+          autoSaveContentType="draftjs"
           title={audioFile.filename}
           fileName={audioFile.filename}
           mediaType="audio"

@@ -60,12 +60,54 @@ export class DeepgramTransformer {
     });
 
     // Create speaker segments if available
-    const speakerSegments = response.speakers || [];
+    // Apply custom speaker names from corrections if they exist
+    let speakerSegments = response.speakers || [];
+    
+    // If we have custom speaker names in corrections, apply them to the speakers array
+    if (response.corrections?.speaker_names && speakerSegments.length > 0) {
+      const speakerNamesMap = response.corrections.speaker_names;
+      
+      speakerSegments = speakerSegments.map(speaker => {
+        // Extract speaker index from the speaker label (e.g., "Speaker 0" -> 0)
+        // If it's already a custom name, try to find it by matching words
+        let speakerIndex: number | null = null;
+        
+        // Try to parse "Speaker X" format
+        const match = speaker.speaker.match(/^Speaker (\d+)$/);
+        if (match) {
+          speakerIndex = parseInt(match[1]);
+        } else {
+          // If it's already a custom name, find the speaker index by looking at words in this segment
+          const wordsInSegment = alternative.words.filter(
+            (w: any) => w.start >= speaker.start_time && w.end <= speaker.end_time
+          );
+          if (wordsInSegment.length > 0) {
+            speakerIndex = wordsInSegment[0].speaker;
+          }
+        }
+        
+        // Apply custom name if available
+        if (speakerIndex !== null && speakerNamesMap[speakerIndex]) {
+          return {
+            ...speaker,
+            speaker: speakerNamesMap[speakerIndex]
+          };
+        }
+        
+        return speaker;
+      });
+      
+      console.log('🎤 Applied custom speaker names from corrections:', {
+        speakerNamesMap,
+        updatedSpeakers: speakerSegments.slice(0, 3).map(s => s.speaker)
+      });
+    }
 
     console.log('📊 Deepgram response structure check:', {
       hasResponseSpeakers: !!response.speakers,
-      speakersCount: response.speakers?.length || 0,
-      firstSpeaker: response.speakers?.[0] || null
+      speakersCount: speakerSegments.length || 0,
+      firstSpeaker: speakerSegments?.[0] || null,
+      hasCustomNames: !!response.corrections?.speaker_names
     });
 
     // Build segmentation for bbckaldi adapter to handle speaker grouping
@@ -301,11 +343,30 @@ export class DeepgramTransformer {
     // Create a deep copy of the original response
     const corrected: CorrectedDeepgramResponse = JSON.parse(JSON.stringify(original));
     
+    // Filter and merge speaker names - only save custom names (not "Speaker X" format)
+    let mergedSpeakerNames = { ...(original.corrections?.speaker_names || {}) };
+    if (edited.speaker_names) {
+      // Merge edited speaker names, filtering out default "Speaker X" format
+      for (const [indexStr, name] of Object.entries(edited.speaker_names)) {
+        const speakerIndex = parseInt(indexStr);
+        // Only save if it's a custom name (not "Speaker X" format)
+        if (!name.match(/^Speaker \d+$/)) {
+          mergedSpeakerNames[speakerIndex] = name;
+        } else {
+          // If it's a default name, remove it from the custom names (in case it was custom before)
+          delete mergedSpeakerNames[speakerIndex];
+        }
+      }
+    }
+    
+    // Only include speaker_names if there are custom names
+    const finalSpeakerNames = Object.keys(mergedSpeakerNames).length > 0 ? mergedSpeakerNames : undefined;
+    
     // Update the corrections metadata
     corrected.corrections = {
       version: (original.corrections?.version || 0) + 1,
       timestamp: new Date().toISOString(),
-      speaker_names: edited.speaker_names
+      speaker_names: finalSpeakerNames
     };
 
     // Update words in the raw response with corrections
@@ -356,16 +417,53 @@ export class DeepgramTransformer {
     alternative.transcript = correctedTranscript;
     corrected.text = correctedTranscript;
 
-    // Update speaker segments with custom names if available
-    if (edited.speaker_names) {
+    // Update speaker segments with custom names from corrections (not edited.speaker_names which may include defaults)
+    if (finalSpeakerNames) {
+      // Build a map from speaker index to custom name
+      const speakerIndexToName: { [index: number]: string } = {};
+      for (const [indexStr, name] of Object.entries(finalSpeakerNames)) {
+        speakerIndexToName[parseInt(indexStr)] = name;
+      }
+      
+      // Update speakers array - match by finding which speaker index each segment represents
+      // We determine speaker index by finding words in the same time range
       corrected.speakers = corrected.speakers.map(speaker => {
-        const speakerIndex = parseInt(speaker.speaker.replace('Speaker ', ''));
-        const customName = edited.speaker_names?.[speakerIndex];
+        // Find words that fall within this speaker segment's time range
+        const wordsInSegment = alternative.words.filter(
+          (w: any) => w.start >= speaker.start_time && w.end <= speaker.end_time
+        );
         
-        return {
-          ...speaker,
-          speaker: customName || speaker.speaker
-        };
+        // Get speaker index from the first word in the segment
+        const speakerIndex = wordsInSegment.length > 0 ? wordsInSegment[0].speaker : null;
+        
+        if (speakerIndex !== null && speakerIndexToName[speakerIndex]) {
+          // Use the custom name from corrections
+          return {
+            ...speaker,
+            speaker: speakerIndexToName[speakerIndex]
+          };
+        } else {
+          // No custom name found, revert to default "Speaker X" format
+          // This handles the case where user changed a custom name back to default
+          const match = speaker.speaker.match(/^Speaker (\d+)$/);
+          if (!match && speakerIndex !== null) {
+            // If it was a custom name but no longer in corrections, revert to default
+            return {
+              ...speaker,
+              speaker: `Speaker ${speakerIndex}`
+            };
+          }
+          // Keep original (either already default or we can't determine index)
+          return speaker;
+        }
+      });
+      
+      console.log('🎤 Updated speaker names:', {
+        customNamesMap: finalSpeakerNames,
+        updatedSpeakers: corrected.speakers.slice(0, 5).map(s => ({ 
+          speaker: s.speaker, 
+          start: s.start_time 
+        }))
       });
     }
 

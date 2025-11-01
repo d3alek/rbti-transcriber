@@ -111,21 +111,77 @@ export const TranscriptEditor: React.FC<TranscriptEditorProps> = ({
             wordsCount: block.data.words.length,
             sampleWord: block.data.words[0],
             sampleWordHasIndex: 'index' in (block.data.words[0] || {}),
-            speaker: block.data.speaker
+            speaker: block.data.speaker,
+            blockDataKeys: block.data ? Object.keys(block.data) : [],
+            firstWordSpeaker: block.data.words[0]?.speaker
           });
         }
       }
       
-      // Extract speaker name if it's been edited (not default "Speaker X" format)
+      // Extract speaker name from block - capture all speaker names, not just custom ones
+      // Note: Words in DraftJS blocks don't have speaker property - it's only in block.data.speaker
       if (block.data && block.data.speaker) {
-        const speakerMatch = block.data.speaker.match(/^Speaker (\d+)$/);
-        if (!speakerMatch) {
-          // This is a custom speaker name, extract the speaker index from words
-          const firstWord = block.data.words && block.data.words[0];
-          if (firstWord && firstWord.speaker !== undefined) {
-            const speakerIndex = firstWord.speaker;
-            speakerNamesMap[speakerIndex] = block.data.speaker;
+        let speakerIndex: number | null = null;
+        const speakerName = block.data.speaker;
+        
+        // First, try parsing from "Speaker X" format
+        const match = speakerName.match(/^Speaker (\d+)$/);
+        if (match) {
+          speakerIndex = parseInt(match[1]);
+        } else {
+          // It's a custom name - need to find which speaker index it corresponds to
+          // We can do this by:
+          // 1. Check if we already have this name mapped (from previous blocks)
+          // 2. If not, use the original transcriptData to reverse-lookup
+          // 3. Or, find words from original transcriptData that match this block's time range
+          
+          // Try reverse lookup in existing speaker_names
+          if (transcriptData.speaker_names) {
+            for (const [indexStr, name] of Object.entries(transcriptData.speaker_names)) {
+              if (name === speakerName) {
+                speakerIndex = parseInt(indexStr);
+                break;
+              }
+            }
           }
+          
+          // If still not found, try to find by matching words with original transcript
+          // Find words in original transcript that match this block's time range
+          if (speakerIndex === null && block.data.words && block.data.words.length > 0) {
+            const firstWord = block.data.words[0];
+            if (firstWord && firstWord.start !== undefined && transcriptData.words) {
+              // Find original word at same time position
+              const originalWord = transcriptData.words.find((w: any) => 
+                Math.abs(w.start - firstWord.start) < 0.01
+              );
+              if (originalWord && originalWord.speaker !== undefined) {
+                speakerIndex = originalWord.speaker;
+              }
+            }
+          }
+        }
+        
+        // Store the speaker name if we found an index
+        if (speakerIndex !== null) {
+          speakerNamesMap[speakerIndex] = speakerName;
+          if (index < 3 || Object.keys(speakerNamesMap).length <= 2) {
+            console.log('🎤 Captured speaker name:', {
+              blockIndex: index,
+              speakerIndex,
+              speakerName: speakerName,
+              isCustom: !speakerName.match(/^Speaker \d+$/),
+              foundByParsing: !!match,
+              foundByReverseLookup: !match && speakerIndex !== null
+            });
+          }
+        } else {
+          // Couldn't determine speaker index for custom name
+          console.warn('⚠️ Could not determine speaker index for custom speaker name:', {
+            blockIndex: index,
+            speakerName: speakerName,
+            hasOriginalSpeakerNames: !!transcriptData.speaker_names,
+            firstWordStart: block.data.words?.[0]?.start
+          });
         }
       }
     });
@@ -135,13 +191,37 @@ export const TranscriptEditor: React.FC<TranscriptEditorProps> = ({
       return null;
     }
     
-    console.log('✅ extractWordsFromDraftJS: extracted words', { wordsCount: words.length, speakerNamesCount: Object.keys(speakerNamesMap).length });
+    // Filter to only include custom speaker names (not default "Speaker X" format)
+    const customSpeakerNames: { [speakerIndex: number]: string } = {};
+    for (const [indexStr, name] of Object.entries(speakerNamesMap)) {
+      const speakerIndex = parseInt(indexStr);
+      // Only include if it's not a default "Speaker X" format
+      if (!name.match(/^Speaker \d+$/)) {
+        customSpeakerNames[speakerIndex] = name;
+      }
+    }
+    
+    // Merge with existing speaker_names, keeping existing custom names
+    const mergedSpeakerNames = {
+      ...(transcriptData.speaker_names || {}),
+      ...customSpeakerNames
+    };
+    
+    // Only include speaker_names if there are custom names
+    const finalSpeakerNames = Object.keys(mergedSpeakerNames).length > 0 ? mergedSpeakerNames : undefined;
+    
+    console.log('✅ extractWordsFromDraftJS: extracted words', { 
+      wordsCount: words.length, 
+      allSpeakerNames: Object.keys(speakerNamesMap).length,
+      customSpeakerNames: Object.keys(customSpeakerNames).length,
+      finalSpeakerNames 
+    });
     
     // Return updated data with extracted words and speaker names
     return {
       ...transcriptData,
       words: words,
-      speaker_names: Object.keys(speakerNamesMap).length > 0 ? speakerNamesMap : transcriptData.speaker_names
+      speaker_names: finalSpeakerNames
     };
   }, [transcriptData]);
 
@@ -160,6 +240,18 @@ export const TranscriptEditor: React.FC<TranscriptEditorProps> = ({
       if (transcriptEditorRef.current) {
         const currentDraftJsData = transcriptEditorRef.current.getEditorContent('draftjs');
         if (currentDraftJsData) {
+          // Debug: log the raw structure we receive
+          console.log('🔍 Raw DraftJS data structure:', {
+            hasData: !!currentDraftJsData.data,
+            hasBlocks: !!currentDraftJsData.data?.blocks,
+            blocksCount: currentDraftJsData.data?.blocks?.length,
+            firstBlockKeys: currentDraftJsData.data?.blocks?.[0] ? Object.keys(currentDraftJsData.data.blocks[0]) : [],
+            firstBlockData: currentDraftJsData.data?.blocks?.[0]?.data,
+            firstBlockDataKeys: currentDraftJsData.data?.blocks?.[0]?.data ? Object.keys(currentDraftJsData.data.blocks[0].data) : [],
+            firstBlockSpeaker: currentDraftJsData.data?.blocks?.[0]?.data?.speaker,
+            sampleBlock: currentDraftJsData.data?.blocks?.[0]
+          });
+          
           const extracted = extractWordsFromDraftJS(currentDraftJsData);
           if (extracted) {
             updatedTranscriptData = extracted;
@@ -171,7 +263,11 @@ export const TranscriptEditor: React.FC<TranscriptEditorProps> = ({
           } else {
             console.warn('⚠️ Failed to extract data from DraftJS');
           }
+        } else {
+          console.warn('⚠️ getEditorContent returned null/undefined');
         }
+      } else {
+        console.warn('⚠️ transcriptEditorRef.current is null');
       }
 
       console.log('💾 Before merge:', {
@@ -189,7 +285,9 @@ export const TranscriptEditor: React.FC<TranscriptEditorProps> = ({
 
       console.log('✅ After merge:', {
         correctedWordsCount: correctedResponse.raw_response?.results?.channels?.[0]?.alternatives?.[0]?.words?.length,
-        corrections: correctedResponse.corrections
+        corrections: correctedResponse.corrections,
+        speakerNames: correctedResponse.corrections?.speaker_names,
+        speakersSample: correctedResponse.speakers?.slice(0, 3).map(s => s.speaker)
       });
 
       // Save via API

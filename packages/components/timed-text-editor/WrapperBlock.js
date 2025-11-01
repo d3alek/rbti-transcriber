@@ -36,7 +36,6 @@ class WrapperBlock extends React.Component {
     super(props);
 
     this.state = {
-      speaker: '',
       start: 0,
       timecodeOffset: this.props.blockProps.timecodeOffset
     };
@@ -44,17 +43,12 @@ class WrapperBlock extends React.Component {
 
   componentDidMount() {
     const { block } = this.props;
-    const speaker = block.getData().get('speaker');
-  
     const start = block.getData().get('start');
-
-    this.setState({
-      speaker: speaker,
-      start: start
-    });
+    this.setState({ start });
   }
+  
   // reducing unnecessary re-renders
-  shouldComponentUpdate = (nextProps, nextState) => {
+  shouldComponentUpdate = (nextProps) => {
     if (nextProps.block.getText() !== this.props.block.getText()) {
       return true;
     }
@@ -71,39 +65,21 @@ class WrapperBlock extends React.Component {
       return true;
     }
 
-    if (nextState.speaker !== this.state.speaker) {
-      return true;
-    }
-
     if (nextProps.blockProps.isEditable !== this.props.blockProps.isEditable) {
       return true;
     }
 
-    if(nextProps.block.getData().get('speaker') !== this.state.speaker){
-      console.log('shouldComponentUpdate wrapper speaker', nextProps.block.getData().get('speaker') , this.state.speaker )
+    if (nextProps.block.getData().get('speaker') !== this.props.block.getData().get('speaker')) {
       return true;
     }
+    
     return false;
   };
 
-  componentDidUpdate  = (prevProps, prevState) =>{
-
-    if(prevProps.block.getData().get('speaker') !== prevState.speaker){
-        console.log('componentDidUpdate wrapper speaker', prevProps.block.getData().get('speaker') , prevState.speaker );
-        
-        this.setState({
-          speaker: prevProps.block.getData().get('speaker')
-        })
-
-        return true;
-      }
-  }
-
   handleOnClickEdit = () => {
-    const oldSpeakerName = this.state.speaker;
-    const newSpeakerName = prompt('New Speaker Name?', this.state.speaker);
+    const oldSpeakerName = this.props.block.getData().get('speaker');
+    const newSpeakerName = prompt('New Speaker Name?', oldSpeakerName);
     if (newSpeakerName !== '' && newSpeakerName !== null) {
-      this.setState({ speaker: newSpeakerName });
       const isUpdateAllSpeakerInstances = confirm(`Would you like to replace all occurrences of ${oldSpeakerName} with ${newSpeakerName}?`);
      
       if (this.props.blockProps.handleAnalyticsEvents) {
@@ -166,6 +142,9 @@ class WrapperBlock extends React.Component {
   };
 
   render() {
+    // Get current speaker from block data instead of stale state
+    const currentSpeaker = this.props.block.getData().get('speaker');
+    
     let startTimecode = this.state.start;
     if (this.props.blockProps.timecodeOffset) {
       startTimecode += this.props.blockProps.timecodeOffset;
@@ -173,7 +152,7 @@ class WrapperBlock extends React.Component {
 
     const speakerElement = (
       <SpeakerLabel
-        name={ this.state.speaker }
+        name={ currentSpeaker }
         handleOnClickEdit={ this.handleOnClickEdit }
         isEditable={this.props.blockProps.isEditable}
       />

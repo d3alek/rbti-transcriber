@@ -257,7 +257,8 @@ class TestRunner {
       },
       toHaveLength: (length: number) => {
         if (!actual || actual.length !== length) {
-          throw new Error(`Expected ${actual} to have length ${length}, but got ${actual?.length}`);
+          const actualLength = actual ? actual.length : 'undefined';
+          throw new Error(`Expected ${actual} to have length ${length}, but got ${actualLength}`);
         }
       }
     };
@@ -319,7 +320,7 @@ runner.test('should transform CorrectedDeepgramResponse to ReactTranscriptEditor
   runner.expect(firstWord.index).toBe(0);
   
   // Check metadata
-  runner.expect(transformed.metadata.duration).toBeCloseTo(3670.043);
+  runner.expect(transformed.metadata.duration).toBeCloseTo(3671.748); // Uses rawResponse.metadata.duration
   runner.expect(transformed.metadata.confidence).toBeCloseTo(0.9943198);
   runner.expect(transformed.metadata.service).toBe('deepgram');
 });
@@ -466,6 +467,88 @@ runner.test('should detect data integrity issues', () => {
   runner.expect(validation.isValid).toBeFalsy();
   runner.expect(validation.errors.length).toBe(1);
   runner.expect(validation.errors[0].includes('Audio duration mismatch')).toBeTruthy();
+});
+
+runner.test('should handle DraftJS-based editing workflow (react-transcript-editor)', () => {
+  // This test simulates the actual workflow in TranscriptEditor component
+  const original = createTestDeepgramResponse();
+  
+  // Step 1: Load transcript - transform Deepgram to ReactTranscriptEditorData
+  const initialTransform = DeepgramTransformer.transformToReactTranscriptEditor(original);
+  runner.expect(initialTransform.words).toHaveLength(12);
+  
+  // Step 2: Simulate editing in react-transcript-editor
+  // react-transcript-editor converts ReactTranscriptEditorData to DraftJS blocks internally
+  // When autoSaveContentType="draftjs", it returns DraftJS blocks via handleAutoSaveChanges
+  // We need to simulate the DraftJS blocks structure that react-transcript-editor returns
+  
+  // Create DraftJS blocks structure as react-transcript-editor would return
+  const draftJsBlocks = {
+    data: {
+      blocks: [
+        {
+          key: 'block-0',
+          text: "I'd like to welcome all of you to this seminar on RBTI.",
+          type: 'paragraph',
+          data: {
+            speaker: 'Speaker 0',
+            words: initialTransform.words.map((word, index) => ({
+              ...word,
+              // Simulate an edit: user changed 'welcome' to 'greet'
+              ...(index === 3 && {
+                word: 'greet',
+                punct: 'greet'
+              })
+            }))
+          },
+          entityRanges: []
+        }
+      ],
+      entityMap: {}
+    },
+    ext: 'json'
+  };
+  
+  // Step 3: Extract words from DraftJS blocks (as TranscriptEditor does)
+  const blocks = draftJsBlocks.data.blocks;
+  const extractedWords: any[] = [];
+  blocks.forEach((block: any) => {
+    if (block.data && block.data.words && Array.isArray(block.data.words)) {
+      extractedWords.push(...block.data.words);
+    }
+  });
+  
+  runner.expect(extractedWords).toHaveLength(12);
+  runner.expect(extractedWords[3].word).toBe('greet'); // Should reflect the edit
+  
+  // Step 4: Create updated ReactTranscriptEditorData with edited words
+  const editedTranscriptData = {
+    ...initialTransform,
+    words: extractedWords
+  };
+  
+  // Step 5: Save changes - merge back to Deepgram format
+  const correctedResponse = DeepgramTransformer.mergeCorrectionsIntoDeepgramResponse(
+    original,
+    editedTranscriptData
+  );
+  
+  // Step 6: Verify corrections are embedded
+  const rtWords = correctedResponse.raw_response.results.channels[0].alternatives[0].words as any[];
+  runner.expect(rtWords[3].corrected).toBeTruthy();
+  runner.expect(rtWords[3].word).toBe('greet');
+  runner.expect(rtWords[3].original_word).toBe('welcome');
+  
+  // Step 7: Reload transcript - transform back to ReactTranscriptEditorData
+  const reloadedTransform = DeepgramTransformer.transformToReactTranscriptEditor(correctedResponse);
+  
+  // Step 8: Verify edits are preserved
+  runner.expect(reloadedTransform.words).toHaveLength(12);
+  runner.expect(reloadedTransform.words[3].word).toBe('greet');
+  runner.expect(reloadedTransform.words[3].corrected).toBeTruthy();
+  runner.expect(reloadedTransform.words[3].original_word).toBe('welcome');
+  
+  console.log('✅ DraftJS workflow test completed successfully');
 });
 
 // Run all tests

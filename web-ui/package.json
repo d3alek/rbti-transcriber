@@ -6,7 +6,8 @@
     "build": "webpack --mode production",
     "preview": "webpack-dev-server --mode production",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "test": "tsc src/services/__tests__/DeepgramTransformer.test.ts --outDir dist --target ES2018 --module commonjs --moduleResolution node --esModuleInterop --allowSyntheticDefaultImports --skipLibCheck --resolveJsonModule --lib ES2018 2>&1 | grep -v minimatch && node dist/services/__tests__/DeepgramTransformer.test.js"
   },
   "dependencies": {
     "@bbc/react-transcript-editor": "^1.4.4",

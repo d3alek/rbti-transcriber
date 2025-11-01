@@ -276,7 +276,13 @@ class FileSystemScanner:
                             transcription_info['last_transcription_attempt'] = transcription_data.get('timestamp')
                             
                             # Check if transcription was successful
-                            if transcription_data.get('result') and transcription_data['result'].get('text'):
+                            # Support both formats:
+                            # 1. Cache format: { "result": { "text": "..." } }
+                            # 2. Direct format: { "text": "..." } (from CLI output)
+                            has_result_text = transcription_data.get('result') and transcription_data['result'].get('text')
+                            has_direct_text = transcription_data.get('text') and transcription_data.get('raw_response')
+                            
+                            if has_result_text or has_direct_text:
                                 transcription_info['transcription_status'] = 'completed'
                             else:
                                 transcription_info['transcription_status'] = 'failed'

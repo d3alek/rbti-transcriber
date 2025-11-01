@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react';
 import { CssBaseline, Container, Box } from '@material-ui/core';
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 import { FileManager } from './components/FileManager';
-import { TranscriptEditorWrapper } from './components/TranscriptEditor';
+import { TranscriptEditor } from './components/TranscriptEditor';
 import { APIClient } from './services/APIClient';
 import { AudioFileInfo } from './types/api';
 
@@ -47,7 +47,7 @@ function App() {
           )}
           
           {currentView === 'transcriptEditor' && selectedFile && (
-            <TranscriptEditorWrapper
+            <TranscriptEditor
               audioFile={selectedFile}
               onBack={handleBackToFileManager}
               apiClient={apiClient}

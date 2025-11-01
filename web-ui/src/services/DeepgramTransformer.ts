@@ -313,6 +313,7 @@ export class DeepgramTransformer {
     const alternative = channel.alternatives[0];
     
     // Merge word-level corrections
+    let correctionCount = 0;
     alternative.words = alternative.words.map((originalWord, index) => {
       const editedWord = edited.words[index];
       if (!editedWord) return originalWord;
@@ -324,6 +325,17 @@ export class DeepgramTransformer {
       const punctChanged = editedWord.punct !== originalWord.punctuated_word;
       
       if (wordChanged || punctChanged) {
+        correctionCount++;
+        if (correctionCount <= 3) {
+          console.log(`🔧 Correction ${correctionCount}:`, {
+            index,
+            original: { word: originalWord.word, punct: originalWord.punctuated_word },
+            edited: { word: editedWord.word, punct: editedWord.punct },
+            wordChanged,
+            punctChanged
+          });
+        }
+        
         // Mark as corrected and preserve original values
         correctedWord.corrected = true;
         correctedWord.original_word = correctedWord.original_word || originalWord.word;
@@ -336,6 +348,8 @@ export class DeepgramTransformer {
       
       return correctedWord;
     });
+    
+    console.log(`📊 Merge summary: ${correctionCount} words corrected out of ${alternative.words.length} total`);
 
     // Update the main transcript with corrected text
     const correctedTranscript = this.reconstructTranscriptFromWords(alternative.words as CorrectedDeepgramWord[]);

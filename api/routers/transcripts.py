@@ -57,13 +57,18 @@ async def get_transcript(
         print(f"✅ API: Transcript loaded successfully, keys: {list(transcript_data.keys())}")
         print(f"✅ API: Transcript data size: {len(json.dumps(transcript_data))} chars")
         
-        # Return just the result portion which contains the CorrectedDeepgramResponse
+        # Support both formats:
+        # 1. Cache format: { "result": CorrectedDeepgramResponse }
+        # 2. Direct format: CorrectedDeepgramResponse (from CLI)
         if 'result' in transcript_data:
             print(f"✅ API: Returning result portion, keys: {list(transcript_data['result'].keys())}")
             return transcript_data['result']
+        elif 'text' in transcript_data and 'raw_response' in transcript_data:
+            print(f"✅ API: Returning direct CorrectedDeepgramResponse format")
+            return transcript_data
         else:
-            print(f"❌ API: No 'result' key found in transcript data")
-            raise HTTPException(status_code=500, detail="Invalid transcript format - missing 'result' key")
+            print(f"❌ API: Invalid transcript format - expected 'result' key or DirectDeepgramResponse structure")
+            raise HTTPException(status_code=500, detail="Invalid transcript format")
         
         return transcript_data
         

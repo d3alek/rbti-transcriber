@@ -25,12 +25,11 @@ const endsWithFullStop = (wordsInUtterance) => {
 };
 
 /**
- * Groups words by Deepgram utterance segments, coalescing consecutive utterances
- * from the same speaker into longer paragraphs, but breaking when paragraph exceeds max duration.
- * Tries to break on full stops when possible for more natural paragraph endings.
+ * Groups words by Deepgram utterance segments, splitting on sentence boundaries (full stops).
+ * Always breaks paragraphs on sentence-ending punctuation (. ? !) while respecting speaker boundaries.
  * @param {array} words - array of word objects from Deepgram transcript
  * @param {array} utterances - array of utterance objects from Deepgram result.speakers
- * @param {number} maxParagraphDurationSeconds - maximum duration for a paragraph in seconds
+ * @param {number} maxParagraphDurationSeconds - maximum duration for a paragraph in seconds (not currently used, but kept for compatibility)
  * @return {array} - array of paragraph objects with words, text, and speaker attributes
  */
 const groupWordsInParagraphsByUtterances = (words, utterances, maxParagraphDurationSeconds = MAX_PARAGRAPH_DURATION_SECONDS) => {
@@ -42,7 +41,6 @@ const groupWordsInParagraphsByUtterances = (words, utterances, maxParagraphDurat
   }
 
   let currentParagraph = null;
-  const hardMaximumDuration = maxParagraphDurationSeconds * DURATION_FLEXIBILITY_MULTIPLIER;
 
   utterances.forEach((utterance) => {
     // Find words that overlap with this utterance's time range
@@ -61,54 +59,47 @@ const groupWordsInParagraphsByUtterances = (words, utterances, maxParagraphDurat
       // Use speaker label from utterance (e.g., "Speaker 0", "Speaker 1")
       const speakerLabel = utterance.speaker || 'TBC';
       
-      // Calculate current paragraph duration if it exists
-      const paragraphStart = currentParagraph ? currentParagraph.words[0].start : utterance.start_time;
-      const paragraphEnd = utterance.end_time;
-      const paragraphDuration = paragraphEnd - paragraphStart;
-      
       // Check if speaker changed
       const speakerChanged = currentParagraph && currentParagraph.speaker !== speakerLabel;
       
-      // Check if we're at or over the duration limit
-      const atDurationLimit = paragraphDuration >= maxParagraphDurationSeconds;
-      
-      // Check if we've exceeded the hard maximum (can't continue looking for full stop)
-      const exceededHardMaximum = paragraphDuration >= hardMaximumDuration;
-      
-      // Check if current utterance ends with a full stop
-      const endsWithPeriod = endsWithFullStop(wordsInUtterance);
-      
-      // Decide whether to break:
-      // 1. Always break on speaker change
-      // 2. Break if we've exceeded hard maximum (must break)
-      // 3. Break if at duration limit AND ends with full stop (natural break point)
-      const shouldStartNewParagraph = 
-        !currentParagraph || 
-        speakerChanged ||
-        exceededHardMaximum ||
-        (atDurationLimit && endsWithPeriod);
-      
-      if (shouldStartNewParagraph) {
-        // Save previous paragraph if it exists
+      // Always break on speaker change
+      if (speakerChanged) {
         if (currentParagraph) {
           results.push(currentParagraph);
         }
-        
-        // Start new paragraph
-        currentParagraph = {
-          words: [...wordsInUtterance],
-          text: wordsInUtterance.map(word => word.punct).join(' '),
-          speaker: speakerLabel
-        };
-      } else {
-        // Same speaker and within duration limit (or at limit but can continue for full stop): append to current paragraph
-        currentParagraph.words.push(...wordsInUtterance);
-        currentParagraph.text = currentParagraph.words.map(word => word.punct).join(' ');
+        currentParagraph = null;
       }
+      
+      // Split words in this utterance into sentences (break on . ? !)
+      // Process words one at a time to detect sentence boundaries
+      wordsInUtterance.forEach((word, wordIndex) => {
+        // Check if this word ends a sentence (ends with . ? !)
+        // Check the last character of the punctuated word
+        const endsSentence = word.punct && /[.?!]$/.test(word.punct.trim());
+        
+        // If we don't have a current paragraph, start a new one
+        if (!currentParagraph) {
+          currentParagraph = {
+            words: [],
+            text: '',
+            speaker: speakerLabel
+          };
+        }
+        
+        // Add word to current paragraph
+        currentParagraph.words.push(word);
+        currentParagraph.text = currentParagraph.words.map(w => w.punct).join(' ');
+        
+        // If this word ends a sentence, finalize the paragraph and start a new one
+        if (endsSentence) {
+          results.push(currentParagraph);
+          currentParagraph = null; // Will start new paragraph on next word
+        }
+      });
     }
   });
 
-  // Add the last paragraph if it exists
+  // Add the last paragraph if it exists (might not end with punctuation)
   if (currentParagraph) {
     results.push(currentParagraph);
   }

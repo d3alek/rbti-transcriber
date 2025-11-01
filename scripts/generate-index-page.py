@@ -181,6 +181,9 @@ def generate_index_page(manifest_path: Path, output_dir: Path):
     with open(manifest_path, 'r', encoding='utf-8') as f:
         bundles = json.load(f)
     
+    # Initialize total_lectures before the if/else block
+    total_lectures = 0
+    
     if not bundles:
         # Empty state
         index_html = INDEX_TEMPLATE.format(
@@ -193,7 +196,6 @@ def generate_index_page(manifest_path: Path, output_dir: Path):
     else:
         # Generate seminar sections
         seminar_sections = []
-        total_lectures = 0
         
         # Sort seminars alphabetically
         for seminar_name in sorted(bundles.keys()):

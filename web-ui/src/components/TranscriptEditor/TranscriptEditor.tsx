@@ -34,8 +34,8 @@ export const TranscriptEditor: React.FC<TranscriptEditorProps> = ({
   });
 
   // Construct media URL for compressed audio
-  const mediaUrl = audioFile.has_compressed_version
-    ? `/api/audio/compressed/${encodeURIComponent(audioFile.path)}`
+  const mediaUrl = audioFile.has_compressed_version && audioFile.compressed_path
+    ? `/api/audio/${encodeURIComponent(audioFile.compressed_path)}`
     : `/api/audio/${encodeURIComponent(audioFile.path)}`;
 
   const showNotification = useCallback((message: string, severity: 'success' | 'error' | 'info' = 'info') => {

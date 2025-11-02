@@ -7,7 +7,8 @@ import {
   convertFromRaw,
   convertToRaw,
   getDefaultKeyBinding,
-  Modifier
+  Modifier,
+  SelectionState
 } from "draft-js";
 
 
@@ -30,6 +31,25 @@ class TimedTextEditor extends React.Component {
 
   componentDidMount() {
     this.loadData();
+    
+    // Listen for custom events from Word component
+    this.wordPlayHandler = (e) => {
+      if (this.props.onWordClick) {
+        this.props.onWordClick(e.detail.start);
+      }
+    };
+    
+    this.wordSaveHandler = (e) => {
+      this.handleWordSave(e.detail.entityKey, e.detail.text);
+    };
+    
+    window.addEventListener('word-play', this.wordPlayHandler);
+    window.addEventListener('word-save', this.wordSaveHandler);
+  }
+  
+  componentWillUnmount() {
+    window.removeEventListener('word-play', this.wordPlayHandler);
+    window.removeEventListener('word-save', this.wordSaveHandler);
   }
 
   shouldComponentUpdate = (nextProps, nextState) => {
@@ -57,6 +77,79 @@ class TimedTextEditor extends React.Component {
       this.forceRenderDecorator();
     }
   }
+
+  handleWordSave = (entityKey, newText) => {
+    console.log('handleWordSave called:', entityKey, newText);
+    
+    // Use DraftJS API - don't convert to raw
+    const contentState = this.state.editorState.getCurrentContent();
+    const entity = contentState.getEntity(entityKey);
+    const entityData = entity.getData();
+    console.log('Entity data:', entityData);
+    
+    // Find the block that contains this entity
+    const blockMap = contentState.getBlockMap();
+    let foundBlock = null;
+    let entityStart = null;
+    let entityEnd = null;
+    
+    blockMap.forEach((block) => {
+      if (foundBlock) return; // Already found
+      
+      const text = block.getText();
+      const chars = block.getCharacterList();
+      
+      // Find where this entity appears in the block
+      for (let i = 0; i < chars.size; i++) {
+        const charKey = chars.get(i).getEntity();
+        if (charKey === entityKey) {
+          if (foundBlock === null) {
+            foundBlock = block;
+            entityStart = i;
+          }
+          entityEnd = i;
+        }
+      }
+    });
+    
+    if (!foundBlock || entityStart === null || entityEnd === null) {
+      console.error('Could not find entity in content blocks');
+      return;
+    }
+    
+    console.log('Found entity in block:', foundBlock.getKey(), 'at positions', entityStart, 'to', entityEnd);
+    
+    // Create selection for the entity
+    const selection = SelectionState.createEmpty(foundBlock.getKey()).merge({
+      anchorOffset: entityStart,
+      focusOffset: entityEnd + 1
+    });
+    
+    // Replace the text using Modifier
+    const newContentState = Modifier.replaceText(
+      contentState,
+      selection,
+      newText
+    );
+    
+    // Update editor state
+    const newEditorState = EditorState.push(
+      this.state.editorState,
+      newContentState,
+      'insert-characters'
+    );
+    
+    // Trigger save
+    this.setState({ editorState: newEditorState }, () => {
+      const data = this.getEditorContent(this.props.autoSaveContentType, this.props.title);
+      const event = new CustomEvent('transcript-word-save', { detail: { data } });
+      window.dispatchEvent(event);
+      
+      if (this.props.handleAutoSaveChanges) {
+        this.props.handleAutoSaveChanges(data);
+      }
+    });
+  };
 
   onChange = editorState => {
     // https://draftjs.org/docs/api-reference-editor-state#lastchangetype
@@ -192,21 +285,7 @@ class TimedTextEditor extends React.Component {
     );
   }
 
-  // click on words - for navigation
-  // eslint-disable-next-line class-methods-use-this
-  handleDoubleClick = event => {
-    // nativeEvent --> React giving you the DOM event
-    let element = event.nativeEvent.target;
-    // find the parent in Word that contains span with time-code start attribute
-    while (!element.hasAttribute("data-start") && element.parentElement) {
-      element = element.parentElement;
-    }
-
-    if (element.hasAttribute("data-start")) {
-      const t = parseFloat(element.getAttribute("data-start"));
-      this.props.onWordClick(t);
-    }
-  };
+  // Double-click handling removed - now using single click with menu
 
   // originally from
   // https://github.com/draft-js-plugins/draft-js-plugins/blob/master/draft-js-counter-plugin/src/WordCounter/index.js#L12
@@ -539,11 +618,6 @@ class TimedTextEditor extends React.Component {
     const editor = (
       <section
         className={style.editor}
-        onDoubleClick={this.handleDoubleClick}
-        // TODO: decide if on mobile want to have a way to "click" on words
-        // to play corresponding media
-        // a double tap would be the ideal solution
-        // onTouchStart={ event => this.handleDoubleClick(event) }
       >
         <style scoped>
           {`span.Word[data-start="${ currentWord.start }"] { background-color: ${ highlightColour }; text-shadow: 0 0 0.01px black }`}

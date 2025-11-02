@@ -16,7 +16,7 @@ class CustomEditor extends React.Component {
   renderBlockWithTimecodes = () => {
     return {
       component: WrapperBlock,
-      editable: true,
+      editable: this.props.isEditable,
       props: {
         showSpeakers: this.props.showSpeakers,
         showTimecodes: this.props.showTimecodes,
@@ -57,6 +57,7 @@ class CustomEditor extends React.Component {
         handleKeyCommand={this.props.handleKeyCommand}
         keyBindingFn={this.props.customKeyBindingFn}
         spellCheck={this.props.spellCheck}
+        readOnly={!this.props.isEditable}
       />
     );
   }

@@ -421,12 +421,20 @@ class TranscriptEditor extends React.Component {
     );
 
     // export format for `handleAutoSaveChanges` is assigned with `autoSaveContentType`
-    // but if that's not specified  it looks at  `sttJsonType`
-    // if that's not specified either, it falls back on `draftjs`.
+    // Valid export formats: 'draftjs', 'txt', 'docx', 'txtspeakertimecodes', 'digitalpaperedit',
+    // 'srt', 'premiereTTML', 'ttml', 'itt', 'csv', 'vtt', 'json-captions', 'pre-segment-txt'
+    // Note: `sttJsonType` (e.g., 'deepgram') is NOT an export format, so we only use it if
+    // it matches a valid export format, otherwise fall back to 'draftjs'
+    const validExportFormats = [
+      'draftjs', 'txt', 'docx', 'txtspeakertimecodes', 'digitalpaperedit',
+      'srt', 'premiereTTML', 'ttml', 'itt', 'csv', 'vtt', 'json-captions', 'pre-segment-txt'
+    ];
+    
     let contentFormat = "draftjs";
     if (this.props.autoSaveContentType) {
       contentFormat = this.props.autoSaveContentType;
-    } else if (this.props.sttJsonType) {
+    } else if (this.props.sttJsonType && validExportFormats.includes(this.props.sttJsonType)) {
+      // Only use sttJsonType if it's actually a valid export format
       contentFormat = this.props.sttJsonType;
     }
 

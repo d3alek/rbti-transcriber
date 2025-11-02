@@ -57,17 +57,24 @@ async def get_transcript(
         print(f"✅ API: Transcript loaded successfully, keys: {list(transcript_data.keys())}")
         print(f"✅ API: Transcript data size: {len(json.dumps(transcript_data))} chars")
         
-        # Support both formats:
-        # 1. Cache format: { "result": CorrectedDeepgramResponse }
-        # 2. Direct format: CorrectedDeepgramResponse (from CLI)
-        if 'result' in transcript_data:
-            print(f"✅ API: Returning result portion, keys: {list(transcript_data['result'].keys())}")
+        # Support multiple formats for backward compatibility:
+        # 1. New format: RichWordsTranscript (has 'words' at top-level)
+        # 2. Old cache format: { "result": { "raw_response": ... } }
+        # 3. Old direct format: { "text": ..., "raw_response": ... }
+        if 'words' in transcript_data and isinstance(transcript_data.get('words'), list):
+            # New RichWordsTranscript format
+            print(f"✅ API: Returning RichWordsTranscript format, words count: {len(transcript_data['words'])}")
+            return transcript_data
+        elif 'result' in transcript_data:
+            # Old cache format
+            print(f"✅ API: Returning result portion from old cache format, keys: {list(transcript_data['result'].keys())}")
             return transcript_data['result']
         elif 'text' in transcript_data and 'raw_response' in transcript_data:
-            print(f"✅ API: Returning direct CorrectedDeepgramResponse format")
+            # Old direct format
+            print(f"✅ API: Returning old CorrectedDeepgramResponse format")
             return transcript_data
         else:
-            print(f"❌ API: Invalid transcript format - expected 'result' key or DirectDeepgramResponse structure")
+            print(f"❌ API: Invalid transcript format - expected RichWordsTranscript or old format")
             raise HTTPException(status_code=500, detail="Invalid transcript format")
         
         return transcript_data

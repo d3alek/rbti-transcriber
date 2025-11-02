@@ -1,12 +1,13 @@
 /**
  * DeepgramTransformer Service
  * 
- * Handles bidirectional transformation between CorrectedDeepgramResponse and ReactTranscriptEditorData formats.
+ * Handles bidirectional transformation between RichWordsTranscript and ReactTranscriptEditorData formats.
  * Preserves word-level corrections and speaker name mappings throughout the transformation process.
  */
 
 import { 
-  CorrectedDeepgramResponse, 
+  RichWordsTranscript,
+  CorrectedDeepgramResponse, // Legacy alias
   CorrectedDeepgramWord,
   // DeepgramWord // TODO: Use when needed
 } from '../types/deepgram';
@@ -16,21 +17,21 @@ import {
 
 export class DeepgramTransformer {
   /**
-   * Transforms CorrectedDeepgramResponse to ReactTranscriptEditorData format
-   * Preserves word-level corrections and speaker name mappings
+   * Normalizes response to RichWordsTranscript format
+   * Converts old format (with raw_response) to new format (words at top-level with paragraph markers)
+   * Handles backward compatibility with old format
    */
-  static transformToReactTranscriptEditor(response: CorrectedDeepgramResponse): ReactTranscriptEditorData {
-    console.log('🔄 DeepgramTransformer: Input response structure:', {
-      hasRawResponse: !!response.raw_response,
-      hasText: !!response.text,
-      hasSpeakers: !!response.speakers,
-      responseKeys: Object.keys(response)
-    });
+  static normalizeToSimplifiedFormat(response: any): RichWordsTranscript {
+    // Check if already in new format (has words at top-level)
+    if (response.words && Array.isArray(response.words)) {
+      return response as RichWordsTranscript;
+    }
 
-    const rawResponse = response.raw_response;
+    // Old format: extract from raw_response
+    const rawResponse = (response as any).raw_response;
     
     if (!rawResponse || !rawResponse.results || !rawResponse.results.channels) {
-      throw new Error('Invalid Deepgram response structure');
+      throw new Error('Invalid Deepgram response structure - missing raw_response');
     }
 
     const channel = rawResponse.results.channels[0];
@@ -40,10 +41,66 @@ export class DeepgramTransformer {
       throw new Error('No words found in Deepgram response');
     }
 
+    // Extract words
+    const words = alternative.words.map((word: any) => ({
+      ...word,
+      // Preserve any correction metadata
+      corrected: word.corrected,
+      original_word: word.original_word,
+      original_punct: word.original_punct,
+      paragraph_start: false,  // Will be set below
+      paragraph_end: false     // Will be set below
+    }));
+
+    // Enrich words with paragraph markers from Deepgram paragraphs
+    const paragraphs = alternative.paragraphs?.paragraphs || [];
+    if (paragraphs.length > 0) {
+      paragraphs.forEach((paragraph: any) => {
+        const paraStart = paragraph.start;
+        const paraEnd = paragraph.end;
+
+        // Find words that match paragraph start/end times (within 0.1s tolerance)
+        for (let i = 0; i < words.length; i++) {
+          const word = words[i];
+          
+          // Mark paragraph start - word start time matches paragraph start
+          if (Math.abs(word.start - paraStart) < 0.1) {
+            word.paragraph_start = true;
+          }
+          
+          // Mark paragraph end - word end time matches paragraph end
+          if (Math.abs(word.end - paraEnd) < 0.1) {
+            word.paragraph_end = true;
+          }
+        }
+      });
+    }
+
+    // Return simplified format
+    return {
+      words: words as CorrectedDeepgramWord[],
+      corrections: (response as any).corrections
+    };
+  }
+
+  /**
+   * Transforms RichWordsTranscript to ReactTranscriptEditorData format
+   * Preserves word-level corrections and speaker name mappings
+   */
+  static transformToReactTranscriptEditor(response: RichWordsTranscript | any): ReactTranscriptEditorData {
+    // Normalize to new format first (handles backward compatibility)
+    const normalizedResponse = this.normalizeToSimplifiedFormat(response);
+    
+    console.log('🔄 DeepgramTransformer: Normalized response structure:', {
+      wordsCount: normalizedResponse.words.length,
+      hasCorrections: !!normalizedResponse.corrections,
+      paragraphStarts: normalizedResponse.words.filter(w => w.paragraph_start).length,
+      paragraphEnds: normalizedResponse.words.filter(w => w.paragraph_end).length
+    });
+
     // Transform words to the exact format expected by react-transcript-editor
-    // This matches the format from deepgram-demo.html
-    // Preserve correction metadata if present
-    const words = alternative.words.map((word, index) => {
+    // Preserve correction metadata and paragraph markers
+    const transformedWords = normalizedResponse.words.map((word, index) => {
       const correctedWord = word as CorrectedDeepgramWord;
       return {
         start: correctedWord.start,
@@ -55,82 +112,90 @@ export class DeepgramTransformer {
         speaker: correctedWord.speaker !== undefined ? correctedWord.speaker : 0,
         corrected: correctedWord.corrected,
         original_word: correctedWord.original_word,
-        original_punct: correctedWord.original_punct
+        original_punct: correctedWord.original_punct,
+        paragraph_start: correctedWord.paragraph_start,
+        paragraph_end: correctedWord.paragraph_end
       };
     });
 
-    // Create speaker segments if available
-    // Apply custom speaker names from corrections if they exist
-    let speakerSegments = response.speakers || [];
-    
-    // If we have custom speaker names in corrections, apply them to the speakers array
-    if (response.corrections?.speaker_names && speakerSegments.length > 0) {
-      const speakerNamesMap = response.corrections.speaker_names;
-      
-      speakerSegments = speakerSegments.map(speaker => {
-        // Extract speaker index from the speaker label (e.g., "Speaker 0" -> 0)
-        // If it's already a custom name, try to find it by matching words
-        let speakerIndex: number | null = null;
-        
-        // Try to parse "Speaker X" format
-        const match = speaker.speaker.match(/^Speaker (\d+)$/);
-        if (match) {
-          speakerIndex = parseInt(match[1]);
-        } else {
-          // If it's already a custom name, find the speaker index by looking at words in this segment
-          const wordsInSegment = alternative.words.filter(
-            (w: any) => w.start >= speaker.start_time && w.end <= speaker.end_time
-          );
-          if (wordsInSegment.length > 0) {
-            speakerIndex = wordsInSegment[0].speaker;
-          }
+    // Generate speaker segments from words grouped by paragraphs
+    // Use paragraph markers to create segments that match paragraph boundaries
+    const speakerSegments: any[] = [];
+    let currentSegment: any = null;
+    const speakerNamesMap = normalizedResponse.corrections?.speaker_names || {};
+
+    transformedWords.forEach((word) => {
+      // Start a new segment at paragraph start
+      if (word.paragraph_start || !currentSegment) {
+        // Save previous segment if exists
+        if (currentSegment) {
+          speakerSegments.push(currentSegment);
         }
         
-        // Apply custom name if available
-        if (speakerIndex !== null && speakerNamesMap[speakerIndex]) {
-          return {
-            ...speaker,
-            speaker: speakerNamesMap[speakerIndex]
-          };
-        }
+        // Get speaker name (use custom name if available)
+        const speakerIndex = word.speaker;
+        const speakerName = speakerNamesMap[speakerIndex] || `Speaker ${speakerIndex}`;
         
-        return speaker;
-      });
+        // Start new segment
+        currentSegment = {
+          speaker: speakerName,
+          start_time: word.start,
+          end_time: word.end,
+          text: word.punct,
+          confidence: word.confidence
+        };
+      } else {
+        // Continue current segment
+        currentSegment.end_time = word.end;
+        currentSegment.text += ' ' + word.punct;
+        // Update confidence (could average, but using last for simplicity)
+        currentSegment.confidence = word.confidence;
+      }
       
-      console.log('🎤 Applied custom speaker names from corrections:', {
-        speakerNamesMap,
-        updatedSpeakers: speakerSegments.slice(0, 3).map(s => s.speaker)
-      });
+      // End segment at paragraph end
+      if (word.paragraph_end && currentSegment) {
+        speakerSegments.push(currentSegment);
+        currentSegment = null;
+      }
+    });
+
+    // Add final segment if exists
+    if (currentSegment) {
+      speakerSegments.push(currentSegment);
     }
 
-    console.log('📊 Deepgram response structure check:', {
-      hasResponseSpeakers: !!response.speakers,
-      speakersCount: speakerSegments.length || 0,
-      firstSpeaker: speakerSegments?.[0] || null,
-      hasCustomNames: !!response.corrections?.speaker_names
+    console.log('📊 Generated speaker segments from words:', {
+      segmentsCount: speakerSegments.length,
+      firstSpeaker: speakerSegments[0]?.speaker || null,
+      hasCustomNames: !!normalizedResponse.corrections?.speaker_names
     });
 
-    // Build segmentation for bbckaldi adapter to handle speaker grouping
-    // bbckaldi expects { words: [...], segmentation: { segments: [...] } } format
-    // Use Deepgram utterance-level segments for best granularity
-    const segmentation = this.buildSegmentationFromDeepgramData(alternative, words, response);
-    console.log('🎯 Built segmentation:', {
-      hasSegmentation: !!segmentation,
-      segmentsCount: segmentation?.segments?.length || 0,
-      speakersCount: segmentation?.speakers?.length || 0
-    });
+    // Build segmentation for bbckaldi adapter
+    // Use paragraph-based segmentation
+    const segmentation = this.buildSegmentationFromWords(transformedWords, normalizedResponse);
+
+    // Reconstruct transcript from words
+    const transcript = transformedWords.map(w => w.punct).join(' ');
+
+    // Calculate metadata from words
+    const duration = transformedWords.length > 0 
+      ? transformedWords[transformedWords.length - 1].end 
+      : 0;
+    const avgConfidence = transformedWords.length > 0
+      ? transformedWords.reduce((sum, w) => sum + w.confidence, 0) / transformedWords.length
+      : 0;
 
     const processedData = {
-      words: words,
+      words: transformedWords,
       speakers: speakerSegments,
       segmentation: segmentation,
-      transcript: alternative.transcript || response.text,
+      transcript: transcript,
       metadata: {
-        duration: rawResponse.metadata.duration,
-        confidence: response.confidence,
+        duration: duration,
+        confidence: avgConfidence,
         service: 'deepgram'
       },
-      speaker_names: response.corrections?.speaker_names
+      speaker_names: normalizedResponse.corrections?.speaker_names
     };
 
     // Log the processed data we're sending to deepgram adapter
@@ -145,10 +210,64 @@ export class DeepgramTransformer {
   }
 
   /**
-   * Build segmentation structure from Deepgram data for bbckaldi adapter
-   * Uses Deepgram utterance-level speaker segments when available (better granularity),
-   * falls back to paragraphs/sentences, then to simple speaker grouping
+   * Build segmentation from words with paragraph markers
+   * Creates segmentation structure for bbckaldi adapter
    */
+  static buildSegmentationFromWords(words: any[], transcript: RichWordsTranscript): any {
+    const segments: any[] = [];
+    let currentSegment: any = null;
+
+    words.forEach((word, index) => {
+      // Start new segment at paragraph start
+      if (word.paragraph_start || !currentSegment) {
+        if (currentSegment) {
+          segments.push(currentSegment);
+        }
+        
+        const speakerIndex = word.speaker;
+        const speakerNamesMap = transcript.corrections?.speaker_names || {};
+        const speakerName = speakerNamesMap[speakerIndex] || `Speaker ${speakerIndex}`;
+        
+        currentSegment = {
+          speaker: speakerName,
+          start: word.start,
+          end: word.end,
+          words: [index],
+          text: word.punct
+        };
+      } else {
+        // Continue current segment
+        currentSegment.words.push(index);
+        currentSegment.end = word.end;
+        currentSegment.text += ' ' + word.punct;
+      }
+      
+      // End segment at paragraph end
+      if (word.paragraph_end && currentSegment) {
+        segments.push(currentSegment);
+        currentSegment = null;
+      }
+    });
+
+    // Add final segment
+    if (currentSegment) {
+      segments.push(currentSegment);
+    }
+
+    // Build speakers list
+    const speakerMap = new Map<number, string>();
+    words.forEach(word => {
+      const speakerIndex = word.speaker;
+      const speakerNamesMap = transcript.corrections?.speaker_names || {};
+      speakerMap.set(speakerIndex, speakerNamesMap[speakerIndex] || `Speaker ${speakerIndex}`);
+    });
+
+    return {
+      speakers: Array.from(speakerMap.values()),
+      segments: segments
+    };
+  }
+
   static buildSegmentationFromDeepgramData(alternative: any, words: any[], deepgramResponse: any): any {
     // Use utterance-level speaker segments from result.speakers if available (best granularity)
     if (deepgramResponse && deepgramResponse.speakers && deepgramResponse.speakers.length > 0) {
@@ -333,15 +452,15 @@ export class DeepgramTransformer {
   }
 
   /**
-   * Merges corrections from ReactTranscriptEditorData back into CorrectedDeepgramResponse
-   * Embeds word-level corrections and speaker name mappings in the Deepgram structure
+   * Merges corrections from ReactTranscriptEditorData back into RichWordsTranscript
+   * Updates word-level corrections and speaker name mappings
    */
   static mergeCorrectionsIntoDeepgramResponse(
-    original: CorrectedDeepgramResponse, 
+    original: RichWordsTranscript, 
     edited: ReactTranscriptEditorData
-  ): CorrectedDeepgramResponse {
+  ): RichWordsTranscript {
     // Create a deep copy of the original response
-    const corrected: CorrectedDeepgramResponse = JSON.parse(JSON.stringify(original));
+    const corrected: RichWordsTranscript = JSON.parse(JSON.stringify(original));
     
     // Filter and merge speaker names - only save custom names (not "Speaker X" format)
     let mergedSpeakerNames = { ...(original.corrections?.speaker_names || {}) };
@@ -369,17 +488,13 @@ export class DeepgramTransformer {
       speaker_names: finalSpeakerNames
     };
 
-    // Update words in the raw response with corrections
-    const channel = corrected.raw_response.results.channels[0];
-    const alternative = channel.alternatives[0];
-    
-    // Merge word-level corrections
+    // Merge word-level corrections directly into words array
     let correctionCount = 0;
-    alternative.words = alternative.words.map((originalWord, index) => {
+    corrected.words = corrected.words.map((originalWord, index) => {
       const editedWord = edited.words[index];
       if (!editedWord) return originalWord;
 
-      const correctedWord = originalWord as CorrectedDeepgramWord;
+      const correctedWord = { ...originalWord } as CorrectedDeepgramWord;
       
       // Check if word was modified
       const wordChanged = editedWord.word !== originalWord.word;
@@ -410,62 +525,8 @@ export class DeepgramTransformer {
       return correctedWord;
     });
     
-    console.log(`📊 Merge summary: ${correctionCount} words corrected out of ${alternative.words.length} total`);
-
-    // Update the main transcript with corrected text
-    const correctedTranscript = this.reconstructTranscriptFromWords(alternative.words as CorrectedDeepgramWord[]);
-    alternative.transcript = correctedTranscript;
-    corrected.text = correctedTranscript;
-
-    // Update speaker segments with custom names from corrections (not edited.speaker_names which may include defaults)
-    if (finalSpeakerNames) {
-      // Build a map from speaker index to custom name
-      const speakerIndexToName: { [index: number]: string } = {};
-      for (const [indexStr, name] of Object.entries(finalSpeakerNames)) {
-        speakerIndexToName[parseInt(indexStr)] = name;
-      }
-      
-      // Update speakers array - match by finding which speaker index each segment represents
-      // We determine speaker index by finding words in the same time range
-      corrected.speakers = corrected.speakers.map(speaker => {
-        // Find words that fall within this speaker segment's time range
-        const wordsInSegment = alternative.words.filter(
-          (w: any) => w.start >= speaker.start_time && w.end <= speaker.end_time
-        );
-        
-        // Get speaker index from the first word in the segment
-        const speakerIndex = wordsInSegment.length > 0 ? wordsInSegment[0].speaker : null;
-        
-        if (speakerIndex !== null && speakerIndexToName[speakerIndex]) {
-          // Use the custom name from corrections
-          return {
-            ...speaker,
-            speaker: speakerIndexToName[speakerIndex]
-          };
-        } else {
-          // No custom name found, revert to default "Speaker X" format
-          // This handles the case where user changed a custom name back to default
-          const match = speaker.speaker.match(/^Speaker (\d+)$/);
-          if (!match && speakerIndex !== null) {
-            // If it was a custom name but no longer in corrections, revert to default
-            return {
-              ...speaker,
-              speaker: `Speaker ${speakerIndex}`
-            };
-          }
-          // Keep original (either already default or we can't determine index)
-          return speaker;
-        }
-      });
-      
-      console.log('🎤 Updated speaker names:', {
-        customNamesMap: finalSpeakerNames,
-        updatedSpeakers: corrected.speakers.slice(0, 5).map(s => ({ 
-          speaker: s.speaker, 
-          start: s.start_time 
-        }))
-      });
-    }
+    console.log(`📊 Merge summary: ${correctionCount} words corrected out of ${corrected.words.length} total`);
+    console.log('🎤 Updated speaker names in corrections:', finalSpeakerNames);
 
     return corrected;
   }
@@ -506,9 +567,9 @@ export class DeepgramTransformer {
    * Used for testing and validation purposes
    */
   static validateRoundTripTransformation(
-    original: CorrectedDeepgramResponse,
+    original: RichWordsTranscript,
     transformed: ReactTranscriptEditorData,
-    roundTrip: CorrectedDeepgramResponse
+    roundTrip: RichWordsTranscript
   ): { isValid: boolean; errors: string[] } {
     const errors: string[] = [];
     
@@ -518,45 +579,33 @@ export class DeepgramTransformer {
     }
 
     // Check word count consistency
-    const originalWords = original.raw_response.results.channels[0].alternatives[0].words;
-    const roundTripWords = roundTrip.raw_response.results.channels[0].alternatives[0].words;
-    
-    if (originalWords.length !== roundTripWords.length) {
-      errors.push(`Word count mismatch: original ${originalWords.length}, round-trip ${roundTripWords.length}`);
+    if (original.words.length !== roundTrip.words.length) {
+      errors.push(`Word count mismatch: original ${original.words.length}, round-trip ${roundTrip.words.length}`);
     }
 
     // Check word-level data preservation
-    for (let i = 0; i < Math.min(originalWords.length, roundTripWords.length); i++) {
-      const orig = originalWords[i];
-      const roundTrip = roundTripWords[i];
+    for (let i = 0; i < Math.min(original.words.length, roundTrip.words.length); i++) {
+      const orig = original.words[i];
+      const roundTripWord = roundTrip.words[i];
       
       // Timing should be preserved
-      if (Math.abs(orig.start - roundTrip.start) > 0.001) {
-        errors.push(`Word ${i} start time mismatch: ${orig.start} vs ${roundTrip.start}`);
+      if (Math.abs(orig.start - roundTripWord.start) > 0.001) {
+        errors.push(`Word ${i} start time mismatch: ${orig.start} vs ${roundTripWord.start}`);
       }
       
-      if (Math.abs(orig.end - roundTrip.end) > 0.001) {
-        errors.push(`Word ${i} end time mismatch: ${orig.end} vs ${roundTrip.end}`);
+      if (Math.abs(orig.end - roundTripWord.end) > 0.001) {
+        errors.push(`Word ${i} end time mismatch: ${orig.end} vs ${roundTripWord.end}`);
       }
       
       // Speaker assignment should be preserved
-      if (orig.speaker !== roundTrip.speaker) {
-        errors.push(`Word ${i} speaker mismatch: ${orig.speaker} vs ${roundTrip.speaker}`);
+      if (orig.speaker !== roundTripWord.speaker) {
+        errors.push(`Word ${i} speaker mismatch: ${orig.speaker} vs ${roundTripWord.speaker}`);
       }
       
       // Confidence should be preserved
-      if (Math.abs(orig.confidence - roundTrip.confidence) > 0.001) {
-        errors.push(`Word ${i} confidence mismatch: ${orig.confidence} vs ${roundTrip.confidence}`);
+      if (Math.abs((orig.confidence || 0) - (roundTripWord.confidence || 0)) > 0.001) {
+        errors.push(`Word ${i} confidence mismatch: ${orig.confidence} vs ${roundTripWord.confidence}`);
       }
-    }
-
-    // Check metadata preservation
-    if (Math.abs(original.audio_duration - roundTrip.audio_duration) > 0.001) {
-      errors.push(`Audio duration mismatch: ${original.audio_duration} vs ${roundTrip.audio_duration}`);
-    }
-
-    if (Math.abs(original.confidence - roundTrip.confidence) > 0.001) {
-      errors.push(`Overall confidence mismatch: ${original.confidence} vs ${roundTrip.confidence}`);
     }
 
     return {

@@ -98,9 +98,15 @@ export interface DeepgramCacheFile {
 }
 
 /**
- * Extended Deepgram response with manual corrections
+ * RichWordsTranscript - Simplified transcript format with word-level data
+ * Words are at top-level with paragraph boundaries marked on words themselves
+ * This is the single source of truth - paragraphs are reconstructed from word-level markers
  */
-export interface CorrectedDeepgramResponse extends DeepgramResponse {
+export interface RichWordsTranscript {
+  // Words with paragraph boundaries marked
+  words: CorrectedDeepgramWord[];
+  
+  // Corrections metadata (speaker names, etc.)
   corrections?: {
     version: number;
     timestamp: string;
@@ -108,9 +114,10 @@ export interface CorrectedDeepgramResponse extends DeepgramResponse {
       [speakerIndex: number]: string; // Maps "0" -> "Dr. Smith", "1" -> "Student A", etc.
     };
   };
-  // Note: Word-level corrections are embedded directly in raw_response.results.channels[0].alternatives[0].words
-  // Each word can have additional properties: corrected?: boolean, original_word?: string, original_punct?: string
 }
+
+// Legacy alias for backward compatibility during migration
+export type CorrectedDeepgramResponse = RichWordsTranscript;
 
 /**
  * Extended word interface for corrected transcripts
@@ -119,4 +126,6 @@ export interface CorrectedDeepgramWord extends DeepgramWord {
   corrected?: boolean;
   original_word?: string;
   original_punct?: string;
+  paragraph_start?: boolean;  // True if this word starts a paragraph (from Deepgram paragraphs)
+  paragraph_end?: boolean;    // True if this word ends a paragraph (from Deepgram paragraphs)
 }

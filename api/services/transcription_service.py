@@ -102,9 +102,9 @@ class TranscriptionService:
             result = await client.transcribe_file(file_to_transcribe, transcription_config)
             processing_time = time.time() - start_time
             
-            # Create the complete response structure matching the cache format
+            # Create RichWordsTranscript format and save raw response to cache
             corrected_deepgram_response = self._create_corrected_deepgram_response(
-                audio_file_path, result, transcription_config, processing_time
+                audio_file_path, result, transcription_config, processing_time, output_manager
             )
             
             # Save transcription to correct location
@@ -113,10 +113,12 @@ class TranscriptionService:
                 json.dump(corrected_deepgram_response, f, indent=2, ensure_ascii=False)
             
             # Return API result
+            # Note: result field is TranscriptionData, but we save transcript separately
+            # so we return None and provide cache_file path instead
             return APITranscriptionResult(
                 success=True,
                 audio_file=str(audio_file_path),
-                result=result,
+                result=None,  # Transcript is saved separately, accessible via cache_file
                 processing_time=processing_time,
                 cache_file=str(transcription_path),
                 compressed_audio=str(compressed_audio_path) if compressed_audio_path else None
@@ -157,15 +159,29 @@ class TranscriptionService:
                         transcription_data = json.load(f)
                     
                     # Check if this is a valid transcription result
-                    if 'result' in transcription_data and transcription_data['result'].get('text'):
+                    # Support both formats:
+                    # 1. New format: RichWordsTranscript (has 'words' at top-level)
+                    # 2. Old format: { "result": { "text": "..." } }
+                    is_new_format = 'words' in transcription_data and isinstance(transcription_data.get('words'), list)
+                    is_old_format = 'result' in transcription_data and transcription_data['result'].get('text')
+                    
+                    if is_new_format or is_old_format:
                         status_info['status'] = 'completed'
-                        status_info['last_attempt'] = transcription_data.get('timestamp')
-                        status_info['processing_time'] = transcription_data.get('result', {}).get('processing_time')
+                        # Try to get timestamp from various possible locations
+                        status_info['last_attempt'] = (
+                            transcription_data.get('_metadata', {}).get('timestamp') or
+                            transcription_data.get('timestamp') or
+                            transcription_data.get('result', {}).get('timestamp')
+                        )
+                        status_info['processing_time'] = (
+                            transcription_data.get('_metadata', {}).get('processing_time') or
+                            transcription_data.get('result', {}).get('processing_time')
+                        )
                     else:
                         status_info['status'] = 'failed'
-                        status_info['error'] = 'Invalid transcription data'
+                        status_info['error'] = 'Invalid transcription data: missing words or result.text'
                         
-                except (json.JSONDecodeError, KeyError) as e:
+                except (json.JSONDecodeError, KeyError, ValueError) as e:
                     status_info['status'] = 'failed'
                     status_info['error'] = f'Corrupted transcription file: {str(e)}'
             
@@ -247,60 +263,140 @@ class TranscriptionService:
             print(f"Error saving corrected transcription: {e}")
             return False
     
+    def _convert_to_rich_words_transcript(
+        self,
+        raw_response: Dict[str, Any]
+    ) -> Dict[str, Any]:
+        """
+        Convert raw Deepgram response to RichWordsTranscript format.
+        Extracts words to top-level and enriches them with paragraph markers.
+        """
+        # Extract words from raw Deepgram response
+        results = raw_response.get("results", {})
+        channels = results.get("channels", [])
+        
+        if not channels:
+            raise ValueError("No channels found in Deepgram response")
+        
+        channel = channels[0]
+        alternatives = channel.get("alternatives", [])
+        
+        if not alternatives:
+            raise ValueError("No alternatives found in Deepgram response")
+        
+        alternative = alternatives[0]
+        words = alternative.get("words", [])
+        
+        if not words:
+            raise ValueError("No words found in Deepgram response")
+        
+        # Extract paragraphs to mark word boundaries
+        paragraphs = alternative.get("paragraphs", {}).get("paragraphs", [])
+        
+        # Initialize paragraph markers
+        enriched_words = []
+        for word in words:
+            enriched_word = {
+                **word,
+                "paragraph_start": False,
+                "paragraph_end": False
+            }
+            enriched_words.append(enriched_word)
+        
+        # Mark paragraph boundaries
+        if paragraphs:
+            for paragraph in paragraphs:
+                para_start = paragraph.get("start")
+                para_end = paragraph.get("end")
+                
+                # Find words that match paragraph boundaries (within 0.1s tolerance)
+                for word in enriched_words:
+                    # Mark paragraph start
+                    if para_start is not None and abs(word.get("start", 0) - para_start) < 0.1:
+                        word["paragraph_start"] = True
+                    
+                    # Mark paragraph end
+                    if para_end is not None and abs(word.get("end", 0) - para_end) < 0.1:
+                        word["paragraph_end"] = True
+        
+        # Return RichWordsTranscript format
+        return {
+            "words": enriched_words,
+            "corrections": {
+                "version": 1,
+                "timestamp": datetime.now().isoformat(),
+                "speaker_names": {}
+            }
+        }
+    
+    def _save_raw_response_cache(
+        self,
+        audio_file_path: Path,
+        raw_response: Dict[str, Any],
+        output_manager
+    ) -> Path:
+        """
+        Save raw Deepgram response to cache directory for archival purposes.
+        Returns the path to the cache file.
+        """
+        # Create cache directory for raw responses (inside transcriptions directory)
+        cache_dir = output_manager.transcriptions_dir / "cache"
+        cache_dir.mkdir(parents=True, exist_ok=True)
+        
+        # Generate cache filename
+        cache_filename = f"{audio_file_path.stem}_raw.json"
+        cache_path = cache_dir / cache_filename
+        
+        # Save raw response
+        cache_data = {
+            "audio_file": str(audio_file_path),
+            "timestamp": datetime.now().isoformat(),
+            "raw_response": raw_response
+        }
+        
+        with open(cache_path, 'w', encoding='utf-8') as f:
+            json.dump(cache_data, f, indent=2, ensure_ascii=False)
+        
+        return cache_path
+    
     def _create_corrected_deepgram_response(
         self, 
         audio_file_path: Path, 
         transcription_result, 
         config: TranscriptionConfig,
-        processing_time: float
+        processing_time: float,
+        output_manager
     ) -> Dict[str, Any]:
         """
-        Create initial CorrectedDeepgramResponse from raw Deepgram response.
-        This establishes the base structure that can be extended with corrections.
+        Create RichWordsTranscript format from raw Deepgram response.
+        Saves raw response separately in cache directory.
         """
-        # Convert raw Deepgram response to our structured format
+        # Get raw response
         raw_response = transcription_result.raw_response
         
-        # Create the corrected response structure
-        corrected_response = {
+        # Convert to RichWordsTranscript format
+        rich_words_transcript = self._convert_to_rich_words_transcript(raw_response)
+        
+        # Save raw response to cache
+        cache_path = self._save_raw_response_cache(audio_file_path, raw_response, output_manager)
+        
+        # Add metadata (optional, for tracking) - prefix with _ to indicate it's metadata, not part of RichWordsTranscript
+        # Frontend will ignore fields prefixed with _ when processing
+        rich_words_transcript["_metadata"] = {
             "audio_file": str(audio_file_path),
             "service": "deepgram",
+            "timestamp": datetime.now().isoformat(),
+            "raw_response_cache": str(cache_path),
             "config": {
                 "speaker_labels": config.speaker_labels,
-                "custom_vocabulary": [],
                 "punctuate": config.punctuate,
                 "format_text": config.format_text,
                 "language_code": config.language_code,
                 "max_speakers": config.max_speakers
-            },
-            "timestamp": datetime.now().isoformat(),
-            "result": {
-                "text": transcription_result.text,
-                "speakers": [
-                    {
-                        "speaker": segment.speaker,
-                        "start_time": segment.start_time,
-                        "end_time": segment.end_time,
-                        "text": segment.text,
-                        "confidence": segment.confidence
-                    }
-                    for segment in transcription_result.speakers
-                ],
-                "confidence": transcription_result.confidence,
-                "audio_duration": transcription_result.audio_duration,
-                "processing_time": processing_time,
-                "raw_response": raw_response
-            },
-            # Initialize corrections structure (empty initially)
-            "corrections": {
-                "version": 1,
-                "timestamp": datetime.now().isoformat(),
-                "speaker_names": {},  # Will store custom speaker name mappings
-                "word_corrections": []  # Will store individual word corrections
             }
         }
         
-        return corrected_response
+        return rich_words_transcript
     
     def _build_transcription_config(self) -> TranscriptionConfig:
         """Build transcription configuration from config manager."""

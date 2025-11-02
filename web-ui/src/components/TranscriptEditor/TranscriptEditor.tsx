@@ -4,7 +4,7 @@ import { Alert } from '@material-ui/lab';
 import { ArrowBack, Save } from '@material-ui/icons';
 import TranscriptEditorComponent from '@bbc/react-transcript-editor';
 import { AudioFileInfo } from '../../types/api';
-import { CorrectedDeepgramResponse } from '../../types/deepgram';
+import { RichWordsTranscript } from '../../types/deepgram';
 import { ReactTranscriptEditorData } from '../../types/transcriptEditor';
 import { DeepgramTransformer } from '../../services/DeepgramTransformer';
 import { APIClient } from '../../services/APIClient';
@@ -20,7 +20,7 @@ export const TranscriptEditor: React.FC<TranscriptEditorProps> = ({
   onBack,
   apiClient,
 }) => {
-  const [originalData, setOriginalData] = useState<CorrectedDeepgramResponse | null>(null);
+  const [originalData, setOriginalData] = useState<RichWordsTranscript | null>(null);
   const [transcriptData, setTranscriptData] = useState<ReactTranscriptEditorData | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isSaving, setIsSaving] = useState<boolean>(false);
@@ -57,7 +57,7 @@ export const TranscriptEditor: React.FC<TranscriptEditorProps> = ({
           throw new Error(response.error || 'Failed to load transcript');
         }
 
-        const correctedResponse = response.data as CorrectedDeepgramResponse;
+        const correctedResponse = response.data as RichWordsTranscript;
         setOriginalData(correctedResponse);
 
         // Transform to ReactTranscriptEditorData format
@@ -99,12 +99,23 @@ export const TranscriptEditor: React.FC<TranscriptEditorProps> = ({
     console.log('✅ extractWordsFromDraftJS: found blocks array', { blocksCount: blocks.length });
     
     // Flatten words from all blocks
+    // Also track which words are at paragraph boundaries (first word in block = paragraph_start, last word = paragraph_end)
     const words: any[] = [];
     const speakerNamesMap: { [speakerIndex: number]: string } = {};
     
     blocks.forEach((block: any, index: number) => {
       if (block.data && block.data.words && Array.isArray(block.data.words)) {
-        words.push(...block.data.words);
+        // Mark first word of block as paragraph_start, last word as paragraph_end
+        const blockWords = block.data.words.map((word: any, wordIndex: number) => {
+          const isFirstInBlock = wordIndex === 0;
+          const isLastInBlock = wordIndex === block.data.words.length - 1;
+          return {
+            ...word,
+            paragraph_start: isFirstInBlock,
+            paragraph_end: isLastInBlock
+          };
+        });
+        words.push(...blockWords);
         if (index === 0) {
           console.log('📝 First block structure:', {
             hasWords: !!block.data.words,
@@ -271,23 +282,24 @@ export const TranscriptEditor: React.FC<TranscriptEditorProps> = ({
       }
 
       console.log('💾 Before merge:', {
-        originalWordsCount: originalData.raw_response?.results?.channels?.[0]?.alternatives?.[0]?.words?.length,
+        originalWordsCount: originalData.words?.length,
         editedWordsCount: updatedTranscriptData.words?.length,
-        sampleOriginalWord: originalData.raw_response?.results?.channels?.[0]?.alternatives?.[0]?.words?.[0],
+        sampleOriginalWord: originalData.words?.[0],
         sampleEditedWord: updatedTranscriptData.words?.[0]
       });
 
-      // Merge corrections back into Deepgram response format
+      // Merge corrections back into RichWordsTranscript format
       const correctedResponse = DeepgramTransformer.mergeCorrectionsIntoDeepgramResponse(
         originalData,
         updatedTranscriptData
       );
 
       console.log('✅ After merge:', {
-        correctedWordsCount: correctedResponse.raw_response?.results?.channels?.[0]?.alternatives?.[0]?.words?.length,
+        correctedWordsCount: correctedResponse.words?.length,
         corrections: correctedResponse.corrections,
         speakerNames: correctedResponse.corrections?.speaker_names,
-        speakersSample: correctedResponse.speakers?.slice(0, 3).map(s => s.speaker)
+        paragraphStarts: correctedResponse.words?.filter(w => w.paragraph_start).length,
+        paragraphEnds: correctedResponse.words?.filter(w => w.paragraph_end).length
       });
 
       // Save via API

@@ -174,7 +174,15 @@ class TimedTextEditor extends React.Component {
   }
 
   getEditorContent(exportFormat, title) {
-    const format = exportFormat || 'draftjs';
+    // Validate export format - default to 'draftjs' if invalid or undefined
+    const validExportFormats = [
+      'draftjs', 'txt', 'docx', 'txtspeakertimecodes', 'digitalpaperedit',
+      'srt', 'premiereTTML', 'ttml', 'itt', 'csv', 'vtt', 'json-captions', 'pre-segment-txt'
+    ];
+    const format = (exportFormat && validExportFormats.includes(exportFormat)) 
+      ? exportFormat 
+      : 'draftjs';
+    
     const tmpEditorState = this.updateTimestampsForEditorState();
 
     return exportAdapter(
@@ -189,14 +197,42 @@ class TimedTextEditor extends React.Component {
   handleDoubleClick = event => {
     // nativeEvent --> React giving you the DOM event
     let element = event.nativeEvent.target;
+    const clickedText = (element.textContent && element.textContent.trim()) || '';
+    console.log('🔍 [Word Click Debug] Double-clicked:', {
+      clickedElement: element.tagName,
+      clickedText: clickedText,
+      clickedClassName: element.className
+    });
+    
     // find the parent in Word that contains span with time-code start attribute
+    let steps = 0;
     while (!element.hasAttribute("data-start") && element.parentElement) {
       element = element.parentElement;
+      steps++;
+      if (steps > 5) {
+        console.warn('⚠️ [Word Click Debug] Walked up more than 5 levels, stopping');
+        break;
+      }
     }
 
     if (element.hasAttribute("data-start")) {
       const t = parseFloat(element.getAttribute("data-start"));
+      const wordSpanText = (element.textContent && element.textContent.trim()) || '';
+      const dataStart = element.getAttribute("data-start");
+      const dataEnd = element.getAttribute("data-end");
+      
+      console.log('✅ [Word Click Debug] Found word timing:', {
+        clickedText: clickedText,
+        wordSpanText: wordSpanText,
+        dataStart: dataStart,
+        dataEnd: dataEnd,
+        timeUsed: t,
+        stepsUp: steps
+      });
+      
       this.props.onWordClick(t);
+    } else {
+      console.warn('❌ [Word Click Debug] No data-start attribute found');
     }
   };
 

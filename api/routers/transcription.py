@@ -1,13 +1,15 @@
 """Transcription API endpoints."""
 
-from fastapi import APIRouter, HTTPException, Depends, BackgroundTasks, Request
+from fastapi import APIRouter, HTTPException, Depends, BackgroundTasks, Request, Query
 from typing import Dict, Optional
+from pathlib import Path
 import uuid
 import asyncio
 
-from ..models import TranscriptionRequest, TranscriptionProgress, APIResponse, TranscriptionStatus
+from ..models import TranscriptionRequest, TranscriptionProgress, APIResponse, TranscriptionStatus, TranscriptionResult
 from ..config import get_settings
 from ..services.transcription_manager import WebTranscriptionManager
+from ..services.transcription_service import TranscriptionService
 
 
 router = APIRouter()
@@ -23,6 +25,12 @@ def get_transcription_manager(request: Request) -> WebTranscriptionManager:
         settings = get_settings()
         transcription_manager = WebTranscriptionManager(settings)
     return transcription_manager
+
+
+def get_transcription_service() -> TranscriptionService:
+    """Dependency to get TranscriptionService instance."""
+    settings = get_settings()
+    return TranscriptionService(settings)
 
 
 @router.post("/", response_model=APIResponse)
@@ -43,6 +51,66 @@ async def start_transcription(
         
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to start transcription: {str(e)}")
+
+
+@router.post("/{filename:path}", response_model=TranscriptionResult)
+async def transcribe_by_filename(
+    filename: str,
+    compress_audio: bool = Query(True, description="Whether to compress audio during transcription"),
+    service: TranscriptionService = Depends(get_transcription_service)
+) -> TranscriptionResult:
+    """
+    Transcribe an audio file by filename.
+    Accepts filename (e.g., 'RBTI-Animal-Husbandry-T01.mp3') and searches for it in the audio directory.
+    This endpoint must come after the root POST / endpoint to avoid route conflicts.
+    """
+    try:
+        settings = get_settings()
+        audio_dir = Path(settings.audio_directory)
+        
+        # Search for the file in the audio directory
+        audio_file = None
+        for file_path in audio_dir.rglob(filename):
+            if file_path.is_file() and file_path.suffix.lower() in ['.mp3', '.wav', '.m4a', '.ogg', '.flac']:
+                audio_file = file_path
+                break
+        
+        # Also try exact match in root directory
+        if not audio_file:
+            candidate = audio_dir / filename
+            if candidate.exists() and candidate.is_file():
+                audio_file = candidate
+        
+        if not audio_file:
+            raise HTTPException(
+                status_code=404,
+                detail=f"Audio file '{filename}' not found in {audio_dir}"
+            )
+        
+        # Check if transcription already exists
+        status_info = service.get_transcription_status(audio_file)
+        if status_info['status'] == 'completed':
+            # Return existing transcription info
+            return TranscriptionResult(
+                success=True,
+                audio_file=str(audio_file),
+                processing_time=status_info.get('processing_time', 0.0),
+                cache_file=status_info.get('transcription_file'),
+                compressed_audio=status_info.get('compressed_audio')
+            )
+        
+        # Perform transcription
+        result = await service.transcribe_audio(audio_file, compress_audio)
+        
+        return result
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(
+            status_code=500,
+            detail=f"Failed to transcribe audio file: {str(e)}"
+        )
 
 
 @router.get("/{job_id}/status", response_model=TranscriptionProgress)

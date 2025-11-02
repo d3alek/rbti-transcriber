@@ -128,7 +128,7 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
                     sttJsonType: 'deepgram',
                     title: '{title}',
                     fileName: '{audio_filename}',
-                    mediaType: 'audio/webm'  // WebM/Opus format
+                    mediaType: 'audio'  // Use 'audio' not 'audio/webm' - the component only accepts 'audio' or 'video'
                 }});
             }}
             

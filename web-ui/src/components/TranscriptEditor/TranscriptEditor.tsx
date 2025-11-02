@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Box, AppBar, Toolbar, IconButton, Button, CircularProgress, Snackbar, Typography } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
-import { ArrowBack } from '@material-ui/icons';
+import { ArrowBack, Save } from '@material-ui/icons';
 import TranscriptEditorComponent from '@bbc/react-transcript-editor';
 import { AudioFileInfo } from '../../types/api';
 import { RichWordsTranscript } from '../../types/deepgram';
@@ -23,6 +23,8 @@ export const TranscriptEditor: React.FC<TranscriptEditorProps> = ({
   const [originalData, setOriginalData] = useState<RichWordsTranscript | null>(null);
   const [transcriptData, setTranscriptData] = useState<ReactTranscriptEditorData | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isSaving, setIsSaving] = useState<boolean>(false);
+  const transcriptEditorRef = useRef<any>(null);
   const [notification, setNotification] = useState<{ open: boolean; message: string; severity: 'success' | 'error' | 'info' }>({
     open: false,
     message: '',
@@ -75,76 +77,111 @@ export const TranscriptEditor: React.FC<TranscriptEditorProps> = ({
     loadTranscript();
   }, [audioFile.path, apiClient, showNotification]);
 
-  // Handle auto-save from word corrections
-  useEffect(() => {
-    const handleWordSave = async (e: Event) => {
-      const customEvent = e as CustomEvent;
-      if (!originalData || !customEvent.detail?.data) {
-        return;
-      }
-
-      try {
-        console.log('Auto-saving word correction...', customEvent.detail.data);
-        
-        // Extract words from DraftJS blocks
-        const draftJsData = customEvent.detail.data;
-        const blocks = draftJsData.data?.blocks || draftJsData.blocks;
-        
-        if (!blocks || !Array.isArray(blocks)) {
-          console.error('Invalid DraftJS data structure');
-          showNotification('Failed to save word correction: invalid data', 'error');
-          return;
-        }
-        
-        // Flatten words from all blocks
-        const extractedWords: any[] = [];
-        blocks.forEach((block: any) => {
-          if (block.data && block.data.words && Array.isArray(block.data.words)) {
-            extractedWords.push(...block.data.words);
-          }
+  // Extract words and speaker names from DraftJS blocks
+  const extractWordsFromDraftJS = useCallback((draftJsBlocks: any): ReactTranscriptEditorData | null => {
+    if (!draftJsBlocks || !transcriptData) {
+      return null;
+    }
+    
+    const blocks = draftJsBlocks.data?.blocks || draftJsBlocks.blocks;
+    
+    if (!blocks || !Array.isArray(blocks)) {
+      return null;
+    }
+    
+    const words: any[] = [];
+    const speakerNamesMap: { [speakerIndex: number]: string } = {};
+    
+    blocks.forEach((block: any) => {
+      if (block.data && block.data.words && Array.isArray(block.data.words)) {
+        const blockWords = block.data.words.map((word: any, wordIndex: number) => {
+          const isFirstInBlock = wordIndex === 0;
+          const isLastInBlock = wordIndex === block.data.words.length - 1;
+          return {
+            ...word,
+            paragraph_start: isFirstInBlock,
+            paragraph_end: isLastInBlock
+          };
         });
+        words.push(...blockWords);
         
-        console.log('Extracted words:', extractedWords.length);
-        
-        // Create updated ReactTranscriptEditorData
-        const updatedTranscriptData: ReactTranscriptEditorData = {
-          ...transcriptData!,
-          words: extractedWords
-        };
-        
-        // Merge corrections back into RichWordsTranscript format
-        const correctedResponse = DeepgramTransformer.mergeCorrectionsIntoDeepgramResponse(
-          originalData,
-          updatedTranscriptData
-        );
-        
-        console.log('Merged corrections, saving to backend...');
-        
-        // Save via API
-        const response = await apiClient.saveTranscriptCorrections(
-          audioFile.path,
-          correctedResponse
-        );
-        
-        if (!response.success) {
-          throw new Error(response.error || 'Failed to save corrections');
+        if (block.data.speaker) {
+          speakerNamesMap[block.data.speaker] = block.data.speaker;
         }
-        
-        // Update original data to reflect the corrections
-        setOriginalData(correctedResponse);
-        
-        showNotification('Word correction saved', 'success');
-      } catch (error) {
-        console.error('Error auto-saving word correction:', error);
-        showNotification('Failed to save word correction', 'error');
       }
+    });
+    
+    if (words.length === 0) {
+      return null;
+    }
+    
+    const customSpeakerNames: { [speakerIndex: number]: string } = {};
+    for (const [indexStr, name] of Object.entries(speakerNamesMap)) {
+      const speakerIndex = parseInt(indexStr);
+      if (!name.match(/^Speaker \d+$/)) {
+        customSpeakerNames[speakerIndex] = name;
+      }
+    }
+    
+    const mergedSpeakerNames = {
+      ...(transcriptData.speaker_names || {}),
+      ...customSpeakerNames
     };
+    
+    const finalSpeakerNames = Object.keys(mergedSpeakerNames).length > 0 ? mergedSpeakerNames : undefined;
+    
+    return {
+      ...transcriptData,
+      words: words,
+      speaker_names: finalSpeakerNames
+    };
+  }, [transcriptData]);
 
-    window.addEventListener('transcript-word-save', handleWordSave);
-    return () => {
-      window.removeEventListener('transcript-word-save', handleWordSave);
-    };
-  }, [originalData, transcriptData, audioFile.path, apiClient, showNotification]);
+  // Handle manual save
+  const handleSave = useCallback(async () => {
+    if (!originalData || !transcriptData) {
+      showNotification('No data to save', 'error');
+      return;
+    }
+
+    try {
+      setIsSaving(true);
+
+      let updatedTranscriptData = transcriptData;
+      if (transcriptEditorRef.current) {
+        const currentDraftJsData = transcriptEditorRef.current.getEditorContent('draftjs');
+        if (currentDraftJsData) {
+          const extracted = extractWordsFromDraftJS(currentDraftJsData);
+          if (extracted) {
+            updatedTranscriptData = extracted;
+          }
+        }
+      }
+
+      const correctedResponse = DeepgramTransformer.mergeCorrectionsIntoDeepgramResponse(
+        originalData,
+        updatedTranscriptData
+      );
+
+      const response = await apiClient.saveTranscriptCorrections(
+        audioFile.path,
+        correctedResponse
+      );
+
+      if (!response.success) {
+        throw new Error(response.error || 'Failed to save corrections');
+      }
+
+      setOriginalData(correctedResponse);
+      setIsSaving(false);
+
+      showNotification('Changes saved successfully', 'success');
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
+      setIsSaving(false);
+      showNotification(`Failed to save changes: ${errorMessage}`, 'error');
+    }
+  }, [originalData, transcriptData, extractWordsFromDraftJS, audioFile.path, apiClient, showNotification]);
 
   if (isLoading) {
     return (
@@ -189,12 +226,23 @@ export const TranscriptEditor: React.FC<TranscriptEditorProps> = ({
               {audioFile.filename}
             </Typography>
           </Box>
+          
+          <Button
+            variant="contained"
+            color="primary"
+            startIcon={<Save />}
+            onClick={handleSave}
+            disabled={isSaving}
+          >
+            {isSaving ? 'Saving...' : 'Save Corrections'}
+          </Button>
         </Toolbar>
       </AppBar>
 
       {/* Transcript Editor */}
       <Box style={{ height: 'calc(100vh - 64px)' }}>
         <TranscriptEditorComponent
+          ref={transcriptEditorRef}
           transcriptData={transcriptData}
           mediaUrl={mediaUrl}
           isEditable={false}

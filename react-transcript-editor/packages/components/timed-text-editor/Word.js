@@ -82,11 +82,6 @@ class Word extends Component {
 
     const { showMenu, editing } = this.state;
     
-    // Debug: check entity data
-    if (showMenu || editing) {
-      console.log('Word entityKey:', this.props.entityKey, 'data.key:', data.key);
-    }
-
     return (
       <span
         ref={this.wordRef}
@@ -121,8 +116,6 @@ class Word extends Component {
             contentState={this.props.contentState}
             entityKey={this.props.entityKey}
             onSave={(newText) => {
-              // Trigger word save via custom event
-              console.log('WordEditDialog onSave:', this.props.entityKey, newText);
               const event = new CustomEvent('word-save', { 
                 detail: { entityKey: this.props.entityKey, text: newText } 
               });

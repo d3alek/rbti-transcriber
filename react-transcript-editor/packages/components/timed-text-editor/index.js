@@ -79,13 +79,8 @@ class TimedTextEditor extends React.Component {
   }
 
   handleWordSave = (entityKey, newText) => {
-    console.log('handleWordSave called:', entityKey, newText);
-    
     // Use DraftJS API - don't convert to raw
     const contentState = this.state.editorState.getCurrentContent();
-    const entity = contentState.getEntity(entityKey);
-    const entityData = entity.getData();
-    console.log('Entity data:', entityData);
     
     // Find the block that contains this entity
     const blockMap = contentState.getBlockMap();
@@ -96,7 +91,6 @@ class TimedTextEditor extends React.Component {
     blockMap.forEach((block) => {
       if (foundBlock) return; // Already found
       
-      const text = block.getText();
       const chars = block.getCharacterList();
       
       // Find where this entity appears in the block
@@ -113,11 +107,8 @@ class TimedTextEditor extends React.Component {
     });
     
     if (!foundBlock || entityStart === null || entityEnd === null) {
-      console.error('Could not find entity in content blocks');
       return;
     }
-    
-    console.log('Found entity in block:', foundBlock.getKey(), 'at positions', entityStart, 'to', entityEnd);
     
     // Create selection for the entity
     const selection = SelectionState.createEmpty(foundBlock.getKey()).merge({
@@ -139,16 +130,8 @@ class TimedTextEditor extends React.Component {
       'insert-characters'
     );
     
-    // Trigger save
-    this.setState({ editorState: newEditorState }, () => {
-      const data = this.getEditorContent(this.props.autoSaveContentType, this.props.title);
-      const event = new CustomEvent('transcript-word-save', { detail: { data } });
-      window.dispatchEvent(event);
-      
-      if (this.props.handleAutoSaveChanges) {
-        this.props.handleAutoSaveChanges(data);
-      }
-    });
+    // Just update the editor state (no auto-save)
+    this.setState({ editorState: newEditorState });
   };
 
   onChange = editorState => {

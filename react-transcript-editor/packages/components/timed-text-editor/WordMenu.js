@@ -16,7 +16,6 @@ class WordMenu extends React.Component {
       menu.style.left = `${rect.left}px`;
       menu.style.top = `${rect.bottom + 5}px`;
       menu.style.zIndex = '1000';
-      console.log('WordMenu positioned at:', rect.left, rect.bottom + 5);
       
       // Add click outside handler
       document.addEventListener('click', this.handleClickOutside);
@@ -39,7 +38,6 @@ class WordMenu extends React.Component {
   };
 
   render() {
-    console.log('WordMenu render');
     return (
       <div
         ref={this.menuRef}

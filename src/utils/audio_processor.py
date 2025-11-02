@@ -32,7 +32,7 @@ class AudioProcessor:
         # Create hash based on file path and modification time
         file_info = f"{input_file}_{input_file.stat().st_mtime}_{input_file.stat().st_size}"
         file_hash = hashlib.md5(file_info.encode()).hexdigest()[:12]
-        return self.compressed_cache_dir / f"{input_file.stem}_{file_hash}_compressed.mp3"
+        return self.compressed_cache_dir / f"{input_file.stem}_{file_hash}_compressed.webm"
     
     def analyze_audio_bitrate(self, audio_file: Path) -> Dict[str, Any]:
         """Analyze audio file to get bitrate and other properties."""
@@ -86,18 +86,8 @@ class AudioProcessor:
         except (json.JSONDecodeError, KeyError, ValueError) as e:
             raise AudioValidationError(f"Failed to parse audio information for {audio_file}: {e}")
     
-    def needs_compression(self, audio_file: Path) -> Tuple[bool, Dict[str, Any]]:
-        """Check if audio file needs compression based on bitrate analysis."""
-        audio_info = self.analyze_audio_bitrate(audio_file)
-        current_bitrate = audio_info['bitrate_kbps']
-        
-        # Compress if bitrate is higher than target (more aggressive for speech)
-        needs_compression = current_bitrate > self.TARGET_BITRATE
-        
-        return needs_compression, audio_info
-    
-    def compress_audio(self, input_file: Path, force: bool = False, target_size_mb: float = 20.0) -> Path:
-        """Compress audio file to target bitrate and return path to compressed file."""
+    def compress_audio(self, input_file: Path, force: bool = False) -> Path:
+        """Compress audio file to WebM/Opus format for optimal browser playback and seeking accuracy."""
         if not input_file.exists():
             raise AudioValidationError(f"Input file does not exist: {input_file}")
         
@@ -108,27 +98,22 @@ class AudioProcessor:
             compressed_path.stat().st_mtime > input_file.stat().st_mtime):
             return compressed_path
         
-        # Check if compression is needed
-        needs_compression, audio_info = self.needs_compression(input_file)
-        
-        if not needs_compression and not force:
-            # File doesn't need compression, return original
-            return input_file
-        
         try:
-            # Compress using FFmpeg with aggressive speech optimization
+            # Compress using FFmpeg with WebM/Opus codec for optimal browser playback
+            # Opus provides frame-accurate seeking and excellent speech compression
             cmd = [
                 'ffmpeg',
                 '-i', str(input_file),
-                '-codec:a', 'mp3',
-                '-b:a', f'{self.TARGET_BITRATE}k',
-                '-ar', '16000',  # 16kHz sample rate (optimal for speech)
-                '-ac', '1',      # Convert to mono for speech
-                    '-q:a', '9',     # Lower quality for smaller size (good for speech)
-                    '-compression_level', '9',  # Maximum compression
-                    '-y',            # Overwrite output file
-                    str(compressed_path)
-                ]
+                '-codec:a', 'libopus',           # Opus codec (excellent for speech)
+                '-b:a', f'{self.TARGET_BITRATE}k',  # 32kbps bitrate
+                '-ar', '16000',                  # 16kHz sample rate (optimal for speech)
+                '-ac', '1',                      # Convert to mono for speech
+                '-application', 'voip',          # Optimize for speech/voice
+                '-frame_duration', '20',         # 20ms frames (good balance)
+                '-compression_level', '10',      # Maximum compression (valid for Opus)
+                '-y',                            # Overwrite output file
+                str(compressed_path)
+            ]
             
             result = subprocess.run(cmd, capture_output=True, text=True, check=True)
             
@@ -137,12 +122,6 @@ class AudioProcessor:
             
             # Verify compressed file
             compressed_info = self.analyze_audio_bitrate(compressed_path)
-            
-            # Check if file is still too large and compress further if needed
-            compressed_size_mb = compressed_path.stat().st_size / (1024 * 1024)
-            if compressed_size_mb > target_size_mb:
-                # Try even more aggressive compression
-                return self._compress_ultra_aggressive(input_file, compressed_path, target_size_mb)
             
             return compressed_path
             
@@ -172,7 +151,7 @@ class AudioProcessor:
         current_time = time.time()
         max_age_seconds = max_age_days * 24 * 60 * 60
         
-        for compressed_file in self.compressed_cache_dir.glob("*_compressed.mp3"):
+        for compressed_file in self.compressed_cache_dir.glob("*_compressed.webm"):
             try:
                 if current_time - compressed_file.stat().st_mtime > max_age_seconds:
                     compressed_file.unlink()
@@ -181,7 +160,7 @@ class AudioProcessor:
     
     def get_cache_stats(self) -> Dict[str, Any]:
         """Get statistics about compressed file cache."""
-        compressed_files = list(self.compressed_cache_dir.glob("*_compressed.mp3"))
+        compressed_files = list(self.compressed_cache_dir.glob("*_compressed.webm"))
         total_size = sum(f.stat().st_size for f in compressed_files)
         
         return {
@@ -190,43 +169,3 @@ class AudioProcessor:
             'total_cache_size_mb': round(total_size / (1024 * 1024), 2),
             'cache_directory': str(self.compressed_cache_dir)
         }
-    
-    def _compress_ultra_aggressive(self, input_file: Path, initial_compressed: Path, target_size_mb: float) -> Path:
-        """Apply ultra-aggressive compression for very large files."""
-        ultra_compressed_path = initial_compressed.with_suffix('.ultra.mp3')
-        
-        # Ultra-aggressive MP3 compression for speech
-        cmd = [
-            'ffmpeg',
-            '-i', str(input_file),
-            '-codec:a', 'mp3',
-            '-b:a', '16k',       # Very low bitrate for speech
-            '-ar', '8000',       # 8kHz sample rate (minimum for speech)
-            '-ac', '1',          # Mono
-            '-q:a', '9',         # Lowest quality
-            '-compression_level', '9',
-            '-af', 'highpass=f=80,lowpass=f=3400',  # Filter for speech frequencies
-            '-y',
-            str(ultra_compressed_path)
-        ]
-        
-        try:
-            result = subprocess.run(cmd, capture_output=True, text=True, check=True)
-            
-            if ultra_compressed_path.exists():
-                # Check final size
-                final_size_mb = ultra_compressed_path.stat().st_size / (1024 * 1024)
-                if final_size_mb <= target_size_mb:
-                    # Remove the intermediate file
-                    initial_compressed.unlink()
-                    return ultra_compressed_path
-                else:
-                    # If still too large, return the best we can do
-                    return ultra_compressed_path
-            else:
-                # If ultra compression failed, return the initial compressed version
-                return initial_compressed
-                
-        except subprocess.CalledProcessError:
-            # If ultra compression failed, return the initial compressed version
-            return initial_compressed

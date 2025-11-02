@@ -45,8 +45,8 @@ class MP3FileScanner:
                 if any(excluded_dir in file_path.parts for excluded_dir in exclude_dirs):
                     continue
                 
-                # Check if file is a compressed file (ends with _compressed.mp3)
-                if file_path.name.endswith('_compressed.mp3'):
+                # Check if file is a compressed file (ends with _compressed.webm)
+                if file_path.name.endswith('_compressed.webm'):
                     continue
                 
                 try:
@@ -138,7 +138,9 @@ class OutputDirectoryManager:
     
     def get_compressed_audio_path(self) -> Path:
         """Get path for the compressed audio file."""
-        return self.compressed_dir / self.audio_file.name
+        # Compressed files are now WebM format
+        compressed_name = self.audio_file.stem + ".webm"
+        return self.compressed_dir / compressed_name
     
     def transcription_exists(self) -> bool:
         """Check if transcription JSON file exists."""

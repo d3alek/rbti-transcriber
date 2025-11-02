@@ -26,12 +26,26 @@ class DeepgramClient(TranscriptionClient):
         self.session: Optional[aiohttp.ClientSession] = None
         self.custom_vocabulary_words: List[str] = []
     
+    def _get_content_type(self, file_path: Path) -> str:
+        """Determine Content-Type based on file extension."""
+        suffix = file_path.suffix.lower()
+        content_types = {
+            '.mp3': 'audio/mpeg',
+            '.webm': 'audio/webm',
+            '.wav': 'audio/wav',
+            '.m4a': 'audio/m4a',
+            '.ogg': 'audio/ogg',
+            '.flac': 'audio/flac',
+            '.opus': 'audio/opus'
+        }
+        return content_types.get(suffix, 'audio/mpeg')  # Default to MP3 for unknown formats
+    
     async def _get_session(self) -> aiohttp.ClientSession:
         """Get or create aiohttp session with proper headers."""
         if self.session is None or self.session.closed:
             headers = {
-                "Authorization": f"Token {self.api_key}",
-                "Content-Type": "audio/mpeg"  # Set for audio upload
+                "Authorization": f"Token {self.api_key}"
+                # Note: Content-Type is set per-request, not in session headers
             }
             timeout = aiohttp.ClientTimeout(total=600)  # 10 minute timeout for large files
             self.session = aiohttp.ClientSession(headers=headers, timeout=timeout)
@@ -246,6 +260,8 @@ class DeepgramClient(TranscriptionClient):
     
     async def transcribe_file(self, file_path: Path, config: TranscriptionConfig) -> TranscriptionResult:
         """Complete transcription workflow using Deepgram's latest API."""
+        # Determine correct Content-Type based on file extension
+        content_type = self._get_content_type(file_path)
         session = await self._get_session()
         start_time = time.time()
         
@@ -276,8 +292,9 @@ class DeepgramClient(TranscriptionClient):
             async with aiofiles.open(file_path, 'rb') as f:
                 audio_data = await f.read()
             
-            # Make request to Deepgram
-            async with session.post(self.LISTEN_URL, params=params, data=audio_data) as response:
+            # Make request to Deepgram with correct Content-Type header
+            headers = {"Content-Type": content_type}
+            async with session.post(self.LISTEN_URL, params=params, data=audio_data, headers=headers) as response:
                 if response.status == 401:
                     raise AuthenticationError("Invalid Deepgram API key")
                 elif response.status == 413:
@@ -299,6 +316,8 @@ class DeepgramClient(TranscriptionClient):
     
     async def _transcribe_sync(self, file_path: Path, config: TranscriptionConfig) -> TranscriptionResult:
         """Transcribe using synchronous endpoint (for files < 2MB)."""
+        # Determine correct Content-Type based on file extension
+        content_type = self._get_content_type(file_path)
         session = await self._get_session()
         start_time = time.time()
         
@@ -324,7 +343,11 @@ class DeepgramClient(TranscriptionClient):
             async with aiofiles.open(file_path, 'rb') as f:
                 audio_data = await f.read()
             
-            headers = {"Authorization": f"Token {self.api_key}"}
+            # Use correct Content-Type header for the request
+            headers = {
+                "Authorization": f"Token {self.api_key}",
+                "Content-Type": content_type
+            }
             
             async with session.post(url, params=params, data=audio_data, headers=headers) as response:
                 if response.status == 401:
@@ -369,6 +392,9 @@ class DeepgramClient(TranscriptionClient):
     
     async def _submit_async_job(self, file_path: Path, config: TranscriptionConfig, session: aiohttp.ClientSession) -> str:
         """Submit async transcription job to Deepgram."""
+        # Determine correct Content-Type based on file extension
+        content_type = self._get_content_type(file_path)
+        
         # Build query parameters for async transcription
         params = {
             "language": config.language_code,
@@ -391,9 +417,10 @@ class DeepgramClient(TranscriptionClient):
         async with aiofiles.open(file_path, 'rb') as f:
             audio_data = await f.read()
         
+        # Use correct Content-Type header for the request
         headers = {
             "Authorization": f"Token {self.api_key}",
-            "Content-Type": "audio/mpeg"
+            "Content-Type": content_type
         }
         
         async with session.post(url, params=params, data=audio_data, headers=headers) as response:

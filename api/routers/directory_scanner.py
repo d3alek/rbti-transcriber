@@ -37,6 +37,7 @@ def get_filesystem_scanner() -> FileSystemScanner:
 @router.post("/scan", response_model=DirectoryScanResult)
 async def scan_directory(
     request: DirectoryScanRequest,
+    force_refresh: bool = Query(False, description="Force refresh even if cache is valid"),
     scanner: FileSystemScanner = Depends(get_filesystem_scanner)
 ) -> DirectoryScanResult:
     """
@@ -56,6 +57,10 @@ async def scan_directory(
         
         if not directory_path.is_dir():
             raise HTTPException(status_code=400, detail=f"Path is not a directory: {request.directory_path}")
+        
+        # Clear cache if force refresh is requested
+        if force_refresh:
+            scanner.clear_cache()
         
         # Perform directory scan
         scan_result = await scanner.scan_directory(request.directory_path)

@@ -309,11 +309,7 @@ class TranscriptionOrchestrator:
                     file_result['compressed_file'] = str(compressed_audio_path)
                     
                 except Exception as compression_error:
-                    if self.verbose:
-                        print(f"⚠️  Compression failed: {compression_error}")
-                        print(f"📤 Will upload original file instead")
-                    # Fall back to original file if compression fails
-                    file_to_transcribe = audio_file
+                    raise RuntimeError(f"Audio compression failed (required): {compression_error}")
             else:
                 if self.verbose:
                     print(f"ℹ️  Audio compression disabled")

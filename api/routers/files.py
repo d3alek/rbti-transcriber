@@ -125,46 +125,62 @@ async def get_audio_file(
         if not original_audio_path.exists():
             raise HTTPException(status_code=404, detail="Audio file not found on disk")
         
-        audio_path_to_serve = original_audio_path
+        # ALWAYS require compressed WebM audio - NO FALLBACK
+        if not compressed:
+            raise HTTPException(status_code=400, detail="Compressed audio is required. Set compressed=true")
         
-        # ALWAYS serve compressed audio for web performance
-        if compressed:
-            try:
-                # Initialize audio processor with aggressive compression settings
-                compressed_dir = original_audio_path.parent / "compressed"
-                audio_processor = AudioProcessor(compressed_dir)
+        try:
+            # Initialize audio processor
+            compressed_dir = original_audio_path.parent / "compressed"
+            audio_processor = AudioProcessor(compressed_dir)
+            
+            # Get the compressed file path
+            compressed_path = audio_processor._get_compressed_cache_path(original_audio_path)
+            
+            if compressed_path.exists():
+                # Use existing compressed file
+                print(f"🎵 Serving cached compressed audio: {compressed_path.name}")
+            else:
+                # Compress audio - REQUIRED
+                print(f"🗜️ Compressing audio for web playback (target: 32kbps WebM/Opus)...")
+                compressed_path = audio_processor.compress_audio(
+                    original_audio_path, 
+                    force=True
+                )
                 
-                # Get the compressed file path
-                compressed_path = audio_processor._get_compressed_cache_path(original_audio_path)
-                
-                if compressed_path.exists():
-                    # Use existing compressed file
-                    audio_path_to_serve = compressed_path
-                    print(f"🎵 Serving cached compressed audio: {compressed_path.name}")
-                else:
-                    # Always compress for web, regardless of original bitrate
-                    print(f"🗜️ Compressing audio for web playback (target: 32kbps)...")
-                    compressed_path = audio_processor.compress_audio(
-                        original_audio_path, 
-                        force=True,  # Force compression even if already low bitrate
-                        target_size_mb=5.0  # Aggressive size limit for web
+                if not compressed_path.exists():
+                    raise HTTPException(
+                        status_code=500, 
+                        detail=f"Compression failed: output file not created: {compressed_path}"
                     )
-                    audio_path_to_serve = compressed_path
-                    
-                    # Log compression stats
-                    original_size = original_audio_path.stat().st_size / (1024 * 1024)
-                    compressed_size = compressed_path.stat().st_size / (1024 * 1024)
-                    reduction = ((original_size - compressed_size) / original_size) * 100
-                    print(f"✅ Compressed: {original_size:.1f}MB → {compressed_size:.1f}MB ({reduction:.1f}% reduction)")
-                    
-            except Exception as compression_error:
-                print(f"⚠️ Compression failed, serving original: {compression_error}")
-                # Fall back to original file if compression fails
-                audio_path_to_serve = original_audio_path
+                
+                # Log compression stats
+                original_size = original_audio_path.stat().st_size / (1024 * 1024)
+                compressed_size = compressed_path.stat().st_size / (1024 * 1024)
+                reduction = ((original_size - compressed_size) / original_size) * 100
+                print(f"✅ Compressed: {original_size:.1f}MB → {compressed_size:.1f}MB ({reduction:.1f}% reduction)")
+                
+        except HTTPException:
+            raise
+        except Exception as compression_error:
+            raise HTTPException(
+                status_code=500, 
+                detail=f"Compressed WebM audio is required but compression failed: {compression_error}"
+            )
+        
+        # Determine MIME type - must be WebM
+        if compressed_path.suffix != ".webm":
+            raise HTTPException(
+                status_code=500, 
+                detail=f"Invalid compressed file format: expected .webm, got {compressed_path.suffix}"
+            )
+        mime_type = "audio/webm"
+        
+        audio_path_to_serve = compressed_path
         
         return FileResponse(
             path=audio_path_to_serve,
-            media_type="audio/mpeg",
+            media_type=mime_type,
             filename=audio_path_to_serve.name,
             headers={
                 "Cache-Control": "public, max-age=3600",  # Cache for 1 hour
@@ -203,8 +219,7 @@ async def compress_all_audio_files(
                     print(f"🗜️ Pre-compressing {original_path.name}...")
                     audio_processor.compress_audio(
                         original_path, 
-                        force=True,
-                        target_size_mb=5.0
+                        force=True
                     )
                     compressed_count += 1
                     

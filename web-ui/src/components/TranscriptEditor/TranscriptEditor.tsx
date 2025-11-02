@@ -33,10 +33,13 @@ export const TranscriptEditor: React.FC<TranscriptEditorProps> = ({
     severity: 'info',
   });
 
-  // Construct media URL for compressed audio
-  const mediaUrl = audioFile.has_compressed_version && audioFile.compressed_path
-    ? `/api/audio/${encodeURIComponent(audioFile.compressed_path)}`
-    : `/api/audio/${encodeURIComponent(audioFile.path)}`;
+  // Construct media URL - Always use compressed WebM/Opus for optimal playback and seeking accuracy
+  // WebM/Opus provides frame-accurate seeking and excellent browser support
+  // REQUIRE compressed file - throw error if not available
+  if (!audioFile.has_compressed_version || !audioFile.compressed_path) {
+    throw new Error(`Compressed WebM audio not available for ${audioFile.filename || audioFile.path}. Please compress the audio first.`);
+  }
+  const mediaUrl = `/api/audio/${encodeURIComponent(audioFile.compressed_path)}`;
 
   const showNotification = useCallback((message: string, severity: 'success' | 'error' | 'info' = 'info') => {
     setNotification({ open: true, message, severity });

@@ -161,38 +161,6 @@ const deepgramToDraft = (deepgramJson) => {
         return cleanWord;
       });
 
-      // Generate entity ranges for word-level timing and highlighting
-      const entityRanges = generateEntitiesRanges(cleanWords, 'punct');
-      
-      // Debug: Verify entity ranges match paragraph text
-      if (i < 3) { // Only log first few paragraphs to avoid spam
-        console.log('📊 [Deepgram Adapter Debug] Block created:', {
-          blockIndex: i,
-          paragraphText: paragraph.text,
-          paragraphTextLength: paragraph.text.length,
-          wordCount: cleanWords.length,
-          entityRangesCount: entityRanges.length,
-          firstFewWords: cleanWords.slice(0, 3).map(w => ({
-            text: w.punct,
-            start: w.start,
-            end: w.end
-          })),
-          firstFewEntities: entityRanges.slice(0, 3).map(e => ({
-            text: e.text,
-            start: e.start,
-            end: e.end,
-            offset: e.offset,
-            length: e.length
-          })),
-          // Verify offsets match text
-          textAtOffsets: entityRanges.slice(0, 3).map(e => ({
-            offset: e.offset,
-            expectedText: paragraph.text.substr(e.offset, e.length),
-            actualText: e.text
-          }))
-        });
-      }
-      
       const draftJsContentBlockParagraph = {
         text: paragraph.text,
         type: 'paragraph',
@@ -201,7 +169,8 @@ const deepgramToDraft = (deepgramJson) => {
           words: cleanWords,
           start: cleanWords[0].start
         },
-        entityRanges: entityRanges
+        // Generate entity ranges for word-level timing and highlighting
+        entityRanges: generateEntitiesRanges(cleanWords, 'punct')
       };
       
       results.push(draftJsContentBlockParagraph);

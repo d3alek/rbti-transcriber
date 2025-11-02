@@ -277,15 +277,22 @@ class FileSystemScanner:
                             
                             # Check if transcription was successful
                             # Support multiple formats:
-                            # 1. New format: RichWordsTranscript (has 'words' at top-level)
+                            # 1. New format: RichWordsTranscript (has 'words' at top-level, non-empty list)
                             # 2. Cache format: { "result": { "text": "..." } }
                             # 3. Direct format: { "text": "..." } (from CLI output)
-                            has_words = transcription_data.get('words') and isinstance(transcription_data.get('words'), list)
+                            words_list = transcription_data.get('words')
+                            has_words = isinstance(words_list, list) and len(words_list) > 0
                             has_result_text = transcription_data.get('result') and transcription_data['result'].get('text')
                             has_direct_text = transcription_data.get('text') and transcription_data.get('raw_response')
                             
                             if has_words or has_result_text or has_direct_text:
                                 transcription_info['transcription_status'] = 'completed'
+                                # Get timestamp from _metadata if available (RichWordsTranscript format)
+                                if not transcription_info['last_transcription_attempt']:
+                                    transcription_info['last_transcription_attempt'] = (
+                                        transcription_data.get('_metadata', {}).get('timestamp') or
+                                        transcription_data.get('timestamp')
+                                    )
                             else:
                                 transcription_info['transcription_status'] = 'failed'
                                 transcription_info['transcription_error'] = transcription_data.get('error', 'Unknown error')
@@ -345,14 +352,22 @@ class FileSystemScanner:
         }
         
         try:
-            # Look for compressed version in the new structure: seminar_group/compressed/audio.mp3
+            # Look for compressed version in the new structure: seminar_group/compressed/audio.webm
             base_dir = file_path.parent
             compressed_dir = base_dir / "compressed"
             
             if compressed_dir.exists():
-                # Look for compressed file with the same name
-                compressed_file = compressed_dir / file_path.name
-                if compressed_file.exists():
+                # Look for compressed .webm file with matching stem
+                # Files are named: original_name_hash_compressed.webm
+                file_stem = file_path.stem
+                matching_files = list(compressed_dir.glob(f"{file_stem}_*_compressed.webm"))
+                compressed_file = matching_files[0] if matching_files else None
+                
+                if not compressed_file or not compressed_file.exists():
+                    # Fallback: try exact name match (for backwards compatibility during transition)
+                    compressed_file = compressed_dir / f"{file_path.stem}.webm"
+                
+                if compressed_file and compressed_file.exists():
                     compressed_stat = compressed_file.stat()
                     original_size = file_path.stat().st_size
                     

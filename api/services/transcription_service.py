@@ -73,31 +73,37 @@ class TranscriptionService:
             service_factory = self.orchestrator.service_factory
             client = service_factory.create_client('deepgram', None)  # No glossary files for now
             
-            # Determine which file to use for transcription (compress if needed)
-            file_to_transcribe = audio_file_path
-            compressed_audio_path = None
+            # Always compress audio for transcription - REQUIRED
+            if not compress_audio:
+                raise TranscriptionSystemError("Audio compression is required but was disabled")
             
-            if compress_audio and self.orchestrator.audio_processor:
-                try:
-                    # Compress audio for transcription and storage
-                    compressed_file = self.orchestrator.audio_processor.compress_audio(
-                        audio_file_path, force=True
-                    )
-                    
-                    # Move compressed file to correct location
-                    compressed_audio_path = output_manager.get_compressed_audio_path()
-                    import shutil
-                    shutil.move(str(compressed_file), str(compressed_audio_path))
-                    
-                    # Use compressed file for transcription
-                    file_to_transcribe = compressed_audio_path
-                    
-                except Exception as compression_error:
-                    # Fall back to original file if compression fails
-                    print(f"⚠️  Compression failed: {compression_error}")
-                    file_to_transcribe = audio_file_path
+            if not self.orchestrator.audio_processor:
+                raise TranscriptionSystemError("Audio processor not available for compression")
             
-            # Perform transcription
+            # Compress audio for transcription and storage - NO FALLBACK
+            try:
+                compressed_file = self.orchestrator.audio_processor.compress_audio(
+                    audio_file_path, force=True
+                )
+                
+                if not compressed_file.exists():
+                    raise TranscriptionSystemError(f"Compression failed: output file not created: {compressed_file}")
+                
+                # Move compressed file to correct location
+                compressed_audio_path = output_manager.get_compressed_audio_path()
+                import shutil
+                shutil.move(str(compressed_file), str(compressed_audio_path))
+                
+                if not compressed_audio_path.exists():
+                    raise TranscriptionSystemError(f"Failed to move compressed file to: {compressed_audio_path}")
+                
+                # Use compressed file for transcription - ALWAYS
+                file_to_transcribe = compressed_audio_path
+                
+            except Exception as compression_error:
+                raise TranscriptionSystemError(f"Audio compression failed (required): {compression_error}")
+            
+            # Perform transcription using compressed WebM file
             start_time = time.time()
             result = await client.transcribe_file(file_to_transcribe, transcription_config)
             processing_time = time.time() - start_time

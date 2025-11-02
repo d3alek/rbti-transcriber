@@ -1153,7 +1153,7 @@
       "speaker_confidence": 0.72592187,
       "punctuated_word": "cover.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "and",
@@ -2231,7 +2231,7 @@
       "speaker_confidence": 0.50704473,
       "punctuated_word": "Doctor.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "eames",
@@ -3760,7 +3760,7 @@
       "speaker_confidence": 0.518121,
       "punctuated_word": "pattern.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "now",
@@ -4739,7 +4739,7 @@
       "speaker_confidence": 0.8107736,
       "punctuated_word": "mind.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "now",
@@ -5740,7 +5740,7 @@
       "speaker_confidence": 0.61940545,
       "punctuated_word": "buy.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "they're",
@@ -6290,7 +6290,7 @@
       "speaker_confidence": 0.4914121,
       "punctuated_word": "that.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "and",
@@ -6719,7 +6719,7 @@
       "speaker_confidence": 0.78900635,
       "punctuated_word": "anyway.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "there's",
@@ -7093,7 +7093,7 @@
       "speaker_confidence": 0.14445806,
       "punctuated_word": "Doctor.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "scott",
@@ -7126,7 +7126,7 @@
       "speaker_confidence": 0.14445806,
       "punctuated_word": "to",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "get",
@@ -7136,8 +7136,8 @@
       "speaker": 0,
       "speaker_confidence": 0.14445806,
       "punctuated_word": "get",
-      "paragraph_start": true,
-      "paragraph_end": true
+      "paragraph_start": false,
+      "paragraph_end": false
     },
     {
       "word": "a",
@@ -7192,7 +7192,7 @@
       "speaker_confidence": 0.09446597,
       "punctuated_word": "thing.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "does",
@@ -7346,7 +7346,7 @@
       "speaker_confidence": 0.5563811,
       "punctuated_word": "is.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "that's",
@@ -7599,7 +7599,7 @@
       "speaker_confidence": 0.3431301,
       "punctuated_word": "it",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "on",
@@ -7609,8 +7609,8 @@
       "speaker": 0,
       "speaker_confidence": 0.3431301,
       "punctuated_word": "on",
-      "paragraph_start": true,
-      "paragraph_end": true
+      "paragraph_start": false,
+      "paragraph_end": false
     },
     {
       "word": "there",
@@ -7742,7 +7742,7 @@
       "speaker_confidence": 0.057801485,
       "punctuated_word": "morning.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "good",
@@ -8336,7 +8336,7 @@
       "speaker_confidence": 0.73877454,
       "punctuated_word": "it.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "well",
@@ -9128,7 +9128,7 @@
       "speaker_confidence": 0.798138,
       "punctuated_word": "time.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "in",
@@ -10162,7 +10162,7 @@
       "speaker_confidence": 0.69825405,
       "punctuated_word": "book.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "but",
@@ -11427,7 +11427,7 @@
       "speaker_confidence": 0.53794944,
       "punctuated_word": "fabulous.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "bolder",
@@ -12351,7 +12351,7 @@
       "speaker_confidence": 0.93851537,
       "punctuated_word": "turkeys.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "we",
@@ -13429,7 +13429,7 @@
       "speaker_confidence": 0.7825662,
       "punctuated_word": "poisoning.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "i",
@@ -14309,7 +14309,7 @@
       "speaker_confidence": 0.9576287,
       "punctuated_word": "one.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "i",
@@ -14925,7 +14925,7 @@
       "speaker_confidence": 0.65731984,
       "punctuated_word": "field?",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "i",
@@ -14936,7 +14936,7 @@
       "speaker_confidence": 0.60710853,
       "punctuated_word": "I",
       "paragraph_start": true,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "said",
@@ -14946,7 +14946,7 @@
       "speaker": 1,
       "speaker_confidence": 0.60710853,
       "punctuated_word": "said,",
-      "paragraph_start": true,
+      "paragraph_start": false,
       "paragraph_end": false
     },
     {
@@ -15387,7 +15387,7 @@
       "speaker_confidence": 0.78865564,
       "punctuated_word": "that.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "i",
@@ -15849,7 +15849,7 @@
       "speaker_confidence": 0.8727186,
       "punctuated_word": "book.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "use",
@@ -16377,7 +16377,7 @@
       "speaker_confidence": 0.82346547,
       "punctuated_word": "thing.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "when",
@@ -17125,7 +17125,7 @@
       "speaker_confidence": 0.78238523,
       "punctuated_word": "problem.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "and",
@@ -17862,7 +17862,7 @@
       "speaker_confidence": 0.91545784,
       "punctuated_word": "little.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "and",
@@ -18676,7 +18676,7 @@
       "speaker_confidence": 0.9500332,
       "punctuated_word": "problem.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "but",
@@ -19479,7 +19479,7 @@
       "speaker_confidence": 0.86839855,
       "punctuated_word": "thinking.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "now",
@@ -20227,7 +20227,7 @@
       "speaker_confidence": 0.7030229,
       "punctuated_word": "problem.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "and",
@@ -21547,7 +21547,7 @@
       "speaker_confidence": 0.85762644,
       "punctuated_word": "him?",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "jed",
@@ -22218,7 +22218,7 @@
       "speaker_confidence": 0.8110217,
       "punctuated_word": "remedy.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "so",
@@ -23230,7 +23230,7 @@
       "speaker_confidence": 0.8724278,
       "punctuated_word": "ends.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "don't",
@@ -23945,7 +23945,7 @@
       "speaker_confidence": 0.96064746,
       "punctuated_word": "card.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "when",
@@ -24759,7 +24759,7 @@
       "speaker_confidence": 0.8194816,
       "punctuated_word": "verse.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "in",
@@ -26024,7 +26024,7 @@
       "speaker_confidence": 0.80098236,
       "punctuated_word": "works.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "and",
@@ -26541,7 +26541,7 @@
       "speaker_confidence": 0.8927902,
       "punctuated_word": "voice.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "in",
@@ -27256,7 +27256,7 @@
       "speaker_confidence": 0.9545257,
       "punctuated_word": "rest.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "no",
@@ -28092,7 +28092,7 @@
       "speaker_confidence": 0.89682734,
       "punctuated_word": "straight.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "so",
@@ -29379,7 +29379,7 @@
       "speaker_confidence": 1.0,
       "punctuated_word": "example.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "right",
@@ -30028,7 +30028,7 @@
       "speaker_confidence": 0.8126113,
       "punctuated_word": "market.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "now",
@@ -31128,7 +31128,7 @@
       "speaker_confidence": 0.82233286,
       "punctuated_word": "produce.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "there's",
@@ -31678,7 +31678,7 @@
       "speaker_confidence": 0.8621993,
       "punctuated_word": "them.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "a",
@@ -32239,7 +32239,7 @@
       "speaker_confidence": 0.7188648,
       "punctuated_word": "paycheck.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "also",
@@ -33427,7 +33427,7 @@
       "speaker_confidence": 0.6472133,
       "punctuated_word": "place.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "so",
@@ -33438,7 +33438,7 @@
       "speaker_confidence": 0.0,
       "punctuated_word": "So",
       "paragraph_start": true,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "let's",
@@ -33922,7 +33922,7 @@
       "speaker_confidence": 0.95933044,
       "punctuated_word": "God.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "you",
@@ -34384,7 +34384,7 @@
       "speaker_confidence": 0.85122687,
       "punctuated_word": "cash.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "isn't",
@@ -35176,7 +35176,7 @@
       "speaker_confidence": 0.80309594,
       "punctuated_word": "us.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "there",
@@ -36364,7 +36364,7 @@
       "speaker_confidence": 0.5989439,
       "punctuated_word": "perpetually.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "amen",
@@ -36925,7 +36925,7 @@
       "speaker_confidence": 0.7016692,
       "punctuated_word": "hands.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "okay",
@@ -37365,7 +37365,7 @@
       "speaker_confidence": 0.750612,
       "punctuated_word": "energy.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "and",
@@ -38135,7 +38135,7 @@
       "speaker_confidence": 0.7310084,
       "punctuated_word": "gold?",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "why",
@@ -38553,7 +38553,7 @@
       "speaker_confidence": 0.7673679,
       "punctuated_word": "box.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "and",
@@ -39400,7 +39400,7 @@
       "speaker_confidence": 0.52200687,
       "punctuated_word": "me.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "it",
@@ -40412,7 +40412,7 @@
       "speaker_confidence": 0.8881738,
       "punctuated_word": "tender?",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "well",
@@ -40984,7 +40984,7 @@
       "speaker_confidence": 0.8354964,
       "punctuated_word": "got.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "well",
@@ -41853,7 +41853,7 @@
       "speaker_confidence": 0.7846432,
       "punctuated_word": "quit.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "they",
@@ -42700,7 +42700,7 @@
       "speaker_confidence": 0.93093085,
       "punctuated_word": "other.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "but",
@@ -43580,7 +43580,7 @@
       "speaker_confidence": 0.8649813,
       "punctuated_word": "satisfied.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "so",
@@ -44449,7 +44449,7 @@
       "speaker_confidence": 0.8595021,
       "punctuated_word": "why.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "the",
@@ -45043,7 +45043,7 @@
       "speaker_confidence": 0.99557626,
       "punctuated_word": "two.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "you",
@@ -45318,7 +45318,7 @@
       "speaker_confidence": 0.99557626,
       "punctuated_word": "anion.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "we",
@@ -46066,7 +46066,7 @@
       "speaker_confidence": 0.9881053,
       "punctuated_word": "energy.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "a",
@@ -47001,7 +47001,7 @@
       "speaker_confidence": 0.96537304,
       "punctuated_word": "animals.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "you're",
@@ -47969,7 +47969,7 @@
       "speaker_confidence": 0.7267868,
       "punctuated_word": "marble.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "you",
@@ -48662,7 +48662,7 @@
       "speaker_confidence": 0.76385105,
       "punctuated_word": "positive.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "so",
@@ -49377,7 +49377,7 @@
       "speaker_confidence": 0.6433573,
       "punctuated_word": "say.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "go",
@@ -50466,7 +50466,7 @@
       "speaker_confidence": 0.9479151,
       "punctuated_word": "atom.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "it's",
@@ -51159,7 +51159,7 @@
       "speaker_confidence": 0.74193424,
       "punctuated_word": "atom.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "and",
@@ -51973,7 +51973,7 @@
       "speaker_confidence": 0.910823,
       "punctuated_word": "it?",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "are",
@@ -52853,7 +52853,7 @@
       "speaker_confidence": 0.9306388,
       "punctuated_word": "distance.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "so",
@@ -53678,7 +53678,7 @@
       "speaker_confidence": 0.9791394,
       "punctuated_word": "grow.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "that",
@@ -54349,7 +54349,7 @@
       "speaker_confidence": 0.95085347,
       "punctuated_word": "microns.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "the",
@@ -55240,7 +55240,7 @@
       "speaker_confidence": 0.6960938,
       "punctuated_word": "particles.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "remember",
@@ -55779,7 +55779,7 @@
       "speaker_confidence": 0.8938614,
       "punctuated_word": "air.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "we're",
@@ -56428,7 +56428,7 @@
       "speaker_confidence": 0.92285323,
       "punctuated_word": "watch.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "it's",
@@ -57165,7 +57165,7 @@
       "speaker_confidence": 0.92878544,
       "punctuated_word": "know.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "now",
@@ -58155,7 +58155,7 @@
       "speaker_confidence": 0.7141545,
       "punctuated_word": "was.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "he",
@@ -59068,7 +59068,7 @@
       "speaker_confidence": 0.99508834,
       "punctuated_word": "things.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "well",
@@ -59574,7 +59574,7 @@
       "speaker_confidence": 0.952914,
       "punctuated_word": "impossibility.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "my",
@@ -60652,7 +60652,7 @@
       "speaker_confidence": 0.8347331,
       "punctuated_word": "person.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "there",
@@ -61642,7 +61642,7 @@
       "speaker_confidence": 0.85229194,
       "punctuated_word": "live.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "and",
@@ -62544,7 +62544,7 @@
       "speaker_confidence": 0.9994005,
       "punctuated_word": "calculation.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "and",
@@ -63292,7 +63292,7 @@
       "speaker_confidence": 0.9725716,
       "punctuated_word": "species.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "that",
@@ -63919,7 +63919,7 @@
       "speaker_confidence": 0.687327,
       "punctuated_word": "animal.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "do",
@@ -64876,7 +64876,7 @@
       "speaker_confidence": 0.9575621,
       "punctuated_word": "more.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "it",
@@ -65866,7 +65866,7 @@
       "speaker_confidence": 0.8874556,
       "punctuated_word": "weight.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "now",
@@ -66911,7 +66911,7 @@
       "speaker_confidence": 1.0,
       "punctuated_word": "better.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "and",
@@ -67901,7 +67901,7 @@
       "speaker_confidence": 0.92666787,
       "punctuated_word": "kinesiology.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "so",
@@ -68748,7 +68748,7 @@
       "speaker_confidence": 0.7942973,
       "punctuated_word": "get.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "also",
@@ -69936,7 +69936,7 @@
       "speaker_confidence": 0.67777455,
       "punctuated_word": "range.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "i",
@@ -70750,7 +70750,7 @@
       "speaker_confidence": 0.71248114,
       "punctuated_word": "jealousy.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "in",
@@ -71520,7 +71520,7 @@
       "speaker_confidence": 0.8928139,
       "punctuated_word": "vets.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "i",
@@ -72191,7 +72191,7 @@
       "speaker_confidence": 0.7805704,
       "punctuated_word": "question.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "where",
@@ -72400,7 +72400,7 @@
       "speaker_confidence": 0.8539871,
       "punctuated_word": "soil.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "right",
@@ -73159,7 +73159,7 @@
       "speaker_confidence": 0.9557784,
       "punctuated_word": "treatment?",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "can't",
@@ -73544,7 +73544,7 @@
       "speaker_confidence": 0.42689067,
       "punctuated_word": "ago.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "what",
@@ -73874,7 +73874,7 @@
       "speaker_confidence": 0.881258,
       "punctuated_word": "different.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "that's",
@@ -74303,7 +74303,7 @@
       "speaker_confidence": 0.95254683,
       "punctuated_word": "animal?",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "what",
@@ -74545,7 +74545,7 @@
       "speaker_confidence": 0.8641724,
       "punctuated_word": "Right.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "why",
@@ -74754,7 +74754,7 @@
       "speaker_confidence": 0.8641724,
       "punctuated_word": "important?",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "it",
@@ -74765,7 +74765,7 @@
       "speaker_confidence": 0.058876872,
       "punctuated_word": "It",
       "paragraph_start": true,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "makes",
@@ -75128,7 +75128,7 @@
       "speaker_confidence": 0.7534777,
       "punctuated_word": "vitamins?",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "the",
@@ -75392,7 +75392,7 @@
       "speaker_confidence": 0.5575015,
       "punctuated_word": "Bile.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "is",
@@ -75733,7 +75733,7 @@
       "speaker_confidence": 0.51968455,
       "punctuated_word": "it?",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "but",
@@ -76382,7 +76382,7 @@
       "speaker_confidence": 0.7244528,
       "punctuated_word": "acid?",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "the",
@@ -76646,7 +76646,7 @@
       "speaker_confidence": 0.61201054,
       "punctuated_word": "Yes.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "the",
@@ -76932,7 +76932,7 @@
       "speaker_confidence": 0.7273648,
       "punctuated_word": "this?",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "ain't",
@@ -76965,7 +76965,7 @@
       "speaker_confidence": 0.7273648,
       "punctuated_word": "easy?",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "i",
@@ -77009,7 +77009,7 @@
       "speaker_confidence": 0.120473385,
       "punctuated_word": "that.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "well",
@@ -77504,7 +77504,7 @@
       "speaker_confidence": 0.79912007,
       "punctuated_word": "it?",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "it's",
@@ -78109,7 +78109,7 @@
       "speaker_confidence": 0.77929896,
       "punctuated_word": "frequencies.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "it",
@@ -78824,7 +78824,7 @@
       "speaker_confidence": 0.71026343,
       "punctuated_word": "learned?",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "jacob",
@@ -79000,7 +79000,7 @@
       "speaker_confidence": 0.92169356,
       "punctuated_word": "calves.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "so",
@@ -79704,7 +79704,7 @@
       "speaker_confidence": 0.86398256,
       "punctuated_word": "name?",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "leah",
@@ -79726,7 +79726,7 @@
       "speaker_confidence": 0.10914624,
       "punctuated_word": "Leah.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "leah",
@@ -79902,7 +79902,7 @@
       "speaker_confidence": 0.74983716,
       "punctuated_word": "Fourteen.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "well",
@@ -80727,7 +80727,7 @@
       "speaker_confidence": 0.7738149,
       "punctuated_word": "horse?",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "can",
@@ -81035,7 +81035,7 @@
       "speaker_confidence": 0.6218673,
       "punctuated_word": "coyotes?",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "thirty",
@@ -81079,7 +81079,7 @@
       "speaker_confidence": 0.033730507,
       "punctuated_word": "forty.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "thirty",
@@ -81277,7 +81277,7 @@
       "speaker_confidence": 0.8495111,
       "punctuated_word": "have?",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "and",
@@ -81926,7 +81926,7 @@
       "speaker_confidence": 0.7317854,
       "punctuated_word": "existence.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "now",
@@ -82696,7 +82696,7 @@
       "speaker_confidence": 0.67971456,
       "punctuated_word": "down.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "you",
@@ -83158,7 +83158,7 @@
       "speaker_confidence": 0.7796496,
       "punctuated_word": "hand.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "yeah",
@@ -83323,7 +83323,7 @@
       "speaker_confidence": 0.72687227,
       "punctuated_word": "that.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "most",
@@ -83653,7 +83653,7 @@
       "speaker_confidence": 0.68582064,
       "punctuated_word": "sing?",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "you're",
@@ -83840,7 +83840,7 @@
       "speaker_confidence": 0.5924575,
       "punctuated_word": "yourself.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "you",
@@ -84654,7 +84654,7 @@
       "speaker_confidence": 0.8179828,
       "punctuated_word": "problem.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "but",
@@ -85248,7 +85248,7 @@
       "speaker_confidence": 0.7331565,
       "punctuated_word": "Okay?",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "now",
@@ -86029,7 +86029,7 @@
       "speaker_confidence": 0.85585964,
       "punctuated_word": "it.",
       "paragraph_start": false,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "but",
@@ -86040,7 +86040,7 @@
       "speaker_confidence": 0.88573134,
       "punctuated_word": "But",
       "paragraph_start": true,
-      "paragraph_end": true
+      "paragraph_end": false
     },
     {
       "word": "if",
@@ -86050,7 +86050,7 @@
       "speaker": 1,
       "speaker_confidence": 0.88573134,
       "punctuated_word": "if",
-      "paragraph_start": true,
+      "paragraph_start": false,
       "paragraph_end": false
     },
     {
@@ -86873,6 +86873,7 @@
       "format_text": true,
       "language_code": "en",
       "max_speakers": 3
-    }
+    },
+    "regenerated_at": "2025-11-02T20:40:46.194994"
   }
 }

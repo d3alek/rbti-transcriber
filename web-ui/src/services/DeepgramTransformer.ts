@@ -3,6 +3,9 @@
  * 
  * Handles bidirectional transformation between RichWordsTranscript and ReactTranscriptEditorData formats.
  * Preserves word-level corrections and speaker name mappings throughout the transformation process.
+ * 
+ * Note: Python backend always generates RichWordsTranscript format with correct paragraph markers.
+ * This service only validates the format and transforms to ReactTranscriptEditorData - no raw Deepgram parsing.
  */
 
 import { 
@@ -17,70 +20,22 @@ import {
 
 export class DeepgramTransformer {
   /**
-   * Normalizes response to RichWordsTranscript format
-   * Converts old format (with raw_response) to new format (words at top-level with paragraph markers)
-   * Handles backward compatibility with old format
+   * Validates that response is in RichWordsTranscript format
+   * Python backend always generates this format, so we just validate it
+   * Throws error if format is invalid (should regenerate from cache using Python script)
    */
   static normalizeToSimplifiedFormat(response: any): RichWordsTranscript {
-    // Check if already in new format (has words at top-level)
+    // Python backend always generates RichWordsTranscript format with words at top-level
+    // and paragraph markers already set correctly
     if (response.words && Array.isArray(response.words)) {
       return response as RichWordsTranscript;
     }
 
-    // Old format: extract from raw_response
-    const rawResponse = (response as any).raw_response;
-    
-    if (!rawResponse || !rawResponse.results || !rawResponse.results.channels) {
-      throw new Error('Invalid Deepgram response structure - missing raw_response');
-    }
-
-    const channel = rawResponse.results.channels[0];
-    const alternative = channel.alternatives[0];
-
-    if (!alternative || !alternative.words) {
-      throw new Error('No words found in Deepgram response');
-    }
-
-    // Extract words
-    const words = alternative.words.map((word: any) => ({
-      ...word,
-      // Preserve any correction metadata
-      corrected: word.corrected,
-      original_word: word.original_word,
-      original_punct: word.original_punct,
-      paragraph_start: false,  // Will be set below
-      paragraph_end: false     // Will be set below
-    }));
-
-    // Enrich words with paragraph markers from Deepgram paragraphs
-    const paragraphs = alternative.paragraphs?.paragraphs || [];
-    if (paragraphs.length > 0) {
-      paragraphs.forEach((paragraph: any) => {
-        const paraStart = paragraph.start;
-        const paraEnd = paragraph.end;
-
-        // Find words that match paragraph start/end times (within 0.1s tolerance)
-        for (let i = 0; i < words.length; i++) {
-          const word = words[i];
-          
-          // Mark paragraph start - word start time matches paragraph start
-          if (Math.abs(word.start - paraStart) < 0.1) {
-            word.paragraph_start = true;
-          }
-          
-          // Mark paragraph end - word end time matches paragraph end
-          if (Math.abs(word.end - paraEnd) < 0.1) {
-            word.paragraph_end = true;
-          }
-        }
-      });
-    }
-
-    // Return simplified format
-    return {
-      words: words as CorrectedDeepgramWord[],
-      corrections: (response as any).corrections
-    };
+    // If not in expected format, provide helpful error
+    throw new Error(
+      'Transcript is not in RichWordsTranscript format. ' +
+      'Please regenerate it using: python scripts/regenerate_transcription_from_cache.py <audio_file>'
+    );
   }
 
   /**
@@ -268,188 +223,9 @@ export class DeepgramTransformer {
     };
   }
 
-  static buildSegmentationFromDeepgramData(alternative: any, words: any[], deepgramResponse: any): any {
-    // Use utterance-level speaker segments from result.speakers if available (best granularity)
-    if (deepgramResponse && deepgramResponse.speakers && deepgramResponse.speakers.length > 0) {
-      return this.buildSegmentationFromUtterances(deepgramResponse.speakers, words);
-    }
-    
-    // Fall back to sentence-based from paragraphs
-    if (alternative.paragraphs && alternative.paragraphs.paragraphs) {
-      return this.buildSegmentationFromParagraphs(alternative.paragraphs.paragraphs, words);
-    }
-    
-    // Fallback to simple speaker grouping
-    return this.buildSegmentationFromSpeakerOnly(words);
-  }
-
-  /**
-   * Build segmentation from Deepgram utterance-level speaker segments (result.speakers)
-   * These are the finest-grained segments with proper speaker attribution
-   */
-  static buildSegmentationFromUtterances(utterances: any[], words: any[]): any {
-    if (utterances.length === 0) {
-      return null;
-    }
-
-    const uniqueSpeakers = Array.from(new Set(utterances.map(u => u.speaker))).sort();
-    const speakerList = uniqueSpeakers.map(speakerLabel => {
-      // Extract speaker number from "Speaker 0", "Speaker 1", etc.
-      const speakerNum = parseInt(speakerLabel.replace('Speaker ', '')) || 0;
-      return {
-        '@id': `S${speakerNum}`,
-        'gender': 'U'
-      };
-    });
-
-    const segments = utterances.map(utterance => {
-      const speakerNum = parseInt(utterance.speaker.replace('Speaker ', '')) || 0;
-      return {
-        '@type': 'Segment',
-        start: utterance.start_time,
-        duration: utterance.end_time - utterance.start_time,
-        bandwidth: 'S',
-        speaker: {
-          '@id': `S${speakerNum}`,
-          'gender': 'U'
-        }
-      };
-    });
-
-    return {
-      metadata: {
-        version: '0.0.10'
-      },
-      '@type': 'AudioFile',
-      speakers: speakerList,
-      segments: segments
-    };
-  }
-
-  /**
-   * Build segmentation from Deepgram paragraphs structure
-   * Creates segments at sentence boundaries within paragraphs
-   */
-  static buildSegmentationFromParagraphs(paragraphs: any[], words: any[]): any {
-    if (paragraphs.length === 0) {
-      return this.buildSegmentationFromSpeakerOnly(words);
-    }
-
-    // Get unique speakers
-    const uniqueSpeakers = Array.from(new Set(words.map(w => w.speaker))).sort();
-    const speakerList = uniqueSpeakers.map(speakerId => ({
-      '@id': `S${speakerId}`,
-      'gender': 'U'
-    }));
-
-    // Build segments from sentences within paragraphs
-    const segments: any[] = [];
-    
-    for (const paragraph of paragraphs) {
-      if (!paragraph.sentences || paragraph.sentences.length === 0) {
-        continue;
-      }
-      
-      for (const sentence of paragraph.sentences) {
-        // Get the speaker for this sentence by finding which words fall within the sentence time range
-        const wordsInSentence = words.filter(w => w.start >= sentence.start && w.end <= sentence.end);
-        
-        // Use the speaker of the first word, or 0 if no words match
-        const speakerId = wordsInSentence.length > 0 ? wordsInSentence[0].speaker : 0;
-        
-        segments.push({
-          '@type': 'Segment',
-          start: sentence.start,
-          duration: sentence.end - sentence.start,
-          bandwidth: 'S',
-          speaker: {
-            '@id': `S${speakerId}`,
-            'gender': 'U'
-          }
-        });
-      }
-    }
-
-    return {
-      metadata: {
-        version: '0.0.10'
-      },
-      '@type': 'AudioFile',
-      speakers: speakerList,
-      segments: segments
-    };
-  }
-
-  /**
-   * Build segmentation structure from word-level speaker information for bbckaldi adapter
-   * Groups consecutive words from the same speaker into segments
-   */
-  static buildSegmentationFromSpeakerOnly(words: any[]): any {
-    if (words.length === 0) {
-      return null;
-    }
-
-    // Get unique speakers and create speaker list
-    const uniqueSpeakers = Array.from(new Set(words.map(w => w.speaker))).sort();
-    const speakerList = uniqueSpeakers.map(speakerId => ({
-      '@id': `S${speakerId}`,
-      'gender': 'U' // Unknown gender for Deepgram speakers
-    }));
-
-    // Build segments by grouping consecutive words from the same speaker
-    const segments: any[] = [];
-    let currentSpeaker = words[0].speaker;
-    let segmentStart = words[0].start;
-    let segmentEnd = words[0].end;
-
-    for (let i = 1; i < words.length; i++) {
-      const word = words[i];
-      
-      // If speaker changes, create a segment and start a new one
-      if (word.speaker !== currentSpeaker) {
-        // Complete the previous segment
-        segments.push({
-          '@type': 'Segment',
-          start: segmentStart,
-          duration: segmentEnd - segmentStart,
-          bandwidth: 'S',
-          speaker: {
-            '@id': `S${currentSpeaker}`,
-            'gender': 'U'
-          }
-        });
-        
-        // Start new segment
-        currentSpeaker = word.speaker;
-        segmentStart = word.start;
-        segmentEnd = word.end;
-      } else {
-        // Same speaker, extend segment
-        segmentEnd = word.end;
-      }
-    }
-
-    // Add the last segment
-    segments.push({
-      '@type': 'Segment',
-      start: segmentStart,
-      duration: segmentEnd - segmentStart,
-      bandwidth: 'S',
-      speaker: {
-        '@id': `S${currentSpeaker}`,
-        'gender': 'U'
-      }
-    });
-
-    return {
-      metadata: {
-        version: '0.0.10'
-      },
-      '@type': 'AudioFile',
-      speakers: speakerList,
-      segments: segments
-    };
-  }
+  // REMOVED: Legacy segmentation methods no longer needed
+  // Python backend always generates RichWordsTranscript with paragraph markers on words
+  // We only use buildSegmentationFromWords() which uses those markers
 
   /**
    * Merges corrections from ReactTranscriptEditorData back into RichWordsTranscript

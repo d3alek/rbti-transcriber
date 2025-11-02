@@ -22,8 +22,8 @@ https://your-username.github.io/repo-name/
 ├── seminar-group-1/
 │   ├── lecture-1/
 │   │   ├── index.html           # Standalone viewer
-│   │   ├── audio.mp3            # Compressed audio
-│   │   └── transcript.json      # Transcript data
+│   │   ├── audio.webm           # Compressed WebM/Opus audio
+│   │   └── transcript.json      # Transcript data (RichWordsTranscript format)
 │   └── lecture-2/
 │       └── ...
 └── seminar-group-2/
@@ -57,8 +57,9 @@ You can manually trigger the workflow:
 
 ### Bundles missing audio files
 
-- Ensure compressed MP3 files exist in `compressed/` directories
+- Ensure compressed WebM files exist in `compressed/` directories
 - Verify audio filenames match transcription filenames (without extension)
+- Files should be named `{base_name}.webm` or `{base_name}_*_compressed.webm`
 
 ### Transcript editor doesn't load
 

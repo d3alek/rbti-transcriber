@@ -3,8 +3,8 @@
 Generate self-contained HTML bundles for each transcription.
 
 Each bundle includes:
-- The compressed MP3 file
-- The transcript JSON file
+- The compressed WebM/Opus audio file
+- The transcript JSON file (RichWordsTranscript format)
 - A standalone HTML file with react-transcript-editor preloaded
 """
 
@@ -128,7 +128,7 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
                     sttJsonType: 'deepgram',
                     title: '{title}',
                     fileName: '{audio_filename}',
-                    mediaType: 'audio'
+                    mediaType: 'audio/webm'  // WebM/Opus format
                 }});
             }}
             
@@ -183,21 +183,27 @@ def get_seminar_group(transcription_path: Path, base_dir: Path) -> str:
 
 
 def find_compressed_audio(transcription_path: Path) -> Optional[Path]:
-    """Find compressed audio file corresponding to transcription."""
+    """Find compressed WebM audio file corresponding to transcription."""
     # Get the base filename without extension
     base_name = transcription_path.stem
     
     # Look in compressed/ directory at same level as transcriptions/
     compressed_dir = transcription_path.parent.parent / "compressed"
     if compressed_dir.exists():
-        mp3_path = compressed_dir / f"{base_name}.mp3"
-        if mp3_path.exists():
-            return mp3_path
+        # First try exact match: {base_name}.webm
+        webm_path = compressed_dir / f"{base_name}.webm"
+        if webm_path.exists():
+            return webm_path
+        
+        # Fallback: look for hash-based naming pattern: {base_name}_*_compressed.webm
+        for webm_file in compressed_dir.glob(f"{base_name}_*_compressed.webm"):
+            if webm_file.exists():
+                return webm_file
     
-    # Fallback: look for any .mp3 with same base name
-    for mp3_file in transcription_path.parent.parent.rglob(f"{base_name}.mp3"):
-        if "compressed" in mp3_file.parts or mp3_file.parent.name == "compressed":
-            return mp3_file
+    # Fallback: look for any .webm with same base name in compressed directories
+    for webm_file in transcription_path.parent.parent.rglob(f"{base_name}*.webm"):
+        if "compressed" in webm_file.parts or webm_file.parent.name == "compressed":
+            return webm_file
     
     return None
 
@@ -235,28 +241,25 @@ def extract_speaker_number(speaker_identifier) -> int:
 
 
 def load_transcript_json(transcription_path: Path) -> Dict:
-    """Load and transform transcript JSON for react-transcript-editor."""
+    """Load and transform RichWordsTranscript format for react-transcript-editor."""
     with open(transcription_path, 'r', encoding='utf-8') as f:
         data = json.load(f)
     
-    # Handle two possible formats:
-    # 1. CorrectedDeepgramResponse format: raw_response at root
-    # 2. Transcription cache format: raw_response nested under result
-    raw_response = data.get('raw_response') or data.get('result', {}).get('raw_response', {})
+    # Python backend always generates RichWordsTranscript format:
+    # { words: [...], corrections: {...} }
+    # Words have paragraph_start/paragraph_end markers already set
     
-    if not raw_response or 'results' not in raw_response:
-        # Try to get raw_response from result.raw_response if it exists
-        if 'result' in data and isinstance(data['result'], dict):
-            raw_response = data['result'].get('raw_response', {})
-        
-        if not raw_response or 'results' not in raw_response:
-            raise ValueError(f"Invalid transcript format in {transcription_path}. Expected raw_response with results.")
+    if not data.get('words') or not isinstance(data.get('words'), list):
+        raise ValueError(
+            f"Invalid transcript format in {transcription_path}. "
+            f"Expected RichWordsTranscript format with 'words' array. "
+            f"Please regenerate using: python scripts/regenerate_transcription_from_cache.py <audio_file>"
+        )
     
-    channel = raw_response['results']['channels'][0]
-    alternative = channel['alternatives'][0]
-    words = alternative.get('words', [])
+    words = data['words']
     
     # Transform words to format expected by react-transcript-editor
+    # Preserve paragraph markers that are already set correctly by Python
     transformed_words = []
     for idx, word in enumerate(words):
         transformed_words.append({
@@ -266,76 +269,90 @@ def load_transcript_json(transcription_path: Path) -> Dict:
             'confidence': word.get('confidence', 0.9),
             'punct': word.get('punctuated_word', word.get('word', '')),
             'index': idx,
-            'speaker': word.get('speaker', 0)
+            'speaker': word.get('speaker', 0),
+            'paragraph_start': word.get('paragraph_start', False),
+            'paragraph_end': word.get('paragraph_end', False)
         })
     
-    # Get speakers list - handle both formats
-    speakers_list = data.get('speakers', []) or data.get('result', {}).get('speakers', [])
+    # Build speaker segments from words grouped by paragraphs
+    # Use paragraph markers to create segments that match paragraph boundaries
+    speaker_segments = []
+    current_segment = None
+    speaker_names_map = data.get('corrections', {}).get('speaker_names', {})
+    
+    for idx, word in enumerate(transformed_words):
+        speaker_index = word.get('speaker', 0)
+        speaker_label = speaker_names_map.get(speaker_index, f"Speaker {speaker_index}")
+        
+        # Start new segment at paragraph start
+        if word.get('paragraph_start') or current_segment is None:
+            if current_segment:
+                speaker_segments.append(current_segment)
+            
+            current_segment = {
+                'speaker': speaker_label,
+                'start_time': word['start'],
+                'end_time': word['end'],
+                'text': word['punct'],
+                'confidence': word['confidence']
+            }
+        else:
+            # Continue current segment
+            current_segment['end_time'] = word['end']
+            current_segment['text'] += ' ' + word['punct']
+        
+        # End segment at paragraph end
+        if word.get('paragraph_end') and current_segment:
+            speaker_segments.append(current_segment)
+            current_segment = None
+    
+    # Add final segment if exists
+    if current_segment:
+        speaker_segments.append(current_segment)
+    
+    # Get unique speakers for segmentation structure
     unique_speakers = sorted(set(w.get('speaker', 0) for w in words))
     
-    # Create a mapping from speaker identifiers to numbers for consistency
-    speaker_id_to_num = {}
-    next_speaker_num = 0
-    for speaker_id in unique_speakers:
-        if speaker_id not in speaker_id_to_num:
-            speaker_id_to_num[speaker_id] = next_speaker_num
-            next_speaker_num += 1
-    
-    # Also map all speaker identifiers from speakers_list
-    for seg in speakers_list:
-        speaker_id = seg.get('speaker', 'Speaker 0')
-        if speaker_id not in speaker_id_to_num:
-            speaker_id_to_num[speaker_id] = next_speaker_num
-            next_speaker_num += 1
-    
+    # Build segmentation structure for bbckaldi adapter
     segmentation = {
         'metadata': {'version': '0.0.10'},
         '@type': 'AudioFile',
-        'speakers': [{'@id': f'S{sp}', 'gender': 'U'} for sp in range(len(speaker_id_to_num))],
+        'speakers': [{'@id': f'S{sp}', 'gender': 'U'} for sp in unique_speakers],
         'segments': []
     }
     
-    # Build segments from speaker segments
-    for speaker_seg in speakers_list:
-        speaker_id = speaker_seg.get('speaker', 'Speaker 0')
-        speaker_num = speaker_id_to_num.get(speaker_id, extract_speaker_number(speaker_id))
+    # Build segments from speaker segments (paragraph-based)
+    for seg in speaker_segments:
+        speaker_str = seg.get('speaker', 'Speaker 0')
+        speaker_num = extract_speaker_number(speaker_str)
         segmentation['segments'].append({
             '@type': 'Segment',
-            'start': speaker_seg.get('start_time', 0),
-            'duration': speaker_seg.get('end_time', 0) - speaker_seg.get('start_time', 0),
+            'start': seg.get('start_time', 0),
+            'duration': seg.get('end_time', 0) - seg.get('start_time', 0),
             'bandwidth': 'S',
             'speaker': {'@id': f'S{speaker_num}', 'gender': 'U'}
         })
     
-    # Transform speaker segments
-    transformed_speakers = []
-    for seg in speakers_list:
-        speaker_str = seg.get('speaker', 'Speaker 0')
-        # Use the mapping to get consistent speaker numbers
-        speaker_num = speaker_id_to_num.get(speaker_str, extract_speaker_number(speaker_str))
-        
-        transformed_speakers.append({
-            'speaker': speaker_str,
-            'start_time': seg.get('start_time', 0),
-            'end_time': seg.get('end_time', 0),
-            'text': seg.get('text', ''),
-            'confidence': seg.get('confidence', 0.9)
-        })
+    # Build transcript text from words
+    transcript_text = ' '.join(w.get('punct', w.get('word', '')) for w in transformed_words)
     
-    # Build transcript text - handle both formats
-    transcript_text = alternative.get('transcript', '') or data.get('text', '') or data.get('result', {}).get('text', '')
+    # Get metadata
+    # Duration: calculate from last word's end time, or get from _metadata if available
+    if transformed_words:
+        audio_duration = transformed_words[-1].get('end', 0)
+    else:
+        # Try to get duration from metadata if available
+        audio_duration = data.get('_metadata', {}).get('config', {}).get('audio_duration', 0) or 0
     
-    # Get metadata - handle both formats
-    audio_duration = (
-        raw_response.get('metadata', {}).get('duration') or 
-        data.get('audio_duration') or 
-        data.get('result', {}).get('audio_duration', 0)
-    )
-    confidence = data.get('confidence') or data.get('result', {}).get('confidence', 0.9)
+    # Average confidence
+    if transformed_words:
+        confidence = sum(w.get('confidence', 0.9) for w in transformed_words) / len(transformed_words)
+    else:
+        confidence = 0.9
     
     result = {
         'words': transformed_words,
-        'speakers': transformed_speakers,
+        'speakers': speaker_segments,
         'segmentation': segmentation,
         'transcript': transcript_text,
         'metadata': {
@@ -345,10 +362,9 @@ def load_transcript_json(transcription_path: Path) -> Dict:
         }
     }
     
-    # Add speaker names if available - handle both formats
-    corrections = data.get('corrections') or data.get('result', {}).get('corrections', {})
-    if corrections and 'speaker_names' in corrections:
-        result['speaker_names'] = corrections['speaker_names']
+    # Add speaker names if available
+    if speaker_names_map:
+        result['speaker_names'] = speaker_names_map
     
     return result
 

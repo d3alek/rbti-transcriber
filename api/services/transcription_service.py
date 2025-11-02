@@ -309,21 +309,105 @@ class TranscriptionService:
             }
             enriched_words.append(enriched_word)
         
-        # Mark paragraph boundaries
+        # Mark paragraph boundaries using exclusive matching
+        # Strategy: Match by BOTH time AND text content to ensure accuracy
+        # Paragraph boundaries are exclusive: paragraph N ends where paragraph N+1 starts
         if paragraphs:
-            for paragraph in paragraphs:
-                para_start = paragraph.get("start")
-                para_end = paragraph.get("end")
+            for para_idx, paragraph in enumerate(paragraphs):
+                sentences = paragraph.get("sentences", [])
+                if not sentences:
+                    continue
                 
-                # Find words that match paragraph boundaries (within 0.1s tolerance)
-                for word in enriched_words:
-                    # Mark paragraph start
-                    if para_start is not None and abs(word.get("start", 0) - para_start) < 0.1:
-                        word["paragraph_start"] = True
+                # Find paragraph start: first word of first sentence
+                first_sentence = sentences[0]
+                para_start_time = first_sentence.get("start")
+                first_sentence_text = first_sentence.get("text", "").strip()
+                
+                # Extract first word from sentence text (case-insensitive, ignoring punctuation)
+                first_word_from_text = None
+                if first_sentence_text:
+                    # Get first word, removing punctuation
+                    words_in_text = first_sentence_text.split()
+                    if words_in_text:
+                        first_word_from_text = words_in_text[0].strip('.,!?;:"()[]{}').lower()
+                
+                # Find the word that matches both time and text
+                if para_start_time is not None:
+                    best_match = None
+                    best_time_diff = float('inf')
                     
-                    # Mark paragraph end
-                    if para_end is not None and abs(word.get("end", 0) - para_end) < 0.1:
-                        word["paragraph_end"] = True
+                    for word in enriched_words:
+                        word_start = word.get("start", 0)
+                        time_diff = abs(word_start - para_start_time)
+                        
+                        # Must match time within tolerance
+                        if time_diff >= 0.1:
+                            continue
+                        
+                        # Match by text: compare punctuated_word (case-insensitive, normalized)
+                        word_punct = word.get("punctuated_word", word.get("word", "")).strip().lower()
+                        word_punct_clean = word_punct.strip('.,!?;:"()[]{}')
+                        
+                        if first_word_from_text and word_punct_clean == first_word_from_text:
+                            # Text matches - this is our word
+                            if time_diff < best_time_diff:
+                                best_match = word
+                                best_time_diff = time_diff
+                    
+                    if best_match:
+                        best_match["paragraph_start"] = True
+                        # Clear paragraph_end if this word starts a new paragraph
+                        # (it's the start of the next paragraph, not the end of the previous one)
+                        best_match["paragraph_end"] = False
+                
+                # Find paragraph end: last word of last sentence
+                # BUT: for all except the last paragraph, the end is exclusive (ends at next paragraph's start)
+                # So we only mark paragraph_end for the last paragraph, or mark it at the start of next paragraph
+                if para_idx < len(paragraphs) - 1:
+                    # Not the last paragraph: end is exclusive (next paragraph's start marks the end)
+                    # No need to mark paragraph_end here - it's handled by paragraph_start of next paragraph
+                    pass
+                else:
+                    # Last paragraph: mark its actual end
+                    last_sentence = sentences[-1]
+                    para_end_time = last_sentence.get("end")
+                    last_sentence_text = last_sentence.get("text", "").strip()
+                    
+                    # Extract last word from sentence text
+                    last_word_from_text = None
+                    if last_sentence_text:
+                        words_in_text = last_sentence_text.split()
+                        if words_in_text:
+                            last_word_from_text = words_in_text[-1].strip('.,!?;:"()[]{}').lower()
+                    
+                    if para_end_time is not None:
+                        best_match = None
+                        best_time_diff = float('inf')
+                        
+                        for word in enriched_words:
+                            word_end = word.get("end", 0)
+                            time_diff = abs(word_end - para_end_time)
+                            
+                            # Must match time within tolerance
+                            if time_diff >= 0.1:
+                                continue
+                            
+                            # Must NOT be a paragraph_start (exclusive boundary)
+                            if word.get("paragraph_start", False):
+                                continue
+                            
+                            # Match by text: compare punctuated_word
+                            word_punct = word.get("punctuated_word", word.get("word", "")).strip().lower()
+                            word_punct_clean = word_punct.strip('.,!?;:"()[]{}')
+                            
+                            if last_word_from_text and word_punct_clean == last_word_from_text:
+                                # Text matches
+                                if time_diff < best_time_diff:
+                                    best_match = word
+                                    best_time_diff = time_diff
+                        
+                        if best_match:
+                            best_match["paragraph_end"] = True
         
         # Return RichWordsTranscript format
         return {

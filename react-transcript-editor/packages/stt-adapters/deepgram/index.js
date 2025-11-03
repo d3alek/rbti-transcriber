@@ -134,7 +134,7 @@ const deepgramToDraft = (deepgramJson) => {
 
   // Apply custom speaker names if available
   const speakerNamesMap = deepgramJson.speaker_names || {};
-  const wordsWithSpeakerNames = words.map(word => {
+  const wordsWithSpeakerNames = words.map((word, index) => {
     const speakerIndex = word.speaker !== undefined ? word.speaker : 0;
     const customName = speakerNamesMap[speakerIndex];
     return {

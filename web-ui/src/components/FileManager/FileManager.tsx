@@ -20,6 +20,11 @@ import {
   TranscriptionStatus 
 } from '../../types/api';
 
+// Helper function to remove .mp3 extension from filename for display
+const getDisplayName = (filename: string): string => {
+  return filename.replace(/\.mp3$/i, '');
+};
+
 interface FileManagerProps {
   onFileSelect: (audioFile: AudioFileInfo) => void;
   apiClient: {
@@ -106,7 +111,7 @@ export const FileManager: React.FC<FileManagerProps> = ({
 
   const handleTranscriptionStart = useCallback((audioFile: AudioFileInfo) => {
     showNotification(
-      `Transcription started for ${audioFile.filename}. Refresh the page to check status.`,
+      `Transcription started for ${getDisplayName(audioFile.filename)}. Refresh the page to check status.`,
       'info'
     );
   }, [showNotification]);

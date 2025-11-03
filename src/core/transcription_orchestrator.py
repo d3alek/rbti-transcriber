@@ -363,15 +363,36 @@ class TranscriptionOrchestrator:
                     }
                 }
                 
+                # Save to transcription directory (main location)
                 with open(transcription_path, 'w', encoding='utf-8') as f:
                     json.dump(transcription_data, f, indent=2, ensure_ascii=False)
                 
                 file_result['transcription_file'] = str(transcription_path)
+                
+                # Also save raw Deepgram response to cache directory (historical record)
+                cache_dir = output_manager.transcriptions_dir / "cache"
+                cache_dir.mkdir(parents=True, exist_ok=True)
+                cache_filename = f"{audio_file.stem}_raw.json"
+                cache_path = cache_dir / cache_filename
+                
+                # Save raw response with minimal metadata for historical record
+                cache_data = {
+                    "audio_file": str(audio_file),
+                    "service": service,
+                    "timestamp": time.strftime("%Y-%m-%dT%H:%M:%S.%f")[:-3] + "Z",
+                    "raw_response": result.raw_response
+                }
+                
+                with open(cache_path, 'w', encoding='utf-8') as f:
+                    json.dump(cache_data, f, indent=2, ensure_ascii=False)
+                
                 file_result['success'] = True
                 
                 if self.verbose:
                     transcription_size_kb = transcription_path.stat().st_size / 1024
+                    cache_size_kb = cache_path.stat().st_size / 1024
                     print(f"💾 Saved transcription: {transcription_path.relative_to(audio_file.parent)} ({transcription_size_kb:.1f} KB)")
+                    print(f"📦 Saved raw cache: {cache_path.relative_to(audio_file.parent)} ({cache_size_kb:.1f} KB)")
                 
             except Exception as save_error:
                 error_msg = f"Failed to save transcription: {save_error}"

@@ -170,8 +170,6 @@ def _parse_output_formats(output_format: str) -> List[str]:
     """Parse output format option into list of formats."""
     if output_format == 'both':
         return ['html', 'markdown']
-    elif output_format == 'none':
-        return []
     else:
         return [output_format]
 

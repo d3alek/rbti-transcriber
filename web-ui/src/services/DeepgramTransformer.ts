@@ -10,9 +10,8 @@
 
 import { 
   RichWordsTranscript,
-  CorrectedDeepgramResponse, // Legacy alias
   CorrectedDeepgramWord,
-  // DeepgramWord // TODO: Use when needed
+  DeepgramRawResponse,
 } from '../types/deepgram';
 import { 
   ReactTranscriptEditorData
@@ -20,22 +19,205 @@ import {
 
 export class DeepgramTransformer {
   /**
-   * Validates that response is in RichWordsTranscript format
-   * Python backend always generates this format, so we just validate it
-   * Throws error if format is invalid (should regenerate from cache using Python script)
+   * Detects if response is in raw Deepgram format and converts to RichWordsTranscript
+   * Otherwise validates that response is in RichWordsTranscript format
    */
   static normalizeToSimplifiedFormat(response: any): RichWordsTranscript {
-    // Python backend always generates RichWordsTranscript format with words at top-level
-    // and paragraph markers already set correctly
+    // Check if it's already RichWordsTranscript format
     if (response.words && Array.isArray(response.words)) {
       return response as RichWordsTranscript;
     }
 
+    // Check if it's raw Deepgram format - either direct raw_response or nested in result
+    let rawResponse: DeepgramRawResponse | null = null;
+    
+    if (response.raw_response && response.raw_response.results) {
+      // Direct raw_response
+      rawResponse = response.raw_response;
+    } else if (response.result && response.result.raw_response && response.result.raw_response.results) {
+      // Nested in result.raw_response (from transcription_orchestrator format)
+      rawResponse = response.result.raw_response;
+    } else if (response.results && response.results.channels) {
+      // Top-level raw Deepgram response
+      rawResponse = response as DeepgramRawResponse;
+    }
+
+    if (rawResponse) {
+      console.log('🔄 DeepgramTransformer: Detected raw Deepgram format, converting to RichWordsTranscript');
+      return this.convertDeepgramToRichWordsTranscript(rawResponse);
+    }
+
     // If not in expected format, provide helpful error
     throw new Error(
-      'Transcript is not in RichWordsTranscript format. ' +
-      'Please regenerate it using: python scripts/regenerate_transcription_from_cache.py <audio_file>'
+      'Transcript is not in RichWordsTranscript or raw Deepgram format. ' +
+      'Expected format: { words: [...] } or raw Deepgram response structure.'
     );
+  }
+
+  /**
+   * Converts raw Deepgram response to RichWordsTranscript format
+   * Ported from Python backend _convert_to_rich_words_transcript method
+   */
+  static convertDeepgramToRichWordsTranscript(rawResponse: DeepgramRawResponse): RichWordsTranscript {
+    // Extract words from raw Deepgram response
+    const results = rawResponse.results;
+    const channels = results?.channels || [];
+
+    if (!channels || channels.length === 0) {
+      throw new Error('No channels found in Deepgram response');
+    }
+
+    const channel = channels[0];
+    const alternatives = channel.alternatives || [];
+
+    if (!alternatives || alternatives.length === 0) {
+      throw new Error('No alternatives found in Deepgram response');
+    }
+
+    const alternative = alternatives[0];
+    const words = alternative.words || [];
+
+    if (!words || words.length === 0) {
+      throw new Error('No words found in Deepgram response');
+    }
+
+    // Extract paragraphs to mark word boundaries
+    const paragraphs = alternative.paragraphs?.paragraphs || [];
+
+    // Initialize paragraph markers
+    const enrichedWords: CorrectedDeepgramWord[] = words.map((word) => ({
+      ...word,
+      paragraph_start: false,
+      paragraph_end: false,
+    }));
+
+    // Mark paragraph boundaries using exclusive matching
+    // Strategy: Match by BOTH time AND text content to ensure accuracy
+    // Paragraph boundaries are exclusive: paragraph N ends where paragraph N+1 starts
+    if (paragraphs && paragraphs.length > 0) {
+      for (let paraIdx = 0; paraIdx < paragraphs.length; paraIdx++) {
+        const paragraph = paragraphs[paraIdx];
+        const sentences = paragraph.sentences || [];
+
+        if (!sentences || sentences.length === 0) {
+          continue;
+        }
+
+        // Find paragraph start: first word of first sentence
+        const firstSentence = sentences[0];
+        const paraStartTime = firstSentence.start;
+        const firstSentenceText = firstSentence.text?.trim() || '';
+
+        // Extract first word from sentence text (case-insensitive, ignoring punctuation)
+        let firstWordFromText: string | null = null;
+        if (firstSentenceText) {
+          const wordsInText = firstSentenceText.split(/\s+/);
+          if (wordsInText.length > 0) {
+            firstWordFromText = wordsInText[0].replace(/[.,!?;:"()\[\]{}]/g, '').toLowerCase();
+          }
+        }
+
+        // Find the word that matches both time and text
+        if (paraStartTime !== undefined && paraStartTime !== null) {
+          let bestMatch: CorrectedDeepgramWord | null = null;
+          let bestTimeDiff = Infinity;
+
+          for (const word of enrichedWords) {
+            const wordStart = word.start || 0;
+            const timeDiff = Math.abs(wordStart - paraStartTime);
+
+            // Must match time within tolerance
+            if (timeDiff >= 0.1) {
+              continue;
+            }
+
+            // Match by text: compare punctuated_word (case-insensitive, normalized)
+            const wordPunct = (word.punctuated_word || word.word || '').trim().toLowerCase();
+            const wordPunctClean = wordPunct.replace(/[.,!?;:"()\[\]{}]/g, '');
+
+            if (firstWordFromText && wordPunctClean === firstWordFromText) {
+              // Text matches - this is our word
+              if (timeDiff < bestTimeDiff) {
+                bestMatch = word;
+                bestTimeDiff = timeDiff;
+              }
+            }
+          }
+
+          if (bestMatch) {
+            bestMatch.paragraph_start = true;
+            // Clear paragraph_end if this word starts a new paragraph
+            bestMatch.paragraph_end = false;
+          }
+        }
+
+        // Find paragraph end: last word of last sentence
+        // For all except the last paragraph, the end is exclusive (ends at next paragraph's start)
+        if (paraIdx === paragraphs.length - 1) {
+          // Last paragraph: mark its actual end
+          const lastSentence = sentences[sentences.length - 1];
+          const paraEndTime = lastSentence.end;
+          const lastSentenceText = lastSentence.text?.trim() || '';
+
+          // Extract last word from sentence text
+          let lastWordFromText: string | null = null;
+          if (lastSentenceText) {
+            const wordsInText = lastSentenceText.split(/\s+/);
+            if (wordsInText.length > 0) {
+              lastWordFromText = wordsInText[wordsInText.length - 1]
+                .replace(/[.,!?;:"()\[\]{}]/g, '')
+                .toLowerCase();
+            }
+          }
+
+          if (paraEndTime !== undefined && paraEndTime !== null) {
+            let bestMatch: CorrectedDeepgramWord | null = null;
+            let bestTimeDiff = Infinity;
+
+            for (const word of enrichedWords) {
+              const wordEnd = word.end || 0;
+              const timeDiff = Math.abs(wordEnd - paraEndTime);
+
+              // Must match time within tolerance
+              if (timeDiff >= 0.1) {
+                continue;
+              }
+
+              // Must NOT be a paragraph_start (exclusive boundary)
+              if (word.paragraph_start) {
+                continue;
+              }
+
+              // Match by text: compare punctuated_word
+              const wordPunct = (word.punctuated_word || word.word || '').trim().toLowerCase();
+              const wordPunctClean = wordPunct.replace(/[.,!?;:"()\[\]{}]/g, '');
+
+              if (lastWordFromText && wordPunctClean === lastWordFromText) {
+                // Text matches
+                if (timeDiff < bestTimeDiff) {
+                  bestMatch = word;
+                  bestTimeDiff = timeDiff;
+                }
+              }
+            }
+
+            if (bestMatch) {
+              bestMatch.paragraph_end = true;
+            }
+          }
+        }
+      }
+    }
+
+    // Return RichWordsTranscript format
+    return {
+      words: enrichedWords,
+      corrections: {
+        version: 1,
+        timestamp: new Date().toISOString(),
+        speaker_names: {},
+      },
+    };
   }
 
   /**
@@ -57,7 +239,7 @@ export class DeepgramTransformer {
     // Preserve correction metadata and paragraph markers
     const transformedWords = normalizedResponse.words.map((word, index) => {
       const correctedWord = word as CorrectedDeepgramWord;
-      return {
+      const transformedWord = {
         start: correctedWord.start,
         end: correctedWord.end,
         word: correctedWord.word,
@@ -71,6 +253,8 @@ export class DeepgramTransformer {
         paragraph_start: correctedWord.paragraph_start,
         paragraph_end: correctedWord.paragraph_end
       };
+      
+      return transformedWord;
     });
 
     // Generate speaker segments from words grouped by paragraphs
@@ -228,78 +412,87 @@ export class DeepgramTransformer {
   // We only use buildSegmentationFromWords() which uses those markers
 
   /**
-   * Merges corrections from ReactTranscriptEditorData back into RichWordsTranscript
-   * Updates word-level corrections and speaker name mappings
+   * Converts ReactTranscriptEditorData directly to RichWordsTranscript format
+   * No word diffing - simply converts the entire edited content to RichWordsTranscript
+   */
+  static convertReactTranscriptEditorToRichWordsTranscript(
+    edited: ReactTranscriptEditorData,
+    original: RichWordsTranscript | null = null
+  ): RichWordsTranscript {
+
+    // Convert all words from edited format to RichWordsTranscript format
+    // Note: paragraph_start/paragraph_end may be present but not in ReactTranscriptEditorWord type
+    const words: CorrectedDeepgramWord[] = edited.words.map((word, index) => {
+      const wordAny = word as any; // Allow access to paragraph markers that may be present
+      if (word.speaker === undefined || word.speaker === null) {
+        const errorMsg = `Word at index ${index} (${word.word}) is missing speaker property. Word: ${JSON.stringify(word)}`;
+        console.error('❌ [convertReactTranscriptEditorToRichWordsTranscript] Missing speaker:', errorMsg);
+        throw new Error(errorMsg);
+      }
+      const speakerValue = word.speaker;
+      return {
+        word: word.word,
+        start: word.start,
+        end: word.end,
+        confidence: word.confidence || 0.9,
+        speaker: speakerValue,
+        speaker_confidence: word.confidence || 0.9,
+        punctuated_word: word.punct || word.word,
+        paragraph_start: wordAny.paragraph_start || false,
+        paragraph_end: wordAny.paragraph_end || false,
+        // Preserve correction metadata if present
+        corrected: word.corrected,
+        original_word: word.original_word,
+        original_punct: word.original_punct,
+      };
+    });
+
+    // Extract speaker names - only save custom names (not "Speaker X" format)
+    const speakerNames: { [speakerIndex: number]: string } = {};
+    if (edited.speaker_names) {
+      for (const [indexStr, name] of Object.entries(edited.speaker_names)) {
+        const speakerIndex = parseInt(indexStr);
+        // Only save if it's a custom name (not "Speaker X" format)
+        if (name && !name.match(/^Speaker \d+$/)) {
+          speakerNames[speakerIndex] = name;
+        }
+      }
+    }
+
+
+    // Determine version - increment from original if available, otherwise start at 1
+    const version = original?.corrections?.version 
+      ? original.corrections.version + 1 
+      : 1;
+
+    // Build RichWordsTranscript
+    const result: RichWordsTranscript = {
+      words,
+      corrections: {
+        version,
+      timestamp: new Date().toISOString(),
+        speaker_names: speakerNames,
+      },
+    };
+
+    return result;
+  }
+
+  /**
+   * Legacy method for backward compatibility
+   * Now just calls convertReactTranscriptEditorToRichWordsTranscript
    */
   static mergeCorrectionsIntoDeepgramResponse(
     original: RichWordsTranscript, 
     edited: ReactTranscriptEditorData
   ): RichWordsTranscript {
-    // Create a deep copy of the original response
-    const corrected: RichWordsTranscript = JSON.parse(JSON.stringify(original));
-    
-    // Filter and merge speaker names - only save custom names (not "Speaker X" format)
-    let mergedSpeakerNames = { ...(original.corrections?.speaker_names || {}) };
-    
-    if (edited.speaker_names) {
-      // Merge edited speaker names, filtering out default "Speaker X" format
-      for (const [indexStr, name] of Object.entries(edited.speaker_names)) {
-        const speakerIndex = parseInt(indexStr);
-        // Only save if it's a custom name (not "Speaker X" format)
-        if (!name.match(/^Speaker \d+$/)) {
-          mergedSpeakerNames[speakerIndex] = name;
-        } else {
-          // If it's a default name, remove it from the custom names (in case it was custom before)
-          delete mergedSpeakerNames[speakerIndex];
-        }
-      }
-    }
-    
-    // Only include speaker_names if there are custom names
-    const finalSpeakerNames = Object.keys(mergedSpeakerNames).length > 0 ? mergedSpeakerNames : undefined;
-    
-    // Update the corrections metadata
-    corrected.corrections = {
-      version: (original.corrections?.version || 0) + 1,
-      timestamp: new Date().toISOString(),
-      speaker_names: finalSpeakerNames
-    };
-
-    // Merge word-level corrections directly into words array
-    let correctionCount = 0;
-    corrected.words = corrected.words.map((originalWord, index) => {
-      const editedWord = edited.words[index];
-      if (!editedWord) return originalWord;
-
-      const correctedWord = { ...originalWord } as CorrectedDeepgramWord;
-      
-      // Check if word was modified
-      const wordChanged = editedWord.word !== originalWord.word;
-      const punctChanged = editedWord.punct !== originalWord.punctuated_word;
-      
-      if (wordChanged || punctChanged) {
-        correctionCount++;
-        
-        // Mark as corrected and preserve original values
-        correctedWord.corrected = true;
-        correctedWord.original_word = correctedWord.original_word || originalWord.word;
-        correctedWord.original_punct = correctedWord.original_punct || originalWord.punctuated_word;
-        
-        // Update with corrected values
-        correctedWord.word = editedWord.word;
-        correctedWord.punctuated_word = editedWord.punct;
-      }
-      
-      return correctedWord;
-    });
-    
-
-    return corrected;
+    return this.convertReactTranscriptEditorToRichWordsTranscript(edited, original);
   }
 
   /**
    * Reconstructs transcript text from corrected words
    * Handles punctuation and spacing properly
+   * @deprecated Not currently used, kept for potential future use
    */
   private static reconstructTranscriptFromWords(words: CorrectedDeepgramWord[]): string {
     if (!words || words.length === 0) return '';

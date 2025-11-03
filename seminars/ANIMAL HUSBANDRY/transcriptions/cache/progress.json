@@ -1,0 +1,202 @@
+{
+  "batch_progress": {
+    "total_files": 21,
+    "completed_files": 21,
+    "failed_files": 0,
+    "skipped_files": 0,
+    "start_time": 1762145045.719702,
+    "end_time": 1762147099.5909822
+  },
+  "file_progress": {
+    "seminars/ANIMAL HUSBANDRY/RBTI-Animal-Husbandry-T01.mp3": {
+      "status": "completed",
+      "start_time": 1762145045.723806,
+      "end_time": 1762145169.8507075,
+      "error_message": null,
+      "file_size_mb": 140.06927013397217,
+      "processing_time": 124.1232635974884,
+      "output_formats": []
+    },
+    "seminars/ANIMAL HUSBANDRY/RBTI-Animal-Husbandry-T02.mp3": {
+      "status": "completed",
+      "start_time": 1762145169.8509247,
+      "end_time": 1762145265.032143,
+      "error_message": null,
+      "file_size_mb": 140.95230197906494,
+      "processing_time": 95.16913199424744,
+      "output_formats": []
+    },
+    "seminars/ANIMAL HUSBANDRY/RBTI-Animal-Husbandry-T03.mp3": {
+      "status": "completed",
+      "start_time": 1762145265.0323427,
+      "end_time": 1762145388.7255619,
+      "error_message": null,
+      "file_size_mb": 141.4329538345337,
+      "processing_time": 123.68101406097412,
+      "output_formats": []
+    },
+    "seminars/ANIMAL HUSBANDRY/RBTI-Animal-Husbandry-T04.mp3": {
+      "status": "completed",
+      "start_time": 1762145388.7257884,
+      "end_time": 1762145491.1608713,
+      "error_message": null,
+      "file_size_mb": 142.2148141860962,
+      "processing_time": 102.4315619468689,
+      "output_formats": []
+    },
+    "seminars/ANIMAL HUSBANDRY/RBTI-Animal-Husbandry-T05.mp3": {
+      "status": "completed",
+      "start_time": 1762145491.161108,
+      "end_time": 1762145585.116438,
+      "error_message": null,
+      "file_size_mb": 141.2406930923462,
+      "processing_time": 93.94339370727539,
+      "output_formats": []
+    },
+    "seminars/ANIMAL HUSBANDRY/RBTI-Animal-Husbandry-T06.mp3": {
+      "status": "completed",
+      "start_time": 1762145585.1166856,
+      "end_time": 1762145676.3435283,
+      "error_message": null,
+      "file_size_mb": 139.8692216873169,
+      "processing_time": 91.21434164047241,
+      "output_formats": []
+    },
+    "seminars/ANIMAL HUSBANDRY/RBTI-Animal-Husbandry-T07.mp3": {
+      "status": "completed",
+      "start_time": 1762145676.3437855,
+      "end_time": 1762145768.1446218,
+      "error_message": null,
+      "file_size_mb": 141.29154109954834,
+      "processing_time": 91.78837180137634,
+      "output_formats": []
+    },
+    "seminars/ANIMAL HUSBANDRY/RBTI-Animal-Husbandry-T08.mp3": {
+      "status": "completed",
+      "start_time": 1762145768.1448693,
+      "end_time": 1762145868.1442833,
+      "error_message": null,
+      "file_size_mb": 141.12442111968994,
+      "processing_time": 99.98720240592957,
+      "output_formats": []
+    },
+    "seminars/ANIMAL HUSBANDRY/RBTI-Animal-Husbandry-T09.mp3": {
+      "status": "completed",
+      "start_time": 1762145868.1445432,
+      "end_time": 1762145957.6544778,
+      "error_message": null,
+      "file_size_mb": 141.76024913787842,
+      "processing_time": 89.49902009963989,
+      "output_formats": []
+    },
+    "seminars/ANIMAL HUSBANDRY/RBTI-Animal-Husbandry-T10.mp3": {
+      "status": "completed",
+      "start_time": 1762145957.6547132,
+      "end_time": 1762146063.925273,
+      "error_message": null,
+      "file_size_mb": 141.29837131500244,
+      "processing_time": 106.25799083709717,
+      "output_formats": []
+    },
+    "seminars/ANIMAL HUSBANDRY/RBTI-Animal-Husbandry-T11.mp3": {
+      "status": "completed",
+      "start_time": 1762146063.9255996,
+      "end_time": 1762146183.1099584,
+      "error_message": null,
+      "file_size_mb": 171.02737522125244,
+      "processing_time": 119.14292860031128,
+      "output_formats": []
+    },
+    "seminars/ANIMAL HUSBANDRY/RBTI-Animal-Husbandry-T12.mp3": {
+      "status": "completed",
+      "start_time": 1762146183.1105468,
+      "end_time": 1762146280.189482,
+      "error_message": null,
+      "file_size_mb": 140.74036312103271,
+      "processing_time": 97.07588171958923,
+      "output_formats": []
+    },
+    "seminars/ANIMAL HUSBANDRY/RBTI-Animal-Husbandry-T13.mp3": {
+      "status": "completed",
+      "start_time": 1762146280.189779,
+      "end_time": 1762146366.1934855,
+      "error_message": null,
+      "file_size_mb": 140.74357318878174,
+      "processing_time": 85.99210739135742,
+      "output_formats": []
+    },
+    "seminars/ANIMAL HUSBANDRY/RBTI-Animal-Husbandry-T14.mp3": {
+      "status": "completed",
+      "start_time": 1762146366.1938198,
+      "end_time": 1762146461.11621,
+      "error_message": null,
+      "file_size_mb": 140.4331979751587,
+      "processing_time": 94.91110277175903,
+      "output_formats": []
+    },
+    "seminars/ANIMAL HUSBANDRY/RBTI-Animal-Husbandry-T15.mp3": {
+      "status": "completed",
+      "start_time": 1762146461.1164935,
+      "end_time": 1762146575.861318,
+      "error_message": null,
+      "file_size_mb": 140.2189645767212,
+      "processing_time": 114.73341631889343,
+      "output_formats": []
+    },
+    "seminars/ANIMAL HUSBANDRY/RBTI-Animal-Husbandry-T16.mp3": {
+      "status": "completed",
+      "start_time": 1762146575.8616476,
+      "end_time": 1762146671.1185064,
+      "error_message": null,
+      "file_size_mb": 141.77581310272217,
+      "processing_time": 95.25447916984558,
+      "output_formats": []
+    },
+    "seminars/ANIMAL HUSBANDRY/RBTI-Animal-Husbandry-T17.mp3": {
+      "status": "completed",
+      "start_time": 1762146671.1188188,
+      "end_time": 1762146772.8544567,
+      "error_message": null,
+      "file_size_mb": 141.21963596343994,
+      "processing_time": 101.72381949424744,
+      "output_formats": []
+    },
+    "seminars/ANIMAL HUSBANDRY/RBTI-Animal-Husbandry-T18.mp3": {
+      "status": "completed",
+      "start_time": 1762146772.8548467,
+      "end_time": 1762146885.626472,
+      "error_message": null,
+      "file_size_mb": 141.1839246749878,
+      "processing_time": 112.75882697105408,
+      "output_formats": []
+    },
+    "seminars/ANIMAL HUSBANDRY/RBTI-Animal-Husbandry-T19.mp3": {
+      "status": "completed",
+      "start_time": 1762146885.6268404,
+      "end_time": 1762146977.1697912,
+      "error_message": null,
+      "file_size_mb": 133.4349069595337,
+      "processing_time": 91.5306408405304,
+      "output_formats": []
+    },
+    "seminars/ANIMAL HUSBANDRY/RBTI-Animal-Husbandry-T20.mp3": {
+      "status": "completed",
+      "start_time": 1762146977.1703079,
+      "end_time": 1762147026.5065813,
+      "error_message": null,
+      "file_size_mb": 70.14175510406494,
+      "processing_time": 49.33480668067932,
+      "output_formats": []
+    },
+    "seminars/ANIMAL HUSBANDRY/RBTI-Animal-Husbandry-T22.mp3": {
+      "status": "completed",
+      "start_time": 1762147026.507001,
+      "end_time": 1762147099.5905144,
+      "error_message": null,
+      "file_size_mb": 105.33920383453369,
+      "processing_time": 73.07143497467041,
+      "output_formats": []
+    }
+  },
+  "last_updated": 1762147099.5909956
+}

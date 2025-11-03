@@ -9,6 +9,11 @@ import { ReactTranscriptEditorData } from '../../types/transcriptEditor';
 import { DeepgramTransformer } from '../../services/DeepgramTransformer';
 import { APIClient } from '../../services/APIClient';
 
+// Helper function to remove .mp3 extension from filename for display
+const getDisplayName = (filename: string): string => {
+  return filename.replace(/\.mp3$/i, '');
+};
+
 interface TranscriptEditorProps {
   audioFile: AudioFileInfo;
   onBack: () => void;
@@ -60,11 +65,14 @@ export const TranscriptEditor: React.FC<TranscriptEditorProps> = ({
           throw new Error(response.error || 'Failed to load transcript');
         }
 
+        // Normalize to RichWordsTranscript format first (handles raw Deepgram, etc.)
+        const normalizedData = DeepgramTransformer.normalizeToSimplifiedFormat(response.data);
+
         // Store original data
-        setOriginalData(response.data as RichWordsTranscript);
+        setOriginalData(normalizedData);
         
         // Transform to ReactTranscriptEditorData format
-        const transformedData = DeepgramTransformer.transformToReactTranscriptEditor(response.data);
+        const transformedData = DeepgramTransformer.transformToReactTranscriptEditor(normalizedData);
         setTranscriptData(transformedData);
 
         // Build original speaker mapping: "Speaker 0" -> 0, "Speaker 1" -> 1, etc.
@@ -75,7 +83,8 @@ export const TranscriptEditor: React.FC<TranscriptEditorProps> = ({
           }
         }
         // Also add default "Speaker X" mappings if not already present
-        response.data.words.forEach((word: any) => {
+        // Use normalizedData.words since we know it's in RichWordsTranscript format
+        normalizedData.words.forEach((word: any) => {
           const speakerIndex = word.speaker !== undefined ? word.speaker : 0;
           const defaultName = `Speaker ${speakerIndex}`;
           if (!originalSpeakerMappingRef.current.has(defaultName)) {
@@ -108,34 +117,8 @@ export const TranscriptEditor: React.FC<TranscriptEditorProps> = ({
     }
     
     const words: any[] = [];
-    const speakerNamesMap: { [speakerIndex: number]: string } = {};
     
-    blocks.forEach((block: any) => {
-      if (block.data && block.data.words && Array.isArray(block.data.words)) {
-        const blockWords = block.data.words.map((word: any, wordIndex: number) => {
-          const isFirstInBlock = wordIndex === 0;
-          const isLastInBlock = wordIndex === block.data.words.length - 1;
-          return {
-            ...word,
-            paragraph_start: isFirstInBlock,
-            paragraph_end: isLastInBlock
-          };
-        });
-        words.push(...blockWords);
-        
-        if (block.data.speaker) {
-          speakerNamesMap[block.data.speaker] = block.data.speaker;
-        }
-      }
-    });
-    
-    if (words.length === 0) {
-      return null;
-    }
-    
-    const customSpeakerNames: { [speakerIndex: number]: string } = {};
-    
-    // Get all unique speaker names in order they FIRST appear in blocks
+    // First pass: collect all unique speaker names in order they first appear
     const uniqueSpeakers: string[] = [];
     blocks.forEach((block: any) => {
       if (block.data && block.data.speaker && !uniqueSpeakers.includes(block.data.speaker)) {
@@ -147,30 +130,106 @@ export const TranscriptEditor: React.FC<TranscriptEditorProps> = ({
     const originalSpeakersArray = Array.from(originalSpeakerMappingRef.current.entries())
       .sort((a, b) => a[1] - b[1]); // Sort by numeric index, not name
     
-    // Convert speaker labels (like "Speaker 0" or "Reams") to their numeric indices
-    for (const [label, name] of Object.entries(speakerNamesMap)) {
-      // Check if label is "Speaker X" format to extract index
-      const speakerMatch = label.match(/^Speaker (\d+)$/);
-      let speakerIndex: number;
-      
+    // Build reverse mapping: speaker name -> speaker index
+    // This mapping is used both for extracting words AND for building customSpeakerNames
+    const speakerNameToIndexMap = new Map<string, number>();
+    const speakerNamesMap: { [name: string]: string } = {};
+    
+    blocks.forEach((block: any) => {
+      if (block.data && block.data.speaker) {
+        const speakerName = block.data.speaker;
+        speakerNamesMap[speakerName] = speakerName; // For building customSpeakerNames later
+        
+        // Check if it's "Speaker X" format
+        const speakerMatch = speakerName.match(/^Speaker (\d+)$/);
       if (speakerMatch) {
         // It's a default "Speaker X" format
-        speakerIndex = parseInt(speakerMatch[1]);
+          speakerNameToIndexMap.set(speakerName, parseInt(speakerMatch[1]));
       } else {
-        // It's a custom name like "Reams" - find its position in the unsorted unique list
-        const positionInUniqueList = uniqueSpeakers.indexOf(name);
+          // It's a custom name - find its position in the unsorted unique list
+          const positionInUniqueList = uniqueSpeakers.indexOf(speakerName);
         
         if (positionInUniqueList !== -1 && positionInUniqueList < originalSpeakersArray.length) {
           // Map to the original speaker at the same position
-          speakerIndex = originalSpeakersArray[positionInUniqueList][1]; // Get the numeric index
-        } else {
-          continue;
+            const speakerIndex = originalSpeakersArray[positionInUniqueList][1]; // Get the numeric index
+            speakerNameToIndexMap.set(speakerName, speakerIndex);
+          }
         }
       }
+    });
+    
+    blocks.forEach((block: any) => {
+      if (block.data && block.data.words && Array.isArray(block.data.words)) {
+        // Get the speaker name from the block (e.g., "Speaker 0" or "Dr. Reams")
+        const blockSpeakerName = block.data.speaker;
+        
+        if (!blockSpeakerName || blockSpeakerName.trim() === "") {
+          const errorMsg = "Speaker label is missing/empty in one of the paragraph blocks. Each paragraph must have a speaker.";
+          console.error('❌ [extractWordsFromDraftJS] ' + errorMsg);
+          showNotification(errorMsg, 'error');
+          throw new Error(errorMsg);
+        }
+        
+        // Map speaker name to speaker index using the pre-built mapping
+        let blockSpeakerIndex: number | undefined = speakerNameToIndexMap.get(blockSpeakerName);
+        
+        // Fallback: if not in pre-built mapping, try other sources
+        if (blockSpeakerIndex === undefined) {
+          // Check if it's "Speaker X" format
+          const speakerMatch = blockSpeakerName.match(/^Speaker (\d+)$/);
+          if (speakerMatch) {
+            blockSpeakerIndex = parseInt(speakerMatch[1]);
+          } else {
+            // Look it up in current speaker_names mapping
+            if (transcriptData?.speaker_names) {
+              for (const [indexStr, name] of Object.entries(transcriptData.speaker_names)) {
+                if (name === blockSpeakerName) {
+                  blockSpeakerIndex = parseInt(indexStr);
+                  break;
+                }
+              }
+            }
+            
+            // If still not found, look it up in the original mapping
+            if (blockSpeakerIndex === undefined) {
+              blockSpeakerIndex = originalSpeakerMappingRef.current.get(blockSpeakerName);
+            }
+          }
+        }
+        
+        // Extract words and assign speaker index from block
+        const blockWords = block.data.words.map((word: any, wordIndex: number) => {
+          const isFirstInBlock = wordIndex === 0;
+          const isLastInBlock = wordIndex === block.data.words.length - 1;
+          return {
+            ...word,
+            // Assign speaker index from block - use block speaker index if available, 
+            // otherwise fall back to word.speaker if it exists, otherwise 0
+            speaker: blockSpeakerIndex !== undefined ? blockSpeakerIndex : (word.speaker !== undefined ? word.speaker : 0),
+            paragraph_start: isFirstInBlock,
+            paragraph_end: isLastInBlock
+          };
+        });
+        words.push(...blockWords);
+      }
+    });
+    
+    if (words.length === 0) {
+      return null;
+    }
+    
+    // Build customSpeakerNames using the pre-built mapping (DRY principle)
+    // Reuse speakerNameToIndexMap that we already built above
+    const customSpeakerNames: { [speakerIndex: number]: string } = {};
+    
+    // Use the same mapping we built earlier - iterate through speakerNamesMap
+    // and use speakerNameToIndexMap to get the index (no duplicate logic)
+    for (const [speakerName] of Object.entries(speakerNamesMap)) {
+      const speakerIndex = speakerNameToIndexMap.get(speakerName);
       
-      // Only save if it's a custom name (not "Speaker X" format)
-      if (!name.match(/^Speaker \d+$/)) {
-        customSpeakerNames[speakerIndex] = name;
+      // Only save if it's a custom name (not "Speaker X" format) and we found an index
+      if (speakerIndex !== undefined && !speakerName.match(/^Speaker \d+$/)) {
+        customSpeakerNames[speakerIndex] = speakerName;
       }
     }
     
@@ -209,9 +268,10 @@ export const TranscriptEditor: React.FC<TranscriptEditorProps> = ({
         }
       }
 
-      const correctedResponse = DeepgramTransformer.mergeCorrectionsIntoDeepgramResponse(
-        originalData,
-        updatedTranscriptData
+      // Convert the edited ReactTranscriptEditorData directly to RichWordsTranscript
+      const correctedResponse = DeepgramTransformer.convertReactTranscriptEditorToRichWordsTranscript(
+        updatedTranscriptData,
+        originalData // Pass originalData to increment version correctly
       );
 
       const response = await apiClient.saveTranscriptCorrections(
@@ -274,7 +334,7 @@ export const TranscriptEditor: React.FC<TranscriptEditorProps> = ({
           
           <Box flexGrow={1} marginLeft={2}>
             <Typography variant="h6" component="div">
-              {audioFile.filename}
+              {getDisplayName(audioFile.filename)}
             </Typography>
           </Box>
           
@@ -299,8 +359,8 @@ export const TranscriptEditor: React.FC<TranscriptEditorProps> = ({
           isEditable={false}
           sttJsonType="deepgram"
           autoSaveContentType="draftjs"
-          title={audioFile.filename}
-          fileName={audioFile.filename}
+          title={getDisplayName(audioFile.filename)}
+          fileName={getDisplayName(audioFile.filename)}
           mediaType="audio"
           spellCheck={true}
         />

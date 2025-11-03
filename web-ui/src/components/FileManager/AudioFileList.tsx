@@ -28,6 +28,11 @@ import {
 } from '@material-ui/icons';
 import { AudioFileInfo, DirectoryScanResult, APIResponse, TranscriptionResult } from '../../types/api';
 
+// Helper function to remove .mp3 extension from filename for display
+const getDisplayName = (filename: string): string => {
+  return filename.replace(/\.mp3$/i, '');
+};
+
 interface AudioFileListProps {
   scanResult: DirectoryScanResult;
   onFileSelect: (audioFile: AudioFileInfo) => void;
@@ -263,7 +268,7 @@ export const AudioFileList: React.FC<AudioFileListProps> = ({
                   <ListItemText
                     primary={
                       <Box display="flex" alignItems="center" style={{ gap: '8px' }}>
-                        <Typography variant="body1">{file.filename}</Typography>
+                        <Typography variant="body1">{getDisplayName(file.filename)}</Typography>
                         {file.transcription_status === 'completed' && (
                           <PlayArrow style={{ color: '#1976d2', fontSize: '1rem' }} />
                         )}

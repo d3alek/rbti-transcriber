@@ -30,9 +30,9 @@ from ..utils.exceptions import (
               default='transcribe', 
               help='Transcribe audio or reformat cached responses')
 @click.option('--output-format', 
-              type=click.Choice(['html', 'markdown', 'both']), 
-              default='both', 
-              help='Output format for transcriptions')
+              type=click.Choice(['html', 'markdown', 'both', 'none']), 
+              default='none', 
+              help='Output format for transcriptions (none = raw JSON only)')
 
 @click.option('--glossary', 
               type=click.Path(exists=True, path_type=Path), 
@@ -170,6 +170,8 @@ def _parse_output_formats(output_format: str) -> List[str]:
     """Parse output format option into list of formats."""
     if output_format == 'both':
         return ['html', 'markdown']
+    elif output_format == 'none':
+        return []
     else:
         return [output_format]
 

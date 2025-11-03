@@ -45,7 +45,7 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
         }}
         .save-button-container {{
             position: fixed;
-            top: 10px;
+            top: 30px;
             right: 10px;
             z-index: 1000;
         }}

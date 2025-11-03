@@ -46,6 +46,34 @@ Generates an `index.html` page that lists all seminars and their lectures.
 
 Builds a UMD bundle of `react-transcript-editor` that can be loaded in the browser.
 
+### `process_static_corrections.py`
+
+Processes corrections downloaded from the static HTML transcript editor back into the backend RichWordsTranscript format.
+
+**Usage:**
+```bash
+python scripts/process_static_corrections.py <input_draftjs.json> <original_transcript.json> [output.json]
+```
+
+**Arguments:**
+- `input_draftjs.json`: JSON file downloaded from static transcript editor (Save Corrections button)
+- `original_transcript.json`: Original transcript file to merge corrections into
+- `output.json`: (optional) Output file path (default: appends `_corrected` to original filename)
+
+**Example:**
+```bash
+python scripts/process_static_corrections.py \
+  downloaded_corrections.json \
+  test_audio/transcriptions/RBTI-Animal-Husbandry-T01.json \
+  test_audio/transcriptions/RBTI-Animal-Husbandry-T01_CORRECTED.json
+```
+
+This script:
+1. Extracts word corrections from DraftJS format
+2. Extracts speaker name changes
+3. Merges them into the original transcript
+4. Outputs a RichWordsTranscript compatible with the backend
+
 ## Usage
 
 ### Automatic (GitHub Actions)

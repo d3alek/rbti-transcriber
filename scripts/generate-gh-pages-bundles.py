@@ -138,6 +138,125 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
             // Load transcript data
             let transcriptData = {transcript_json};
             
+            // Normalize raw Deepgram format to RichWordsTranscript format
+            // Check if it's raw Deepgram format (not already RichWordsTranscript)
+            if (!transcriptData.words || !Array.isArray(transcriptData.words)) {{
+                console.log('🔄 Detected raw Deepgram format, converting to RichWordsTranscript...');
+                
+                // Find raw Deepgram response and preserve corrections
+                let rawResponse = null;
+                let preservedCorrections = null;
+                
+                if (transcriptData.raw_response && transcriptData.raw_response.results) {{
+                    rawResponse = transcriptData.raw_response;
+                    // Corrections might be at top level
+                    preservedCorrections = transcriptData.corrections || null;
+                }} else if (transcriptData.result && transcriptData.result.raw_response && transcriptData.result.raw_response.results) {{
+                    rawResponse = transcriptData.result.raw_response;
+                    // Preserve corrections from result or top level
+                    preservedCorrections = transcriptData.result.corrections || transcriptData.corrections || null;
+                }} else if (transcriptData.results && transcriptData.results.channels) {{
+                    rawResponse = transcriptData;
+                    // Corrections might be at top level
+                    preservedCorrections = transcriptData.corrections || null;
+                }}
+                
+                if (rawResponse) {{
+                    // Extract words from raw Deepgram response
+                    const results = rawResponse.results;
+                    const channels = (results && results.channels) || [];
+                    
+                    if (channels.length > 0) {{
+                        const channel = channels[0];
+                        const alternatives = channel.alternatives || [];
+                        
+                        if (alternatives.length > 0) {{
+                            const alternative = alternatives[0];
+                            const words = alternative.words || [];
+                            const paragraphs = (alternative.paragraphs && alternative.paragraphs.paragraphs) || [];
+                            
+                            if (words.length > 0) {{
+                                // Initialize paragraph markers
+                                const enrichedWords = words.map(word => ({{
+                                    ...word,
+                                    paragraph_start: false,
+                                    paragraph_end: false
+                                }}));
+                                
+                                // Mark paragraph boundaries (simplified version)
+                                if (paragraphs && paragraphs.length > 0) {{
+                                    for (let paraIdx = 0; paraIdx < paragraphs.length; paraIdx++) {{
+                                        const paragraph = paragraphs[paraIdx];
+                                        const sentences = paragraph.sentences || [];
+                                        
+                                        if (sentences.length > 0) {{
+                                            // Mark paragraph start: first word of first sentence
+                                            const firstSentence = sentences[0];
+                                            const paraStartTime = firstSentence.start;
+                                            
+                                            if (paraStartTime !== undefined && paraStartTime !== null) {{
+                                                // Find word closest to paragraph start time
+                                                let bestMatch = null;
+                                                let bestTimeDiff = Infinity;
+                                                
+                                                for (const word of enrichedWords) {{
+                                                    const timeDiff = Math.abs((word.start || 0) - paraStartTime);
+                                                    if (timeDiff < 0.1 && timeDiff < bestTimeDiff) {{
+                                                        bestMatch = word;
+                                                        bestTimeDiff = timeDiff;
+                                                    }}
+                                                }}
+                                                
+                                                if (bestMatch) {{
+                                                    bestMatch.paragraph_start = true;
+                                                    bestMatch.paragraph_end = false;
+                                                }}
+                                            }}
+                                            
+                                            // Mark paragraph end: last word of last sentence (only for last paragraph)
+                                            if (paraIdx === paragraphs.length - 1) {{
+                                                const lastSentence = sentences[sentences.length - 1];
+                                                const paraEndTime = lastSentence.end;
+                                                
+                                                if (paraEndTime !== undefined && paraEndTime !== null) {{
+                                                    let bestMatch = null;
+                                                    let bestTimeDiff = Infinity;
+                                                    
+                                                    for (const word of enrichedWords) {{
+                                                        if (word.paragraph_start) continue; // Skip paragraph starts
+                                                        const timeDiff = Math.abs((word.end || 0) - paraEndTime);
+                                                        if (timeDiff < 0.1 && timeDiff < bestTimeDiff) {{
+                                                            bestMatch = word;
+                                                            bestTimeDiff = timeDiff;
+                                                        }}
+                                                    }}
+                                                    
+                                                    if (bestMatch) {{
+                                                        bestMatch.paragraph_end = true;
+                                                    }}
+                                                }}
+                                            }}
+                                        }}
+                                    }}
+                                }}
+                                
+                                // Convert to RichWordsTranscript format
+                                transcriptData = {{
+                                    words: enrichedWords,
+                                    corrections: preservedCorrections || {{
+                                        version: 1,
+                                        timestamp: new Date().toISOString(),
+                                        speaker_names: {{}}
+                                    }}
+                                }};
+                                
+                                console.log('✅ Converted raw Deepgram format to RichWordsTranscript');
+                            }}
+                        }}
+                    }}
+                }}
+            }}
+            
             // Ensure words have 'punct' field (required by Deepgram adapter)
             // The adapter expects 'punct' but transcript may have 'punctuated_word'
             if (transcriptData.words && Array.isArray(transcriptData.words)) {{

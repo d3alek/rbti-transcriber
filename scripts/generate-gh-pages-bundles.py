@@ -323,132 +323,15 @@ def extract_speaker_number(speaker_identifier) -> int:
 
 
 def load_transcript_json(transcription_path: Path) -> Dict:
-    """Load and transform RichWordsTranscript format for react-transcript-editor."""
+    """
+    Load transcript JSON file as-is.
+    The bundled UI will handle normalization (RichWordsTranscript or raw Deepgram format).
+    """
     with open(transcription_path, 'r', encoding='utf-8') as f:
         data = json.load(f)
     
-    # Python backend always generates RichWordsTranscript format:
-    # { words: [...], corrections: {...} }
-    # Words have paragraph_start/paragraph_end markers already set
-    
-    if not data.get('words') or not isinstance(data.get('words'), list):
-        raise ValueError(
-            f"Invalid transcript format in {transcription_path}. "
-            f"Expected RichWordsTranscript format with 'words' array. "
-            f"Please regenerate using: python scripts/regenerate_transcription_from_cache.py <audio_file>"
-        )
-    
-    words = data['words']
-    
-    # Transform words to format expected by react-transcript-editor
-    # Preserve paragraph markers that are already set correctly by Python
-    transformed_words = []
-    for idx, word in enumerate(words):
-        transformed_words.append({
-            'start': word.get('start', 0),
-            'end': word.get('end', 0),
-            'word': word.get('word', ''),
-            'confidence': word.get('confidence', 0.9),
-            'punct': word.get('punctuated_word', word.get('word', '')),
-            'index': idx,
-            'speaker': word.get('speaker', 0),
-            'paragraph_start': word.get('paragraph_start', False),
-            'paragraph_end': word.get('paragraph_end', False)
-        })
-    
-    # Build speaker segments from words grouped by paragraphs
-    # Use paragraph markers to create segments that match paragraph boundaries
-    speaker_segments = []
-    current_segment = None
-    speaker_names_map = data.get('corrections', {}).get('speaker_names', {})
-    
-    for idx, word in enumerate(transformed_words):
-        speaker_index = word.get('speaker', 0)
-        speaker_label = speaker_names_map.get(speaker_index, f"Speaker {speaker_index}")
-        
-        # Start new segment at paragraph start
-        if word.get('paragraph_start') or current_segment is None:
-            if current_segment:
-                speaker_segments.append(current_segment)
-            
-            current_segment = {
-                'speaker': speaker_label,
-                'start_time': word['start'],
-                'end_time': word['end'],
-                'text': word['punct'],
-                'confidence': word['confidence']
-            }
-        else:
-            # Continue current segment
-            current_segment['end_time'] = word['end']
-            current_segment['text'] += ' ' + word['punct']
-        
-        # End segment at paragraph end
-        if word.get('paragraph_end') and current_segment:
-            speaker_segments.append(current_segment)
-            current_segment = None
-    
-    # Add final segment if exists
-    if current_segment:
-        speaker_segments.append(current_segment)
-    
-    # Get unique speakers for segmentation structure
-    unique_speakers = sorted(set(w.get('speaker', 0) for w in words))
-    
-    # Build segmentation structure for bbckaldi adapter
-    segmentation = {
-        'metadata': {'version': '0.0.10'},
-        '@type': 'AudioFile',
-        'speakers': [{'@id': f'S{sp}', 'gender': 'U'} for sp in unique_speakers],
-        'segments': []
-    }
-    
-    # Build segments from speaker segments (paragraph-based)
-    for seg in speaker_segments:
-        speaker_str = seg.get('speaker', 'Speaker 0')
-        speaker_num = extract_speaker_number(speaker_str)
-        segmentation['segments'].append({
-            '@type': 'Segment',
-            'start': seg.get('start_time', 0),
-            'duration': seg.get('end_time', 0) - seg.get('start_time', 0),
-            'bandwidth': 'S',
-            'speaker': {'@id': f'S{speaker_num}', 'gender': 'U'}
-        })
-    
-    # Build transcript text from words
-    transcript_text = ' '.join(w.get('punct', w.get('word', '')) for w in transformed_words)
-    
-    # Get metadata
-    # Duration: calculate from last word's end time, or get from _metadata if available
-    if transformed_words:
-        audio_duration = transformed_words[-1].get('end', 0)
-    else:
-        # Try to get duration from metadata if available
-        audio_duration = data.get('_metadata', {}).get('config', {}).get('audio_duration', 0) or 0
-    
-    # Average confidence
-    if transformed_words:
-        confidence = sum(w.get('confidence', 0.9) for w in transformed_words) / len(transformed_words)
-    else:
-        confidence = 0.9
-    
-    result = {
-        'words': transformed_words,
-        'speakers': speaker_segments,
-        'segmentation': segmentation,
-        'transcript': transcript_text,
-        'metadata': {
-            'duration': audio_duration,
-            'confidence': confidence,
-            'service': 'deepgram'
-        }
-    }
-    
-    # Add speaker names if available
-    if speaker_names_map:
-        result['speaker_names'] = speaker_names_map
-    
-    return result
+    # Return the data as-is - let the UI handle format detection and conversion
+    return data
 
 
 def generate_bundle(transcription_path: Path, output_dir: Path, base_dir: Path) -> Tuple[str, str]:

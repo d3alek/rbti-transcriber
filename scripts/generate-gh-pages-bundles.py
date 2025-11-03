@@ -43,6 +43,29 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
             font-size: 18px;
             color: #666;
         }}
+        .save-button-container {{
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+        }}
+        .save-button {{
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }}
+        .save-button:hover {{
+            background-color: #45a049;
+        }}
+        .save-button:disabled {{
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }}
     </style>
 </head>
 <body>
@@ -114,22 +137,81 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
             
             // Load transcript data
             const transcriptData = {transcript_json};
+            const originalTranscriptData = JSON.parse(JSON.stringify(transcriptData)); // Deep copy for comparison
             
             // Media URL (relative to this HTML file)
             const mediaUrl = './{audio_filename}';
             
-            // Render the transcript editor
-            function App() {{
-                return React.createElement(TranscriptEditor, {{
-                    transcriptData: transcriptData,
-                    mediaUrl: mediaUrl,
-                    isEditable: false,
-                    spellCheck: false,
-                    sttJsonType: 'deepgram',
-                    title: '{title}',
-                    fileName: '{audio_filename}',
-                    mediaType: 'audio'  // Use 'audio' not 'audio/webm' - the component only accepts 'audio' or 'video'
-                }});
+            // App component with Save button
+            class App extends React.Component {{
+                constructor(props) {{
+                    super(props);
+                    this.editorRef = React.createRef();
+                    this.state = {{
+                        isSaving: false
+                    }};
+                }}
+                
+                handleSave = () => {{
+                    if (!this.editorRef.current) {{
+                        alert('Editor not ready');
+                        return;
+                    }}
+                    
+                    this.setState({{ isSaving: true }});
+                    
+                    try {{
+                        // Get edited content from the editor
+                        const editedContent = this.editorRef.current.getEditorContent('deepgram');
+                        
+                        if (!editedContent || !editedContent.data) {{
+                            alert('Failed to get edited content');
+                            this.setState({{ isSaving: false }});
+                            return;
+                        }}
+                        
+                        // Download the corrected JSON file
+                        const blob = new Blob([JSON.stringify(editedContent.data, null, 2)], {{ type: 'application/json' }});
+                        const url = window.URL.createObjectURL(blob);
+                        const a = document.createElement('a');
+                        a.href = url;
+                        a.download = '{audio_filename}_corrected.json';
+                        document.body.appendChild(a);
+                        a.click();
+                        document.body.removeChild(a);
+                        window.URL.revokeObjectURL(url);
+                        
+                        alert('Corrections saved! File downloaded successfully.');
+                    }} catch (error) {{
+                        console.error('Error saving:', error);
+                        alert('Failed to save corrections: ' + error.message);
+                    }} finally {{
+                        this.setState({{ isSaving: false }});
+                    }}
+                }};
+                
+                render() {{
+                    return React.createElement('div', null,
+                        React.createElement('div', {{ className: 'save-button-container' }},
+                            React.createElement('button', {{
+                                className: 'save-button',
+                                onClick: this.handleSave,
+                                disabled: this.state.isSaving
+                            }}, this.state.isSaving ? 'Saving...' : '💾 Save Corrections')
+                        ),
+                        React.createElement(TranscriptEditor, {{
+                            ref: this.editorRef,
+                            transcriptData: transcriptData,
+                            mediaUrl: mediaUrl,
+                            isEditable: false,
+                            spellCheck: false,
+                            sttJsonType: 'deepgram',
+                            title: '{title}',
+                            fileName: '{audio_filename}',
+                            mediaType: 'audio'
+                        }})
+                    );
+                }}
             }}
             
             try {{

@@ -25,6 +25,8 @@ export const TranscriptEditor: React.FC<TranscriptEditorProps> = ({
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isSaving, setIsSaving] = useState<boolean>(false);
   const transcriptEditorRef = useRef<any>(null);
+  // Store original speaker index to name mapping for looking up indices after name changes
+  const originalSpeakerMappingRef = useRef<Map<string, number>>(new Map());
   const [notification, setNotification] = useState<{ open: boolean; message: string; severity: 'success' | 'error' | 'info' }>({
     open: false,
     message: '',
@@ -64,6 +66,22 @@ export const TranscriptEditor: React.FC<TranscriptEditorProps> = ({
         // Transform to ReactTranscriptEditorData format
         const transformedData = DeepgramTransformer.transformToReactTranscriptEditor(response.data);
         setTranscriptData(transformedData);
+
+        // Build original speaker mapping: "Speaker 0" -> 0, "Speaker 1" -> 1, etc.
+        originalSpeakerMappingRef.current.clear();
+        if (transformedData.speaker_names) {
+          for (const [indexStr, name] of Object.entries(transformedData.speaker_names)) {
+            originalSpeakerMappingRef.current.set(name, parseInt(indexStr));
+          }
+        }
+        // Also add default "Speaker X" mappings if not already present
+        response.data.words.forEach((word: any) => {
+          const speakerIndex = word.speaker !== undefined ? word.speaker : 0;
+          const defaultName = `Speaker ${speakerIndex}`;
+          if (!originalSpeakerMappingRef.current.has(defaultName)) {
+            originalSpeakerMappingRef.current.set(defaultName, speakerIndex);
+          }
+        });
 
         setIsLoading(false);
       } catch (error) {
@@ -116,8 +134,41 @@ export const TranscriptEditor: React.FC<TranscriptEditorProps> = ({
     }
     
     const customSpeakerNames: { [speakerIndex: number]: string } = {};
-    for (const [indexStr, name] of Object.entries(speakerNamesMap)) {
-      const speakerIndex = parseInt(indexStr);
+    
+    // Get all unique speaker names in order they FIRST appear in blocks
+    const uniqueSpeakers: string[] = [];
+    blocks.forEach((block: any) => {
+      if (block.data && block.data.speaker && !uniqueSpeakers.includes(block.data.speaker)) {
+        uniqueSpeakers.push(block.data.speaker);
+      }
+    });
+    
+    // Get original speakers in order (by numeric index, not sorted by name)
+    const originalSpeakersArray = Array.from(originalSpeakerMappingRef.current.entries())
+      .sort((a, b) => a[1] - b[1]); // Sort by numeric index, not name
+    
+    // Convert speaker labels (like "Speaker 0" or "Reams") to their numeric indices
+    for (const [label, name] of Object.entries(speakerNamesMap)) {
+      // Check if label is "Speaker X" format to extract index
+      const speakerMatch = label.match(/^Speaker (\d+)$/);
+      let speakerIndex: number;
+      
+      if (speakerMatch) {
+        // It's a default "Speaker X" format
+        speakerIndex = parseInt(speakerMatch[1]);
+      } else {
+        // It's a custom name like "Reams" - find its position in the unsorted unique list
+        const positionInUniqueList = uniqueSpeakers.indexOf(name);
+        
+        if (positionInUniqueList !== -1 && positionInUniqueList < originalSpeakersArray.length) {
+          // Map to the original speaker at the same position
+          speakerIndex = originalSpeakersArray[positionInUniqueList][1]; // Get the numeric index
+        } else {
+          continue;
+        }
+      }
+      
+      // Only save if it's a custom name (not "Speaker X" format)
       if (!name.match(/^Speaker \d+$/)) {
         customSpeakerNames[speakerIndex] = name;
       }

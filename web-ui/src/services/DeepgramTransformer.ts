@@ -240,6 +240,7 @@ export class DeepgramTransformer {
     
     // Filter and merge speaker names - only save custom names (not "Speaker X" format)
     let mergedSpeakerNames = { ...(original.corrections?.speaker_names || {}) };
+    
     if (edited.speaker_names) {
       // Merge edited speaker names, filtering out default "Speaker X" format
       for (const [indexStr, name] of Object.entries(edited.speaker_names)) {
@@ -278,15 +279,6 @@ export class DeepgramTransformer {
       
       if (wordChanged || punctChanged) {
         correctionCount++;
-        if (correctionCount <= 3) {
-          console.log(`🔧 Correction ${correctionCount}:`, {
-            index,
-            original: { word: originalWord.word, punct: originalWord.punctuated_word },
-            edited: { word: editedWord.word, punct: editedWord.punct },
-            wordChanged,
-            punctChanged
-          });
-        }
         
         // Mark as corrected and preserve original values
         correctedWord.corrected = true;
@@ -301,8 +293,6 @@ export class DeepgramTransformer {
       return correctedWord;
     });
     
-    console.log(`📊 Merge summary: ${correctionCount} words corrected out of ${corrected.words.length} total`);
-    console.log('🎤 Updated speaker names in corrections:', finalSpeakerNames);
 
     return corrected;
   }

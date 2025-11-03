@@ -88217,8 +88217,11 @@
     }
   ],
   "corrections": {
-    "version": 15,
-    "timestamp": "2025-11-02T20:42:57.012Z"
+    "version": 28,
+    "timestamp": "2025-11-03T04:17:07.742Z",
+    "speaker_names": {
+      "1": "Reams"
+    }
   },
   "_metadata": {
     "audio_file": "test_audio/RBTI-Animal-Husbandry-T01.mp3",

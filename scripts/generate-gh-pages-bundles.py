@@ -313,30 +313,129 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
                     this.setState({{ isSaving: true }});
                     
                     try {{
-                        // Get edited content from the editor
-                        const editedContent = this.editorRef.current.getEditorContent('deepgram');
+                        // Get edited content from the editor in DraftJS format
+                        const draftJsContent = this.editorRef.current.getEditorContent('draftjs');
                         
-                        if (!editedContent || !editedContent.data) {{
-                            alert('Failed to get edited content');
+                        console.log('DraftJS content:', draftJsContent);
+                        
+                        if (!draftJsContent || !draftJsContent.data) {{
+                            alert('Failed to get edited content - editor returned null/undefined');
                             this.setState({{ isSaving: false }});
                             return;
                         }}
                         
-                        // Download the corrected JSON file
-                        const blob = new Blob([JSON.stringify(editedContent.data, null, 2)], {{ type: 'application/json' }});
+                        // Extract words from DraftJS format and convert to RichWordsTranscript
+                        const blocks = draftJsContent.data.blocks || [];
+                        const allWords = [];
+                        
+                        // Extract speaker names (custom names only, not "Speaker X")
+                        const speakerNames = {{}};
+                        
+                        // Build mapping of speaker names to indices
+                        const speakerNameToIndex = {{}};
+                        if (transcriptData.speaker_names) {{
+                            for (const [indexStr, name] of Object.entries(transcriptData.speaker_names)) {{
+                                speakerNameToIndex[name] = parseInt(indexStr);
+                            }}
+                        }}
+                        
+                        // Extract words from blocks
+                        for (let blockIdx = 0; blockIdx < blocks.length; blockIdx++) {{
+                            const block = blocks[blockIdx];
+                            const blockData = block.data || {{}};
+                            const blockWords = blockData.words || [];
+                            const blockSpeakerName = blockData.speaker || 'Speaker 0';
+                            
+                            // Get speaker index from name
+                            let speakerIndex = 0;
+                            if (blockSpeakerName.match(/^Speaker \d+$/)) {{
+                                // Default format
+                                speakerIndex = parseInt(blockSpeakerName.replace('Speaker ', ''));
+                            }} else if (speakerNameToIndex[blockSpeakerName] !== undefined) {{
+                                // Custom name
+                                speakerIndex = speakerNameToIndex[blockSpeakerName];
+                                // Save custom name (not "Speaker X" format)
+                                speakerNames[speakerIndex] = blockSpeakerName;
+                            }} else {{
+                                // Fallback: try to parse from word
+                                if (blockWords.length > 0 && blockWords[0].speaker !== undefined) {{
+                                    speakerIndex = blockWords[0].speaker;
+                                }}
+                            }}
+                            
+                            // Convert words to RichWordsTranscript format
+                            for (let wordIdx = 0; wordIdx < blockWords.length; wordIdx++) {{
+                                const word = blockWords[wordIdx];
+                                const isFirst = wordIdx === 0;
+                                const isLast = wordIdx === blockWords.length - 1;
+                                
+                                allWords.push({{
+                                    word: word.word || word.text || '',
+                                    start: word.start,
+                                    end: word.end,
+                                    confidence: word.confidence || 0.9,
+                                    speaker: speakerIndex,
+                                    speaker_confidence: word.confidence || 0.9,
+                                    punctuated_word: word.punct || word.word || word.text || '',
+                                    paragraph_start: isFirst,
+                                    paragraph_end: isLast,
+                                    // Preserve correction metadata if present
+                                    corrected: word.corrected,
+                                    original_word: word.original_word,
+                                    original_punct: word.original_punct
+                                }});
+                            }}
+                        }}
+                        
+                        // Get original corrections version (if available) and increment
+                        const originalCorrections = originalTranscriptData.corrections || {{}};
+                        const version = (originalCorrections.version || 0) + 1;
+                        
+                        // Build RichWordsTranscript format
+                        const richWordsTranscript = {{
+                            words: allWords,
+                            corrections: {{
+                                version: version,
+                                timestamp: new Date().toISOString(),
+                                speaker_names: Object.keys(speakerNames).length > 0 ? speakerNames : undefined
+                            }}
+                        }};
+                        
+                        // Remove undefined speaker_names if empty
+                        if (!richWordsTranscript.corrections.speaker_names) {{
+                            delete richWordsTranscript.corrections.speaker_names;
+                        }}
+                        
+                        console.log('RichWordsTranscript:', richWordsTranscript);
+                        
+                        // Convert to JSON string and download
+                        const jsonString = JSON.stringify(richWordsTranscript, null, 2);
+                        const blob = new Blob([jsonString], {{ type: 'application/json;charset=utf-8' }});
                         const url = window.URL.createObjectURL(blob);
                         const a = document.createElement('a');
+                        a.style.display = 'none';
                         a.href = url;
                         a.download = '{audio_filename}_corrected.json';
-                        document.body.appendChild(a);
-                        a.click();
-                        document.body.removeChild(a);
-                        window.URL.revokeObjectURL(url);
                         
-                        alert('Corrections saved! File downloaded successfully.');
+                        // Append to body, click, and remove
+                        document.body.appendChild(a);
+                        
+                        // Use setTimeout to ensure the click happens after append
+                        setTimeout(() => {{
+                            a.click();
+                            
+                            // Clean up after a short delay
+                            setTimeout(() => {{
+                                document.body.removeChild(a);
+                                window.URL.revokeObjectURL(url);
+                            }}, 100);
+                        }}, 0);
+                        
+                        alert('Corrections saved! File download started.');
                     }} catch (error) {{
                         console.error('Error saving:', error);
-                        alert('Failed to save corrections: ' + error.message);
+                        console.error('Error stack:', error.stack);
+                        alert('Failed to save corrections: ' + (error.message || String(error)));
                     }} finally {{
                         this.setState({{ isSaving: false }});
                     }}

@@ -16,7 +16,7 @@ from typing import Dict, List, Optional, Tuple
 import base64
 
 # HTML template for standalone transcript viewer
-HTML_TEMPLATE = '''<!DOCTYPE html>
+HTML_TEMPLATE = r'''<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -325,17 +325,100 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
                         }}
                         
                         // Extract words from DraftJS format and convert to RichWordsTranscript
+                        // Following the same logic as web-ui/src/components/TranscriptEditor/TranscriptEditor.tsx
                         const blocks = draftJsContent.data.blocks || [];
                         const allWords = [];
                         
-                        // Extract speaker names (custom names only, not "Speaker X")
-                        const speakerNames = {{}};
+                        // First pass: collect all unique speaker names in order they first appear
+                        const uniqueSpeakers = [];
+                        for (let blockIdx = 0; blockIdx < blocks.length; blockIdx++) {{
+                            const block = blocks[blockIdx];
+                            const blockData = block.data || {{}};
+                            const blockSpeakerName = blockData.speaker;
+                            if (blockSpeakerName && uniqueSpeakers.indexOf(blockSpeakerName) === -1) {{
+                                uniqueSpeakers.push(blockSpeakerName);
+                            }}
+                        }}
                         
-                        // Build mapping of speaker names to indices
-                        const speakerNameToIndex = {{}};
+                        // Build mapping from original transcriptData - same as originalSpeakerMappingRef in web UI
+                        // This maps ALL speaker names (default and custom) to their indices
+                        const originalSpeakerNameToIndex = {{}};
+                        
+                        // Find all unique speaker indices from original words
+                        const originalSpeakerIndices = new Set();
+                        if (transcriptData.words && Array.isArray(transcriptData.words)) {{
+                            transcriptData.words.forEach(word => {{
+                                if (word.speaker !== undefined) {{
+                                    originalSpeakerIndices.add(word.speaker);
+                                    // Create default mapping for all speakers
+                                    const defaultName = 'Speaker ' + word.speaker;
+                                    if (originalSpeakerNameToIndex[defaultName] === undefined) {{
+                                        originalSpeakerNameToIndex[defaultName] = word.speaker;
+                                    }}
+                                }}
+                            }});
+                        }}
+                        
+                        // Add custom speaker name mappings from transcriptData.speaker_names
+                        // These override the default "Speaker X" mappings
                         if (transcriptData.speaker_names) {{
                             for (const [indexStr, name] of Object.entries(transcriptData.speaker_names)) {{
-                                speakerNameToIndex[name] = parseInt(indexStr);
+                                const speakerIndex = parseInt(indexStr);
+                                originalSpeakerNameToIndex[name] = speakerIndex;
+                            }}
+                        }}
+                        
+                        // Build array of original speakers sorted by index (like originalSpeakersArray in web UI)
+                        const originalSpeakersArray = [];
+                        const sortedIndices = Array.from(originalSpeakerIndices).sort((a, b) => a - b);
+                        sortedIndices.forEach(speakerIndex => {{
+                            // Find the name for this index (custom name if exists, otherwise default)
+                            let name = null;
+                            if (transcriptData.speaker_names && transcriptData.speaker_names[speakerIndex] !== undefined) {{
+                                name = transcriptData.speaker_names[speakerIndex];
+                            }} else {{
+                                name = 'Speaker ' + speakerIndex;
+                            }}
+                            originalSpeakersArray.push([name, speakerIndex]);
+                        }});
+                        
+                        console.log('Original speaker name to index mapping:', originalSpeakerNameToIndex);
+                        console.log('Original speakers array:', originalSpeakersArray);
+                        
+                        // Build reverse mapping: speaker name -> speaker index
+                        // Following the same logic as web UI
+                        const speakerNameToIndexMap = {{}};
+                        const speakerNamesMap = {{}};
+                        
+                        // Single pass: map all speaker names
+                        for (let blockIdx = 0; blockIdx < blocks.length; blockIdx++) {{
+                            const block = blocks[blockIdx];
+                            const blockData = block.data || {{}};
+                            const blockSpeakerName = blockData.speaker;
+                            
+                            if (blockSpeakerName) {{
+                                speakerNamesMap[blockSpeakerName] = blockSpeakerName;
+                                
+                                // Check if it's "Speaker X" format
+                                const speakerMatch = blockSpeakerName.match(/^Speaker (\d+)$/);
+                                if (speakerMatch) {{
+                                    // It's a default "Speaker X" format
+                                    speakerNameToIndexMap[blockSpeakerName] = parseInt(speakerMatch[1]);
+                                }} else {{
+                                    // It's a custom name - find its position in the unique list
+                                    const positionInUniqueList = uniqueSpeakers.indexOf(blockSpeakerName);
+                                    
+                                    if (positionInUniqueList !== -1 && positionInUniqueList < originalSpeakersArray.length) {{
+                                        // Map to the original speaker at the same position
+                                        const speakerIndex = originalSpeakersArray[positionInUniqueList][1]; // Get the numeric index
+                                        speakerNameToIndexMap[blockSpeakerName] = speakerIndex;
+                                        console.log('Mapped custom name by position:', blockSpeakerName, '->', speakerIndex, '(position', positionInUniqueList, ')');
+                                    }} else if (originalSpeakerNameToIndex[blockSpeakerName] !== undefined) {{
+                                        // Fallback: look it up in original mapping (for existing custom names)
+                                        speakerNameToIndexMap[blockSpeakerName] = originalSpeakerNameToIndex[blockSpeakerName];
+                                        console.log('Mapped custom name from original:', blockSpeakerName, '->', originalSpeakerNameToIndex[blockSpeakerName]);
+                                    }}
+                                }}
                             }}
                         }}
                         
@@ -346,20 +429,35 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
                             const blockWords = blockData.words || [];
                             const blockSpeakerName = blockData.speaker || 'Speaker 0';
                             
-                            // Get speaker index from name
-                            let speakerIndex = 0;
-                            if (blockSpeakerName.match(/^Speaker \d+$/)) {{
-                                // Default format
-                                speakerIndex = parseInt(blockSpeakerName.replace('Speaker ', ''));
-                            }} else if (speakerNameToIndex[blockSpeakerName] !== undefined) {{
-                                // Custom name
-                                speakerIndex = speakerNameToIndex[blockSpeakerName];
-                                // Save custom name (not "Speaker X" format)
-                                speakerNames[speakerIndex] = blockSpeakerName;
-                            }} else {{
-                                // Fallback: try to parse from word
-                                if (blockWords.length > 0 && blockWords[0].speaker !== undefined) {{
-                                    speakerIndex = blockWords[0].speaker;
+                            // Map speaker name to speaker index using the pre-built mapping
+                            let speakerIndex = speakerNameToIndexMap[blockSpeakerName];
+                            
+                            // Fallback: if not in pre-built mapping, try other sources
+                            if (speakerIndex === undefined) {{
+                                // Check if it's "Speaker X" format
+                                const speakerMatch = blockSpeakerName.match(/^Speaker (\d+)$/);
+                                if (speakerMatch) {{
+                                    speakerIndex = parseInt(speakerMatch[1]);
+                                }} else {{
+                                    // Look it up in current speaker_names mapping
+                                    if (transcriptData.speaker_names) {{
+                                        for (const [indexStr, name] of Object.entries(transcriptData.speaker_names)) {{
+                                            if (name === blockSpeakerName) {{
+                                                speakerIndex = parseInt(indexStr);
+                                                break;
+                                            }}
+                                        }}
+                                    }}
+                                    
+                                    // If still not found, try to get from word
+                                    if (speakerIndex === undefined && blockWords.length > 0 && blockWords[0].speaker !== undefined) {{
+                                        speakerIndex = blockWords[0].speaker;
+                                    }}
+                                    
+                                    // Final fallback
+                                    if (speakerIndex === undefined) {{
+                                        speakerIndex = 0;
+                                    }}
                                 }}
                             }}
                             
@@ -387,6 +485,46 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
                             }}
                         }}
                         
+                        // Build customSpeakerNames using the pre-built mapping
+                        // Only save custom names (not "Speaker X" format)
+                        const customSpeakerNames = {{}};
+                        console.log('Speaker names map:', speakerNamesMap);
+                        console.log('Speaker name to index map:', speakerNameToIndexMap);
+                        
+                        for (const speakerName in speakerNamesMap) {{
+                            if (speakerNamesMap.hasOwnProperty(speakerName)) {{
+                                const speakerIndex = speakerNameToIndexMap[speakerName];
+                                
+                                // Only save if it's a custom name (not "Speaker X" format) and we found an index
+                                if (speakerIndex !== undefined && !speakerName.match(/^Speaker \d+$/)) {{
+                                    customSpeakerNames[speakerIndex] = speakerName;
+                                    console.log('Added custom speaker name:', speakerIndex, '->', speakerName);
+                                }} else {{
+                                    console.log('Skipped speaker name:', speakerName, 'index:', speakerIndex, 'isSpeakerX:', !!speakerName.match(/^Speaker \d+$/));
+                                }}
+                            }}
+                        }}
+                        
+                        console.log('Custom speaker names:', customSpeakerNames);
+                        
+                        // Merge with existing speaker_names from transcriptData
+                        const mergedSpeakerNames = {{}};
+                        if (transcriptData.speaker_names) {{
+                            for (const [indexStr, name] of Object.entries(transcriptData.speaker_names)) {{
+                                const idx = parseInt(indexStr);
+                                mergedSpeakerNames[idx] = name;
+                                console.log('Merged existing speaker name:', idx, '->', name);
+                            }}
+                        }}
+                        // Add custom names from blocks (overwrites existing if same index)
+                        for (const [indexStr, name] of Object.entries(customSpeakerNames)) {{
+                            const idx = typeof indexStr === 'number' ? indexStr : parseInt(indexStr);
+                            mergedSpeakerNames[idx] = name;
+                            console.log('Merged custom speaker name:', idx, '->', name);
+                        }}
+                        
+                        console.log('Final merged speaker names:', mergedSpeakerNames);
+                        
                         // Get original corrections version (if available) and increment
                         const originalCorrections = originalTranscriptData.corrections || {{}};
                         const version = (originalCorrections.version || 0) + 1;
@@ -397,7 +535,7 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
                             corrections: {{
                                 version: version,
                                 timestamp: new Date().toISOString(),
-                                speaker_names: Object.keys(speakerNames).length > 0 ? speakerNames : undefined
+                                speaker_names: Object.keys(mergedSpeakerNames).length > 0 ? mergedSpeakerNames : undefined
                             }}
                         }};
                         

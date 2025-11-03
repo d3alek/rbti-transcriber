@@ -53,5 +53,5 @@ Thumbs.db
 gh-pages-output/
 
 # Manual
-.mp3
-!compressed/*.mp3
+*.mp3
+temp_compressed

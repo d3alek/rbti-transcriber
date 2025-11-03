@@ -47,7 +47,7 @@ console.log('🔨 Building browser UMD bundle from source...');
 
 // Simple webpack config for browser bundle
 const config = {
-  mode: 'production',
+  mode: 'development',
   entry: path.resolve(__dirname, '../react-transcript-editor/packages/components/transcript-editor/index.js'),
   output: {
     path: path.resolve(__dirname, '../gh-pages-output/bundles'),
@@ -56,6 +56,10 @@ const config = {
     libraryTarget: 'umd',
     globalObject: 'this',
   },
+  optimization: {
+    minimize: false
+  },
+  devtool: 'source-map',
   externals: {
     'react': {
       commonjs: 'react',
@@ -116,7 +120,7 @@ const config = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production')
+      'process.env.NODE_ENV': JSON.stringify('development')
     })
   ]
 };

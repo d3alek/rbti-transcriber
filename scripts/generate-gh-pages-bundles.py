@@ -73,9 +73,9 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
         <div class="loading">Loading transcript editor...</div>
     </div>
 
-    <!-- React and ReactDOM from CDN -->
-    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <!-- React and ReactDOM from CDN (development versions for debugging) -->
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
     <script crossorigin src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
     
     <!-- Draft.js CSS (required for editor) -->
@@ -136,7 +136,40 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
             console.log('TranscriptEditor found:', TranscriptEditor);
             
             // Load transcript data
-            const transcriptData = {transcript_json};
+            let transcriptData = {transcript_json};
+            
+            // Ensure words have 'punct' field (required by Deepgram adapter)
+            // The adapter expects 'punct' but transcript may have 'punctuated_word'
+            if (transcriptData.words && Array.isArray(transcriptData.words)) {{
+                transcriptData.words = transcriptData.words.map(word => {{
+                    // Add 'punct' field if missing, using 'punctuated_word' or 'word' as fallback
+                    if (!word.punct) {{
+                        word.punct = word.punctuated_word || word.word || '';
+                    }}
+                    return word;
+                }});
+            }}
+            
+            // Extract speaker_names from corrections and add to top level
+            // The Deepgram adapter expects speaker_names at the top level
+            // corrections.speaker_names has string keys like "1", convert to numeric keys
+            if (transcriptData.corrections && transcriptData.corrections.speaker_names) {{
+                const correctionsSpeakerNames = transcriptData.corrections.speaker_names;
+                
+                // Initialize speaker_names if it doesn't exist, or use existing
+                if (!transcriptData.speaker_names) {{
+                    transcriptData.speaker_names = {{}};
+                }}
+                
+                // Convert string keys to numbers and copy speaker names
+                for (const [key, value] of Object.entries(correctionsSpeakerNames)) {{
+                    const speakerIndex = parseInt(key, 10);
+                    if (!isNaN(speakerIndex)) {{
+                        transcriptData.speaker_names[speakerIndex] = value;
+                    }}
+                }}
+            }}
+            
             const originalTranscriptData = JSON.parse(JSON.stringify(transcriptData)); // Deep copy for comparison
             
             // Media URL (relative to this HTML file)
@@ -366,11 +399,16 @@ def generate_bundle(transcription_path: Path, output_dir: Path, base_dir: Path) 
     shutil.copy2(transcription_path, bundle_dir / "transcript.json")
     
     # Generate HTML file
+    # First format the template with safe fields (title, audio_filename)
+    # Then replace transcript_json separately to avoid issues with curly braces in JSON
+    transcript_json_str = json.dumps(transcript_data, indent=2)
     html_content = HTML_TEMPLATE.format(
         title=lecture_name,
-        transcript_json=json.dumps(transcript_data, indent=2),
+        transcript_json='__TRANSCRIPT_JSON_PLACEHOLDER__',
         audio_filename=audio_filename
     )
+    # Now replace the placeholder with the actual JSON (safe from format() parsing)
+    html_content = html_content.replace('__TRANSCRIPT_JSON_PLACEHOLDER__', transcript_json_str)
     
     with open(bundle_dir / "index.html", 'w', encoding='utf-8') as f:
         f.write(html_content)

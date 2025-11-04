@@ -1,0 +1,112 @@
+{
+  "batch_progress": {
+    "total_files": 11,
+    "completed_files": 11,
+    "failed_files": 0,
+    "skipped_files": 0,
+    "start_time": 1762228746.8231497,
+    "end_time": 1762229487.913246
+  },
+  "file_progress": {
+    "seminars/KILIAN TAPES RE tapes1-14/WRH1004.mp3": {
+      "status": "completed",
+      "start_time": 1762228746.8253808,
+      "end_time": 1762228813.5063412,
+      "error_message": null,
+      "file_size_mb": 7.534783363342285,
+      "processing_time": 66.68036460876465,
+      "output_formats": []
+    },
+    "seminars/KILIAN TAPES RE tapes1-14/WRH1005.mp3": {
+      "status": "completed",
+      "start_time": 1762228813.506528,
+      "end_time": 1762228862.4531796,
+      "error_message": null,
+      "file_size_mb": 7.6079254150390625,
+      "processing_time": 48.94564127922058,
+      "output_formats": []
+    },
+    "seminars/KILIAN TAPES RE tapes1-14/WRH1006.mp3": {
+      "status": "completed",
+      "start_time": 1762228862.4533575,
+      "end_time": 1762228901.6305916,
+      "error_message": null,
+      "file_size_mb": 6.150555610656738,
+      "processing_time": 39.17630887031555,
+      "output_formats": []
+    },
+    "seminars/KILIAN TAPES RE tapes1-14/WRH1007.mp3": {
+      "status": "completed",
+      "start_time": 1762228901.6308289,
+      "end_time": 1762228977.9451852,
+      "error_message": null,
+      "file_size_mb": 7.519536972045898,
+      "processing_time": 76.30442357063293,
+      "output_formats": []
+    },
+    "seminars/KILIAN TAPES RE tapes1-14/WRH1008.mp3": {
+      "status": "completed",
+      "start_time": 1762228977.9453773,
+      "end_time": 1762229021.2761946,
+      "error_message": null,
+      "file_size_mb": 6.519756317138672,
+      "processing_time": 43.32133197784424,
+      "output_formats": []
+    },
+    "seminars/KILIAN TAPES RE tapes1-14/WRH1009.mp3": {
+      "status": "completed",
+      "start_time": 1762229021.2764106,
+      "end_time": 1762229108.3871074,
+      "error_message": null,
+      "file_size_mb": 7.713752746582031,
+      "processing_time": 87.10466122627258,
+      "output_formats": []
+    },
+    "seminars/KILIAN TAPES RE tapes1-14/WRH1010.mp3": {
+      "status": "completed",
+      "start_time": 1762229108.3892546,
+      "end_time": 1762229186.2140095,
+      "error_message": null,
+      "file_size_mb": 7.580223083496094,
+      "processing_time": 77.82174253463745,
+      "output_formats": []
+    },
+    "seminars/KILIAN TAPES RE tapes1-14/WRH1011.mp3": {
+      "status": "completed",
+      "start_time": 1762229186.2147388,
+      "end_time": 1762229292.8719664,
+      "error_message": null,
+      "file_size_mb": 7.611313819885254,
+      "processing_time": 106.65117049217224,
+      "output_formats": []
+    },
+    "seminars/KILIAN TAPES RE tapes1-14/WRH1012.mp3": {
+      "status": "completed",
+      "start_time": 1762229292.8757138,
+      "end_time": 1762229347.6426857,
+      "error_message": null,
+      "file_size_mb": 4.737131118774414,
+      "processing_time": 54.764108180999756,
+      "output_formats": []
+    },
+    "seminars/KILIAN TAPES RE tapes1-14/WRH1013.mp3": {
+      "status": "completed",
+      "start_time": 1762229347.6432292,
+      "end_time": 1762229424.149548,
+      "error_message": null,
+      "file_size_mb": 7.563880920410156,
+      "processing_time": 76.49541687965393,
+      "output_formats": []
+    },
+    "seminars/KILIAN TAPES RE tapes1-14/WRH1014.mp3": {
+      "status": "completed",
+      "start_time": 1762229424.1499481,
+      "end_time": 1762229487.9130096,
+      "error_message": null,
+      "file_size_mb": 7.547438621520996,
+      "processing_time": 63.762057065963745,
+      "output_formats": []
+    }
+  },
+  "last_updated": 1762229487.913253
+}

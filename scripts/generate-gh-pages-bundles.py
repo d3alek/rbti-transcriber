@@ -85,19 +85,31 @@ VIEWER_TEMPLATE = r'''<!DOCTYPE html>
             gap: 1rem;
         }}
         
-        .audio-player-container {{
-            background: white;
-            box-shadow: 0 0 10px #ccc;
-            padding: 1rem;
-            border-radius: 4px;
+        .sticky-header-section {{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
             position: sticky;
             top: 0;
             z-index: 100;
         }}
         
+        .audio-player-container {{
+            background: white;
+            box-shadow: 0 0 10px #ccc;
+            padding: 1rem;
+            border-radius: 4px;
+        }}
+        
         .audio-player {{
             width: 100%;
             outline: none;
+        }}
+        
+        .local-storage-section {{
+            background: white;
+            box-shadow: 0 0 10px #ccc;
+            border-radius: 4px;
         }}
         
         .transcript-container {{
@@ -109,7 +121,7 @@ VIEWER_TEMPLATE = r'''<!DOCTYPE html>
         }}
         
         .transcript-content {{
-            max-height: calc(100vh - 200px);
+            max-height: calc(100vh - 250px);
             overflow-y: auto;
             padding: 8px 16px;
             background-color: white;
@@ -124,6 +136,9 @@ VIEWER_TEMPLATE = r'''<!DOCTYPE html>
         }}
         
         @media (max-width: 768px) {{
+            .sticky-header-section {{
+                grid-template-columns: 1fr;
+            }}
             .paragraph-block {{
                 grid-template-columns: 1fr;
                 margin-bottom: 0.5em;
@@ -602,19 +617,31 @@ LIGHT_EDITOR_TEMPLATE = r'''<!DOCTYPE html>
             gap: 1rem;
         }}
         
-        .audio-player-container {{
-            background: white;
-            box-shadow: 0 0 10px #ccc;
-            padding: 1rem;
-            border-radius: 4px;
+        .sticky-header-section {{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
             position: sticky;
             top: 0;
             z-index: 100;
         }}
         
+        .audio-player-container {{
+            background: white;
+            box-shadow: 0 0 10px #ccc;
+            padding: 1rem;
+            border-radius: 4px;
+        }}
+        
         .audio-player {{
             width: 100%;
             outline: none;
+        }}
+        
+        .local-storage-section {{
+            background: white;
+            box-shadow: 0 0 10px #ccc;
+            border-radius: 4px;
         }}
         
         .transcript-container {{
@@ -626,7 +653,7 @@ LIGHT_EDITOR_TEMPLATE = r'''<!DOCTYPE html>
         }}
         
         .transcript-content {{
-            max-height: calc(100vh - 200px);
+            max-height: calc(100vh - 250px);
             overflow-y: auto;
             padding: 8px 16px;
             background-color: white;
@@ -641,6 +668,9 @@ LIGHT_EDITOR_TEMPLATE = r'''<!DOCTYPE html>
         }}
         
         @media (max-width: 768px) {{
+            .sticky-header-section {{
+                grid-template-columns: 1fr;
+            }}
             .paragraph-block {{
                 grid-template-columns: 1fr;
                 margin-bottom: 0.5em;
@@ -863,18 +893,27 @@ LIGHT_EDITOR_TEMPLATE = r'''<!DOCTYPE html>
             <h1>{title} - Light Editor</h1>
             <div class="header-buttons">
                 <a href="index.html" class="button back-button">← Back to Viewer</a>
-                <button id="resetButton" class="button reset-button" onclick="resetEdits()" style="background-color: #dc3545; margin-right: 10px;">🔄 Reset Edits</button>
-                <button id="saveButton" class="button save-button" onclick="saveCorrections()">💾 Save Corrections</button>
+                <button id="saveButton" class="button save-button" onclick="saveCorrections()">💾 Share Corrections</button>
             </div>
     </div>
 
         <div class="main-content">
-            <div class="audio-player-container">
-                <audio id="audioPlayer" class="audio-player" controls preload="metadata">
-                    <source src="./{audio_filename}" type="audio/webm">
-                    <source src="./{audio_filename}" type="audio/opus">
-                    Your browser does not support the audio element.
-                </audio>
+            <div class="sticky-header-section">
+                <div class="audio-player-container">
+                    <audio id="audioPlayer" class="audio-player" controls preload="metadata">
+                        <source src="./{audio_filename}" type="audio/webm">
+                        <source src="./{audio_filename}" type="audio/opus">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+                
+                <div class="local-storage-section" style="padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+                    <div style="flex: 1;">
+                        <div style="font-weight: bold; font-size: 0.9em; color: #333; margin-bottom: 4px;">Changes in local storage</div>
+                        <span id="changesSummary" style="font-size: 0.85em; color: #666;"></span>
+                    </div>
+                    <button id="resetButton" class="button reset-button" onclick="resetEdits()" style="background-color: #dc3545; white-space: nowrap;">🔄 Reset local changes</button>
+                </div>
             </div>
             
             <div class="transcript-container">
@@ -900,6 +939,7 @@ LIGHT_EDITOR_TEMPLATE = r'''<!DOCTYPE html>
         const transcriptContent = document.getElementById('transcriptContent');
         const saveButton = document.getElementById('saveButton');
         const resetButton = document.getElementById('resetButton');
+        const changesSummary = document.getElementById('changesSummary');
         
         // Save edits to localStorage
         function saveEditsToStorage() {{
@@ -954,6 +994,33 @@ LIGHT_EDITOR_TEMPLATE = r'''<!DOCTYPE html>
             return false;
         }}
         
+        // Update changes summary display
+        function updateChangesSummary() {{
+            const wordCount = wordCorrections.size;
+            const speakerCount = speakerNameChanges.size;
+            const paragraphSpeakerCount = paragraphSpeakerChanges.size;
+            
+            if (wordCount === 0 && speakerCount === 0 && paragraphSpeakerCount === 0) {{
+                changesSummary.textContent = 'No changes yet.';
+                return;
+            }}
+            
+            const parts = [];
+            if (wordCount > 0) {{
+                parts.push(`${{wordCount}} word(s) corrected`);
+            }}
+            if (speakerCount > 0) {{
+                parts.push(`${{speakerCount}} speaker(s) renamed globally`);
+            }}
+            if (paragraphSpeakerCount > 0) {{
+                parts.push(`${{paragraphSpeakerCount}} paragraph speaker(s) changed`);
+            }}
+            
+            if (parts.length > 0) {{
+                changesSummary.textContent = parts.join(', ') + '.';
+            }}
+        }}
+        
         // Reset edits (clear localStorage and reload)
         function resetEdits() {{
             if (!confirm('Are you sure you want to reset all edits? This will clear all corrections and reload the original transcript.')) {{
@@ -966,6 +1033,9 @@ LIGHT_EDITOR_TEMPLATE = r'''<!DOCTYPE html>
                 speakerNameChanges.clear();
                 paragraphSpeakerChanges.clear();
                 console.log('Edits reset - localStorage cleared');
+                
+                // Update summary display
+                updateChangesSummary();
                 
                 // Re-render transcript to show original state
                 renderTranscript();
@@ -1275,6 +1345,7 @@ LIGHT_EDITOR_TEMPLATE = r'''<!DOCTYPE html>
             
             closeSpeakerModal();
             saveEditsToStorage(); // Save to localStorage after speaker change
+            updateChangesSummary(); // Update summary display
             // Re-render transcript to show updated speaker names
             renderTranscript();
         }}
@@ -1315,6 +1386,7 @@ LIGHT_EDITOR_TEMPLATE = r'''<!DOCTYPE html>
                     wordElement.classList.add('corrected');
                     wordElement.classList.remove('editing');
                     saveEditsToStorage(); // Save to localStorage
+                    updateChangesSummary(); // Update summary display
                                 }} else {{
                     wordElement.classList.remove('editing');
                 }}
@@ -1631,33 +1703,19 @@ LIGHT_EDITOR_TEMPLATE = r'''<!DOCTYPE html>
                             }}, 100);
                         }}, 0);
                         
-                const wordCount = wordCorrections.size;
-                const speakerCount = speakerNameChanges.size;
-                const paragraphSpeakerCount = paragraphSpeakerChanges.size;
-                let message = 'Corrections saved! ';
-                const parts = [];
-                if (wordCount > 0) {{
-                    parts.push(`${{wordCount}} word(s) corrected`);
-                }}
-                if (speakerCount > 0) {{
-                    parts.push(`${{speakerCount}} speaker(s) renamed globally`);
-                }}
-                if (paragraphSpeakerCount > 0) {{
-                    parts.push(`${{paragraphSpeakerCount}} paragraph speaker(s) changed`);
-                }}
-                if (parts.length > 0) {{
-                    message += parts.join(', ') + '.';
-                }}
-                message += ' File download started.';
-                alert(message);
-            }} catch (error) {{
+                // File download started - no need for alert, summary is already displayed
+                alert('File download started.');
+                    }} catch (error) {{
                 console.error('Error saving corrections:', error);
-                alert('Failed to save corrections: ' + (error.message || String(error)));
+                        alert('Failed to save corrections: ' + (error.message || String(error)));
             }}
         }}
         
         // Load edits from localStorage on page load
         loadEditsFromStorage();
+        
+        // Update summary display after loading edits
+        updateChangesSummary();
         
         // Render transcript on load
         renderTranscript();

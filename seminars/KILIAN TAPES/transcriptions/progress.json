@@ -1,0 +1,22 @@
+{
+  "batch_progress": {
+    "total_files": 1,
+    "completed_files": 1,
+    "failed_files": 0,
+    "skipped_files": 0,
+    "start_time": 1762209399.5061855,
+    "end_time": 1762209406.0880637
+  },
+  "file_progress": {
+    "seminars/KILIAN TAPES/Tape03A segment about ppm vs percent.mp3": {
+      "status": "completed",
+      "start_time": 1762209399.5074224,
+      "end_time": 1762209406.0877533,
+      "error_message": null,
+      "file_size_mb": 1.349374771118164,
+      "processing_time": 6.580017328262329,
+      "output_formats": []
+    }
+  },
+  "last_updated": 1762209406.0880728
+}

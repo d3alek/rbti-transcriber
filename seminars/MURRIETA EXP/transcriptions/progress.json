@@ -1,0 +1,211 @@
+{
+  "batch_progress": {
+    "total_files": 22,
+    "completed_files": 22,
+    "failed_files": 0,
+    "skipped_files": 0,
+    "start_time": 1762232337.2188535,
+    "end_time": 1762233792.2004948
+  },
+  "file_progress": {
+    "seminars/MURRIETA EXP/27a.mp3": {
+      "status": "completed",
+      "start_time": 1762232337.224218,
+      "end_time": 1762232407.769692,
+      "error_message": null,
+      "file_size_mb": 7.182154655456543,
+      "processing_time": 70.54334044456482,
+      "output_formats": []
+    },
+    "seminars/MURRIETA EXP/27b.mp3": {
+      "status": "completed",
+      "start_time": 1762232407.769856,
+      "end_time": 1762232482.6890252,
+      "error_message": null,
+      "file_size_mb": 5.858302116394043,
+      "processing_time": 74.90497612953186,
+      "output_formats": []
+    },
+    "seminars/MURRIETA EXP/28a.mp3": {
+      "status": "completed",
+      "start_time": 1762232482.6899743,
+      "end_time": 1762232607.2609253,
+      "error_message": null,
+      "file_size_mb": 8.64374828338623,
+      "processing_time": 124.55360102653503,
+      "output_formats": []
+    },
+    "seminars/MURRIETA EXP/28b.mp3": {
+      "status": "completed",
+      "start_time": 1762232607.2618198,
+      "end_time": 1762232684.8058217,
+      "error_message": null,
+      "file_size_mb": 6.357974052429199,
+      "processing_time": 77.54089570045471,
+      "output_formats": []
+    },
+    "seminars/MURRIETA EXP/29a.mp3": {
+      "status": "completed",
+      "start_time": 1762232684.8061934,
+      "end_time": 1762232720.8543344,
+      "error_message": null,
+      "file_size_mb": 2.862879753112793,
+      "processing_time": 36.01105499267578,
+      "output_formats": []
+    },
+    "seminars/MURRIETA EXP/29b.mp3": {
+      "status": "completed",
+      "start_time": 1762232720.8549662,
+      "end_time": 1762232760.8863244,
+      "error_message": null,
+      "file_size_mb": 3.3305540084838867,
+      "processing_time": 39.99429273605347,
+      "output_formats": []
+    },
+    "seminars/MURRIETA EXP/2a.mp3": {
+      "status": "completed",
+      "start_time": 1762232760.8867817,
+      "end_time": 1762232813.815961,
+      "error_message": null,
+      "file_size_mb": 4.646990776062012,
+      "processing_time": 52.91728758811951,
+      "output_formats": []
+    },
+    "seminars/MURRIETA EXP/2b.mp3": {
+      "status": "completed",
+      "start_time": 1762232813.8167694,
+      "end_time": 1762232899.7253602,
+      "error_message": null,
+      "file_size_mb": 5.6801862716674805,
+      "processing_time": 85.89990448951721,
+      "output_formats": []
+    },
+    "seminars/MURRIETA EXP/3a.mp3": {
+      "status": "completed",
+      "start_time": 1762232899.7269955,
+      "end_time": 1762232979.701473,
+      "error_message": null,
+      "file_size_mb": 6.9114789962768555,
+      "processing_time": 79.97178149223328,
+      "output_formats": []
+    },
+    "seminars/MURRIETA EXP/3b.mp3": {
+      "status": "completed",
+      "start_time": 1762232979.7017136,
+      "end_time": 1762233038.2131174,
+      "error_message": null,
+      "file_size_mb": 7.6104841232299805,
+      "processing_time": 58.49956750869751,
+      "output_formats": []
+    },
+    "seminars/MURRIETA EXP/4a.mp3": {
+      "status": "completed",
+      "start_time": 1762233038.2135224,
+      "end_time": 1762233137.4354615,
+      "error_message": null,
+      "file_size_mb": 7.931148529052734,
+      "processing_time": 99.20927214622498,
+      "output_formats": []
+    },
+    "seminars/MURRIETA EXP/4b.mp3": {
+      "status": "completed",
+      "start_time": 1762233137.4361868,
+      "end_time": 1762233242.922332,
+      "error_message": null,
+      "file_size_mb": 7.967883110046387,
+      "processing_time": 105.47262573242188,
+      "output_formats": []
+    },
+    "seminars/MURRIETA EXP/5a.mp3": {
+      "status": "completed",
+      "start_time": 1762233242.9235358,
+      "end_time": 1762233278.9438748,
+      "error_message": null,
+      "file_size_mb": 3.6895322799682617,
+      "processing_time": 35.97978162765503,
+      "output_formats": []
+    },
+    "seminars/MURRIETA EXP/5b.mp3": {
+      "status": "completed",
+      "start_time": 1762233278.945,
+      "end_time": 1762233321.6153631,
+      "error_message": null,
+      "file_size_mb": 4.075976371765137,
+      "processing_time": 42.65771222114563,
+      "output_formats": []
+    },
+    "seminars/MURRIETA EXP/6a.mp3": {
+      "status": "completed",
+      "start_time": 1762233321.616492,
+      "end_time": 1762233402.0781813,
+      "error_message": null,
+      "file_size_mb": 5.888239860534668,
+      "processing_time": 80.42206978797913,
+      "output_formats": []
+    },
+    "seminars/MURRIETA EXP/6b.mp3": {
+      "status": "completed",
+      "start_time": 1762233402.0791252,
+      "end_time": 1762233479.2631867,
+      "error_message": null,
+      "file_size_mb": 6.0347700119018555,
+      "processing_time": 77.17163014411926,
+      "output_formats": []
+    },
+    "seminars/MURRIETA EXP/7a.mp3": {
+      "status": "completed",
+      "start_time": 1762233479.2639236,
+      "end_time": 1762233529.964369,
+      "error_message": null,
+      "file_size_mb": 3.862154960632324,
+      "processing_time": 50.68884325027466,
+      "output_formats": []
+    },
+    "seminars/MURRIETA EXP/7b.mp3": {
+      "status": "completed",
+      "start_time": 1762233529.9653504,
+      "end_time": 1762233591.7754104,
+      "error_message": null,
+      "file_size_mb": 6.121973991394043,
+      "processing_time": 61.794161319732666,
+      "output_formats": []
+    },
+    "seminars/MURRIETA EXP/8a.mp3": {
+      "status": "completed",
+      "start_time": 1762233591.7770786,
+      "end_time": 1762233648.8106663,
+      "error_message": null,
+      "file_size_mb": 4.2137861251831055,
+      "processing_time": 57.02229332923889,
+      "output_formats": []
+    },
+    "seminars/MURRIETA EXP/8b.mp3": {
+      "status": "completed",
+      "start_time": 1762233648.8109925,
+      "end_time": 1762233701.5470045,
+      "error_message": null,
+      "file_size_mb": 5.2308454513549805,
+      "processing_time": 52.72536039352417,
+      "output_formats": []
+    },
+    "seminars/MURRIETA EXP/9a.mp3": {
+      "status": "completed",
+      "start_time": 1762233701.5474432,
+      "end_time": 1762233742.5954263,
+      "error_message": null,
+      "file_size_mb": 4.575922966003418,
+      "processing_time": 41.04528856277466,
+      "output_formats": []
+    },
+    "seminars/MURRIETA EXP/9b.mp3": {
+      "status": "completed",
+      "start_time": 1762233742.5963619,
+      "end_time": 1762233792.2000146,
+      "error_message": null,
+      "file_size_mb": 4.365054130554199,
+      "processing_time": 49.59277272224426,
+      "output_formats": []
+    }
+  },
+  "last_updated": 1762233792.2005117
+}

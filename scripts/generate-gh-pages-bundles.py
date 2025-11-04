@@ -199,7 +199,10 @@ VIEWER_TEMPLATE = r'''<!DOCTYPE html>
     <div class="container">
         <div class="header">
             <h1>{title}</h1>
-            <a href="editor.html" class="edit-button">✏️ EDIT</a>
+            <div style="display: flex; gap: 10px;">
+                <a href="light-editor.html" class="edit-button" style="background-color: #2196F3;">✏️ LIGHT EDIT</a>
+                <a href="editor.html" class="edit-button">✏️ EDIT</a>
+            </div>
         </div>
         
         <div class="main-content">
@@ -507,6 +510,717 @@ VIEWER_TEMPLATE = r'''<!DOCTYPE html>
         }}
         
         // Render viewer
+        renderTranscript();
+    </script>
+</body>
+</html>
+'''
+
+# Light editor template (lightweight vanilla JS with editing capability)
+LIGHT_EDITOR_TEMPLATE = r'''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{title} - Light Editor</title>
+    <style>
+        * {{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }}
+        
+        body {{
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+                'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+                sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background: #f1f1f1;
+            color: #333;
+        }}
+        
+        .container {{
+            background-color: #f1f1f1;
+            min-height: 100vh;
+        }}
+        
+        .header {{
+            background: #2c3e50;
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }}
+        
+        .header h1 {{
+            font-size: 1.5rem;
+            font-weight: 500;
+        }}
+        
+        .header-buttons {{
+            display: flex;
+            gap: 10px;
+        }}
+        
+        .button {{
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            text-decoration: none;
+            display: inline-block;
+        }}
+        
+        .back-button {{
+            background-color: #6c757d;
+        }}
+        
+        .back-button:hover {{
+            background-color: #5a6268;
+        }}
+        
+        .save-button {{
+            background-color: #4CAF50;
+        }}
+        
+        .save-button:hover {{
+            background-color: #45a049;
+        }}
+        
+        .save-button:disabled {{
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }}
+        
+        .main-content {{
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            gap: 1rem;
+            padding: 1rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }}
+        
+        @media (max-width: 1020px) {{
+            .main-content {{
+                grid-template-columns: 1fr;
+            }}
+        }}
+        
+        .audio-player-container {{
+            background: white;
+            box-shadow: 0 0 10px #ccc;
+            padding: 1rem;
+            border-radius: 4px;
+        }}
+        
+        .audio-player {{
+            width: 100%;
+            outline: none;
+        }}
+        
+        .transcript-container {{
+            background: white;
+            box-shadow: 0 0 10px #ccc;
+            border-radius: 4px;
+            overflow: hidden;
+        }}
+        
+        .transcript-content {{
+            max-height: 75vh;
+            overflow-y: auto;
+            padding: 8px 16px;
+            background-color: white;
+        }}
+        
+        .paragraph-block {{
+            margin-bottom: 1em;
+            display: grid;
+            grid-template-columns: minmax(200px, 18%) 1fr;
+            gap: 1%;
+            padding: 0.5em 0;
+        }}
+        
+        @media (max-width: 768px) {{
+            .paragraph-block {{
+                grid-template-columns: 1fr;
+                margin-bottom: 0.5em;
+            }}
+        }}
+        
+        .speaker-label {{
+            color: #7f8c8d;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }}
+        
+        .paragraph-text {{
+            font-size: 1em;
+            line-height: 1.6;
+        }}
+        
+        .word {{
+            cursor: pointer;
+            transition: background-color 0.2s;
+            padding: 2px 1px;
+            border-radius: 2px;
+            display: inline-block;
+            margin-right: 2px;
+            position: relative;
+        }}
+        
+        .word:hover {{
+            background-color: #e8f5e9;
+        }}
+        
+        .word.current {{
+            background-color: #69e3c2;
+            text-shadow: 0 0 0.01px black;
+        }}
+        
+        .word.played {{
+            color: #767676;
+        }}
+        
+        .word.low-confidence {{
+            border-bottom: 1px dotted blue;
+        }}
+        
+        .word.editing {{
+            background-color: #fff3cd;
+            outline: 2px solid #ffc107;
+        }}
+        
+        .word.corrected {{
+            background-color: #d4edda;
+        }}
+        
+        .word-input {{
+            display: inline-block;
+            border: 2px solid #ffc107;
+            background: white;
+            padding: 2px 4px;
+            font-size: inherit;
+            font-family: inherit;
+            border-radius: 2px;
+            min-width: 50px;
+            outline: none;
+        }}
+        
+        .timecode {{
+            font-weight: lighter;
+            cursor: pointer;
+            color: #666;
+            font-size: 0.85em;
+            margin-right: 0.5em;
+        }}
+        
+        .timecode:hover {{
+            text-decoration: underline;
+        }}
+        
+        .loading {{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-size: 18px;
+            color: #666;
+        }}
+        
+        .edit-mode-hint {{
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 10px 16px;
+            margin: 0 16px 16px 16px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>{title} - Light Editor</h1>
+            <div class="header-buttons">
+                <a href="index.html" class="button back-button">← Back to Viewer</a>
+                <button id="saveButton" class="button save-button" onclick="saveCorrections()">💾 Save Corrections</button>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <div class="audio-player-container">
+                <audio id="audioPlayer" class="audio-player" controls preload="metadata">
+                    <source src="./{audio_filename}" type="audio/webm">
+                    <source src="./{audio_filename}" type="audio/opus">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+            
+            <div class="transcript-container">
+                <div class="edit-mode-hint">
+                    💡 <strong>Edit Mode:</strong> Click a word to play audio or double-click to edit. Corrected words are highlighted in green.
+                </div>
+                <div id="transcriptContent" class="transcript-content">
+                    <div class="loading">Loading transcript...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Transcript data
+        let transcriptData = {transcript_json};
+        let originalWords = []; // Store original word data
+        let wordCorrections = new Map(); // Map word index to corrections
+        const audioPlayer = document.getElementById('audioPlayer');
+        const transcriptContent = document.getElementById('transcriptContent');
+        const saveButton = document.getElementById('saveButton');
+        
+        // Normalize transcript data to RichWordsTranscript format
+        function normalizeTranscript(data) {{
+            // Check if it's already RichWordsTranscript format
+            if (data.words && Array.isArray(data.words)) {{
+                return data;
+            }}
+            
+            // Check if it's raw Deepgram format
+            let rawResponse = null;
+            let preservedCorrections = null;
+            
+            if (data.raw_response && data.raw_response.results) {{
+                rawResponse = data.raw_response;
+                preservedCorrections = data.corrections || null;
+            }} else if (data.result && data.result.raw_response && data.result.raw_response.results) {{
+                rawResponse = data.result.raw_response;
+                preservedCorrections = data.result.corrections || data.corrections || null;
+            }} else if (data.results && data.results.channels) {{
+                rawResponse = data;
+                preservedCorrections = data.corrections || null;
+            }}
+            
+            if (rawResponse) {{
+                const results = rawResponse.results;
+                const channels = (results && results.channels) || [];
+                
+                if (channels.length > 0) {{
+                    const channel = channels[0];
+                    const alternatives = channel.alternatives || [];
+                    
+                    if (alternatives.length > 0) {{
+                        const alternative = alternatives[0];
+                        const words = alternative.words || [];
+                        const paragraphs = (alternative.paragraphs && alternative.paragraphs.paragraphs) || [];
+                        
+                        if (words.length > 0) {{
+                            const enrichedWords = words.map(word => ({{
+                                ...word,
+                                paragraph_start: false,
+                                paragraph_end: false
+                            }}));
+                            
+                            // Mark paragraph boundaries
+                            if (paragraphs && paragraphs.length > 0) {{
+                                for (let paraIdx = 0; paraIdx < paragraphs.length; paraIdx++) {{
+                                    const paragraph = paragraphs[paraIdx];
+                                    const sentences = paragraph.sentences || [];
+                                    
+                                    if (sentences.length > 0) {{
+                                        const firstSentence = sentences[0];
+                                        const paraStartTime = firstSentence.start;
+                                        
+                                        if (paraStartTime !== undefined && paraStartTime !== null) {{
+                                            let bestMatch = null;
+                                            let bestTimeDiff = Infinity;
+                                            
+                                            for (const word of enrichedWords) {{
+                                                const timeDiff = Math.abs((word.start || 0) - paraStartTime);
+                                                if (timeDiff < 0.1 && timeDiff < bestTimeDiff) {{
+                                                    bestMatch = word;
+                                                    bestTimeDiff = timeDiff;
+                                                }}
+                                            }}
+                                            
+                                            if (bestMatch) {{
+                                                bestMatch.paragraph_start = true;
+                                            }}
+                                        }}
+                                        
+                                        if (paraIdx === paragraphs.length - 1) {{
+                                            const lastSentence = sentences[sentences.length - 1];
+                                            const paraEndTime = lastSentence.end;
+                                            
+                                            if (paraEndTime !== undefined && paraEndTime !== null) {{
+                                                let bestMatch = null;
+                                                let bestTimeDiff = Infinity;
+                                                
+                                                for (const word of enrichedWords) {{
+                                                    if (word.paragraph_start) continue;
+                                                    const timeDiff = Math.abs((word.end || 0) - paraEndTime);
+                                                    if (timeDiff < 0.1 && timeDiff < bestTimeDiff) {{
+                                                        bestMatch = word;
+                                                        bestTimeDiff = timeDiff;
+                                                    }}
+                                                }}
+                                                
+                                                if (bestMatch) {{
+                                                    bestMatch.paragraph_end = true;
+                                                }}
+                                            }}
+                                        }}
+                                    }}
+                                }}
+                            }}
+                            
+                            return {{
+                                words: enrichedWords,
+                                corrections: preservedCorrections || {{
+                                    version: 1,
+                                    timestamp: new Date().toISOString(),
+                                    speaker_names: {{}}
+                                }}
+                            }};
+                        }}
+                    }}
+                }}
+            }}
+            
+            throw new Error('Could not parse transcript data');
+        }}
+        
+        // Get speaker name
+        function getSpeakerName(speakerIndex, speakerNames) {{
+            if (speakerNames && speakerNames[speakerIndex] !== undefined) {{
+                return speakerNames[speakerIndex];
+            }}
+            return 'Speaker ' + speakerIndex;
+        }}
+        
+        // Format timecode
+        function formatTimecode(seconds) {{
+            const h = Math.floor(seconds / 3600);
+            const m = Math.floor((seconds % 3600) / 60);
+            const s = Math.floor(seconds % 60);
+            const ms = Math.floor((seconds % 1) * 100);
+            
+            if (h > 0) {{
+                return `${{h}}:${{String(m).padStart(2, '0')}}:${{String(s).padStart(2, '0')}}.${{String(ms).padStart(2, '0')}}`;
+            }}
+            return `${{m}}:${{String(s).padStart(2, '0')}}.${{String(ms).padStart(2, '0')}}`;
+        }}
+        
+        // Edit word
+        function editWord(wordIndex, wordElement) {{
+            const word = originalWords[wordIndex];
+            if (!word) return;
+            
+            const originalText = word.punctuated_word || word.punct || word.word || '';
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.className = 'word-input';
+            input.value = originalText;
+            input.style.width = (wordElement.offsetWidth + 10) + 'px';
+            
+            wordElement.classList.add('editing');
+            wordElement.style.display = 'none';
+            wordElement.parentNode.insertBefore(input, wordElement);
+            input.focus();
+            input.select();
+            
+            function finishEdit() {{
+                const newText = input.value.trim();
+                if (newText && newText !== originalText) {{
+                    // Word was corrected
+                    wordCorrections.set(wordIndex, {{
+                        original_word: word.word || '',
+                        original_punct: originalText,
+                        corrected_word: newText
+                    }});
+                    wordElement.textContent = newText;
+                    wordElement.classList.add('corrected');
+                    wordElement.classList.remove('editing');
+                }} else {{
+                    wordElement.classList.remove('editing');
+                }}
+                input.remove();
+                wordElement.style.display = '';
+            }}
+            
+            input.addEventListener('blur', finishEdit);
+            input.addEventListener('keydown', function(e) {{
+                if (e.key === 'Enter') {{
+                    e.preventDefault();
+                    finishEdit();
+                }} else if (e.key === 'Escape') {{
+                    e.preventDefault();
+                    input.value = originalText;
+                    finishEdit();
+                }}
+            }});
+        }}
+        
+        // Render transcript
+        function renderTranscript() {{
+            try {{
+                const normalized = normalizeTranscript(transcriptData);
+                const words = normalized.words || [];
+                originalWords = [...words]; // Store original words
+                const speakerNames = normalized.corrections?.speaker_names || {{}};
+                
+                if (words.length === 0) {{
+                    transcriptContent.innerHTML = '<div class="loading">No transcript data available</div>';
+                    return;
+                }}
+                
+                // Group words into paragraphs based on paragraph_start markers
+                const paragraphs = [];
+                let currentParagraph = null;
+                
+                words.forEach((word, index) => {{
+                    // Start a new paragraph if this word marks a paragraph start
+                    if (word.paragraph_start) {{
+                        // Save previous paragraph if it exists
+                        if (currentParagraph && currentParagraph.words.length > 0) {{
+                            paragraphs.push(currentParagraph);
+                        }}
+                        // Start new paragraph
+                        currentParagraph = {{
+                            speaker: word.speaker || 0,
+                            startTime: word.start || 0,
+                            words: []
+                        }};
+                    }}
+                    
+                    // If no paragraph started yet, start one
+                    if (!currentParagraph) {{
+                        currentParagraph = {{
+                            speaker: word.speaker || 0,
+                            startTime: word.start || 0,
+                            words: []
+                        }};
+                    }}
+                    
+                    // Add word to current paragraph
+                    currentParagraph.words.push(word);
+                    
+                    // End paragraph if this word marks paragraph end
+                    if (word.paragraph_end) {{
+                        paragraphs.push(currentParagraph);
+                        currentParagraph = null;
+                    }}
+                }});
+                
+                // Don't forget the last paragraph if it wasn't ended
+                if (currentParagraph && currentParagraph.words.length > 0) {{
+                    paragraphs.push(currentParagraph);
+                }}
+                
+                // Build word index map for paragraphs
+                let globalWordIndex = 0;
+                
+                // Render paragraphs
+                let html = '';
+                paragraphs.forEach((para, paraIdx) => {{
+                    const speakerName = getSpeakerName(para.speaker, speakerNames);
+                    const timecode = formatTimecode(para.startTime);
+                    
+                    html += '<div class="paragraph-block">';
+                    html += `  <div class="speaker-label">${{speakerName}}</div>`;
+                    html += '  <div class="paragraph-text">';
+                    html += `    <span class="timecode" data-time="${{para.startTime}}">${{timecode}}</span>`;
+                    
+                    para.words.forEach((word, wordIdx) => {{
+                        const wordIndex = globalWordIndex++;
+                        const correction = wordCorrections.get(wordIndex);
+                        const displayText = correction ? correction.corrected_word : (word.punctuated_word || word.punct || word.word || '');
+                        const confidence = word.confidence || 0.9;
+                        const isLowConfidence = confidence < 0.7;
+                        const isCorrected = correction !== undefined;
+                        const wordClasses = ['word'];
+                        if (isLowConfidence) wordClasses.push('low-confidence');
+                        if (isCorrected) wordClasses.push('corrected');
+                        
+                        html += `<span class="${{wordClasses.join(' ')}}" data-word-index="${{wordIndex}}" data-start="${{word.start}}" data-end="${{word.end}}" data-prev-times="${{Math.floor(word.start)}} ${{Math.floor(word.end)}}">${{displayText}}</span>`;
+                    }});
+                    
+                    html += '  </div>';
+                    html += '</div>';
+                }});
+                
+                transcriptContent.innerHTML = html;
+                
+                // Attach word click handlers
+                document.querySelectorAll('.word').forEach(wordEl => {{
+                    let clickTimeout;
+                    let clickCount = 0;
+                    
+                    wordEl.addEventListener('click', function() {{
+                        clickCount++;
+                        clearTimeout(clickTimeout);
+                        
+                        clickTimeout = setTimeout(function() {{
+                            if (clickCount === 1) {{
+                                // Single click: play audio
+                                const startTime = parseFloat(wordEl.dataset.start);
+                                if (audioPlayer && !isNaN(startTime)) {{
+                                    audioPlayer.currentTime = startTime;
+                                    audioPlayer.play();
+                                }}
+                            }}
+                            clickCount = 0;
+                        }}, 300);
+                    }});
+                    
+                    wordEl.addEventListener('dblclick', function(e) {{
+                        e.preventDefault();
+                        clearTimeout(clickTimeout);
+                        clickCount = 0;
+                        // Double click: edit word
+                        const wordIndex = parseInt(wordEl.dataset.wordIndex);
+                        editWord(wordIndex, wordEl);
+                    }});
+                }});
+                
+                // Attach timecode click handlers
+                document.querySelectorAll('.timecode').forEach(timecodeEl => {{
+                    timecodeEl.addEventListener('click', function() {{
+                        const time = parseFloat(this.dataset.time);
+                        if (audioPlayer && !isNaN(time)) {{
+                            audioPlayer.currentTime = time;
+                            audioPlayer.play();
+                        }}
+                    }});
+                }});
+                
+                // Update word highlighting based on audio playback
+                let currentWordElement = null;
+                
+                function updateHighlighting() {{
+                    const currentTime = audioPlayer.currentTime;
+                    const time = Math.round(currentTime * 4.0) / 4.0;
+                    
+                    // Remove previous highlighting
+                    if (currentWordElement) {{
+                        currentWordElement.classList.remove('current');
+                    }}
+                    
+                    // Find current word
+                    document.querySelectorAll('.word').forEach(wordEl => {{
+                        const start = parseFloat(wordEl.dataset.start);
+                        const end = parseFloat(wordEl.dataset.end);
+                        
+                        if (currentTime >= start && currentTime < end) {{
+                            wordEl.classList.add('current');
+                            currentWordElement = wordEl;
+                            
+                            // Scroll into view
+                            wordEl.scrollIntoView({{ behavior: 'smooth', block: 'center' }});
+                        }} else {{
+                            wordEl.classList.remove('current');
+                        }}
+                        
+                        // Mark played words
+                        if (currentTime >= end) {{
+                            wordEl.classList.add('played');
+                        }} else {{
+                            wordEl.classList.remove('played');
+                        }}
+                    }});
+                }}
+                
+                audioPlayer.addEventListener('timeupdate', updateHighlighting);
+                audioPlayer.addEventListener('loadedmetadata', updateHighlighting);
+                
+            }} catch (error) {{
+                console.error('Error rendering transcript:', error);
+                transcriptContent.innerHTML = '<div class="loading" style="color: red;">Error loading transcript: ' + error.message + '</div>';
+            }}
+        }}
+        
+        // Save corrections
+        function saveCorrections() {{
+            if (wordCorrections.size === 0) {{
+                alert('No corrections made. Nothing to save.');
+                return;
+            }}
+            
+            try {{
+                const normalized = normalizeTranscript(transcriptData);
+                const words = normalized.words || [];
+                const speakerNames = normalized.corrections?.speaker_names || {{}};
+                
+                // Apply corrections to words
+                const correctedWords = words.map((word, index) => {{
+                    const correction = wordCorrections.get(index);
+                    if (correction) {{
+                        return {{
+                            ...word,
+                            word: correction.corrected_word,
+                            punctuated_word: correction.corrected_word,
+                            corrected: true,
+                            original_word: correction.original_word,
+                            original_punct: correction.original_punct
+                        }};
+                    }}
+                    return word;
+                }});
+                
+                // Get original corrections version and increment
+                const originalCorrections = normalized.corrections || {{}};
+                const version = (originalCorrections.version || 0) + 1;
+                
+                // Build RichWordsTranscript format with corrections
+                const richWordsTranscript = {{
+                    words: correctedWords,
+                    corrections: {{
+                        version: version,
+                        timestamp: new Date().toISOString(),
+                        speaker_names: Object.keys(speakerNames).length > 0 ? speakerNames : undefined
+                    }}
+                }};
+                
+                // Remove undefined speaker_names if empty
+                if (!richWordsTranscript.corrections.speaker_names) {{
+                    delete richWordsTranscript.corrections.speaker_names;
+                }}
+                
+                // Convert to JSON string and download
+                const jsonString = JSON.stringify(richWordsTranscript, null, 2);
+                const blob = new Blob([jsonString], {{ type: 'application/json;charset=utf-8' }});
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.style.display = 'none';
+                a.href = url;
+                a.download = '{audio_filename}_corrected.json';
+                
+                // Append to body, click, and remove
+                document.body.appendChild(a);
+                setTimeout(() => {{
+                    a.click();
+                    setTimeout(() => {{
+                        document.body.removeChild(a);
+                        window.URL.revokeObjectURL(url);
+                    }}, 100);
+                }}, 0);
+                
+                alert(`Corrections saved! ${{wordCorrections.size}} word(s) corrected. File download started.`);
+            }} catch (error) {{
+                console.error('Error saving corrections:', error);
+                alert('Failed to save corrections: ' + (error.message || String(error)));
+            }}
+        }}
+        
+        // Render transcript on load
         renderTranscript();
     </script>
 </body>
@@ -1287,6 +2001,17 @@ def generate_bundle(transcription_path: Path, output_dir: Path, base_dir: Path) 
     with open(bundle_dir / "index.html", 'w', encoding='utf-8') as f:
         f.write(viewer_html)
     
+    # Generate light editor HTML (lightweight vanilla JS with editing)
+    light_editor_html = LIGHT_EDITOR_TEMPLATE.format(
+        title=lecture_name,
+        transcript_json='__TRANSCRIPT_JSON_PLACEHOLDER__',
+        audio_filename=audio_filename
+    )
+    light_editor_html = light_editor_html.replace('__TRANSCRIPT_JSON_PLACEHOLDER__', transcript_json_str)
+    
+    with open(bundle_dir / "light-editor.html", 'w', encoding='utf-8') as f:
+        f.write(light_editor_html)
+    
     # Generate editor HTML (heavy React version)
     editor_html = HTML_TEMPLATE.format(
         title=lecture_name,
@@ -1298,7 +2023,7 @@ def generate_bundle(transcription_path: Path, output_dir: Path, base_dir: Path) 
     with open(bundle_dir / "editor.html", 'w', encoding='utf-8') as f:
         f.write(editor_html)
     
-    print(f"✅ Generated bundle: {seminar_group}/{lecture_name} (viewer + editor)")
+    print(f"✅ Generated bundle: {seminar_group}/{lecture_name} (viewer + light editor + editor)")
     return seminar_group, lecture_name
 
 

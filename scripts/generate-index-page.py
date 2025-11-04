@@ -69,6 +69,29 @@ INDEX_TEMPLATE = '''<!DOCTYPE html>
             padding: 1.5rem 2rem;
             font-size: 1.5rem;
             font-weight: 600;
+            cursor: pointer;
+            user-select: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.2s;
+        }}
+        
+        .seminar-header:hover {{
+            background: #2980b9;
+        }}
+        
+        .seminar-toggle {{
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+        }}
+        
+        .seminar-section.collapsed .seminar-toggle {{
+            transform: rotate(-90deg);
+        }}
+        
+        .seminar-section.collapsed .lectures-list {{
+            display: none;
         }}
         
         .lectures-list {{
@@ -139,6 +162,18 @@ INDEX_TEMPLATE = '''<!DOCTYPE html>
             color: #2c3e50;
         }}
     </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {{
+            // Make all seminar headers clickable to toggle collapse
+            const seminarHeaders = document.querySelectorAll('.seminar-header');
+            seminarHeaders.forEach(header => {{
+                header.addEventListener('click', function() {{
+                    const section = this.parentElement;
+                    section.classList.toggle('collapsed');
+                }});
+            }});
+        }});
+    </script>
 </head>
 <body>
     <div class="container">
@@ -162,7 +197,10 @@ INDEX_TEMPLATE = '''<!DOCTYPE html>
 '''
 
 SEMINAR_SECTION_TEMPLATE = '''        <div class="seminar-section">
-            <div class="seminar-header">{seminar_name}</div>
+            <div class="seminar-header">
+                <span>{seminar_name}</span>
+                <span class="seminar-toggle">▼</span>
+            </div>
             <div class="lectures-list">
 {lecture_items}
             </div>

@@ -863,10 +863,11 @@ LIGHT_EDITOR_TEMPLATE = r'''<!DOCTYPE html>
             <h1>{title} - Light Editor</h1>
             <div class="header-buttons">
                 <a href="index.html" class="button back-button">← Back to Viewer</a>
+                <button id="resetButton" class="button reset-button" onclick="resetEdits()" style="background-color: #dc3545; margin-right: 10px;">🔄 Reset Edits</button>
                 <button id="saveButton" class="button save-button" onclick="saveCorrections()">💾 Save Corrections</button>
             </div>
-        </div>
-        
+    </div>
+
         <div class="main-content">
             <div class="audio-player-container">
                 <audio id="audioPlayer" class="audio-player" controls preload="metadata">
@@ -889,7 +890,8 @@ LIGHT_EDITOR_TEMPLATE = r'''<!DOCTYPE html>
     
     <script>
         // Transcript data
-            let transcriptData = {transcript_json};
+        let transcriptData = {transcript_json};
+        const STORAGE_KEY = 'transcript_edits_' + '{audio_filename}';
         let originalWords = []; // Store original word data
         let wordCorrections = new Map(); // Map word index to corrections
         let speakerNameChanges = new Map(); // Map speaker index to new name (for "replace all")
@@ -897,6 +899,83 @@ LIGHT_EDITOR_TEMPLATE = r'''<!DOCTYPE html>
         const audioPlayer = document.getElementById('audioPlayer');
         const transcriptContent = document.getElementById('transcriptContent');
         const saveButton = document.getElementById('saveButton');
+        const resetButton = document.getElementById('resetButton');
+        
+        // Save edits to localStorage
+        function saveEditsToStorage() {{
+            try {{
+                const edits = {{
+                    wordCorrections: Array.from(wordCorrections.entries()),
+                    speakerNameChanges: Array.from(speakerNameChanges.entries()),
+                    paragraphSpeakerChanges: Array.from(paragraphSpeakerChanges.entries())
+                }};
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(edits));
+                console.log('Edits saved to localStorage');
+            }} catch (error) {{
+                console.error('Error saving edits to localStorage:', error);
+            }}
+        }}
+        
+        // Load edits from localStorage
+        function loadEditsFromStorage() {{
+            try {{
+                const saved = localStorage.getItem(STORAGE_KEY);
+                if (saved) {{
+                    const edits = JSON.parse(saved);
+                    
+                    // Restore wordCorrections
+                    if (edits.wordCorrections && Array.isArray(edits.wordCorrections)) {{
+                        wordCorrections = new Map(edits.wordCorrections);
+                    }}
+                    
+                    // Restore speakerNameChanges
+                    if (edits.speakerNameChanges && Array.isArray(edits.speakerNameChanges)) {{
+                        speakerNameChanges = new Map(edits.speakerNameChanges);
+                    }}
+                    
+                    // Restore paragraphSpeakerChanges
+                    if (edits.paragraphSpeakerChanges && Array.isArray(edits.paragraphSpeakerChanges)) {{
+                        // Convert array entries back to objects
+                        paragraphSpeakerChanges = new Map(
+                            edits.paragraphSpeakerChanges.map(([key, value]) => [Number(key), value])
+                        );
+                    }}
+                    
+                    console.log('Edits loaded from localStorage:', {{
+                        wordCorrections: wordCorrections.size,
+                        speakerNameChanges: speakerNameChanges.size,
+                        paragraphSpeakerChanges: paragraphSpeakerChanges.size
+                    }});
+                    return true;
+                }}
+            }} catch (error) {{
+                console.error('Error loading edits from localStorage:', error);
+            }}
+            return false;
+        }}
+        
+        // Reset edits (clear localStorage and reload)
+        function resetEdits() {{
+            if (!confirm('Are you sure you want to reset all edits? This will clear all corrections and reload the original transcript.')) {{
+                return;
+            }}
+            
+            try {{
+                localStorage.removeItem(STORAGE_KEY);
+                wordCorrections.clear();
+                speakerNameChanges.clear();
+                paragraphSpeakerChanges.clear();
+                console.log('Edits reset - localStorage cleared');
+                
+                // Re-render transcript to show original state
+                renderTranscript();
+                
+                alert('All edits have been reset. The transcript has been reloaded to its original state.');
+            }} catch (error) {{
+                console.error('Error resetting edits:', error);
+                alert('Error resetting edits: ' + error.message);
+            }}
+        }}
         
         // Normalize transcript data to RichWordsTranscript format
         function normalizeTranscript(data) {{
@@ -1172,10 +1251,10 @@ LIGHT_EDITOR_TEMPLATE = r'''<!DOCTYPE html>
                 const existingIndices = new Set();
                 const words = normalized.words || [];
                 words.forEach(word => {{
-                    if (word.speaker !== undefined) {{
+                                if (word.speaker !== undefined) {{
                         existingIndices.add(word.speaker);
-                    }}
-                }});
+                                }}
+                            }});
                 paragraphSpeakerChanges.forEach(change => {{
                     existingIndices.add(change.newSpeakerIndex);
                 }});
@@ -1195,6 +1274,7 @@ LIGHT_EDITOR_TEMPLATE = r'''<!DOCTYPE html>
             }}
             
             closeSpeakerModal();
+            saveEditsToStorage(); // Save to localStorage after speaker change
             // Re-render transcript to show updated speaker names
             renderTranscript();
         }}
@@ -1234,6 +1314,7 @@ LIGHT_EDITOR_TEMPLATE = r'''<!DOCTYPE html>
                     wordElement.textContent = newText;
                     wordElement.classList.add('corrected');
                     wordElement.classList.remove('editing');
+                    saveEditsToStorage(); // Save to localStorage
                                 }} else {{
                     wordElement.classList.remove('editing');
                 }}
@@ -1574,6 +1655,9 @@ LIGHT_EDITOR_TEMPLATE = r'''<!DOCTYPE html>
                 alert('Failed to save corrections: ' + (error.message || String(error)));
             }}
         }}
+        
+        // Load edits from localStorage on page load
+        loadEditsFromStorage();
         
         // Render transcript on load
         renderTranscript();

@@ -77,18 +77,12 @@ VIEWER_TEMPLATE = r'''<!DOCTYPE html>
         }}
         
         .main-content {{
-            display: grid;
-            grid-template-columns: 1fr 3fr;
-            gap: 1rem;
+            display: flex;
+            flex-direction: column;
             padding: 1rem;
             max-width: 1400px;
             margin: 0 auto;
-        }}
-        
-        @media (max-width: 1020px) {{
-            .main-content {{
-                grid-template-columns: 1fr;
-            }}
+            gap: 1rem;
         }}
         
         .audio-player-container {{
@@ -96,6 +90,9 @@ VIEWER_TEMPLATE = r'''<!DOCTYPE html>
             box-shadow: 0 0 10px #ccc;
             padding: 1rem;
             border-radius: 4px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }}
         
         .audio-player {{
@@ -108,10 +105,11 @@ VIEWER_TEMPLATE = r'''<!DOCTYPE html>
             box-shadow: 0 0 10px #ccc;
             border-radius: 4px;
             overflow: hidden;
+            flex: 1;
         }}
         
         .transcript-content {{
-            max-height: 75vh;
+            max-height: calc(100vh - 200px);
             overflow-y: auto;
             padding: 8px 16px;
             background-color: white;
@@ -599,18 +597,12 @@ LIGHT_EDITOR_TEMPLATE = r'''<!DOCTYPE html>
         }}
         
         .main-content {{
-            display: grid;
-            grid-template-columns: 1fr 3fr;
-            gap: 1rem;
+            display: flex;
+            flex-direction: column;
             padding: 1rem;
             max-width: 1400px;
             margin: 0 auto;
-        }}
-        
-        @media (max-width: 1020px) {{
-            .main-content {{
-                grid-template-columns: 1fr;
-            }}
+            gap: 1rem;
         }}
         
         .audio-player-container {{
@@ -618,6 +610,9 @@ LIGHT_EDITOR_TEMPLATE = r'''<!DOCTYPE html>
             box-shadow: 0 0 10px #ccc;
             padding: 1rem;
             border-radius: 4px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }}
         
         .audio-player {{
@@ -630,10 +625,11 @@ LIGHT_EDITOR_TEMPLATE = r'''<!DOCTYPE html>
             box-shadow: 0 0 10px #ccc;
             border-radius: 4px;
             overflow: hidden;
+            flex: 1;
         }}
         
         .transcript-content {{
-            max-height: 75vh;
+            max-height: calc(100vh - 200px);
             overflow-y: auto;
             padding: 8px 16px;
             background-color: white;
@@ -1204,6 +1200,11 @@ LIGHT_EDITOR_TEMPLATE = r'''<!DOCTYPE html>
         function editWord(wordIndex, wordElement) {{
             const word = originalWords[wordIndex];
             if (!word) return;
+            
+            // Pause audio playback when entering edit mode
+            if (audioPlayer && !audioPlayer.paused) {{
+                audioPlayer.pause();
+            }}
             
             const originalText = word.punctuated_word || word.punct || word.word || '';
             const input = document.createElement('input');

@@ -746,6 +746,122 @@ LIGHT_EDITOR_TEMPLATE = r'''<!DOCTYPE html>
             border-radius: 4px;
             font-size: 0.9em;
         }}
+        
+        .modal-overlay {{
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+        }}
+        
+        .modal {{
+            background: white;
+            border-radius: 8px;
+            padding: 24px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }}
+        
+        .modal h2 {{
+            margin: 0 0 16px 0;
+            font-size: 1.5rem;
+            color: #2c3e50;
+        }}
+        
+        .modal label {{
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }}
+        
+        .modal input {{
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+            margin-bottom: 16px;
+        }}
+        
+        .modal input:focus {{
+            outline: none;
+            border-color: #3498db;
+        }}
+        
+        .modal-actions {{
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+            margin-top: 20px;
+        }}
+        
+        .modal-button {{
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }}
+        
+        .modal-button-primary {{
+            background-color: #3498db;
+            color: white;
+        }}
+        
+        .modal-button-primary:hover {{
+            background-color: #2980b9;
+        }}
+        
+        .modal-button-secondary {{
+            background-color: #95a5a6;
+            color: white;
+        }}
+        
+        .modal-button-secondary:hover {{
+            background-color: #7f8c8d;
+        }}
+        
+        .modal-button-danger {{
+            background-color: #e74c3c;
+            color: white;
+        }}
+        
+        .modal-button-danger:hover {{
+            background-color: #c0392b;
+        }}
+        
+        .modal-checkbox {{
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 16px 0;
+        }}
+        
+        .modal-checkbox input[type="checkbox"] {{
+            width: auto;
+            margin: 0;
+        }}
+        
+        .speaker-label {{
+            cursor: pointer;
+            transition: background-color 0.2s;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }}
+        
+        .speaker-label:hover {{
+            background-color: #e8f5e9;
+        }}
     </style>
 </head>
 <body>
@@ -769,7 +885,7 @@ LIGHT_EDITOR_TEMPLATE = r'''<!DOCTYPE html>
             
             <div class="transcript-container">
                 <div class="edit-mode-hint">
-                    💡 <strong>Edit Mode:</strong> Click a word to play audio or double-click to edit. Corrected words are highlighted in green.
+                    💡 <strong>Edit Mode:</strong> Click a word to play audio or double-click to edit. Click speaker name to edit it. Corrected words are highlighted in green.
                 </div>
                 <div id="transcriptContent" class="transcript-content">
                     <div class="loading">Loading transcript...</div>
@@ -783,6 +899,8 @@ LIGHT_EDITOR_TEMPLATE = r'''<!DOCTYPE html>
         let transcriptData = {transcript_json};
         let originalWords = []; // Store original word data
         let wordCorrections = new Map(); // Map word index to corrections
+        let speakerNameChanges = new Map(); // Map speaker index to new name (for "replace all")
+        let paragraphSpeakerChanges = new Map(); // Map paragraph index to new speaker index and name (for single paragraph)
         const audioPlayer = document.getElementById('audioPlayer');
         const transcriptContent = document.getElementById('transcriptContent');
         const saveButton = document.getElementById('saveButton');
@@ -926,6 +1044,162 @@ LIGHT_EDITOR_TEMPLATE = r'''<!DOCTYPE html>
             return wordText.toLowerCase().trim().replace(/[.,!?;:"()\\[\\]{{}}]+/g, '');
         }}
         
+        // Get speaker name (with applied changes) for a specific paragraph
+        function getSpeakerName(speakerIndex, speakerNames, paragraphIndex) {{
+            // Check if this specific paragraph has a speaker change
+            if (paragraphIndex !== undefined && paragraphSpeakerChanges.has(paragraphIndex)) {{
+                const change = paragraphSpeakerChanges.get(paragraphIndex);
+                return change.name;
+            }}
+            // Check if speaker name was changed globally (replace all)
+            if (speakerNameChanges.has(speakerIndex)) {{
+                return speakerNameChanges.get(speakerIndex);
+            }}
+            // Check original speaker names
+            if (speakerNames && speakerNames[speakerIndex] !== undefined) {{
+                return speakerNames[speakerIndex];
+            }}
+            return 'Speaker ' + speakerIndex;
+        }}
+        
+        // Show speaker editor modal
+        function showSpeakerEditor(speakerIndex, currentName, paragraphIndex) {{
+            // Create modal overlay
+            const overlay = document.createElement('div');
+            overlay.className = 'modal-overlay';
+            overlay.id = 'speakerModalOverlay';
+            
+            const modal = document.createElement('div');
+            modal.className = 'modal';
+            
+            // Escape quotes in currentName for HTML
+            const escapedName = currentName.replace(/'/g, "\\'").replace(/"/g, "&quot;");
+            
+            modal.innerHTML = `
+                <h2>Edit Speaker</h2>
+                <label for="speakerNameInput">Speaker Name:</label>
+                <input type="text" id="speakerNameInput" value="${{escapedName}}" placeholder="Enter speaker name">
+                <div class="modal-checkbox">
+                    <input type="checkbox" id="replaceAllCheckbox">
+                    <label for="replaceAllCheckbox">Replace all occurrences of "${{escapedName}}" with new name</label>
+                </div>
+                <div class="modal-actions">
+                    <button class="modal-button modal-button-secondary" onclick="closeSpeakerModal()">Cancel</button>
+                    <button class="modal-button modal-button-primary" onclick="saveSpeakerChange(${{speakerIndex}}, ${{paragraphIndex !== undefined ? paragraphIndex : 'undefined'}})">Save</button>
+                </div>
+            `;
+            
+            overlay.appendChild(modal);
+            document.body.appendChild(overlay);
+            
+            // Close on overlay click
+            overlay.addEventListener('click', function(e) {{
+                if (e.target === overlay) {{
+                    closeSpeakerModal();
+                }}
+            }});
+            
+            // Focus input
+            setTimeout(() => {{
+                const input = document.getElementById('speakerNameInput');
+                input.focus();
+                input.select();
+                
+                // Handle Enter key
+                input.addEventListener('keydown', function(e) {{
+                    if (e.key === 'Enter') {{
+                        e.preventDefault();
+                        saveSpeakerChange(speakerIndex);
+                    }} else if (e.key === 'Escape') {{
+                        e.preventDefault();
+                        closeSpeakerModal();
+                    }}
+                }});
+            }}, 100);
+        }}
+        
+        // Close speaker modal
+        function closeSpeakerModal() {{
+            const overlay = document.getElementById('speakerModalOverlay');
+            if (overlay) {{
+                overlay.remove();
+            }}
+        }}
+        
+        // Save speaker change
+        function saveSpeakerChange(speakerIndex, paragraphIndex) {{
+            const input = document.getElementById('speakerNameInput');
+            const replaceAll = document.getElementById('replaceAllCheckbox').checked;
+            const newName = input.value.trim();
+            
+            if (!newName) {{
+                alert('Speaker name cannot be empty');
+                return;
+            }}
+            
+            const normalized = normalizeTranscript(transcriptData);
+            const speakerNames = normalized.corrections?.speaker_names || {{}};
+            const currentName = getSpeakerName(speakerIndex, speakerNames, paragraphIndex);
+            
+            if (replaceAll) {{
+                // Find all speaker indices that have the same name
+                const words = normalized.words || [];
+                const speakersToReplace = new Set();
+                speakersToReplace.add(speakerIndex);
+                
+                // Find all speakers with the same name
+                for (let i = 0; i < words.length; i++) {{
+                    const word = words[i];
+                    if (word.speaker !== undefined && word.speaker === speakerIndex) {{
+                        speakersToReplace.add(word.speaker);
+                    }}
+                }}
+                
+                // Replace all matching speakers globally
+                speakersToReplace.forEach(speakerIdx => {{
+                    speakerNameChanges.set(speakerIdx, newName);
+                }});
+                
+                // Remove paragraph-specific changes for this speaker
+                paragraphSpeakerChanges.forEach((value, paraIdx) => {{
+                    if (value.originalSpeakerIndex === speakerIndex) {{
+                        paragraphSpeakerChanges.delete(paraIdx);
+                    }}
+                }});
+            }} else {{
+                // Only replace this specific paragraph
+                // Find the next available speaker index (use a high number to avoid conflicts)
+                let newSpeakerIndex = speakerIndex;
+                const existingIndices = new Set();
+                const words = normalized.words || [];
+                words.forEach(word => {{
+                    if (word.speaker !== undefined) {{
+                        existingIndices.add(word.speaker);
+                    }}
+                }});
+                paragraphSpeakerChanges.forEach(change => {{
+                    existingIndices.add(change.newSpeakerIndex);
+                }});
+                
+                // Find next available index starting from max + 1
+                const maxIndex = Math.max(...Array.from(existingIndices), 0);
+                newSpeakerIndex = maxIndex + 1;
+                while (existingIndices.has(newSpeakerIndex)) {{
+                    newSpeakerIndex++;
+                }}
+                
+                paragraphSpeakerChanges.set(paragraphIndex, {{
+                    originalSpeakerIndex: speakerIndex,
+                    newSpeakerIndex: newSpeakerIndex,
+                    name: newName
+                }});
+            }}
+            
+            closeSpeakerModal();
+            // Re-render transcript to show updated speaker names
+            renderTranscript();
+        }}
+        
         // Edit word
         function editWord(wordIndex, wordElement) {{
             const word = originalWords[wordIndex];
@@ -1038,11 +1312,17 @@ LIGHT_EDITOR_TEMPLATE = r'''<!DOCTYPE html>
                 // Render paragraphs
                 let html = '';
                 paragraphs.forEach((para, paraIdx) => {{
-                    const speakerName = getSpeakerName(para.speaker, speakerNames);
+                    // Check if this paragraph has a speaker change
+                    const paraSpeakerIndex = paragraphSpeakerChanges.has(paraIdx) 
+                        ? paragraphSpeakerChanges.get(paraIdx).newSpeakerIndex 
+                        : para.speaker;
+                    const speakerName = getSpeakerName(para.speaker, speakerNames, paraIdx);
                     const timecode = formatTimecode(para.startTime);
+                    // Escape quotes for onclick attribute
+                    const escapedSpeakerName = speakerName.replace(/'/g, "\\'").replace(/"/g, '&quot;');
                     
                     html += '<div class="paragraph-block">';
-                    html += `  <div class="speaker-label">${{speakerName}}</div>`;
+                    html += `  <div class="speaker-label" data-speaker-index="${{paraSpeakerIndex}}" data-paragraph-index="${{paraIdx}}" onclick="showSpeakerEditor(${{para.speaker}}, '${{escapedSpeakerName}}', ${{paraIdx}})">${{speakerName}}</div>`;
                     html += '  <div class="paragraph-text">';
                     html += `    <span class="timecode" data-time="${{para.startTime}}">${{timecode}}</span>`;
                     
@@ -1156,7 +1436,7 @@ LIGHT_EDITOR_TEMPLATE = r'''<!DOCTYPE html>
         
         // Save corrections
         function saveCorrections() {{
-            if (wordCorrections.size === 0) {{
+            if (wordCorrections.size === 0 && speakerNameChanges.size === 0 && paragraphSpeakerChanges.size === 0) {{
                 alert('No corrections made. Nothing to save.');
                 return;
             }}
@@ -1166,16 +1446,34 @@ LIGHT_EDITOR_TEMPLATE = r'''<!DOCTYPE html>
                 const words = normalized.words || [];
                 const speakerNames = normalized.corrections?.speaker_names || {{}};
                 
+                // Build paragraph index to word index mapping for speaker changes
+                const paragraphWordMap = new Map(); // Map paragraph index to array of word indices
+                let currentParaIdx = 0;
+                let currentParaWordIndices = [];
+                words.forEach((word, wordIdx) => {{
+                    if (word.paragraph_start && currentParaWordIndices.length > 0) {{
+                        paragraphWordMap.set(currentParaIdx, currentParaWordIndices);
+                        currentParaIdx++;
+                        currentParaWordIndices = [];
+                    }}
+                    currentParaWordIndices.push(wordIdx);
+                }});
+                if (currentParaWordIndices.length > 0) {{
+                    paragraphWordMap.set(currentParaIdx, currentParaWordIndices);
+                }}
+                
                 // Apply corrections to words
                 const correctedWords = words.map((word, index) => {{
                     const correction = wordCorrections.get(index);
+                    let correctedWord = word;
+                    
                     if (correction) {{
                         // Normalize word field: lowercase and strip punctuation
                         const normalizedWord = normalizeWord(correction.corrected_word);
                         // Keep punctuated_word with proper capitalization and punctuation
                         const punctuatedWord = correction.corrected_word;
                         
-                        return {{
+                        correctedWord = {{
                             ...word,
                             word: normalizedWord,
                             punctuated_word: punctuatedWord,
@@ -1184,12 +1482,35 @@ LIGHT_EDITOR_TEMPLATE = r'''<!DOCTYPE html>
                             original_punct: correction.original_punct
                         }};
                     }}
-                    return word;
+                    
+                    // Apply paragraph-specific speaker changes
+                    paragraphWordMap.forEach((wordIndices, paraIdx) => {{
+                        if (paragraphSpeakerChanges.has(paraIdx) && wordIndices.includes(index)) {{
+                            const change = paragraphSpeakerChanges.get(paraIdx);
+                            correctedWord = {{
+                                ...correctedWord,
+                                speaker: change.newSpeakerIndex
+                            }};
+                        }}
+                    }});
+                    
+                    return correctedWord;
                 }});
                 
                 // Get original corrections version and increment
                 const originalCorrections = normalized.corrections || {{}};
                 const version = (originalCorrections.version || 0) + 1;
+                
+                // Merge speaker name changes with original speaker names
+                const mergedSpeakerNames = {{...speakerNames}};
+                // Add global speaker name changes
+                speakerNameChanges.forEach((newName, speakerIndex) => {{
+                    mergedSpeakerNames[speakerIndex] = newName;
+                }});
+                // Add paragraph-specific speaker changes (use new speaker index)
+                paragraphSpeakerChanges.forEach((change, paraIdx) => {{
+                    mergedSpeakerNames[change.newSpeakerIndex] = change.name;
+                }});
                 
                 // Build RichWordsTranscript format with corrections
                 const richWordsTranscript = {{
@@ -1197,7 +1518,7 @@ LIGHT_EDITOR_TEMPLATE = r'''<!DOCTYPE html>
                     corrections: {{
                         version: version,
                         timestamp: new Date().toISOString(),
-                        speaker_names: Object.keys(speakerNames).length > 0 ? speakerNames : undefined
+                        speaker_names: Object.keys(mergedSpeakerNames).length > 0 ? mergedSpeakerNames : undefined
                     }}
                 }};
                 
@@ -1225,7 +1546,25 @@ LIGHT_EDITOR_TEMPLATE = r'''<!DOCTYPE html>
                     }}, 100);
                 }}, 0);
                 
-                alert(`Corrections saved! ${{wordCorrections.size}} word(s) corrected. File download started.`);
+                const wordCount = wordCorrections.size;
+                const speakerCount = speakerNameChanges.size;
+                const paragraphSpeakerCount = paragraphSpeakerChanges.size;
+                let message = 'Corrections saved! ';
+                const parts = [];
+                if (wordCount > 0) {{
+                    parts.push(`${{wordCount}} word(s) corrected`);
+                }}
+                if (speakerCount > 0) {{
+                    parts.push(`${{speakerCount}} speaker(s) renamed globally`);
+                }}
+                if (paragraphSpeakerCount > 0) {{
+                    parts.push(`${{paragraphSpeakerCount}} paragraph speaker(s) changed`);
+                }}
+                if (parts.length > 0) {{
+                    message += parts.join(', ') + '.';
+                }}
+                message += ' File download started.';
+                alert(message);
             }} catch (error) {{
                 console.error('Error saving corrections:', error);
                 alert('Failed to save corrections: ' + (error.message || String(error)));

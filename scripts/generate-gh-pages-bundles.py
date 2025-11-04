@@ -889,7 +889,7 @@ LIGHT_EDITOR_TEMPLATE = r'''<!DOCTYPE html>
     
     <script>
         // Transcript data
-        let transcriptData = {transcript_json};
+            let transcriptData = {transcript_json};
         let originalWords = []; // Store original word data
         let wordCorrections = new Map(); // Map word index to corrections
         let speakerNameChanges = new Map(); // Map speaker index to new name (for "replace all")
@@ -906,9 +906,9 @@ LIGHT_EDITOR_TEMPLATE = r'''<!DOCTYPE html>
             }}
             
             // Check if it's raw Deepgram format
-            let rawResponse = null;
-            let preservedCorrections = null;
-            
+                let rawResponse = null;
+                let preservedCorrections = null;
+                
             if (data.raw_response && data.raw_response.results) {{
                 rawResponse = data.raw_response;
                 preservedCorrections = data.corrections || null;
@@ -918,66 +918,44 @@ LIGHT_EDITOR_TEMPLATE = r'''<!DOCTYPE html>
             }} else if (data.results && data.results.channels) {{
                 rawResponse = data;
                 preservedCorrections = data.corrections || null;
-            }}
-            
-            if (rawResponse) {{
-                const results = rawResponse.results;
-                const channels = (results && results.channels) || [];
+                }}
                 
-                if (channels.length > 0) {{
-                    const channel = channels[0];
-                    const alternatives = channel.alternatives || [];
+                if (rawResponse) {{
+                    const results = rawResponse.results;
+                    const channels = (results && results.channels) || [];
                     
-                    if (alternatives.length > 0) {{
-                        const alternative = alternatives[0];
-                        const words = alternative.words || [];
-                        const paragraphs = (alternative.paragraphs && alternative.paragraphs.paragraphs) || [];
+                    if (channels.length > 0) {{
+                        const channel = channels[0];
+                        const alternatives = channel.alternatives || [];
                         
-                        if (words.length > 0) {{
-                            const enrichedWords = words.map(word => ({{
-                                ...word,
-                                paragraph_start: false,
-                                paragraph_end: false
-                            }}));
+                        if (alternatives.length > 0) {{
+                            const alternative = alternatives[0];
+                            const words = alternative.words || [];
+                            const paragraphs = (alternative.paragraphs && alternative.paragraphs.paragraphs) || [];
                             
+                            if (words.length > 0) {{
+                                const enrichedWords = words.map(word => ({{
+                                    ...word,
+                                    paragraph_start: false,
+                                    paragraph_end: false
+                                }}));
+                                
                             // Mark paragraph boundaries
-                            if (paragraphs && paragraphs.length > 0) {{
-                                for (let paraIdx = 0; paraIdx < paragraphs.length; paraIdx++) {{
-                                    const paragraph = paragraphs[paraIdx];
-                                    const sentences = paragraph.sentences || [];
-                                    
-                                    if (sentences.length > 0) {{
-                                        const firstSentence = sentences[0];
-                                        const paraStartTime = firstSentence.start;
+                                if (paragraphs && paragraphs.length > 0) {{
+                                    for (let paraIdx = 0; paraIdx < paragraphs.length; paraIdx++) {{
+                                        const paragraph = paragraphs[paraIdx];
+                                        const sentences = paragraph.sentences || [];
                                         
-                                        if (paraStartTime !== undefined && paraStartTime !== null) {{
-                                            let bestMatch = null;
-                                            let bestTimeDiff = Infinity;
+                                        if (sentences.length > 0) {{
+                                            const firstSentence = sentences[0];
+                                            const paraStartTime = firstSentence.start;
                                             
-                                            for (const word of enrichedWords) {{
-                                                const timeDiff = Math.abs((word.start || 0) - paraStartTime);
-                                                if (timeDiff < 0.1 && timeDiff < bestTimeDiff) {{
-                                                    bestMatch = word;
-                                                    bestTimeDiff = timeDiff;
-                                                }}
-                                            }}
-                                            
-                                            if (bestMatch) {{
-                                                bestMatch.paragraph_start = true;
-                                            }}
-                                        }}
-                                        
-                                        if (paraIdx === paragraphs.length - 1) {{
-                                            const lastSentence = sentences[sentences.length - 1];
-                                            const paraEndTime = lastSentence.end;
-                                            
-                                            if (paraEndTime !== undefined && paraEndTime !== null) {{
+                                            if (paraStartTime !== undefined && paraStartTime !== null) {{
                                                 let bestMatch = null;
                                                 let bestTimeDiff = Infinity;
                                                 
                                                 for (const word of enrichedWords) {{
-                                                    if (word.paragraph_start) continue;
-                                                    const timeDiff = Math.abs((word.end || 0) - paraEndTime);
+                                                    const timeDiff = Math.abs((word.start || 0) - paraStartTime);
                                                     if (timeDiff < 0.1 && timeDiff < bestTimeDiff) {{
                                                         bestMatch = word;
                                                         bestTimeDiff = timeDiff;
@@ -985,26 +963,48 @@ LIGHT_EDITOR_TEMPLATE = r'''<!DOCTYPE html>
                                                 }}
                                                 
                                                 if (bestMatch) {{
-                                                    bestMatch.paragraph_end = true;
+                                                    bestMatch.paragraph_start = true;
+                                                }}
+                                            }}
+                                            
+                                            if (paraIdx === paragraphs.length - 1) {{
+                                                const lastSentence = sentences[sentences.length - 1];
+                                                const paraEndTime = lastSentence.end;
+                                                
+                                                if (paraEndTime !== undefined && paraEndTime !== null) {{
+                                                    let bestMatch = null;
+                                                    let bestTimeDiff = Infinity;
+                                                    
+                                                    for (const word of enrichedWords) {{
+                                                    if (word.paragraph_start) continue;
+                                                        const timeDiff = Math.abs((word.end || 0) - paraEndTime);
+                                                        if (timeDiff < 0.1 && timeDiff < bestTimeDiff) {{
+                                                            bestMatch = word;
+                                                            bestTimeDiff = timeDiff;
+                                                        }}
+                                                    }}
+                                                    
+                                                    if (bestMatch) {{
+                                                        bestMatch.paragraph_end = true;
+                                                    }}
                                                 }}
                                             }}
                                         }}
                                     }}
                                 }}
-                            }}
-                            
+                                
                             return {{
-                                words: enrichedWords,
-                                corrections: preservedCorrections || {{
-                                    version: 1,
-                                    timestamp: new Date().toISOString(),
-                                    speaker_names: {{}}
-                                }}
-                            }};
+                                    words: enrichedWords,
+                                    corrections: preservedCorrections || {{
+                                        version: 1,
+                                        timestamp: new Date().toISOString(),
+                                        speaker_names: {{}}
+                                    }}
+                                }};
+                            }}
                         }}
                     }}
                 }}
-            }}
             
             throw new Error('Could not parse transcript data');
         }}
@@ -1078,7 +1078,7 @@ LIGHT_EDITOR_TEMPLATE = r'''<!DOCTYPE html>
                 </div>
                 <div class="modal-actions">
                     <button class="modal-button modal-button-secondary" onclick="closeSpeakerModal()">Cancel</button>
-                    <button class="modal-button modal-button-primary" onclick="saveSpeakerChange(${{speakerIndex}}, ${{paragraphIndex !== undefined ? paragraphIndex : 'undefined'}})">Save</button>
+                    <button class="modal-button modal-button-primary" onclick="saveSpeakerChange(${{speakerIndex}}, ${{paragraphIndex !== undefined && paragraphIndex !== null ? paragraphIndex : 'undefined'}})">Save</button>
                 </div>
             `;
             
@@ -1102,7 +1102,7 @@ LIGHT_EDITOR_TEMPLATE = r'''<!DOCTYPE html>
                 input.addEventListener('keydown', function(e) {{
                     if (e.key === 'Enter') {{
                         e.preventDefault();
-                        saveSpeakerChange(speakerIndex);
+                        saveSpeakerChange(speakerIndex, paragraphIndex);
                     }} else if (e.key === 'Escape') {{
                         e.preventDefault();
                         closeSpeakerModal();
@@ -1127,9 +1127,9 @@ LIGHT_EDITOR_TEMPLATE = r'''<!DOCTYPE html>
             
             if (!newName) {{
                 alert('Speaker name cannot be empty');
-                return;
-            }}
-            
+                            return;
+                        }}
+                        
             const normalized = normalizeTranscript(transcriptData);
             const speakerNames = normalized.corrections?.speaker_names || {{}};
             const currentName = getSpeakerName(speakerIndex, speakerNames, paragraphIndex);
@@ -1153,14 +1153,20 @@ LIGHT_EDITOR_TEMPLATE = r'''<!DOCTYPE html>
                     speakerNameChanges.set(speakerIdx, newName);
                 }});
                 
-                // Remove paragraph-specific changes for this speaker
-                paragraphSpeakerChanges.forEach((value, paraIdx) => {{
-                    if (value.originalSpeakerIndex === speakerIndex) {{
-                        paragraphSpeakerChanges.delete(paraIdx);
-                    }}
-                }});
+                // Don't delete paragraph-specific changes when doing "replace all"
+                // Paragraph-specific changes create a NEW unique speaker index for those paragraphs,
+                // making them independent from the original speaker. They should NOT be affected by
+                // global "replace all" operations on the original speaker.
+                // The paragraph-specific changes will remain intact, and those paragraphs will keep
+                // their custom speaker names.
             }} else {{
                 // Only replace this specific paragraph
+                // Check that paragraphIndex is valid
+                if (paragraphIndex === undefined || paragraphIndex === null) {{
+                    alert('Error: Paragraph index is required for single paragraph changes');
+                    return;
+                }}
+                
                 // Find the next available speaker index (use a high number to avoid conflicts)
                 let newSpeakerIndex = speakerIndex;
                 const existingIndices = new Set();
@@ -1228,7 +1234,7 @@ LIGHT_EDITOR_TEMPLATE = r'''<!DOCTYPE html>
                     wordElement.textContent = newText;
                     wordElement.classList.add('corrected');
                     wordElement.classList.remove('editing');
-                }} else {{
+                                }} else {{
                     wordElement.classList.remove('editing');
                 }}
                 input.remove();
@@ -1410,7 +1416,7 @@ LIGHT_EDITOR_TEMPLATE = r'''<!DOCTYPE html>
                             
                             // Scroll into view
                             wordEl.scrollIntoView({{ behavior: 'smooth', block: 'center' }});
-                        }} else {{
+                                }} else {{
                             wordEl.classList.remove('current');
                         }}
                         
@@ -1497,8 +1503,8 @@ LIGHT_EDITOR_TEMPLATE = r'''<!DOCTYPE html>
                 
                 // Get original corrections version and increment
                 const originalCorrections = normalized.corrections || {{}};
-                const version = (originalCorrections.version || 0) + 1;
-                
+                        const version = (originalCorrections.version || 0) + 1;
+                        
                 // Merge speaker name changes with original speaker names
                 const mergedSpeakerNames = {{...speakerNames}};
                 // Add global speaker name changes
@@ -1511,39 +1517,39 @@ LIGHT_EDITOR_TEMPLATE = r'''<!DOCTYPE html>
                 }});
                 
                 // Build RichWordsTranscript format with corrections
-                const richWordsTranscript = {{
+                        const richWordsTranscript = {{
                     words: correctedWords,
-                    corrections: {{
-                        version: version,
-                        timestamp: new Date().toISOString(),
-                        speaker_names: Object.keys(mergedSpeakerNames).length > 0 ? mergedSpeakerNames : undefined
-                    }}
-                }};
-                
-                // Remove undefined speaker_names if empty
-                if (!richWordsTranscript.corrections.speaker_names) {{
-                    delete richWordsTranscript.corrections.speaker_names;
-                }}
-                
-                // Convert to JSON string and download
-                const jsonString = JSON.stringify(richWordsTranscript, null, 2);
-                const blob = new Blob([jsonString], {{ type: 'application/json;charset=utf-8' }});
-                const url = window.URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.style.display = 'none';
-                a.href = url;
-                a.download = '{audio_filename}_corrected.json';
-                
-                // Append to body, click, and remove
-                document.body.appendChild(a);
-                setTimeout(() => {{
-                    a.click();
-                    setTimeout(() => {{
-                        document.body.removeChild(a);
-                        window.URL.revokeObjectURL(url);
-                    }}, 100);
-                }}, 0);
-                
+                            corrections: {{
+                                version: version,
+                                timestamp: new Date().toISOString(),
+                                speaker_names: Object.keys(mergedSpeakerNames).length > 0 ? mergedSpeakerNames : undefined
+                            }}
+                        }};
+                        
+                        // Remove undefined speaker_names if empty
+                        if (!richWordsTranscript.corrections.speaker_names) {{
+                            delete richWordsTranscript.corrections.speaker_names;
+                        }}
+                        
+                        // Convert to JSON string and download
+                        const jsonString = JSON.stringify(richWordsTranscript, null, 2);
+                        const blob = new Blob([jsonString], {{ type: 'application/json;charset=utf-8' }});
+                        const url = window.URL.createObjectURL(blob);
+                        const a = document.createElement('a');
+                        a.style.display = 'none';
+                        a.href = url;
+                        a.download = '{audio_filename}_corrected.json';
+                        
+                        // Append to body, click, and remove
+                        document.body.appendChild(a);
+                        setTimeout(() => {{
+                            a.click();
+                            setTimeout(() => {{
+                                document.body.removeChild(a);
+                                window.URL.revokeObjectURL(url);
+                            }}, 100);
+                        }}, 0);
+                        
                 const wordCount = wordCorrections.size;
                 const speakerCount = speakerNameChanges.size;
                 const paragraphSpeakerCount = paragraphSpeakerChanges.size;

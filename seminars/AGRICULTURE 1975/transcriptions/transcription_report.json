@@ -1,0 +1,24 @@
+{
+  "batch_summary": {
+    "total_files": 56,
+    "completed_files": 56,
+    "failed_files": 0,
+    "skipped_files": 0,
+    "success_rate": 100.0,
+    "progress_percentage": 100.0
+  },
+  "timing": {
+    "start_time": "2025-11-04T07:50:19.910270",
+    "end_time": "2025-11-04T08:10:39.346950",
+    "elapsed_time_seconds": 1219.4366796016693,
+    "elapsed_time_formatted": "0:20:19"
+  },
+  "performance": {
+    "files_per_minute": 2.7570742513857662,
+    "mb_per_minute": 9.223525571292061,
+    "total_size_processed_mb": 187.34259033203125,
+    "average_file_size_mb": 3.345403398786272
+  },
+  "errors": {},
+  "output_formats": {}
+}

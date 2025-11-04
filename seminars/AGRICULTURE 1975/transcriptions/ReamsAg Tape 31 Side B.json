@@ -1,0 +1,486 @@
+{
+  "audio_file": "seminars/AGRICULTURE 1975/ReamsAg Tape 31 Side B.mp3",
+  "service": "deepgram",
+  "config": {
+    "speaker_labels": true,
+    "custom_vocabulary": [],
+    "punctuate": true,
+    "format_text": true,
+    "language_code": "en",
+    "max_speakers": 3
+  },
+  "timestamp": "2025-11-04T08:08:45Z",
+  "result": {
+    "text": "Doctor reams agriculture. Possibly 1975 but probably 1976. This is tape 31 side b decent salvage. So",
+    "speakers": [
+      {
+        "speaker": "Speaker 0",
+        "start_time": 0.16,
+        "end_time": 1.9199998,
+        "text": "Doctor reams agriculture.",
+        "confidence": 0.885011
+      },
+      {
+        "speaker": "Speaker 0",
+        "start_time": 2.6399999,
+        "end_time": 4.4,
+        "text": "Possibly 1975",
+        "confidence": 0.99566925
+      },
+      {
+        "speaker": "Speaker 0",
+        "start_time": 4.4,
+        "end_time": 6.88,
+        "text": "but probably 1976.",
+        "confidence": 0.83297086
+      },
+      {
+        "speaker": "Speaker 0",
+        "start_time": 7.44,
+        "end_time": 10.16,
+        "text": "This is tape 31 side b decent salvage.",
+        "confidence": 0.8931926
+      },
+      {
+        "speaker": "Speaker 0",
+        "start_time": 521.82,
+        "end_time": 539.42,
+        "text": "So",
+        "confidence": 0.36827722
+      }
+    ],
+    "confidence": 0.99395764,
+    "audio_duration": 539.42,
+    "processing_time": 12.418781042098999,
+    "raw_response": {
+      "metadata": {
+        "transaction_key": "deprecated",
+        "request_id": "2bc99f87-51e7-4a47-bbc6-a5300a4c58a4",
+        "sha256": "5f42b69934be062a5a1b6a0b58668c1b6997eaf8ca3e24ae0c08d3b3a693855d",
+        "created": "2025-11-04T06:08:44.321Z",
+        "duration": 1419.4939,
+        "channels": 1,
+        "models": [
+          "2187e11a-3532-4498-b076-81fa530bdd49"
+        ],
+        "model_info": {
+          "2187e11a-3532-4498-b076-81fa530bdd49": {
+            "name": "general-nova-3",
+            "version": "2025-07-31.0",
+            "arch": "nova-3"
+          }
+        }
+      },
+      "results": {
+        "channels": [
+          {
+            "alternatives": [
+              {
+                "transcript": "Doctor reams agriculture. Possibly 1975 but probably 1976. This is tape 31 side b decent salvage. So",
+                "confidence": 0.99395764,
+                "words": [
+                  {
+                    "word": "doctor",
+                    "start": 0.16,
+                    "end": 0.48,
+                    "confidence": 0.94326943,
+                    "speaker": 0,
+                    "speaker_confidence": 0.76967525,
+                    "punctuated_word": "Doctor"
+                  },
+                  {
+                    "word": "reams",
+                    "start": 0.48,
+                    "end": 0.96,
+                    "confidence": 0.9139501,
+                    "speaker": 0,
+                    "speaker_confidence": 0.76967525,
+                    "punctuated_word": "reams"
+                  },
+                  {
+                    "word": "agriculture",
+                    "start": 0.96,
+                    "end": 1.9199998,
+                    "confidence": 0.79781365,
+                    "speaker": 0,
+                    "speaker_confidence": 0.76967525,
+                    "punctuated_word": "agriculture."
+                  },
+                  {
+                    "word": "possibly",
+                    "start": 2.6399999,
+                    "end": 3.04,
+                    "confidence": 0.99535394,
+                    "speaker": 0,
+                    "speaker_confidence": 0.76967525,
+                    "punctuated_word": "Possibly"
+                  },
+                  {
+                    "word": "1975",
+                    "start": 3.04,
+                    "end": 4.4,
+                    "confidence": 0.99598455,
+                    "speaker": 0,
+                    "speaker_confidence": 0.76967525,
+                    "punctuated_word": "1975"
+                  },
+                  {
+                    "word": "but",
+                    "start": 4.4,
+                    "end": 4.72,
+                    "confidence": 0.5056223,
+                    "speaker": 0,
+                    "speaker_confidence": 0.76967525,
+                    "punctuated_word": "but"
+                  },
+                  {
+                    "word": "probably",
+                    "start": 4.72,
+                    "end": 5.2,
+                    "confidence": 0.9956695,
+                    "speaker": 0,
+                    "speaker_confidence": 0.76967525,
+                    "punctuated_word": "probably"
+                  },
+                  {
+                    "word": "1976",
+                    "start": 5.2,
+                    "end": 6.88,
+                    "confidence": 0.99762076,
+                    "speaker": 0,
+                    "speaker_confidence": 0.76967525,
+                    "punctuated_word": "1976."
+                  },
+                  {
+                    "word": "this",
+                    "start": 7.44,
+                    "end": 7.7599998,
+                    "confidence": 0.9942782,
+                    "speaker": 0,
+                    "speaker_confidence": 0.76967525,
+                    "punctuated_word": "This"
+                  },
+                  {
+                    "word": "is",
+                    "start": 7.7599998,
+                    "end": 7.9199996,
+                    "confidence": 0.99748933,
+                    "speaker": 0,
+                    "speaker_confidence": 0.76967525,
+                    "punctuated_word": "is"
+                  },
+                  {
+                    "word": "tape",
+                    "start": 7.9199996,
+                    "end": 8.24,
+                    "confidence": 0.9096884,
+                    "speaker": 0,
+                    "speaker_confidence": 0.76967525,
+                    "punctuated_word": "tape"
+                  },
+                  {
+                    "word": "31",
+                    "start": 8.24,
+                    "end": 8.72,
+                    "confidence": 0.98490417,
+                    "speaker": 0,
+                    "speaker_confidence": 0.76967525,
+                    "punctuated_word": "31"
+                  },
+                  {
+                    "word": "side",
+                    "start": 8.72,
+                    "end": 9.04,
+                    "confidence": 0.81774724,
+                    "speaker": 0,
+                    "speaker_confidence": 0.76967525,
+                    "punctuated_word": "side"
+                  },
+                  {
+                    "word": "b",
+                    "start": 9.04,
+                    "end": 9.28,
+                    "confidence": 0.97584707,
+                    "speaker": 0,
+                    "speaker_confidence": 0.76967525,
+                    "punctuated_word": "b"
+                  },
+                  {
+                    "word": "decent",
+                    "start": 9.28,
+                    "end": 9.679999,
+                    "confidence": 0.47162881,
+                    "speaker": 0,
+                    "speaker_confidence": 0.76967525,
+                    "punctuated_word": "decent"
+                  },
+                  {
+                    "word": "salvage",
+                    "start": 9.679999,
+                    "end": 10.16,
+                    "confidence": 0.99395764,
+                    "speaker": 0,
+                    "speaker_confidence": 0.76967525,
+                    "punctuated_word": "salvage."
+                  },
+                  {
+                    "word": "so",
+                    "start": 521.82,
+                    "end": 539.42,
+                    "confidence": 0.36827722,
+                    "speaker": 0,
+                    "speaker_confidence": 0.76967514,
+                    "punctuated_word": "So"
+                  }
+                ],
+                "paragraphs": {
+                  "transcript": "\nSpeaker 0: Doctor reams agriculture. Possibly 1975 but probably 1976. This is tape 31 side b decent salvage. So",
+                  "paragraphs": [
+                    {
+                      "sentences": [
+                        {
+                          "text": "Doctor reams agriculture.",
+                          "start": 0.16,
+                          "end": 1.9199998
+                        },
+                        {
+                          "text": "Possibly 1975 but probably 1976.",
+                          "start": 2.6399999,
+                          "end": 6.88
+                        },
+                        {
+                          "text": "This is tape 31 side b decent salvage.",
+                          "start": 7.44,
+                          "end": 10.16
+                        },
+                        {
+                          "text": "So",
+                          "start": 521.82,
+                          "end": 539.42
+                        }
+                      ],
+                      "speaker": 0,
+                      "num_words": 17,
+                      "start": 0.16,
+                      "end": 539.42
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "utterances": [
+          {
+            "start": 0.16,
+            "end": 1.9199998,
+            "confidence": 0.885011,
+            "channel": 0,
+            "transcript": "Doctor reams agriculture.",
+            "words": [
+              {
+                "word": "doctor",
+                "start": 0.16,
+                "end": 0.48,
+                "confidence": 0.94326943,
+                "speaker": 0,
+                "speaker_confidence": 0.76967525,
+                "punctuated_word": "Doctor"
+              },
+              {
+                "word": "reams",
+                "start": 0.48,
+                "end": 0.96,
+                "confidence": 0.9139501,
+                "speaker": 0,
+                "speaker_confidence": 0.76967525,
+                "punctuated_word": "reams"
+              },
+              {
+                "word": "agriculture",
+                "start": 0.96,
+                "end": 1.9199998,
+                "confidence": 0.79781365,
+                "speaker": 0,
+                "speaker_confidence": 0.76967525,
+                "punctuated_word": "agriculture."
+              }
+            ],
+            "speaker": 0,
+            "id": "c3fa2e19-c956-4597-b6b6-3b0e2b783e26"
+          },
+          {
+            "start": 2.6399999,
+            "end": 4.4,
+            "confidence": 0.99566925,
+            "channel": 0,
+            "transcript": "Possibly 1975",
+            "words": [
+              {
+                "word": "possibly",
+                "start": 2.6399999,
+                "end": 3.04,
+                "confidence": 0.99535394,
+                "speaker": 0,
+                "speaker_confidence": 0.76967525,
+                "punctuated_word": "Possibly"
+              },
+              {
+                "word": "1975",
+                "start": 3.04,
+                "end": 4.4,
+                "confidence": 0.99598455,
+                "speaker": 0,
+                "speaker_confidence": 0.76967525,
+                "punctuated_word": "1975"
+              }
+            ],
+            "speaker": 0,
+            "id": "98763ae0-8799-433d-89c4-940c516bad52"
+          },
+          {
+            "start": 4.4,
+            "end": 6.88,
+            "confidence": 0.83297086,
+            "channel": 0,
+            "transcript": "but probably 1976.",
+            "words": [
+              {
+                "word": "but",
+                "start": 4.4,
+                "end": 4.72,
+                "confidence": 0.5056223,
+                "speaker": 0,
+                "speaker_confidence": 0.76967525,
+                "punctuated_word": "but"
+              },
+              {
+                "word": "probably",
+                "start": 4.72,
+                "end": 5.2,
+                "confidence": 0.9956695,
+                "speaker": 0,
+                "speaker_confidence": 0.76967525,
+                "punctuated_word": "probably"
+              },
+              {
+                "word": "1976",
+                "start": 5.2,
+                "end": 6.88,
+                "confidence": 0.99762076,
+                "speaker": 0,
+                "speaker_confidence": 0.76967525,
+                "punctuated_word": "1976."
+              }
+            ],
+            "speaker": 0,
+            "id": "545a4642-c835-4d09-ab96-e51a0c48cf50"
+          },
+          {
+            "start": 7.44,
+            "end": 10.16,
+            "confidence": 0.8931926,
+            "channel": 0,
+            "transcript": "This is tape 31 side b decent salvage.",
+            "words": [
+              {
+                "word": "this",
+                "start": 7.44,
+                "end": 7.7599998,
+                "confidence": 0.9942782,
+                "speaker": 0,
+                "speaker_confidence": 0.76967525,
+                "punctuated_word": "This"
+              },
+              {
+                "word": "is",
+                "start": 7.7599998,
+                "end": 7.9199996,
+                "confidence": 0.99748933,
+                "speaker": 0,
+                "speaker_confidence": 0.76967525,
+                "punctuated_word": "is"
+              },
+              {
+                "word": "tape",
+                "start": 7.9199996,
+                "end": 8.24,
+                "confidence": 0.9096884,
+                "speaker": 0,
+                "speaker_confidence": 0.76967525,
+                "punctuated_word": "tape"
+              },
+              {
+                "word": "31",
+                "start": 8.24,
+                "end": 8.72,
+                "confidence": 0.98490417,
+                "speaker": 0,
+                "speaker_confidence": 0.76967525,
+                "punctuated_word": "31"
+              },
+              {
+                "word": "side",
+                "start": 8.72,
+                "end": 9.04,
+                "confidence": 0.81774724,
+                "speaker": 0,
+                "speaker_confidence": 0.76967525,
+                "punctuated_word": "side"
+              },
+              {
+                "word": "b",
+                "start": 9.04,
+                "end": 9.28,
+                "confidence": 0.97584707,
+                "speaker": 0,
+                "speaker_confidence": 0.76967525,
+                "punctuated_word": "b"
+              },
+              {
+                "word": "decent",
+                "start": 9.28,
+                "end": 9.679999,
+                "confidence": 0.47162881,
+                "speaker": 0,
+                "speaker_confidence": 0.76967525,
+                "punctuated_word": "decent"
+              },
+              {
+                "word": "salvage",
+                "start": 9.679999,
+                "end": 10.16,
+                "confidence": 0.99395764,
+                "speaker": 0,
+                "speaker_confidence": 0.76967525,
+                "punctuated_word": "salvage."
+              }
+            ],
+            "speaker": 0,
+            "id": "03004877-a337-4e5c-b5d4-dbc5170acaab"
+          },
+          {
+            "start": 521.82,
+            "end": 539.42,
+            "confidence": 0.36827722,
+            "channel": 0,
+            "transcript": "So",
+            "words": [
+              {
+                "word": "so",
+                "start": 521.82,
+                "end": 539.42,
+                "confidence": 0.36827722,
+                "speaker": 0,
+                "speaker_confidence": 0.76967514,
+                "punctuated_word": "So"
+              }
+            ],
+            "speaker": 0,
+            "id": "4d92989f-f09d-4487-80bb-9b1a9b617afa"
+          }
+        ]
+      }
+    }
+  }
+}

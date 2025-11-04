@@ -1,0 +1,481 @@
+{
+  "audio_file": "seminars/AGRICULTURE 1975/ReamsAg Tape 22 Side B.mp3",
+  "service": "deepgram",
+  "config": {
+    "speaker_labels": true,
+    "custom_vocabulary": [],
+    "punctuate": true,
+    "format_text": true,
+    "language_code": "en",
+    "max_speakers": 3
+  },
+  "timestamp": "2025-11-04T08:02:04Z",
+  "result": {
+    "text": "Doctor reams agriculture. Possibly 1975, but probably 1976. Tape 22 side b copy, kid noises and nothing else.",
+    "speakers": [
+      {
+        "speaker": "Speaker 0",
+        "start_time": 0.16,
+        "end_time": 2.0,
+        "text": "Doctor reams agriculture.",
+        "confidence": 0.8794637
+      },
+      {
+        "speaker": "Speaker 0",
+        "start_time": 2.56,
+        "end_time": 4.64,
+        "text": "Possibly 1975,",
+        "confidence": 0.9592559
+      },
+      {
+        "speaker": "Speaker 0",
+        "start_time": 4.64,
+        "end_time": 6.88,
+        "text": "but probably 1976.",
+        "confidence": 0.98803216
+      },
+      {
+        "speaker": "Speaker 0",
+        "start_time": 7.44,
+        "end_time": 10.88,
+        "text": "Tape 22 side b copy, kid noises and nothing else.",
+        "confidence": 0.9018005
+      }
+    ],
+    "confidence": 0.98309493,
+    "audio_duration": 10.88,
+    "processing_time": 4.366929531097412,
+    "raw_response": {
+      "metadata": {
+        "transaction_key": "deprecated",
+        "request_id": "2ada1670-6898-4182-a65c-97414c94f059",
+        "sha256": "bf8c1f7c2bb8fa8d4b4219d8bf92dedba6ad4164fe3abdeb60602ee7a5cec8b4",
+        "created": "2025-11-04T06:02:03.842Z",
+        "duration": 209.058,
+        "channels": 1,
+        "models": [
+          "2187e11a-3532-4498-b076-81fa530bdd49"
+        ],
+        "model_info": {
+          "2187e11a-3532-4498-b076-81fa530bdd49": {
+            "name": "general-nova-3",
+            "version": "2025-07-31.0",
+            "arch": "nova-3"
+          }
+        }
+      },
+      "results": {
+        "channels": [
+          {
+            "alternatives": [
+              {
+                "transcript": "Doctor reams agriculture. Possibly 1975, but probably 1976. Tape 22 side b copy, kid noises and nothing else.",
+                "confidence": 0.98309493,
+                "words": [
+                  {
+                    "word": "doctor",
+                    "start": 0.16,
+                    "end": 0.48,
+                    "confidence": 0.954303,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "Doctor"
+                  },
+                  {
+                    "word": "reams",
+                    "start": 0.48,
+                    "end": 0.96,
+                    "confidence": 0.8667234,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "reams"
+                  },
+                  {
+                    "word": "agriculture",
+                    "start": 0.96,
+                    "end": 2.0,
+                    "confidence": 0.8173646,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "agriculture."
+                  },
+                  {
+                    "word": "possibly",
+                    "start": 2.56,
+                    "end": 3.04,
+                    "confidence": 0.9974476,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "Possibly"
+                  },
+                  {
+                    "word": "1975",
+                    "start": 3.04,
+                    "end": 4.64,
+                    "confidence": 0.92106414,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "1975,"
+                  },
+                  {
+                    "word": "but",
+                    "start": 4.64,
+                    "end": 4.72,
+                    "confidence": 0.9696937,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "but"
+                  },
+                  {
+                    "word": "probably",
+                    "start": 4.72,
+                    "end": 5.2,
+                    "confidence": 0.9978865,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "probably"
+                  },
+                  {
+                    "word": "1976",
+                    "start": 5.2,
+                    "end": 6.88,
+                    "confidence": 0.9965162,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "1976."
+                  },
+                  {
+                    "word": "tape",
+                    "start": 7.44,
+                    "end": 7.8399997,
+                    "confidence": 0.98309493,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "Tape"
+                  },
+                  {
+                    "word": "22",
+                    "start": 7.8399997,
+                    "end": 8.4,
+                    "confidence": 0.9752557,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "22"
+                  },
+                  {
+                    "word": "side",
+                    "start": 8.4,
+                    "end": 8.72,
+                    "confidence": 0.7047393,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "side"
+                  },
+                  {
+                    "word": "b",
+                    "start": 8.72,
+                    "end": 9.04,
+                    "confidence": 0.96394646,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "b"
+                  },
+                  {
+                    "word": "copy",
+                    "start": 9.04,
+                    "end": 9.5199995,
+                    "confidence": 0.5389283,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "copy,"
+                  },
+                  {
+                    "word": "kid",
+                    "start": 9.5199995,
+                    "end": 9.679999,
+                    "confidence": 0.95786107,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "kid"
+                  },
+                  {
+                    "word": "noises",
+                    "start": 9.679999,
+                    "end": 10.0,
+                    "confidence": 0.99264187,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "noises"
+                  },
+                  {
+                    "word": "and",
+                    "start": 10.0,
+                    "end": 10.24,
+                    "confidence": 0.902766,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "and"
+                  },
+                  {
+                    "word": "nothing",
+                    "start": 10.24,
+                    "end": 10.559999,
+                    "confidence": 0.9994772,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "nothing"
+                  },
+                  {
+                    "word": "else",
+                    "start": 10.559999,
+                    "end": 10.88,
+                    "confidence": 0.9992943,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "else."
+                  }
+                ],
+                "paragraphs": {
+                  "transcript": "\nSpeaker 0: Doctor reams agriculture. Possibly 1975, but probably 1976. Tape 22 side b copy, kid noises and nothing else.",
+                  "paragraphs": [
+                    {
+                      "sentences": [
+                        {
+                          "text": "Doctor reams agriculture.",
+                          "start": 0.16,
+                          "end": 2.0
+                        },
+                        {
+                          "text": "Possibly 1975, but probably 1976.",
+                          "start": 2.56,
+                          "end": 6.88
+                        },
+                        {
+                          "text": "Tape 22 side b copy, kid noises and nothing else.",
+                          "start": 7.44,
+                          "end": 10.88
+                        }
+                      ],
+                      "speaker": 0,
+                      "num_words": 18,
+                      "start": 0.16,
+                      "end": 10.88
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "utterances": [
+          {
+            "start": 0.16,
+            "end": 2.0,
+            "confidence": 0.8794637,
+            "channel": 0,
+            "transcript": "Doctor reams agriculture.",
+            "words": [
+              {
+                "word": "doctor",
+                "start": 0.16,
+                "end": 0.48,
+                "confidence": 0.954303,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "Doctor"
+              },
+              {
+                "word": "reams",
+                "start": 0.48,
+                "end": 0.96,
+                "confidence": 0.8667234,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "reams"
+              },
+              {
+                "word": "agriculture",
+                "start": 0.96,
+                "end": 2.0,
+                "confidence": 0.8173646,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "agriculture."
+              }
+            ],
+            "speaker": 0,
+            "id": "01a36b44-1421-4647-b163-4f5dd97bf9ef"
+          },
+          {
+            "start": 2.56,
+            "end": 4.64,
+            "confidence": 0.9592559,
+            "channel": 0,
+            "transcript": "Possibly 1975,",
+            "words": [
+              {
+                "word": "possibly",
+                "start": 2.56,
+                "end": 3.04,
+                "confidence": 0.9974476,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "Possibly"
+              },
+              {
+                "word": "1975",
+                "start": 3.04,
+                "end": 4.64,
+                "confidence": 0.92106414,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "1975,"
+              }
+            ],
+            "speaker": 0,
+            "id": "76fe7fe0-a199-47b0-ae66-94d070b723ea"
+          },
+          {
+            "start": 4.64,
+            "end": 6.88,
+            "confidence": 0.98803216,
+            "channel": 0,
+            "transcript": "but probably 1976.",
+            "words": [
+              {
+                "word": "but",
+                "start": 4.64,
+                "end": 4.72,
+                "confidence": 0.9696937,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "but"
+              },
+              {
+                "word": "probably",
+                "start": 4.72,
+                "end": 5.2,
+                "confidence": 0.9978865,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "probably"
+              },
+              {
+                "word": "1976",
+                "start": 5.2,
+                "end": 6.88,
+                "confidence": 0.9965162,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "1976."
+              }
+            ],
+            "speaker": 0,
+            "id": "b3034f40-f29b-4461-b28f-f3c1b7f0c362"
+          },
+          {
+            "start": 7.44,
+            "end": 10.88,
+            "confidence": 0.9018005,
+            "channel": 0,
+            "transcript": "Tape 22 side b copy, kid noises and nothing else.",
+            "words": [
+              {
+                "word": "tape",
+                "start": 7.44,
+                "end": 7.8399997,
+                "confidence": 0.98309493,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "Tape"
+              },
+              {
+                "word": "22",
+                "start": 7.8399997,
+                "end": 8.4,
+                "confidence": 0.9752557,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "22"
+              },
+              {
+                "word": "side",
+                "start": 8.4,
+                "end": 8.72,
+                "confidence": 0.7047393,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "side"
+              },
+              {
+                "word": "b",
+                "start": 8.72,
+                "end": 9.04,
+                "confidence": 0.96394646,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "b"
+              },
+              {
+                "word": "copy",
+                "start": 9.04,
+                "end": 9.5199995,
+                "confidence": 0.5389283,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "copy,"
+              },
+              {
+                "word": "kid",
+                "start": 9.5199995,
+                "end": 9.679999,
+                "confidence": 0.95786107,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "kid"
+              },
+              {
+                "word": "noises",
+                "start": 9.679999,
+                "end": 10.0,
+                "confidence": 0.99264187,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "noises"
+              },
+              {
+                "word": "and",
+                "start": 10.0,
+                "end": 10.24,
+                "confidence": 0.902766,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "and"
+              },
+              {
+                "word": "nothing",
+                "start": 10.24,
+                "end": 10.559999,
+                "confidence": 0.9994772,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "nothing"
+              },
+              {
+                "word": "else",
+                "start": 10.559999,
+                "end": 10.88,
+                "confidence": 0.9992943,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "else."
+              }
+            ],
+            "speaker": 0,
+            "id": "357927f9-d4f8-445a-b1fa-dbdba36de35a"
+          }
+        ]
+      }
+    }
+  }
+}

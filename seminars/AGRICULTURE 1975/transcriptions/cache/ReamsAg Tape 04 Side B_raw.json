@@ -1,0 +1,971 @@
+{
+  "audio_file": "seminars/AGRICULTURE 1975/ReamsAg Tape 04 Side B.mp3",
+  "service": "deepgram",
+  "timestamp": "2025-11-04T07:53:47Z",
+  "raw_response": {
+    "metadata": {
+      "transaction_key": "deprecated",
+      "request_id": "a703b5aa-0233-4256-8575-927d67f899a5",
+      "sha256": "15126f014d4729fb8a437d19766b08a4896164ef3cacb60c602a02ff395d2da2",
+      "created": "2025-11-04T05:53:46.393Z",
+      "duration": 1390.1844,
+      "channels": 1,
+      "models": [
+        "2187e11a-3532-4498-b076-81fa530bdd49"
+      ],
+      "model_info": {
+        "2187e11a-3532-4498-b076-81fa530bdd49": {
+          "name": "general-nova-3",
+          "version": "2025-07-31.0",
+          "arch": "nova-3"
+        }
+      }
+    },
+    "results": {
+      "channels": [
+        {
+          "alternatives": [
+            {
+              "transcript": "Doctor. Reams agriculture. This is tape four side b and identified by Turner as 1976. We may have to go further in the audio files to determine the true year. Of. Do you see that? That the enterprise runs $808,116, £402,000. Now I want",
+              "confidence": 0.9819,
+              "words": [
+                {
+                  "word": "doctor",
+                  "start": 0.08,
+                  "end": 0.71999997,
+                  "confidence": 0.73519695,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "Doctor."
+                },
+                {
+                  "word": "reams",
+                  "start": 0.71999997,
+                  "end": 0.96,
+                  "confidence": 0.94811976,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "Reams"
+                },
+                {
+                  "word": "agriculture",
+                  "start": 0.96,
+                  "end": 1.9199998,
+                  "confidence": 0.8106967,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "agriculture."
+                },
+                {
+                  "word": "this",
+                  "start": 2.48,
+                  "end": 2.72,
+                  "confidence": 0.985097,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "This"
+                },
+                {
+                  "word": "is",
+                  "start": 2.72,
+                  "end": 2.8799999,
+                  "confidence": 0.9981171,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "is"
+                },
+                {
+                  "word": "tape",
+                  "start": 2.8799999,
+                  "end": 3.1999998,
+                  "confidence": 0.94818145,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "tape"
+                },
+                {
+                  "word": "four",
+                  "start": 3.1999998,
+                  "end": 3.52,
+                  "confidence": 0.8102537,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "four"
+                },
+                {
+                  "word": "side",
+                  "start": 3.52,
+                  "end": 3.76,
+                  "confidence": 0.8435427,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "side"
+                },
+                {
+                  "word": "b",
+                  "start": 3.76,
+                  "end": 4.08,
+                  "confidence": 0.86882013,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "b"
+                },
+                {
+                  "word": "and",
+                  "start": 4.08,
+                  "end": 4.24,
+                  "confidence": 0.9026625,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "and"
+                },
+                {
+                  "word": "identified",
+                  "start": 4.24,
+                  "end": 4.7999997,
+                  "confidence": 0.99537885,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "identified"
+                },
+                {
+                  "word": "by",
+                  "start": 4.7999997,
+                  "end": 5.04,
+                  "confidence": 0.99836415,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "by"
+                },
+                {
+                  "word": "turner",
+                  "start": 5.04,
+                  "end": 5.44,
+                  "confidence": 0.5361297,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "Turner"
+                },
+                {
+                  "word": "as",
+                  "start": 5.44,
+                  "end": 5.68,
+                  "confidence": 0.9527609,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "as"
+                },
+                {
+                  "word": "1976",
+                  "start": 5.68,
+                  "end": 7.28,
+                  "confidence": 0.9958076,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "1976."
+                },
+                {
+                  "word": "we",
+                  "start": 7.8399997,
+                  "end": 8.16,
+                  "confidence": 0.9885343,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "We"
+                },
+                {
+                  "word": "may",
+                  "start": 8.16,
+                  "end": 8.32,
+                  "confidence": 0.9991842,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "may"
+                },
+                {
+                  "word": "have",
+                  "start": 8.32,
+                  "end": 8.48,
+                  "confidence": 0.9998338,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "have"
+                },
+                {
+                  "word": "to",
+                  "start": 8.48,
+                  "end": 8.639999,
+                  "confidence": 0.99959844,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "to"
+                },
+                {
+                  "word": "go",
+                  "start": 8.639999,
+                  "end": 8.8,
+                  "confidence": 0.9996873,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "go"
+                },
+                {
+                  "word": "further",
+                  "start": 8.8,
+                  "end": 9.12,
+                  "confidence": 0.9993069,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "further"
+                },
+                {
+                  "word": "in",
+                  "start": 9.12,
+                  "end": 9.36,
+                  "confidence": 0.9982845,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "in"
+                },
+                {
+                  "word": "the",
+                  "start": 9.36,
+                  "end": 9.44,
+                  "confidence": 0.9998031,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "the"
+                },
+                {
+                  "word": "audio",
+                  "start": 9.44,
+                  "end": 9.84,
+                  "confidence": 0.992008,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "audio"
+                },
+                {
+                  "word": "files",
+                  "start": 9.84,
+                  "end": 10.16,
+                  "confidence": 0.9994956,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "files"
+                },
+                {
+                  "word": "to",
+                  "start": 10.16,
+                  "end": 10.48,
+                  "confidence": 0.99899167,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "to"
+                },
+                {
+                  "word": "determine",
+                  "start": 10.48,
+                  "end": 10.8,
+                  "confidence": 0.99967253,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "determine"
+                },
+                {
+                  "word": "the",
+                  "start": 10.8,
+                  "end": 11.04,
+                  "confidence": 0.99902487,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "the"
+                },
+                {
+                  "word": "true",
+                  "start": 11.04,
+                  "end": 11.2,
+                  "confidence": 0.99841225,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "true"
+                },
+                {
+                  "word": "year",
+                  "start": 11.2,
+                  "end": 11.5199995,
+                  "confidence": 0.9825589,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "year."
+                },
+                {
+                  "word": "of",
+                  "start": 1380.6495,
+                  "end": 1381.2894,
+                  "confidence": 0.5529276,
+                  "speaker": 1,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "Of."
+                },
+                {
+                  "word": "do",
+                  "start": 1381.8495,
+                  "end": 1382.0895,
+                  "confidence": 0.9298745,
+                  "speaker": 1,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "Do"
+                },
+                {
+                  "word": "you",
+                  "start": 1382.0895,
+                  "end": 1382.2495,
+                  "confidence": 0.98283273,
+                  "speaker": 1,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "you"
+                },
+                {
+                  "word": "see",
+                  "start": 1382.2495,
+                  "end": 1382.4094,
+                  "confidence": 0.9819,
+                  "speaker": 1,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "see"
+                },
+                {
+                  "word": "that",
+                  "start": 1382.4094,
+                  "end": 1382.6495,
+                  "confidence": 0.95280457,
+                  "speaker": 1,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "that?"
+                },
+                {
+                  "word": "that",
+                  "start": 1382.6495,
+                  "end": 1382.8094,
+                  "confidence": 0.4699523,
+                  "speaker": 1,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "That"
+                },
+                {
+                  "word": "the",
+                  "start": 1382.8094,
+                  "end": 1382.9695,
+                  "confidence": 0.6434681,
+                  "speaker": 1,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "the"
+                },
+                {
+                  "word": "enterprise",
+                  "start": 1382.9695,
+                  "end": 1383.3695,
+                  "confidence": 0.3007991,
+                  "speaker": 1,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "enterprise"
+                },
+                {
+                  "word": "runs",
+                  "start": 1383.3695,
+                  "end": 1383.6895,
+                  "confidence": 0.31443524,
+                  "speaker": 1,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "runs"
+                },
+                {
+                  "word": "$808,116",
+                  "start": 1383.6895,
+                  "end": 1387.0494,
+                  "confidence": 0.7792351,
+                  "speaker": 1,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "$808,116,"
+                },
+                {
+                  "word": "£402,000",
+                  "start": 1387.0494,
+                  "end": 1388.8895,
+                  "confidence": 0.95765376,
+                  "speaker": 1,
+                  "speaker_confidence": 0.9509105,
+                  "punctuated_word": "£402,000."
+                },
+                {
+                  "word": "now",
+                  "start": 1388.8895,
+                  "end": 1389.6094,
+                  "confidence": 0.6355023,
+                  "speaker": 1,
+                  "speaker_confidence": 0.91818416,
+                  "punctuated_word": "Now"
+                },
+                {
+                  "word": "i",
+                  "start": 1389.6095,
+                  "end": 1389.9294,
+                  "confidence": 0.5518681,
+                  "speaker": 1,
+                  "speaker_confidence": 0.91818416,
+                  "punctuated_word": "I"
+                },
+                {
+                  "word": "want",
+                  "start": 1389.9294,
+                  "end": 1390.1694,
+                  "confidence": 0.806175,
+                  "speaker": 1,
+                  "speaker_confidence": 0.91818416,
+                  "punctuated_word": "want"
+                }
+              ],
+              "paragraphs": {
+                "transcript": "\nSpeaker 0: Doctor. Reams agriculture. This is tape four side b and identified by Turner as 1976. We may have to go further in the audio files to determine the true year.\n\nSpeaker 1: Of. Do you see that? That the enterprise runs $808,116, £402,000. Now I want",
+                "paragraphs": [
+                  {
+                    "sentences": [
+                      {
+                        "text": "Doctor.",
+                        "start": 0.08,
+                        "end": 0.71999997
+                      },
+                      {
+                        "text": "Reams agriculture.",
+                        "start": 0.71999997,
+                        "end": 1.9199998
+                      },
+                      {
+                        "text": "This is tape four side b and identified by Turner as 1976.",
+                        "start": 2.48,
+                        "end": 7.28
+                      },
+                      {
+                        "text": "We may have to go further in the audio files to determine the true year.",
+                        "start": 7.8399997,
+                        "end": 11.5199995
+                      }
+                    ],
+                    "speaker": 0,
+                    "num_words": 30,
+                    "start": 0.08,
+                    "end": 11.5199995
+                  },
+                  {
+                    "sentences": [
+                      {
+                        "text": "Of.",
+                        "start": 1380.6495,
+                        "end": 1381.2894
+                      },
+                      {
+                        "text": "Do you see that?",
+                        "start": 1381.8495,
+                        "end": 1382.6495
+                      },
+                      {
+                        "text": "That the enterprise runs $808,116, £402,000.",
+                        "start": 1382.6495,
+                        "end": 1388.8895
+                      },
+                      {
+                        "text": "Now I want",
+                        "start": 1388.8895,
+                        "end": 1390.1694
+                      }
+                    ],
+                    "speaker": 1,
+                    "num_words": 14,
+                    "start": 1380.6495,
+                    "end": 1390.1694
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "utterances": [
+        {
+          "start": 0.08,
+          "end": 1.9199998,
+          "confidence": 0.83133775,
+          "channel": 0,
+          "transcript": "Doctor. Reams agriculture.",
+          "words": [
+            {
+              "word": "doctor",
+              "start": 0.08,
+              "end": 0.71999997,
+              "confidence": 0.73519695,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "Doctor."
+            },
+            {
+              "word": "reams",
+              "start": 0.71999997,
+              "end": 0.96,
+              "confidence": 0.94811976,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "Reams"
+            },
+            {
+              "word": "agriculture",
+              "start": 0.96,
+              "end": 1.9199998,
+              "confidence": 0.8106967,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "agriculture."
+            }
+          ],
+          "speaker": 0,
+          "id": "fe1ad980-8460-41e1-91da-4160f24275d3"
+        },
+        {
+          "start": 2.48,
+          "end": 7.28,
+          "confidence": 0.90292627,
+          "channel": 0,
+          "transcript": "This is tape four side b and identified by Turner as 1976.",
+          "words": [
+            {
+              "word": "this",
+              "start": 2.48,
+              "end": 2.72,
+              "confidence": 0.985097,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "This"
+            },
+            {
+              "word": "is",
+              "start": 2.72,
+              "end": 2.8799999,
+              "confidence": 0.9981171,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "is"
+            },
+            {
+              "word": "tape",
+              "start": 2.8799999,
+              "end": 3.1999998,
+              "confidence": 0.94818145,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "tape"
+            },
+            {
+              "word": "four",
+              "start": 3.1999998,
+              "end": 3.52,
+              "confidence": 0.8102537,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "four"
+            },
+            {
+              "word": "side",
+              "start": 3.52,
+              "end": 3.76,
+              "confidence": 0.8435427,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "side"
+            },
+            {
+              "word": "b",
+              "start": 3.76,
+              "end": 4.08,
+              "confidence": 0.86882013,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "b"
+            },
+            {
+              "word": "and",
+              "start": 4.08,
+              "end": 4.24,
+              "confidence": 0.9026625,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "and"
+            },
+            {
+              "word": "identified",
+              "start": 4.24,
+              "end": 4.7999997,
+              "confidence": 0.99537885,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "identified"
+            },
+            {
+              "word": "by",
+              "start": 4.7999997,
+              "end": 5.04,
+              "confidence": 0.99836415,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "by"
+            },
+            {
+              "word": "turner",
+              "start": 5.04,
+              "end": 5.44,
+              "confidence": 0.5361297,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "Turner"
+            },
+            {
+              "word": "as",
+              "start": 5.44,
+              "end": 5.68,
+              "confidence": 0.9527609,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "as"
+            },
+            {
+              "word": "1976",
+              "start": 5.68,
+              "end": 7.28,
+              "confidence": 0.9958076,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "1976."
+            }
+          ],
+          "speaker": 0,
+          "id": "68008ce5-957e-4232-953d-b0e2ce0e472f"
+        },
+        {
+          "start": 7.8399997,
+          "end": 11.5199995,
+          "confidence": 0.99695975,
+          "channel": 0,
+          "transcript": "We may have to go further in the audio files to determine the true year.",
+          "words": [
+            {
+              "word": "we",
+              "start": 7.8399997,
+              "end": 8.16,
+              "confidence": 0.9885343,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "We"
+            },
+            {
+              "word": "may",
+              "start": 8.16,
+              "end": 8.32,
+              "confidence": 0.9991842,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "may"
+            },
+            {
+              "word": "have",
+              "start": 8.32,
+              "end": 8.48,
+              "confidence": 0.9998338,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "have"
+            },
+            {
+              "word": "to",
+              "start": 8.48,
+              "end": 8.639999,
+              "confidence": 0.99959844,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "to"
+            },
+            {
+              "word": "go",
+              "start": 8.639999,
+              "end": 8.8,
+              "confidence": 0.9996873,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "go"
+            },
+            {
+              "word": "further",
+              "start": 8.8,
+              "end": 9.12,
+              "confidence": 0.9993069,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "further"
+            },
+            {
+              "word": "in",
+              "start": 9.12,
+              "end": 9.36,
+              "confidence": 0.9982845,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "in"
+            },
+            {
+              "word": "the",
+              "start": 9.36,
+              "end": 9.44,
+              "confidence": 0.9998031,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "the"
+            },
+            {
+              "word": "audio",
+              "start": 9.44,
+              "end": 9.84,
+              "confidence": 0.992008,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "audio"
+            },
+            {
+              "word": "files",
+              "start": 9.84,
+              "end": 10.16,
+              "confidence": 0.9994956,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "files"
+            },
+            {
+              "word": "to",
+              "start": 10.16,
+              "end": 10.48,
+              "confidence": 0.99899167,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "to"
+            },
+            {
+              "word": "determine",
+              "start": 10.48,
+              "end": 10.8,
+              "confidence": 0.99967253,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "determine"
+            },
+            {
+              "word": "the",
+              "start": 10.8,
+              "end": 11.04,
+              "confidence": 0.99902487,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "the"
+            },
+            {
+              "word": "true",
+              "start": 11.04,
+              "end": 11.2,
+              "confidence": 0.99841225,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "true"
+            },
+            {
+              "word": "year",
+              "start": 11.2,
+              "end": 11.5199995,
+              "confidence": 0.9825589,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "year."
+            }
+          ],
+          "speaker": 0,
+          "id": "ff6581d1-ed0e-4cb9-b2ba-e4a7d718b6f5"
+        },
+        {
+          "start": 1380.6495,
+          "end": 1381.2894,
+          "confidence": 0.5529276,
+          "channel": 0,
+          "transcript": "Of.",
+          "words": [
+            {
+              "word": "of",
+              "start": 1380.6495,
+              "end": 1381.2894,
+              "confidence": 0.5529276,
+              "speaker": 1,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "Of."
+            }
+          ],
+          "speaker": 1,
+          "id": "697eb906-4efc-42e4-bd3a-3bcd4e7b9540"
+        },
+        {
+          "start": 1381.8495,
+          "end": 1387.0494,
+          "confidence": 0.7061446,
+          "channel": 0,
+          "transcript": "Do you see that? That the enterprise runs $808,116,",
+          "words": [
+            {
+              "word": "do",
+              "start": 1381.8495,
+              "end": 1382.0895,
+              "confidence": 0.9298745,
+              "speaker": 1,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "Do"
+            },
+            {
+              "word": "you",
+              "start": 1382.0895,
+              "end": 1382.2495,
+              "confidence": 0.98283273,
+              "speaker": 1,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "you"
+            },
+            {
+              "word": "see",
+              "start": 1382.2495,
+              "end": 1382.4094,
+              "confidence": 0.9819,
+              "speaker": 1,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "see"
+            },
+            {
+              "word": "that",
+              "start": 1382.4094,
+              "end": 1382.6495,
+              "confidence": 0.95280457,
+              "speaker": 1,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "that?"
+            },
+            {
+              "word": "that",
+              "start": 1382.6495,
+              "end": 1382.8094,
+              "confidence": 0.4699523,
+              "speaker": 1,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "That"
+            },
+            {
+              "word": "the",
+              "start": 1382.8094,
+              "end": 1382.9695,
+              "confidence": 0.6434681,
+              "speaker": 1,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "the"
+            },
+            {
+              "word": "enterprise",
+              "start": 1382.9695,
+              "end": 1383.3695,
+              "confidence": 0.3007991,
+              "speaker": 1,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "enterprise"
+            },
+            {
+              "word": "runs",
+              "start": 1383.3695,
+              "end": 1383.6895,
+              "confidence": 0.31443524,
+              "speaker": 1,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "runs"
+            },
+            {
+              "word": "$808,116",
+              "start": 1383.6895,
+              "end": 1387.0494,
+              "confidence": 0.7792351,
+              "speaker": 1,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "$808,116,"
+            }
+          ],
+          "speaker": 1,
+          "id": "f54fd711-d39c-4f8b-835c-7a65deeeaabc"
+        },
+        {
+          "start": 1387.0494,
+          "end": 1388.8895,
+          "confidence": 0.95765376,
+          "channel": 0,
+          "transcript": "£402,000.",
+          "words": [
+            {
+              "word": "£402,000",
+              "start": 1387.0494,
+              "end": 1388.8895,
+              "confidence": 0.95765376,
+              "speaker": 1,
+              "speaker_confidence": 0.9509105,
+              "punctuated_word": "£402,000."
+            }
+          ],
+          "speaker": 1,
+          "id": "40bd4e69-1916-46c8-b539-96e5b3b6346d"
+        },
+        {
+          "start": 1388.8895,
+          "end": 1390.1694,
+          "confidence": 0.6645151,
+          "channel": 0,
+          "transcript": "Now I want",
+          "words": [
+            {
+              "word": "now",
+              "start": 1388.8895,
+              "end": 1389.6094,
+              "confidence": 0.6355023,
+              "speaker": 1,
+              "speaker_confidence": 0.91818416,
+              "punctuated_word": "Now"
+            },
+            {
+              "word": "i",
+              "start": 1389.6095,
+              "end": 1389.9294,
+              "confidence": 0.5518681,
+              "speaker": 1,
+              "speaker_confidence": 0.91818416,
+              "punctuated_word": "I"
+            },
+            {
+              "word": "want",
+              "start": 1389.9294,
+              "end": 1390.1694,
+              "confidence": 0.806175,
+              "speaker": 1,
+              "speaker_confidence": 0.91818416,
+              "punctuated_word": "want"
+            }
+          ],
+          "speaker": 1,
+          "id": "c7079f83-4e53-45f9-95b2-bed8a6e63422"
+        }
+      ]
+    }
+  }
+}

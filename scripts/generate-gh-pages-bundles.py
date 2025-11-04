@@ -1691,10 +1691,13 @@ LIGHT_EDITOR_TEMPLATE = r'''<!DOCTYPE html>
                         const jsonString = JSON.stringify(richWordsTranscript, null, 2);
                         const blob = new Blob([jsonString], {{ type: 'application/json;charset=utf-8' }});
                         const url = window.URL.createObjectURL(blob);
+                        // Remove file extension from audio filename
+                        const audioBaseName = '{audio_filename}'.replace(/\.[^/.]+$/, '');
+                        
                         const a = document.createElement('a');
                         a.style.display = 'none';
                         a.href = url;
-                        a.download = '{audio_filename}_corrected.json';
+                        a.download = audioBaseName + '_corrected.json';
                         
                         // Append to body, click, and remove
                         document.body.appendChild(a);

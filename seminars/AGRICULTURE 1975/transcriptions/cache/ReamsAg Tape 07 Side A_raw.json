@@ -1,0 +1,874 @@
+{
+  "audio_file": "seminars/AGRICULTURE 1975/ReamsAg Tape 07 Side A.mp3",
+  "service": "deepgram",
+  "timestamp": "2025-11-04T07:56:01Z",
+  "raw_response": {
+    "metadata": {
+      "transaction_key": "deprecated",
+      "request_id": "fa5f3f6c-b12b-456e-b41e-bf236e99a6df",
+      "sha256": "30cf9e76cbafbe6c3e084dc43c982d27d2d15e221515d747186c1d430f8c5873",
+      "created": "2025-11-04T05:56:00.770Z",
+      "duration": 1823.9739,
+      "channels": 1,
+      "models": [
+        "2187e11a-3532-4498-b076-81fa530bdd49"
+      ],
+      "model_info": {
+        "2187e11a-3532-4498-b076-81fa530bdd49": {
+          "name": "general-nova-3",
+          "version": "2025-07-31.0",
+          "arch": "nova-3"
+        }
+      }
+    },
+    "results": {
+      "channels": [
+        {
+          "alternatives": [
+            {
+              "transcript": "Doctor reams agriculture. This is tape seven side a and identified by Turner as 1976. Khaw Pickett really did a number on this one. You start to wonder if he was banging on the microphone or instead clashing swords together up close.",
+              "confidence": 0.9967912,
+              "words": [
+                {
+                  "word": "doctor",
+                  "start": 0.16,
+                  "end": 0.48,
+                  "confidence": 0.950223,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "Doctor"
+                },
+                {
+                  "word": "reams",
+                  "start": 0.48,
+                  "end": 0.96,
+                  "confidence": 0.8739117,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "reams"
+                },
+                {
+                  "word": "agriculture",
+                  "start": 0.96,
+                  "end": 1.9199998,
+                  "confidence": 0.8598459,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "agriculture."
+                },
+                {
+                  "word": "this",
+                  "start": 2.48,
+                  "end": 2.72,
+                  "confidence": 0.99633706,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "This"
+                },
+                {
+                  "word": "is",
+                  "start": 2.72,
+                  "end": 2.8799999,
+                  "confidence": 0.99889576,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "is"
+                },
+                {
+                  "word": "tape",
+                  "start": 2.8799999,
+                  "end": 3.1999998,
+                  "confidence": 0.981641,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "tape"
+                },
+                {
+                  "word": "seven",
+                  "start": 3.1999998,
+                  "end": 3.52,
+                  "confidence": 0.99094254,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "seven"
+                },
+                {
+                  "word": "side",
+                  "start": 3.52,
+                  "end": 3.84,
+                  "confidence": 0.7955375,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "side"
+                },
+                {
+                  "word": "a",
+                  "start": 3.84,
+                  "end": 4.08,
+                  "confidence": 0.9543824,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "a"
+                },
+                {
+                  "word": "and",
+                  "start": 4.08,
+                  "end": 4.24,
+                  "confidence": 0.90470654,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "and"
+                },
+                {
+                  "word": "identified",
+                  "start": 4.24,
+                  "end": 4.7999997,
+                  "confidence": 0.9964502,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "identified"
+                },
+                {
+                  "word": "by",
+                  "start": 4.7999997,
+                  "end": 5.04,
+                  "confidence": 0.99934417,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "by"
+                },
+                {
+                  "word": "turner",
+                  "start": 5.04,
+                  "end": 5.44,
+                  "confidence": 0.7826225,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "Turner"
+                },
+                {
+                  "word": "as",
+                  "start": 5.44,
+                  "end": 5.68,
+                  "confidence": 0.96280015,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "as"
+                },
+                {
+                  "word": "1976",
+                  "start": 5.68,
+                  "end": 7.28,
+                  "confidence": 0.9971221,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "1976."
+                },
+                {
+                  "word": "khaw",
+                  "start": 7.8399997,
+                  "end": 8.16,
+                  "confidence": 0.31009755,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "Khaw"
+                },
+                {
+                  "word": "pickett",
+                  "start": 8.16,
+                  "end": 8.559999,
+                  "confidence": 0.84730786,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "Pickett"
+                },
+                {
+                  "word": "really",
+                  "start": 8.559999,
+                  "end": 8.8,
+                  "confidence": 0.9948295,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "really"
+                },
+                {
+                  "word": "did",
+                  "start": 8.8,
+                  "end": 8.96,
+                  "confidence": 0.9995161,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "did"
+                },
+                {
+                  "word": "a",
+                  "start": 8.96,
+                  "end": 9.12,
+                  "confidence": 0.99863404,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "a"
+                },
+                {
+                  "word": "number",
+                  "start": 9.12,
+                  "end": 9.36,
+                  "confidence": 0.99950147,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "number"
+                },
+                {
+                  "word": "on",
+                  "start": 9.36,
+                  "end": 9.599999,
+                  "confidence": 0.99950826,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "on"
+                },
+                {
+                  "word": "this",
+                  "start": 9.599999,
+                  "end": 9.76,
+                  "confidence": 0.99956316,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "this"
+                },
+                {
+                  "word": "one",
+                  "start": 9.76,
+                  "end": 10.32,
+                  "confidence": 0.9961364,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "one."
+                },
+                {
+                  "word": "you",
+                  "start": 10.8,
+                  "end": 11.04,
+                  "confidence": 0.99841595,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "You"
+                },
+                {
+                  "word": "start",
+                  "start": 11.04,
+                  "end": 11.36,
+                  "confidence": 0.9993882,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "start"
+                },
+                {
+                  "word": "to",
+                  "start": 11.36,
+                  "end": 11.5199995,
+                  "confidence": 0.99973816,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "to"
+                },
+                {
+                  "word": "wonder",
+                  "start": 11.5199995,
+                  "end": 11.759999,
+                  "confidence": 0.9999145,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "wonder"
+                },
+                {
+                  "word": "if",
+                  "start": 11.759999,
+                  "end": 12.0,
+                  "confidence": 0.99940157,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "if"
+                },
+                {
+                  "word": "he",
+                  "start": 12.0,
+                  "end": 12.16,
+                  "confidence": 0.99975055,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "he"
+                },
+                {
+                  "word": "was",
+                  "start": 12.16,
+                  "end": 12.32,
+                  "confidence": 0.9998641,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "was"
+                },
+                {
+                  "word": "banging",
+                  "start": 12.32,
+                  "end": 12.639999,
+                  "confidence": 0.9996191,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "banging"
+                },
+                {
+                  "word": "on",
+                  "start": 12.639999,
+                  "end": 12.799999,
+                  "confidence": 0.9998771,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "on"
+                },
+                {
+                  "word": "the",
+                  "start": 12.799999,
+                  "end": 12.96,
+                  "confidence": 0.99959236,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "the"
+                },
+                {
+                  "word": "microphone",
+                  "start": 12.96,
+                  "end": 13.44,
+                  "confidence": 0.99961156,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "microphone"
+                },
+                {
+                  "word": "or",
+                  "start": 13.44,
+                  "end": 13.679999,
+                  "confidence": 0.9820895,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "or"
+                },
+                {
+                  "word": "instead",
+                  "start": 13.679999,
+                  "end": 14.08,
+                  "confidence": 0.9967912,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "instead"
+                },
+                {
+                  "word": "clashing",
+                  "start": 14.08,
+                  "end": 14.559999,
+                  "confidence": 0.9962815,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "clashing"
+                },
+                {
+                  "word": "swords",
+                  "start": 14.559999,
+                  "end": 15.679999,
+                  "confidence": 0.9927858,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "swords"
+                },
+                {
+                  "word": "together",
+                  "start": 14.895,
+                  "end": 15.375,
+                  "confidence": 0.99978846,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "together"
+                },
+                {
+                  "word": "up",
+                  "start": 15.375,
+                  "end": 15.615001,
+                  "confidence": 0.99455196,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "up"
+                },
+                {
+                  "word": "close",
+                  "start": 15.615001,
+                  "end": 15.935,
+                  "confidence": 0.99197614,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "close."
+                }
+              ],
+              "paragraphs": {
+                "transcript": "\nSpeaker 0: Doctor reams agriculture. This is tape seven side a and identified by Turner as 1976. Khaw Pickett really did a number on this one. You start to wonder if he was banging on the microphone or instead clashing swords together up close.",
+                "paragraphs": [
+                  {
+                    "sentences": [
+                      {
+                        "text": "Doctor reams agriculture.",
+                        "start": 0.16,
+                        "end": 1.9199998
+                      },
+                      {
+                        "text": "This is tape seven side a and identified by Turner as 1976.",
+                        "start": 2.48,
+                        "end": 7.28
+                      },
+                      {
+                        "text": "Khaw Pickett really did a number on this one.",
+                        "start": 7.8399997,
+                        "end": 10.32
+                      },
+                      {
+                        "text": "You start to wonder if he was banging on the microphone or instead clashing swords together up close.",
+                        "start": 10.8,
+                        "end": 15.935
+                      }
+                    ],
+                    "speaker": 0,
+                    "num_words": 42,
+                    "start": 0.16,
+                    "end": 15.935
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "utterances": [
+        {
+          "start": 0.16,
+          "end": 1.9199998,
+          "confidence": 0.8946602,
+          "channel": 0,
+          "transcript": "Doctor reams agriculture.",
+          "words": [
+            {
+              "word": "doctor",
+              "start": 0.16,
+              "end": 0.48,
+              "confidence": 0.950223,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "Doctor"
+            },
+            {
+              "word": "reams",
+              "start": 0.48,
+              "end": 0.96,
+              "confidence": 0.8739117,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "reams"
+            },
+            {
+              "word": "agriculture",
+              "start": 0.96,
+              "end": 1.9199998,
+              "confidence": 0.8598459,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "agriculture."
+            }
+          ],
+          "speaker": 0,
+          "id": "a83d50d7-f1da-4e6c-a739-e234963268f4"
+        },
+        {
+          "start": 2.48,
+          "end": 7.28,
+          "confidence": 0.94673175,
+          "channel": 0,
+          "transcript": "This is tape seven side a and identified by Turner as 1976.",
+          "words": [
+            {
+              "word": "this",
+              "start": 2.48,
+              "end": 2.72,
+              "confidence": 0.99633706,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "This"
+            },
+            {
+              "word": "is",
+              "start": 2.72,
+              "end": 2.8799999,
+              "confidence": 0.99889576,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "is"
+            },
+            {
+              "word": "tape",
+              "start": 2.8799999,
+              "end": 3.1999998,
+              "confidence": 0.981641,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "tape"
+            },
+            {
+              "word": "seven",
+              "start": 3.1999998,
+              "end": 3.52,
+              "confidence": 0.99094254,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "seven"
+            },
+            {
+              "word": "side",
+              "start": 3.52,
+              "end": 3.84,
+              "confidence": 0.7955375,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "side"
+            },
+            {
+              "word": "a",
+              "start": 3.84,
+              "end": 4.08,
+              "confidence": 0.9543824,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "a"
+            },
+            {
+              "word": "and",
+              "start": 4.08,
+              "end": 4.24,
+              "confidence": 0.90470654,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "and"
+            },
+            {
+              "word": "identified",
+              "start": 4.24,
+              "end": 4.7999997,
+              "confidence": 0.9964502,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "identified"
+            },
+            {
+              "word": "by",
+              "start": 4.7999997,
+              "end": 5.04,
+              "confidence": 0.99934417,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "by"
+            },
+            {
+              "word": "turner",
+              "start": 5.04,
+              "end": 5.44,
+              "confidence": 0.7826225,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "Turner"
+            },
+            {
+              "word": "as",
+              "start": 5.44,
+              "end": 5.68,
+              "confidence": 0.96280015,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "as"
+            },
+            {
+              "word": "1976",
+              "start": 5.68,
+              "end": 7.28,
+              "confidence": 0.9971221,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "1976."
+            }
+          ],
+          "speaker": 0,
+          "id": "2827188a-74fe-47a6-b365-014e14c08ecc"
+        },
+        {
+          "start": 7.8399997,
+          "end": 10.32,
+          "confidence": 0.90501046,
+          "channel": 0,
+          "transcript": "Khaw Pickett really did a number on this one.",
+          "words": [
+            {
+              "word": "khaw",
+              "start": 7.8399997,
+              "end": 8.16,
+              "confidence": 0.31009755,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "Khaw"
+            },
+            {
+              "word": "pickett",
+              "start": 8.16,
+              "end": 8.559999,
+              "confidence": 0.84730786,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "Pickett"
+            },
+            {
+              "word": "really",
+              "start": 8.559999,
+              "end": 8.8,
+              "confidence": 0.9948295,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "really"
+            },
+            {
+              "word": "did",
+              "start": 8.8,
+              "end": 8.96,
+              "confidence": 0.9995161,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "did"
+            },
+            {
+              "word": "a",
+              "start": 8.96,
+              "end": 9.12,
+              "confidence": 0.99863404,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "a"
+            },
+            {
+              "word": "number",
+              "start": 9.12,
+              "end": 9.36,
+              "confidence": 0.99950147,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "number"
+            },
+            {
+              "word": "on",
+              "start": 9.36,
+              "end": 9.599999,
+              "confidence": 0.99950826,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "on"
+            },
+            {
+              "word": "this",
+              "start": 9.599999,
+              "end": 9.76,
+              "confidence": 0.99956316,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "this"
+            },
+            {
+              "word": "one",
+              "start": 9.76,
+              "end": 10.32,
+              "confidence": 0.9961364,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "one."
+            }
+          ],
+          "speaker": 0,
+          "id": "5dd3796e-9dc9-49c2-92af-193f8b7c6686"
+        },
+        {
+          "start": 10.8,
+          "end": 15.935,
+          "confidence": 0.997191,
+          "channel": 0,
+          "transcript": "You start to wonder if he was banging on the microphone or instead clashing swords together up close.",
+          "words": [
+            {
+              "word": "you",
+              "start": 10.8,
+              "end": 11.04,
+              "confidence": 0.99841595,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "You"
+            },
+            {
+              "word": "start",
+              "start": 11.04,
+              "end": 11.36,
+              "confidence": 0.9993882,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "start"
+            },
+            {
+              "word": "to",
+              "start": 11.36,
+              "end": 11.5199995,
+              "confidence": 0.99973816,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "to"
+            },
+            {
+              "word": "wonder",
+              "start": 11.5199995,
+              "end": 11.759999,
+              "confidence": 0.9999145,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "wonder"
+            },
+            {
+              "word": "if",
+              "start": 11.759999,
+              "end": 12.0,
+              "confidence": 0.99940157,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "if"
+            },
+            {
+              "word": "he",
+              "start": 12.0,
+              "end": 12.16,
+              "confidence": 0.99975055,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "he"
+            },
+            {
+              "word": "was",
+              "start": 12.16,
+              "end": 12.32,
+              "confidence": 0.9998641,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "was"
+            },
+            {
+              "word": "banging",
+              "start": 12.32,
+              "end": 12.639999,
+              "confidence": 0.9996191,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "banging"
+            },
+            {
+              "word": "on",
+              "start": 12.639999,
+              "end": 12.799999,
+              "confidence": 0.9998771,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "on"
+            },
+            {
+              "word": "the",
+              "start": 12.799999,
+              "end": 12.96,
+              "confidence": 0.99959236,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "the"
+            },
+            {
+              "word": "microphone",
+              "start": 12.96,
+              "end": 13.44,
+              "confidence": 0.99961156,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "microphone"
+            },
+            {
+              "word": "or",
+              "start": 13.44,
+              "end": 13.679999,
+              "confidence": 0.9820895,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "or"
+            },
+            {
+              "word": "instead",
+              "start": 13.679999,
+              "end": 14.08,
+              "confidence": 0.9967912,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "instead"
+            },
+            {
+              "word": "clashing",
+              "start": 14.08,
+              "end": 14.559999,
+              "confidence": 0.9962815,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "clashing"
+            },
+            {
+              "word": "swords",
+              "start": 14.559999,
+              "end": 15.679999,
+              "confidence": 0.9927858,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "swords"
+            },
+            {
+              "word": "together",
+              "start": 14.895,
+              "end": 15.375,
+              "confidence": 0.99978846,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "together"
+            },
+            {
+              "word": "up",
+              "start": 15.375,
+              "end": 15.615001,
+              "confidence": 0.99455196,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "up"
+            },
+            {
+              "word": "close",
+              "start": 15.615001,
+              "end": 15.935,
+              "confidence": 0.99197614,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "close."
+            }
+          ],
+          "speaker": 0,
+          "id": "29426b38-df52-42f0-b5fd-c76929c90da5"
+        }
+      ]
+    }
+  }
+}

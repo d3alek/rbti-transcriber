@@ -1,0 +1,329 @@
+{
+  "audio_file": "seminars/AGRICULTURE 1975/ReamsAg Tape 11 is missing.mp3",
+  "service": "deepgram",
+  "timestamp": "2025-11-04T07:59:17Z",
+  "raw_response": {
+    "metadata": {
+      "transaction_key": "deprecated",
+      "request_id": "2b45e134-da07-438d-83f8-c7f502735646",
+      "sha256": "62a0e61114a1eb5a3b677993340c3883641ff194ebe6fb2d22e64ed357ac7ac5",
+      "created": "2025-11-04T05:59:16.627Z",
+      "duration": 9.576,
+      "channels": 1,
+      "models": [
+        "2187e11a-3532-4498-b076-81fa530bdd49"
+      ],
+      "model_info": {
+        "2187e11a-3532-4498-b076-81fa530bdd49": {
+          "name": "general-nova-3",
+          "version": "2025-07-31.0",
+          "arch": "nova-3"
+        }
+      }
+    },
+    "results": {
+      "channels": [
+        {
+          "alternatives": [
+            {
+              "transcript": "Doctor reams agriculture. Possibly 1975 but probably 1976. Tape 11 is missing.",
+              "confidence": 0.99759054,
+              "words": [
+                {
+                  "word": "doctor",
+                  "start": 0.0,
+                  "end": 0.48,
+                  "confidence": 0.96974856,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "Doctor"
+                },
+                {
+                  "word": "reams",
+                  "start": 0.48,
+                  "end": 0.96,
+                  "confidence": 0.8868699,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "reams"
+                },
+                {
+                  "word": "agriculture",
+                  "start": 0.96,
+                  "end": 1.9199998,
+                  "confidence": 0.8684565,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "agriculture."
+                },
+                {
+                  "word": "possibly",
+                  "start": 2.56,
+                  "end": 3.04,
+                  "confidence": 0.98246855,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "Possibly"
+                },
+                {
+                  "word": "1975",
+                  "start": 3.04,
+                  "end": 4.3199997,
+                  "confidence": 0.99876785,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "1975"
+                },
+                {
+                  "word": "but",
+                  "start": 4.3199997,
+                  "end": 4.72,
+                  "confidence": 0.85903347,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "but"
+                },
+                {
+                  "word": "probably",
+                  "start": 4.72,
+                  "end": 5.2,
+                  "confidence": 0.9983942,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "probably"
+                },
+                {
+                  "word": "1976",
+                  "start": 5.2,
+                  "end": 6.88,
+                  "confidence": 0.995677,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "1976."
+                },
+                {
+                  "word": "tape",
+                  "start": 7.3599997,
+                  "end": 7.8399997,
+                  "confidence": 0.98883265,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "Tape"
+                },
+                {
+                  "word": "11",
+                  "start": 7.8399997,
+                  "end": 8.16,
+                  "confidence": 0.99759054,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "11"
+                },
+                {
+                  "word": "is",
+                  "start": 8.16,
+                  "end": 8.4,
+                  "confidence": 0.99962926,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "is"
+                },
+                {
+                  "word": "missing",
+                  "start": 8.4,
+                  "end": 8.72,
+                  "confidence": 0.99826795,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "missing."
+                }
+              ],
+              "paragraphs": {
+                "transcript": "\nSpeaker 0: Doctor reams agriculture. Possibly 1975 but probably 1976. Tape 11 is missing.",
+                "paragraphs": [
+                  {
+                    "sentences": [
+                      {
+                        "text": "Doctor reams agriculture.",
+                        "start": 0.0,
+                        "end": 1.9199998
+                      },
+                      {
+                        "text": "Possibly 1975 but probably 1976.",
+                        "start": 2.56,
+                        "end": 6.88
+                      },
+                      {
+                        "text": "Tape 11 is missing.",
+                        "start": 7.3599997,
+                        "end": 8.72
+                      }
+                    ],
+                    "speaker": 0,
+                    "num_words": 12,
+                    "start": 0.0,
+                    "end": 8.72
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "utterances": [
+        {
+          "start": 0.0,
+          "end": 1.9199998,
+          "confidence": 0.9083583,
+          "channel": 0,
+          "transcript": "Doctor reams agriculture.",
+          "words": [
+            {
+              "word": "doctor",
+              "start": 0.0,
+              "end": 0.48,
+              "confidence": 0.96974856,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "Doctor"
+            },
+            {
+              "word": "reams",
+              "start": 0.48,
+              "end": 0.96,
+              "confidence": 0.8868699,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "reams"
+            },
+            {
+              "word": "agriculture",
+              "start": 0.96,
+              "end": 1.9199998,
+              "confidence": 0.8684565,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "agriculture."
+            }
+          ],
+          "speaker": 0,
+          "id": "3ed760c5-3315-4896-8aa3-bbe5c464cda4"
+        },
+        {
+          "start": 2.56,
+          "end": 4.3199997,
+          "confidence": 0.9906182,
+          "channel": 0,
+          "transcript": "Possibly 1975",
+          "words": [
+            {
+              "word": "possibly",
+              "start": 2.56,
+              "end": 3.04,
+              "confidence": 0.98246855,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "Possibly"
+            },
+            {
+              "word": "1975",
+              "start": 3.04,
+              "end": 4.3199997,
+              "confidence": 0.99876785,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "1975"
+            }
+          ],
+          "speaker": 0,
+          "id": "9a1a4601-ea64-4f96-a91d-4b5a4c67e015"
+        },
+        {
+          "start": 4.3199997,
+          "end": 6.88,
+          "confidence": 0.95103484,
+          "channel": 0,
+          "transcript": "but probably 1976.",
+          "words": [
+            {
+              "word": "but",
+              "start": 4.3199997,
+              "end": 4.72,
+              "confidence": 0.85903347,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "but"
+            },
+            {
+              "word": "probably",
+              "start": 4.72,
+              "end": 5.2,
+              "confidence": 0.9983942,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "probably"
+            },
+            {
+              "word": "1976",
+              "start": 5.2,
+              "end": 6.88,
+              "confidence": 0.995677,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "1976."
+            }
+          ],
+          "speaker": 0,
+          "id": "0705cc37-0086-4768-ae13-5398063c2002"
+        },
+        {
+          "start": 7.3599997,
+          "end": 8.72,
+          "confidence": 0.9960801,
+          "channel": 0,
+          "transcript": "Tape 11 is missing.",
+          "words": [
+            {
+              "word": "tape",
+              "start": 7.3599997,
+              "end": 7.8399997,
+              "confidence": 0.98883265,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "Tape"
+            },
+            {
+              "word": "11",
+              "start": 7.8399997,
+              "end": 8.16,
+              "confidence": 0.99759054,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "11"
+            },
+            {
+              "word": "is",
+              "start": 8.16,
+              "end": 8.4,
+              "confidence": 0.99962926,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "is"
+            },
+            {
+              "word": "missing",
+              "start": 8.4,
+              "end": 8.72,
+              "confidence": 0.99826795,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "missing."
+            }
+          ],
+          "speaker": 0,
+          "id": "ed0462ac-7d16-4255-80d6-9b832ef6ffd8"
+        }
+      ]
+    }
+  }
+}

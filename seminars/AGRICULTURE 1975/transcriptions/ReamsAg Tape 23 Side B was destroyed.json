@@ -1,0 +1,445 @@
+{
+  "audio_file": "seminars/AGRICULTURE 1975/ReamsAg Tape 23 Side B was destroyed.mp3",
+  "service": "deepgram",
+  "config": {
+    "speaker_labels": true,
+    "custom_vocabulary": [],
+    "punctuate": true,
+    "format_text": true,
+    "language_code": "en",
+    "max_speakers": 3
+  },
+  "timestamp": "2025-11-04T08:02:08Z",
+  "result": {
+    "text": "Doctor reams agriculture. Possibly 1975 but probably 1976. Tape 23 side b is corrupt and discarded.",
+    "speakers": [
+      {
+        "speaker": "Speaker 0",
+        "start_time": 0.08,
+        "end_time": 1.9199998,
+        "text": "Doctor reams agriculture.",
+        "confidence": 0.91452795
+      },
+      {
+        "speaker": "Speaker 0",
+        "start_time": 2.56,
+        "end_time": 4.3199997,
+        "text": "Possibly 1975",
+        "confidence": 0.9901242
+      },
+      {
+        "speaker": "Speaker 0",
+        "start_time": 4.3199997,
+        "end_time": 6.88,
+        "text": "but probably 1976.",
+        "confidence": 0.9556003
+      },
+      {
+        "speaker": "Speaker 0",
+        "start_time": 7.3599997,
+        "end_time": 10.32,
+        "text": "Tape 23 side b is corrupt and discarded.",
+        "confidence": 0.96566033
+      }
+    ],
+    "confidence": 0.9965528,
+    "audio_duration": 10.32,
+    "processing_time": 1.5750129222869873,
+    "raw_response": {
+      "metadata": {
+        "transaction_key": "deprecated",
+        "request_id": "3b677dcd-30d7-4149-af16-61338c3d819b",
+        "sha256": "c6252a0fdc7d490e56074c5d18cdd07b42b3f6d1d9c89964a620b5310df6fa6e",
+        "created": "2025-11-04T06:02:08.505Z",
+        "duration": 11.088,
+        "channels": 1,
+        "models": [
+          "2187e11a-3532-4498-b076-81fa530bdd49"
+        ],
+        "model_info": {
+          "2187e11a-3532-4498-b076-81fa530bdd49": {
+            "name": "general-nova-3",
+            "version": "2025-07-31.0",
+            "arch": "nova-3"
+          }
+        }
+      },
+      "results": {
+        "channels": [
+          {
+            "alternatives": [
+              {
+                "transcript": "Doctor reams agriculture. Possibly 1975 but probably 1976. Tape 23 side b is corrupt and discarded.",
+                "confidence": 0.9965528,
+                "words": [
+                  {
+                    "word": "doctor",
+                    "start": 0.08,
+                    "end": 0.48,
+                    "confidence": 0.96533394,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "Doctor"
+                  },
+                  {
+                    "word": "reams",
+                    "start": 0.48,
+                    "end": 0.96,
+                    "confidence": 0.88856137,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "reams"
+                  },
+                  {
+                    "word": "agriculture",
+                    "start": 0.96,
+                    "end": 1.9199998,
+                    "confidence": 0.8896886,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "agriculture."
+                  },
+                  {
+                    "word": "possibly",
+                    "start": 2.56,
+                    "end": 3.04,
+                    "confidence": 0.98154205,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "Possibly"
+                  },
+                  {
+                    "word": "1975",
+                    "start": 3.04,
+                    "end": 4.3199997,
+                    "confidence": 0.99870634,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "1975"
+                  },
+                  {
+                    "word": "but",
+                    "start": 4.3199997,
+                    "end": 4.72,
+                    "confidence": 0.87235695,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "but"
+                  },
+                  {
+                    "word": "probably",
+                    "start": 4.72,
+                    "end": 5.2,
+                    "confidence": 0.9979291,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "probably"
+                  },
+                  {
+                    "word": "1976",
+                    "start": 5.2,
+                    "end": 6.88,
+                    "confidence": 0.996515,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "1976."
+                  },
+                  {
+                    "word": "tape",
+                    "start": 7.3599997,
+                    "end": 7.8399997,
+                    "confidence": 0.98973364,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "Tape"
+                  },
+                  {
+                    "word": "23",
+                    "start": 7.8399997,
+                    "end": 8.4,
+                    "confidence": 0.9976257,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "23"
+                  },
+                  {
+                    "word": "side",
+                    "start": 8.4,
+                    "end": 8.72,
+                    "confidence": 0.928841,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "side"
+                  },
+                  {
+                    "word": "b",
+                    "start": 8.72,
+                    "end": 9.04,
+                    "confidence": 0.81196856,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "b"
+                  },
+                  {
+                    "word": "is",
+                    "start": 9.04,
+                    "end": 9.2,
+                    "confidence": 0.99896693,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "is"
+                  },
+                  {
+                    "word": "corrupt",
+                    "start": 9.2,
+                    "end": 9.599999,
+                    "confidence": 0.99950147,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "corrupt"
+                  },
+                  {
+                    "word": "and",
+                    "start": 9.599999,
+                    "end": 9.76,
+                    "confidence": 0.9995566,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "and"
+                  },
+                  {
+                    "word": "discarded",
+                    "start": 9.76,
+                    "end": 10.32,
+                    "confidence": 0.9990894,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "discarded."
+                  }
+                ],
+                "paragraphs": {
+                  "transcript": "\nSpeaker 0: Doctor reams agriculture. Possibly 1975 but probably 1976. Tape 23 side b is corrupt and discarded.",
+                  "paragraphs": [
+                    {
+                      "sentences": [
+                        {
+                          "text": "Doctor reams agriculture.",
+                          "start": 0.08,
+                          "end": 1.9199998
+                        },
+                        {
+                          "text": "Possibly 1975 but probably 1976.",
+                          "start": 2.56,
+                          "end": 6.88
+                        },
+                        {
+                          "text": "Tape 23 side b is corrupt and discarded.",
+                          "start": 7.3599997,
+                          "end": 10.32
+                        }
+                      ],
+                      "speaker": 0,
+                      "num_words": 16,
+                      "start": 0.08,
+                      "end": 10.32
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "utterances": [
+          {
+            "start": 0.08,
+            "end": 1.9199998,
+            "confidence": 0.91452795,
+            "channel": 0,
+            "transcript": "Doctor reams agriculture.",
+            "words": [
+              {
+                "word": "doctor",
+                "start": 0.08,
+                "end": 0.48,
+                "confidence": 0.96533394,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "Doctor"
+              },
+              {
+                "word": "reams",
+                "start": 0.48,
+                "end": 0.96,
+                "confidence": 0.88856137,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "reams"
+              },
+              {
+                "word": "agriculture",
+                "start": 0.96,
+                "end": 1.9199998,
+                "confidence": 0.8896886,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "agriculture."
+              }
+            ],
+            "speaker": 0,
+            "id": "108044f5-35ac-4952-9405-ae1d1e47e83c"
+          },
+          {
+            "start": 2.56,
+            "end": 4.3199997,
+            "confidence": 0.9901242,
+            "channel": 0,
+            "transcript": "Possibly 1975",
+            "words": [
+              {
+                "word": "possibly",
+                "start": 2.56,
+                "end": 3.04,
+                "confidence": 0.98154205,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "Possibly"
+              },
+              {
+                "word": "1975",
+                "start": 3.04,
+                "end": 4.3199997,
+                "confidence": 0.99870634,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "1975"
+              }
+            ],
+            "speaker": 0,
+            "id": "a1eada61-eae9-4e87-91b7-b1936e4f5318"
+          },
+          {
+            "start": 4.3199997,
+            "end": 6.88,
+            "confidence": 0.9556003,
+            "channel": 0,
+            "transcript": "but probably 1976.",
+            "words": [
+              {
+                "word": "but",
+                "start": 4.3199997,
+                "end": 4.72,
+                "confidence": 0.87235695,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "but"
+              },
+              {
+                "word": "probably",
+                "start": 4.72,
+                "end": 5.2,
+                "confidence": 0.9979291,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "probably"
+              },
+              {
+                "word": "1976",
+                "start": 5.2,
+                "end": 6.88,
+                "confidence": 0.996515,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "1976."
+              }
+            ],
+            "speaker": 0,
+            "id": "17b69a1e-3a78-40df-8051-bd435025002c"
+          },
+          {
+            "start": 7.3599997,
+            "end": 10.32,
+            "confidence": 0.96566033,
+            "channel": 0,
+            "transcript": "Tape 23 side b is corrupt and discarded.",
+            "words": [
+              {
+                "word": "tape",
+                "start": 7.3599997,
+                "end": 7.8399997,
+                "confidence": 0.98973364,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "Tape"
+              },
+              {
+                "word": "23",
+                "start": 7.8399997,
+                "end": 8.4,
+                "confidence": 0.9976257,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "23"
+              },
+              {
+                "word": "side",
+                "start": 8.4,
+                "end": 8.72,
+                "confidence": 0.928841,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "side"
+              },
+              {
+                "word": "b",
+                "start": 8.72,
+                "end": 9.04,
+                "confidence": 0.81196856,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "b"
+              },
+              {
+                "word": "is",
+                "start": 9.04,
+                "end": 9.2,
+                "confidence": 0.99896693,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "is"
+              },
+              {
+                "word": "corrupt",
+                "start": 9.2,
+                "end": 9.599999,
+                "confidence": 0.99950147,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "corrupt"
+              },
+              {
+                "word": "and",
+                "start": 9.599999,
+                "end": 9.76,
+                "confidence": 0.9995566,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "and"
+              },
+              {
+                "word": "discarded",
+                "start": 9.76,
+                "end": 10.32,
+                "confidence": 0.9990894,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "discarded."
+              }
+            ],
+            "speaker": 0,
+            "id": "62338eaa-094e-48bf-8205-9c8ffd48d429"
+          }
+        ]
+      }
+    }
+  }
+}

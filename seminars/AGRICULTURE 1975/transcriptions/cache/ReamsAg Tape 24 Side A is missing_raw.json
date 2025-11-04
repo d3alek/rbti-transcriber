@@ -1,0 +1,563 @@
+{
+  "audio_file": "seminars/AGRICULTURE 1975/ReamsAg Tape 24 Side A is missing.mp3",
+  "service": "deepgram",
+  "timestamp": "2025-11-04T08:02:11Z",
+  "raw_response": {
+    "metadata": {
+      "transaction_key": "deprecated",
+      "request_id": "58a4b018-5912-4c2e-bb23-393da89d7568",
+      "sha256": "cee07244d8d5fc17a55b40c896b66253b8c9bf72fc0c9fe1236c08f59fccc4c5",
+      "created": "2025-11-04T06:02:10.795Z",
+      "duration": 13.644,
+      "channels": 1,
+      "models": [
+        "2187e11a-3532-4498-b076-81fa530bdd49"
+      ],
+      "model_info": {
+        "2187e11a-3532-4498-b076-81fa530bdd49": {
+          "name": "general-nova-3",
+          "version": "2025-07-31.0",
+          "arch": "nova-3"
+        }
+      }
+    },
+    "results": {
+      "channels": [
+        {
+          "alternatives": [
+            {
+              "transcript": "Doctor reams agriculture. Possibly 1975 but probably 1976. Tape 24 side a is hopeless and therefore deleted as no audience wants to hear machinery running.",
+              "confidence": 0.9984847,
+              "words": [
+                {
+                  "word": "doctor",
+                  "start": 0.08,
+                  "end": 0.48,
+                  "confidence": 0.9794556,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "Doctor"
+                },
+                {
+                  "word": "reams",
+                  "start": 0.48,
+                  "end": 0.96,
+                  "confidence": 0.93814576,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "reams"
+                },
+                {
+                  "word": "agriculture",
+                  "start": 0.96,
+                  "end": 1.9199998,
+                  "confidence": 0.8700703,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "agriculture."
+                },
+                {
+                  "word": "possibly",
+                  "start": 2.56,
+                  "end": 3.04,
+                  "confidence": 0.98616725,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "Possibly"
+                },
+                {
+                  "word": "1975",
+                  "start": 3.04,
+                  "end": 4.3199997,
+                  "confidence": 0.9990681,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "1975"
+                },
+                {
+                  "word": "but",
+                  "start": 4.3199997,
+                  "end": 4.72,
+                  "confidence": 0.9506782,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "but"
+                },
+                {
+                  "word": "probably",
+                  "start": 4.72,
+                  "end": 5.2,
+                  "confidence": 0.99844605,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "probably"
+                },
+                {
+                  "word": "1976",
+                  "start": 5.2,
+                  "end": 6.88,
+                  "confidence": 0.9982111,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "1976."
+                },
+                {
+                  "word": "tape",
+                  "start": 7.3599997,
+                  "end": 7.8399997,
+                  "confidence": 0.98343194,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "Tape"
+                },
+                {
+                  "word": "24",
+                  "start": 7.8399997,
+                  "end": 8.4,
+                  "confidence": 0.99531627,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "24"
+                },
+                {
+                  "word": "side",
+                  "start": 8.4,
+                  "end": 8.72,
+                  "confidence": 0.65157753,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "side"
+                },
+                {
+                  "word": "a",
+                  "start": 8.72,
+                  "end": 8.96,
+                  "confidence": 0.64293534,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "a"
+                },
+                {
+                  "word": "is",
+                  "start": 8.96,
+                  "end": 9.12,
+                  "confidence": 0.9983034,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "is"
+                },
+                {
+                  "word": "hopeless",
+                  "start": 9.12,
+                  "end": 9.5199995,
+                  "confidence": 0.9994149,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "hopeless"
+                },
+                {
+                  "word": "and",
+                  "start": 9.5199995,
+                  "end": 9.679999,
+                  "confidence": 0.99808455,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "and"
+                },
+                {
+                  "word": "therefore",
+                  "start": 9.679999,
+                  "end": 10.0,
+                  "confidence": 0.99897766,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "therefore"
+                },
+                {
+                  "word": "deleted",
+                  "start": 10.0,
+                  "end": 10.48,
+                  "confidence": 0.99877554,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "deleted"
+                },
+                {
+                  "word": "as",
+                  "start": 10.48,
+                  "end": 10.719999,
+                  "confidence": 0.9992231,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "as"
+                },
+                {
+                  "word": "no",
+                  "start": 10.719999,
+                  "end": 10.96,
+                  "confidence": 0.99971336,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "no"
+                },
+                {
+                  "word": "audience",
+                  "start": 10.96,
+                  "end": 11.28,
+                  "confidence": 0.9997446,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "audience"
+                },
+                {
+                  "word": "wants",
+                  "start": 11.28,
+                  "end": 11.599999,
+                  "confidence": 0.99989355,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "wants"
+                },
+                {
+                  "word": "to",
+                  "start": 11.599999,
+                  "end": 11.759999,
+                  "confidence": 0.9999502,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "to"
+                },
+                {
+                  "word": "hear",
+                  "start": 11.759999,
+                  "end": 12.0,
+                  "confidence": 0.999889,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "hear"
+                },
+                {
+                  "word": "machinery",
+                  "start": 12.0,
+                  "end": 12.48,
+                  "confidence": 0.9970091,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "machinery"
+                },
+                {
+                  "word": "running",
+                  "start": 12.48,
+                  "end": 12.88,
+                  "confidence": 0.9984847,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "running."
+                }
+              ],
+              "paragraphs": {
+                "transcript": "\nSpeaker 0: Doctor reams agriculture. Possibly 1975 but probably 1976. Tape 24 side a is hopeless and therefore deleted as no audience wants to hear machinery running.",
+                "paragraphs": [
+                  {
+                    "sentences": [
+                      {
+                        "text": "Doctor reams agriculture.",
+                        "start": 0.08,
+                        "end": 1.9199998
+                      },
+                      {
+                        "text": "Possibly 1975 but probably 1976.",
+                        "start": 2.56,
+                        "end": 6.88
+                      },
+                      {
+                        "text": "Tape 24 side a is hopeless and therefore deleted as no audience wants to hear machinery running.",
+                        "start": 7.3599997,
+                        "end": 12.88
+                      }
+                    ],
+                    "speaker": 0,
+                    "num_words": 25,
+                    "start": 0.08,
+                    "end": 12.88
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "utterances": [
+        {
+          "start": 0.08,
+          "end": 1.9199998,
+          "confidence": 0.92922384,
+          "channel": 0,
+          "transcript": "Doctor reams agriculture.",
+          "words": [
+            {
+              "word": "doctor",
+              "start": 0.08,
+              "end": 0.48,
+              "confidence": 0.9794556,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "Doctor"
+            },
+            {
+              "word": "reams",
+              "start": 0.48,
+              "end": 0.96,
+              "confidence": 0.93814576,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "reams"
+            },
+            {
+              "word": "agriculture",
+              "start": 0.96,
+              "end": 1.9199998,
+              "confidence": 0.8700703,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "agriculture."
+            }
+          ],
+          "speaker": 0,
+          "id": "ad9c564e-5c67-4065-81a1-408d3efcafef"
+        },
+        {
+          "start": 2.56,
+          "end": 4.3199997,
+          "confidence": 0.99261767,
+          "channel": 0,
+          "transcript": "Possibly 1975",
+          "words": [
+            {
+              "word": "possibly",
+              "start": 2.56,
+              "end": 3.04,
+              "confidence": 0.98616725,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "Possibly"
+            },
+            {
+              "word": "1975",
+              "start": 3.04,
+              "end": 4.3199997,
+              "confidence": 0.9990681,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "1975"
+            }
+          ],
+          "speaker": 0,
+          "id": "33955c35-64fe-4b63-897e-42ba669537c3"
+        },
+        {
+          "start": 4.3199997,
+          "end": 6.88,
+          "confidence": 0.9824452,
+          "channel": 0,
+          "transcript": "but probably 1976.",
+          "words": [
+            {
+              "word": "but",
+              "start": 4.3199997,
+              "end": 4.72,
+              "confidence": 0.9506782,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "but"
+            },
+            {
+              "word": "probably",
+              "start": 4.72,
+              "end": 5.2,
+              "confidence": 0.99844605,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "probably"
+            },
+            {
+              "word": "1976",
+              "start": 5.2,
+              "end": 6.88,
+              "confidence": 0.9982111,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "1976."
+            }
+          ],
+          "speaker": 0,
+          "id": "5f022e64-8bd8-4f4f-8cd8-cdd270951e76"
+        },
+        {
+          "start": 7.3599997,
+          "end": 12.88,
+          "confidence": 0.9565132,
+          "channel": 0,
+          "transcript": "Tape 24 side a is hopeless and therefore deleted as no audience wants to hear machinery running.",
+          "words": [
+            {
+              "word": "tape",
+              "start": 7.3599997,
+              "end": 7.8399997,
+              "confidence": 0.98343194,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "Tape"
+            },
+            {
+              "word": "24",
+              "start": 7.8399997,
+              "end": 8.4,
+              "confidence": 0.99531627,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "24"
+            },
+            {
+              "word": "side",
+              "start": 8.4,
+              "end": 8.72,
+              "confidence": 0.65157753,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "side"
+            },
+            {
+              "word": "a",
+              "start": 8.72,
+              "end": 8.96,
+              "confidence": 0.64293534,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "a"
+            },
+            {
+              "word": "is",
+              "start": 8.96,
+              "end": 9.12,
+              "confidence": 0.9983034,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "is"
+            },
+            {
+              "word": "hopeless",
+              "start": 9.12,
+              "end": 9.5199995,
+              "confidence": 0.9994149,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "hopeless"
+            },
+            {
+              "word": "and",
+              "start": 9.5199995,
+              "end": 9.679999,
+              "confidence": 0.99808455,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "and"
+            },
+            {
+              "word": "therefore",
+              "start": 9.679999,
+              "end": 10.0,
+              "confidence": 0.99897766,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "therefore"
+            },
+            {
+              "word": "deleted",
+              "start": 10.0,
+              "end": 10.48,
+              "confidence": 0.99877554,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "deleted"
+            },
+            {
+              "word": "as",
+              "start": 10.48,
+              "end": 10.719999,
+              "confidence": 0.9992231,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "as"
+            },
+            {
+              "word": "no",
+              "start": 10.719999,
+              "end": 10.96,
+              "confidence": 0.99971336,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "no"
+            },
+            {
+              "word": "audience",
+              "start": 10.96,
+              "end": 11.28,
+              "confidence": 0.9997446,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "audience"
+            },
+            {
+              "word": "wants",
+              "start": 11.28,
+              "end": 11.599999,
+              "confidence": 0.99989355,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "wants"
+            },
+            {
+              "word": "to",
+              "start": 11.599999,
+              "end": 11.759999,
+              "confidence": 0.9999502,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "to"
+            },
+            {
+              "word": "hear",
+              "start": 11.759999,
+              "end": 12.0,
+              "confidence": 0.999889,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "hear"
+            },
+            {
+              "word": "machinery",
+              "start": 12.0,
+              "end": 12.48,
+              "confidence": 0.9970091,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "machinery"
+            },
+            {
+              "word": "running",
+              "start": 12.48,
+              "end": 12.88,
+              "confidence": 0.9984847,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "running."
+            }
+          ],
+          "speaker": 0,
+          "id": "795a3892-568d-43d1-bdf2-08553c0b2039"
+        }
+      ]
+    }
+  }
+}

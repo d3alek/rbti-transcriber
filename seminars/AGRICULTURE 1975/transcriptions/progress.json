@@ -1,0 +1,517 @@
+{
+  "batch_progress": {
+    "total_files": 56,
+    "completed_files": 56,
+    "failed_files": 0,
+    "skipped_files": 0,
+    "start_time": 1762235419.9102702,
+    "end_time": 1762236639.3469498
+  },
+  "file_progress": {
+    "seminars/AGRICULTURE 1975/ReamsAg Tape 01 Side A.mp3": {
+      "status": "completed",
+      "start_time": 1762235419.9122999,
+      "end_time": 1762235442.3591871,
+      "error_message": null,
+      "file_size_mb": 4.651909828186035,
+      "processing_time": 22.44648289680481,
+      "output_formats": []
+    },
+    "seminars/AGRICULTURE 1975/ReamsAg Tape 01 Side B.mp3": {
+      "status": "completed",
+      "start_time": 1762235442.3598573,
+      "end_time": 1762235485.6083224,
+      "error_message": null,
+      "file_size_mb": 4.886484146118164,
+      "processing_time": 43.247793197631836,
+      "output_formats": []
+    },
+    "seminars/AGRICULTURE 1975/ReamsAg Tape 02 Side A.mp3": {
+      "status": "completed",
+      "start_time": 1762235485.6085413,
+      "end_time": 1762235512.1318328,
+      "error_message": null,
+      "file_size_mb": 4.829179763793945,
+      "processing_time": 26.4877610206604,
+      "output_formats": []
+    },
+    "seminars/AGRICULTURE 1975/ReamsAg Tape 02 Side B.mp3": {
+      "status": "completed",
+      "start_time": 1762235512.132461,
+      "end_time": 1762235530.3665056,
+      "error_message": null,
+      "file_size_mb": 4.675122261047363,
+      "processing_time": 18.23339009284973,
+      "output_formats": []
+    },
+    "seminars/AGRICULTURE 1975/ReamsAg Tape 03 Side A.mp3": {
+      "status": "completed",
+      "start_time": 1762235530.3669832,
+      "end_time": 1762235544.113682,
+      "error_message": null,
+      "file_size_mb": 3.4025020599365234,
+      "processing_time": 13.737138032913208,
+      "output_formats": []
+    },
+    "seminars/AGRICULTURE 1975/ReamsAg Tape 03 Side B.mp3": {
+      "status": "completed",
+      "start_time": 1762235544.1146164,
+      "end_time": 1762235571.439617,
+      "error_message": null,
+      "file_size_mb": 5.278199195861816,
+      "processing_time": 27.31526803970337,
+      "output_formats": []
+    },
+    "seminars/AGRICULTURE 1975/ReamsAg Tape 04 Side A.mp3": {
+      "status": "completed",
+      "start_time": 1762235571.4398856,
+      "end_time": 1762235603.743578,
+      "error_message": null,
+      "file_size_mb": 5.673906326293945,
+      "processing_time": 32.268014430999756,
+      "output_formats": []
+    },
+    "seminars/AGRICULTURE 1975/ReamsAg Tape 04 Side B.mp3": {
+      "status": "completed",
+      "start_time": 1762235603.7438471,
+      "end_time": 1762235627.1157668,
+      "error_message": null,
+      "file_size_mb": 5.305403709411621,
+      "processing_time": 23.371589422225952,
+      "output_formats": []
+    },
+    "seminars/AGRICULTURE 1975/ReamsAg Tape 05 Side A.mp3": {
+      "status": "completed",
+      "start_time": 1762235627.1168616,
+      "end_time": 1762235650.8118248,
+      "error_message": null,
+      "file_size_mb": 4.679207801818848,
+      "processing_time": 23.684816122055054,
+      "output_formats": []
+    },
+    "seminars/AGRICULTURE 1975/ReamsAg Tape 05 Side B.mp3": {
+      "status": "completed",
+      "start_time": 1762235650.8125074,
+      "end_time": 1762235681.1468487,
+      "error_message": null,
+      "file_size_mb": 4.7728776931762695,
+      "processing_time": 30.324256658554077,
+      "output_formats": []
+    },
+    "seminars/AGRICULTURE 1975/ReamsAg Tape 06 Side A.mp3": {
+      "status": "completed",
+      "start_time": 1762235681.1471343,
+      "end_time": 1762235692.2661798,
+      "error_message": null,
+      "file_size_mb": 1.7603816986083984,
+      "processing_time": 11.109218835830688,
+      "output_formats": []
+    },
+    "seminars/AGRICULTURE 1975/ReamsAg Tape 06 Side B.mp3": {
+      "status": "completed",
+      "start_time": 1762235692.2669108,
+      "end_time": 1762235727.2278323,
+      "error_message": null,
+      "file_size_mb": 4.830475807189941,
+      "processing_time": 34.9600625038147,
+      "output_formats": []
+    },
+    "seminars/AGRICULTURE 1975/ReamsAg Tape 07 Side A.mp3": {
+      "status": "completed",
+      "start_time": 1762235727.2280564,
+      "end_time": 1762235761.3484137,
+      "error_message": null,
+      "file_size_mb": 6.960179328918457,
+      "processing_time": 34.12008237838745,
+      "output_formats": []
+    },
+    "seminars/AGRICULTURE 1975/ReamsAg Tape 07 Side B.mp3": {
+      "status": "completed",
+      "start_time": 1762235761.3487797,
+      "end_time": 1762235808.7718503,
+      "error_message": null,
+      "file_size_mb": 6.962869644165039,
+      "processing_time": 47.4137167930603,
+      "output_formats": []
+    },
+    "seminars/AGRICULTURE 1975/ReamsAg Tape 08 Side A.mp3": {
+      "status": "completed",
+      "start_time": 1762235808.772168,
+      "end_time": 1762235841.3901896,
+      "error_message": null,
+      "file_size_mb": 6.82595157623291,
+      "processing_time": 32.596335649490356,
+      "output_formats": []
+    },
+    "seminars/AGRICULTURE 1975/ReamsAg Tape 08 Side B.mp3": {
+      "status": "completed",
+      "start_time": 1762235841.391214,
+      "end_time": 1762235856.4775968,
+      "error_message": null,
+      "file_size_mb": 1.096419334411621,
+      "processing_time": 15.076785326004028,
+      "output_formats": []
+    },
+    "seminars/AGRICULTURE 1975/ReamsAg Tape 09 Side A.mp3": {
+      "status": "completed",
+      "start_time": 1762235856.4781306,
+      "end_time": 1762235892.5986545,
+      "error_message": null,
+      "file_size_mb": 4.9166717529296875,
+      "processing_time": 36.11103057861328,
+      "output_formats": []
+    },
+    "seminars/AGRICULTURE 1975/ReamsAg Tape 09 Side B.mp3": {
+      "status": "completed",
+      "start_time": 1762235892.5996482,
+      "end_time": 1762235942.7125928,
+      "error_message": null,
+      "file_size_mb": 6.835417747497559,
+      "processing_time": 50.11058950424194,
+      "output_formats": []
+    },
+    "seminars/AGRICULTURE 1975/ReamsAg Tape 10 Side A.mp3": {
+      "status": "completed",
+      "start_time": 1762235942.7131195,
+      "end_time": 1762235953.5225394,
+      "error_message": null,
+      "file_size_mb": 3.651824951171875,
+      "processing_time": 10.799631118774414,
+      "output_formats": []
+    },
+    "seminars/AGRICULTURE 1975/ReamsAg Tape 10 Side B is missing.mp3": {
+      "status": "completed",
+      "start_time": 1762235953.5244958,
+      "end_time": 1762235955.1491868,
+      "error_message": null,
+      "file_size_mb": 0.15483665466308594,
+      "processing_time": 1.6234898567199707,
+      "output_formats": []
+    },
+    "seminars/AGRICULTURE 1975/ReamsAg Tape 11 is missing.mp3": {
+      "status": "completed",
+      "start_time": 1762235955.149933,
+      "end_time": 1762235957.1379755,
+      "error_message": null,
+      "file_size_mb": 0.14837074279785156,
+      "processing_time": 1.9775347709655762,
+      "output_formats": []
+    },
+    "seminars/AGRICULTURE 1975/ReamsAg Tape 12 is missing.mp3": {
+      "status": "completed",
+      "start_time": 1762235957.138392,
+      "end_time": 1762235958.8741722,
+      "error_message": null,
+      "file_size_mb": 0.14837074279785156,
+      "processing_time": 1.7260806560516357,
+      "output_formats": []
+    },
+    "seminars/AGRICULTURE 1975/ReamsAg Tape 13 is missing.mp3": {
+      "status": "completed",
+      "start_time": 1762235958.874538,
+      "end_time": 1762235960.6204135,
+      "error_message": null,
+      "file_size_mb": 0.15001869201660156,
+      "processing_time": 1.7363760471343994,
+      "output_formats": []
+    },
+    "seminars/AGRICULTURE 1975/ReamsAg Tape 14 is missing.mp3": {
+      "status": "completed",
+      "start_time": 1762235960.62163,
+      "end_time": 1762235962.0568287,
+      "error_message": null,
+      "file_size_mb": 0.15056800842285156,
+      "processing_time": 1.4247159957885742,
+      "output_formats": []
+    },
+    "seminars/AGRICULTURE 1975/ReamsAg Tape 15 is missing.mp3": {
+      "status": "completed",
+      "start_time": 1762235962.057285,
+      "end_time": 1762235963.4833016,
+      "error_message": null,
+      "file_size_mb": 0.15056800842285156,
+      "processing_time": 1.4165372848510742,
+      "output_formats": []
+    },
+    "seminars/AGRICULTURE 1975/ReamsAg Tape 16 is missing.mp3": {
+      "status": "completed",
+      "start_time": 1762235963.4839673,
+      "end_time": 1762235964.6348379,
+      "error_message": null,
+      "file_size_mb": 0.15001869201660156,
+      "processing_time": 1.1405928134918213,
+      "output_formats": []
+    },
+    "seminars/AGRICULTURE 1975/ReamsAg Tape 17 is missing.mp3": {
+      "status": "completed",
+      "start_time": 1762235964.6353264,
+      "end_time": 1762235966.045945,
+      "error_message": null,
+      "file_size_mb": 0.15166664123535156,
+      "processing_time": 1.4032070636749268,
+      "output_formats": []
+    },
+    "seminars/AGRICULTURE 1975/ReamsAg Tape 18 is missing.mp3": {
+      "status": "completed",
+      "start_time": 1762235966.046457,
+      "end_time": 1762235967.1873658,
+      "error_message": null,
+      "file_size_mb": 0.14837074279785156,
+      "processing_time": 1.1312808990478516,
+      "output_formats": []
+    },
+    "seminars/AGRICULTURE 1975/ReamsAg Tape 19 is missing.mp3": {
+      "status": "completed",
+      "start_time": 1762235967.1878583,
+      "end_time": 1762235968.294704,
+      "error_message": null,
+      "file_size_mb": 0.15111732482910156,
+      "processing_time": 1.1063406467437744,
+      "output_formats": []
+    },
+    "seminars/AGRICULTURE 1975/ReamsAg Tape 20 Side A.mp3": {
+      "status": "completed",
+      "start_time": 1762235968.2963746,
+      "end_time": 1762236001.5800817,
+      "error_message": null,
+      "file_size_mb": 5.415915489196777,
+      "processing_time": 33.273083209991455,
+      "output_formats": []
+    },
+    "seminars/AGRICULTURE 1975/ReamsAg Tape 20 Side B.mp3": {
+      "status": "completed",
+      "start_time": 1762236001.581008,
+      "end_time": 1762236031.0042672,
+      "error_message": null,
+      "file_size_mb": 5.447504043579102,
+      "processing_time": 29.386422872543335,
+      "output_formats": []
+    },
+    "seminars/AGRICULTURE 1975/ReamsAg Tape 21 Side A.mp3": {
+      "status": "completed",
+      "start_time": 1762236031.0047927,
+      "end_time": 1762236070.8010366,
+      "error_message": null,
+      "file_size_mb": 6.635323524475098,
+      "processing_time": 39.764995098114014,
+      "output_formats": []
+    },
+    "seminars/AGRICULTURE 1975/ReamsAg Tape 21 Side B.mp3": {
+      "status": "completed",
+      "start_time": 1762236070.8015785,
+      "end_time": 1762236101.1165683,
+      "error_message": null,
+      "file_size_mb": 5.798269271850586,
+      "processing_time": 30.280752658843994,
+      "output_formats": []
+    },
+    "seminars/AGRICULTURE 1975/ReamsAg Tape 22 Side A.mp3": {
+      "status": "completed",
+      "start_time": 1762236101.1171896,
+      "end_time": 1762236118.934746,
+      "error_message": null,
+      "file_size_mb": 4.138910293579102,
+      "processing_time": 17.78072214126587,
+      "output_formats": []
+    },
+    "seminars/AGRICULTURE 1975/ReamsAg Tape 22 Side B.mp3": {
+      "status": "completed",
+      "start_time": 1762236118.9353511,
+      "end_time": 1762236124.6645148,
+      "error_message": null,
+      "file_size_mb": 0.7997646331787109,
+      "processing_time": 5.718986988067627,
+      "output_formats": []
+    },
+    "seminars/AGRICULTURE 1975/ReamsAg Tape 23 Side A was destroyed.mp3": {
+      "status": "completed",
+      "start_time": 1762236124.665132,
+      "end_time": 1762236127.1617591,
+      "error_message": null,
+      "file_size_mb": 0.28624916076660156,
+      "processing_time": 2.4867820739746094,
+      "output_formats": []
+    },
+    "seminars/AGRICULTURE 1975/ReamsAg Tape 23 Side B was destroyed.mp3": {
+      "status": "completed",
+      "start_time": 1762236127.163872,
+      "end_time": 1762236128.9538734,
+      "error_message": null,
+      "file_size_mb": 0.17131614685058594,
+      "processing_time": 1.7878940105438232,
+      "output_formats": []
+    },
+    "seminars/AGRICULTURE 1975/ReamsAg Tape 24 Side A is missing.mp3": {
+      "status": "completed",
+      "start_time": 1762236128.955626,
+      "end_time": 1762236131.421871,
+      "error_message": null,
+      "file_size_mb": 0.21044349670410156,
+      "processing_time": 2.4552929401397705,
+      "output_formats": []
+    },
+    "seminars/AGRICULTURE 1975/ReamsAg Tape 24 Side B.mp3": {
+      "status": "completed",
+      "start_time": 1762236131.42268,
+      "end_time": 1762236160.7100105,
+      "error_message": null,
+      "file_size_mb": 5.2475080490112305,
+      "processing_time": 29.250652074813843,
+      "output_formats": []
+    },
+    "seminars/AGRICULTURE 1975/ReamsAg Tape 25 Side A is missing.mp3": {
+      "status": "completed",
+      "start_time": 1762236160.7108054,
+      "end_time": 1762236162.5265834,
+      "error_message": null,
+      "file_size_mb": 0.17748451232910156,
+      "processing_time": 1.8055124282836914,
+      "output_formats": []
+    },
+    "seminars/AGRICULTURE 1975/ReamsAg Tape 25 Side B.mp3": {
+      "status": "completed",
+      "start_time": 1762236162.527491,
+      "end_time": 1762236193.6589677,
+      "error_message": null,
+      "file_size_mb": 4.954937934875488,
+      "processing_time": 31.12109684944153,
+      "output_formats": []
+    },
+    "seminars/AGRICULTURE 1975/ReamsAg Tape 26 Side A is missing.mp3": {
+      "status": "completed",
+      "start_time": 1762236193.6603959,
+      "end_time": 1762236195.7276924,
+      "error_message": null,
+      "file_size_mb": 0.15990638732910156,
+      "processing_time": 2.056863784790039,
+      "output_formats": []
+    },
+    "seminars/AGRICULTURE 1975/ReamsAg Tape 26 Side B.mp3": {
+      "status": "completed",
+      "start_time": 1762236195.729575,
+      "end_time": 1762236249.5065904,
+      "error_message": null,
+      "file_size_mb": 4.797094345092773,
+      "processing_time": 53.76661705970764,
+      "output_formats": []
+    },
+    "seminars/AGRICULTURE 1975/ReamsAg Tape 27 Side A.mp3": {
+      "status": "completed",
+      "start_time": 1762236249.507644,
+      "end_time": 1762236282.1727676,
+      "error_message": null,
+      "file_size_mb": 5.618402481079102,
+      "processing_time": 32.66399526596069,
+      "output_formats": []
+    },
+    "seminars/AGRICULTURE 1975/ReamsAg Tape 27 Side B.mp3": {
+      "status": "completed",
+      "start_time": 1762236282.1779108,
+      "end_time": 1762236326.6579177,
+      "error_message": null,
+      "file_size_mb": 5.284578323364258,
+      "processing_time": 44.46667003631592,
+      "output_formats": []
+    },
+    "seminars/AGRICULTURE 1975/ReamsAg Tape 28 Side A.mp3": {
+      "status": "completed",
+      "start_time": 1762236326.6592252,
+      "end_time": 1762236376.3668902,
+      "error_message": null,
+      "file_size_mb": 4.962512016296387,
+      "processing_time": 49.67125177383423,
+      "output_formats": []
+    },
+    "seminars/AGRICULTURE 1975/ReamsAg Tape 28 Side B is missing.mp3": {
+      "status": "completed",
+      "start_time": 1762236376.3688548,
+      "end_time": 1762236377.9570951,
+      "error_message": null,
+      "file_size_mb": 0.15990638732910156,
+      "processing_time": 1.5767436027526855,
+      "output_formats": []
+    },
+    "seminars/AGRICULTURE 1975/ReamsAg Tape 29 Side A is missing.mp3": {
+      "status": "completed",
+      "start_time": 1762236377.9592333,
+      "end_time": 1762236379.9652526,
+      "error_message": null,
+      "file_size_mb": 0.15990638732910156,
+      "processing_time": 1.9944674968719482,
+      "output_formats": []
+    },
+    "seminars/AGRICULTURE 1975/ReamsAg Tape 29 Side B.mp3": {
+      "status": "completed",
+      "start_time": 1762236379.9750767,
+      "end_time": 1762236423.0108202,
+      "error_message": null,
+      "file_size_mb": 4.3727874755859375,
+      "processing_time": 43.01929187774658,
+      "output_formats": []
+    },
+    "seminars/AGRICULTURE 1975/ReamsAg Tape 30 Side A is missing.mp3": {
+      "status": "completed",
+      "start_time": 1762236423.0119944,
+      "end_time": 1762236424.416023,
+      "error_message": null,
+      "file_size_mb": 0.15441322326660156,
+      "processing_time": 1.3934648036956787,
+      "output_formats": []
+    },
+    "seminars/AGRICULTURE 1975/ReamsAg Tape 30 Side B.mp3": {
+      "status": "completed",
+      "start_time": 1762236424.4173446,
+      "end_time": 1762236478.9750009,
+      "error_message": null,
+      "file_size_mb": 6.848572731018066,
+      "processing_time": 54.54739236831665,
+      "output_formats": []
+    },
+    "seminars/AGRICULTURE 1975/ReamsAg Tape 31 Side A is missing.mp3": {
+      "status": "completed",
+      "start_time": 1762236478.9775872,
+      "end_time": 1762236480.4032862,
+      "error_message": null,
+      "file_size_mb": 0.15880775451660156,
+      "processing_time": 1.4139649868011475,
+      "output_formats": []
+    },
+    "seminars/AGRICULTURE 1975/ReamsAg Tape 31 Side B.mp3": {
+      "status": "completed",
+      "start_time": 1762236480.4063268,
+      "end_time": 1762236525.8709216,
+      "error_message": null,
+      "file_size_mb": 5.417211532592773,
+      "processing_time": 45.4530873298645,
+      "output_formats": []
+    },
+    "seminars/AGRICULTURE 1975/ReamsAg Tape 32 Side A.mp3": {
+      "status": "completed",
+      "start_time": 1762236525.8718426,
+      "end_time": 1762236562.324407,
+      "error_message": null,
+      "file_size_mb": 4.968689918518066,
+      "processing_time": 36.44226098060608,
+      "output_formats": []
+    },
+    "seminars/AGRICULTURE 1975/ReamsAg Tape 32 Side B.mp3": {
+      "status": "completed",
+      "start_time": 1762236562.3264987,
+      "end_time": 1762236585.5671313,
+      "error_message": null,
+      "file_size_mb": 2.706751823425293,
+      "processing_time": 23.238386154174805,
+      "output_formats": []
+    },
+    "seminars/AGRICULTURE 1975/ReamsAg Tape 33 Side A.mp3": {
+      "status": "completed",
+      "start_time": 1762236585.5686524,
+      "end_time": 1762236639.3449914,
+      "error_message": null,
+      "file_size_mb": 8.790532112121582,
+      "processing_time": 53.76640462875366,
+      "output_formats": []
+    }
+  },
+  "last_updated": 1762236639.3470275
+}

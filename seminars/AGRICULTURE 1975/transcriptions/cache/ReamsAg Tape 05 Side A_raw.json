@@ -1,0 +1,3021 @@
+{
+  "audio_file": "seminars/AGRICULTURE 1975/ReamsAg Tape 05 Side A.mp3",
+  "service": "deepgram",
+  "timestamp": "2025-11-04T07:54:10Z",
+  "raw_response": {
+    "metadata": {
+      "transaction_key": "deprecated",
+      "request_id": "1aa4e160-4735-442c-857f-5fea2bd1947f",
+      "sha256": "c4020908abe41d4652f9a7cef70e12f11af07d9e24204094de7fc5dd24594744",
+      "created": "2025-11-04T05:54:08.435Z",
+      "duration": 1226.031,
+      "channels": 1,
+      "models": [
+        "2187e11a-3532-4498-b076-81fa530bdd49"
+      ],
+      "model_info": {
+        "2187e11a-3532-4498-b076-81fa530bdd49": {
+          "name": "general-nova-3",
+          "version": "2025-07-31.0",
+          "arch": "nova-3"
+        }
+      }
+    },
+    "results": {
+      "channels": [
+        {
+          "alternatives": [
+            {
+              "transcript": "Doctor reams agriculture. This is tape five side a and identified by Turner as 1976. Doctor reams agricultural course made in Blue Ridge in February 1976. Take number a five and And then cancel out zeroes, you have approximately 22 you have approximately twenty two and seventy five hundred pounds. But with this, say, 25 pounds per thousand square feet. So this is what you figure on when you put out fertilizer per thousand square feet. You calculate on 25 pounds per thousand square feet. Now this is on commercial farms. Those are most common forms of calcium we have to restore, and they're much cheaper. On burnt wine is another form, and all of these are about 99% available calcium through the plants. Ramp Okay? Yep. I just wanted to touch on. Water is the finest catalyst known in all the the entire field of.",
+              "confidence": 0.9502111,
+              "words": [
+                {
+                  "word": "doctor",
+                  "start": 0.08,
+                  "end": 0.48,
+                  "confidence": 0.9344426,
+                  "speaker": 0,
+                  "speaker_confidence": 0.0,
+                  "punctuated_word": "Doctor"
+                },
+                {
+                  "word": "reams",
+                  "start": 0.48,
+                  "end": 0.96,
+                  "confidence": 0.7577392,
+                  "speaker": 0,
+                  "speaker_confidence": 0.0,
+                  "punctuated_word": "reams"
+                },
+                {
+                  "word": "agriculture",
+                  "start": 0.96,
+                  "end": 1.9199998,
+                  "confidence": 0.74274564,
+                  "speaker": 0,
+                  "speaker_confidence": 0.0,
+                  "punctuated_word": "agriculture."
+                },
+                {
+                  "word": "this",
+                  "start": 2.48,
+                  "end": 2.72,
+                  "confidence": 0.9879624,
+                  "speaker": 0,
+                  "speaker_confidence": 0.0,
+                  "punctuated_word": "This"
+                },
+                {
+                  "word": "is",
+                  "start": 2.72,
+                  "end": 2.8799999,
+                  "confidence": 0.9979024,
+                  "speaker": 0,
+                  "speaker_confidence": 0.0,
+                  "punctuated_word": "is"
+                },
+                {
+                  "word": "tape",
+                  "start": 2.8799999,
+                  "end": 3.1999998,
+                  "confidence": 0.9770601,
+                  "speaker": 0,
+                  "speaker_confidence": 0.0,
+                  "punctuated_word": "tape"
+                },
+                {
+                  "word": "five",
+                  "start": 3.1999998,
+                  "end": 3.52,
+                  "confidence": 0.99309254,
+                  "speaker": 0,
+                  "speaker_confidence": 0.0,
+                  "punctuated_word": "five"
+                },
+                {
+                  "word": "side",
+                  "start": 3.52,
+                  "end": 3.84,
+                  "confidence": 0.56116927,
+                  "speaker": 0,
+                  "speaker_confidence": 0.0,
+                  "punctuated_word": "side"
+                },
+                {
+                  "word": "a",
+                  "start": 3.84,
+                  "end": 4.08,
+                  "confidence": 0.89686155,
+                  "speaker": 0,
+                  "speaker_confidence": 0.0,
+                  "punctuated_word": "a"
+                },
+                {
+                  "word": "and",
+                  "start": 4.08,
+                  "end": 4.24,
+                  "confidence": 0.90614724,
+                  "speaker": 0,
+                  "speaker_confidence": 0.0,
+                  "punctuated_word": "and"
+                },
+                {
+                  "word": "identified",
+                  "start": 4.24,
+                  "end": 4.7999997,
+                  "confidence": 0.994582,
+                  "speaker": 0,
+                  "speaker_confidence": 0.0,
+                  "punctuated_word": "identified"
+                },
+                {
+                  "word": "by",
+                  "start": 4.7999997,
+                  "end": 5.04,
+                  "confidence": 0.9988148,
+                  "speaker": 0,
+                  "speaker_confidence": 0.0,
+                  "punctuated_word": "by"
+                },
+                {
+                  "word": "turner",
+                  "start": 5.04,
+                  "end": 5.44,
+                  "confidence": 0.58769614,
+                  "speaker": 0,
+                  "speaker_confidence": 0.0,
+                  "punctuated_word": "Turner"
+                },
+                {
+                  "word": "as",
+                  "start": 5.44,
+                  "end": 5.68,
+                  "confidence": 0.95527357,
+                  "speaker": 0,
+                  "speaker_confidence": 0.0,
+                  "punctuated_word": "as"
+                },
+                {
+                  "word": "1976",
+                  "start": 5.68,
+                  "end": 7.2,
+                  "confidence": 0.9816024,
+                  "speaker": 0,
+                  "speaker_confidence": 0.0,
+                  "punctuated_word": "1976."
+                },
+                {
+                  "word": "doctor",
+                  "start": 7.9199996,
+                  "end": 8.32,
+                  "confidence": 0.98848325,
+                  "speaker": 0,
+                  "speaker_confidence": 0.26596332,
+                  "punctuated_word": "Doctor"
+                },
+                {
+                  "word": "reams",
+                  "start": 8.32,
+                  "end": 8.96,
+                  "confidence": 0.9036876,
+                  "speaker": 0,
+                  "speaker_confidence": 0.26596332,
+                  "punctuated_word": "reams"
+                },
+                {
+                  "word": "agricultural",
+                  "start": 8.96,
+                  "end": 9.92,
+                  "confidence": 0.42426682,
+                  "speaker": 0,
+                  "speaker_confidence": 0.26596332,
+                  "punctuated_word": "agricultural"
+                },
+                {
+                  "word": "course",
+                  "start": 9.92,
+                  "end": 10.639999,
+                  "confidence": 0.97381467,
+                  "speaker": 0,
+                  "speaker_confidence": 0.26596332,
+                  "punctuated_word": "course"
+                },
+                {
+                  "word": "made",
+                  "start": 10.639999,
+                  "end": 11.2,
+                  "confidence": 0.9163271,
+                  "speaker": 0,
+                  "speaker_confidence": 0.26596332,
+                  "punctuated_word": "made"
+                },
+                {
+                  "word": "in",
+                  "start": 11.2,
+                  "end": 11.44,
+                  "confidence": 0.91069454,
+                  "speaker": 0,
+                  "speaker_confidence": 0.26596332,
+                  "punctuated_word": "in"
+                },
+                {
+                  "word": "blue",
+                  "start": 11.44,
+                  "end": 11.679999,
+                  "confidence": 0.9179077,
+                  "speaker": 0,
+                  "speaker_confidence": 0.26596332,
+                  "punctuated_word": "Blue"
+                },
+                {
+                  "word": "ridge",
+                  "start": 11.679999,
+                  "end": 12.08,
+                  "confidence": 0.76654434,
+                  "speaker": 0,
+                  "speaker_confidence": 0.26596332,
+                  "punctuated_word": "Ridge"
+                },
+                {
+                  "word": "in",
+                  "start": 12.08,
+                  "end": 12.4,
+                  "confidence": 0.982473,
+                  "speaker": 0,
+                  "speaker_confidence": 0.26596332,
+                  "punctuated_word": "in"
+                },
+                {
+                  "word": "february",
+                  "start": 12.4,
+                  "end": 13.48,
+                  "confidence": 0.74026674,
+                  "speaker": 0,
+                  "speaker_confidence": 0.26596332,
+                  "punctuated_word": "February"
+                },
+                {
+                  "word": "1976",
+                  "start": 13.48,
+                  "end": 14.559999,
+                  "confidence": 0.74026674,
+                  "speaker": 0,
+                  "speaker_confidence": 0.26596332,
+                  "punctuated_word": "1976."
+                },
+                {
+                  "word": "take",
+                  "start": 14.825,
+                  "end": 15.224999,
+                  "confidence": 0.7035825,
+                  "speaker": 0,
+                  "speaker_confidence": 0.26596332,
+                  "punctuated_word": "Take"
+                },
+                {
+                  "word": "number",
+                  "start": 15.224999,
+                  "end": 15.705,
+                  "confidence": 0.9957996,
+                  "speaker": 0,
+                  "speaker_confidence": 0.26596332,
+                  "punctuated_word": "number"
+                },
+                {
+                  "word": "a",
+                  "start": 15.705,
+                  "end": 16.025,
+                  "confidence": 0.7843574,
+                  "speaker": 0,
+                  "speaker_confidence": 0.26596332,
+                  "punctuated_word": "a"
+                },
+                {
+                  "word": "five",
+                  "start": 16.025,
+                  "end": 16.664999,
+                  "confidence": 0.9907267,
+                  "speaker": 0,
+                  "speaker_confidence": 0.26596332,
+                  "punctuated_word": "five"
+                },
+                {
+                  "word": "and",
+                  "start": 16.904999,
+                  "end": 17.545,
+                  "confidence": 0.7652464,
+                  "speaker": 0,
+                  "speaker_confidence": 0.26596332,
+                  "punctuated_word": "and"
+                },
+                {
+                  "word": "and",
+                  "start": 246.4,
+                  "end": 246.64,
+                  "confidence": 0.9724506,
+                  "speaker": 0,
+                  "speaker_confidence": 0.86127305,
+                  "punctuated_word": "And"
+                },
+                {
+                  "word": "then",
+                  "start": 246.64,
+                  "end": 246.79999,
+                  "confidence": 0.986326,
+                  "speaker": 0,
+                  "speaker_confidence": 0.86127305,
+                  "punctuated_word": "then"
+                },
+                {
+                  "word": "cancel",
+                  "start": 246.79999,
+                  "end": 247.28,
+                  "confidence": 0.93063295,
+                  "speaker": 0,
+                  "speaker_confidence": 0.86127305,
+                  "punctuated_word": "cancel"
+                },
+                {
+                  "word": "out",
+                  "start": 247.28,
+                  "end": 247.51999,
+                  "confidence": 0.9899629,
+                  "speaker": 0,
+                  "speaker_confidence": 0.86127305,
+                  "punctuated_word": "out"
+                },
+                {
+                  "word": "zeroes",
+                  "start": 247.51999,
+                  "end": 248.15999,
+                  "confidence": 0.6152442,
+                  "speaker": 0,
+                  "speaker_confidence": 0.86127305,
+                  "punctuated_word": "zeroes,"
+                },
+                {
+                  "word": "you",
+                  "start": 248.15999,
+                  "end": 248.23999,
+                  "confidence": 0.5904876,
+                  "speaker": 0,
+                  "speaker_confidence": 0.7298374,
+                  "punctuated_word": "you"
+                },
+                {
+                  "word": "have",
+                  "start": 248.23999,
+                  "end": 248.4,
+                  "confidence": 0.6102534,
+                  "speaker": 0,
+                  "speaker_confidence": 0.7298374,
+                  "punctuated_word": "have"
+                },
+                {
+                  "word": "approximately",
+                  "start": 248.4,
+                  "end": 248.95999,
+                  "confidence": 0.7186136,
+                  "speaker": 0,
+                  "speaker_confidence": 0.7298374,
+                  "punctuated_word": "approximately"
+                },
+                {
+                  "word": "22",
+                  "start": 248.95999,
+                  "end": 249.92,
+                  "confidence": 0.9938278,
+                  "speaker": 0,
+                  "speaker_confidence": 0.7298374,
+                  "punctuated_word": "22"
+                },
+                {
+                  "word": "you",
+                  "start": 250.64,
+                  "end": 250.72,
+                  "confidence": 0.63829714,
+                  "speaker": 0,
+                  "speaker_confidence": 0.7298374,
+                  "punctuated_word": "you"
+                },
+                {
+                  "word": "have",
+                  "start": 250.72,
+                  "end": 250.95999,
+                  "confidence": 0.48162565,
+                  "speaker": 0,
+                  "speaker_confidence": 0.7298374,
+                  "punctuated_word": "have"
+                },
+                {
+                  "word": "approximately",
+                  "start": 250.95999,
+                  "end": 251.36,
+                  "confidence": 0.71593976,
+                  "speaker": 0,
+                  "speaker_confidence": 0.7298374,
+                  "punctuated_word": "approximately"
+                },
+                {
+                  "word": "twenty",
+                  "start": 251.36,
+                  "end": 251.76,
+                  "confidence": 0.9901326,
+                  "speaker": 0,
+                  "speaker_confidence": 0.7298374,
+                  "punctuated_word": "twenty"
+                },
+                {
+                  "word": "two",
+                  "start": 251.76,
+                  "end": 252.07999,
+                  "confidence": 0.9975068,
+                  "speaker": 0,
+                  "speaker_confidence": 0.7298374,
+                  "punctuated_word": "two"
+                },
+                {
+                  "word": "and",
+                  "start": 252.07999,
+                  "end": 252.8,
+                  "confidence": 0.94167274,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9729376,
+                  "punctuated_word": "and"
+                },
+                {
+                  "word": "seventy",
+                  "start": 253.28,
+                  "end": 253.76,
+                  "confidence": 0.89427674,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9729376,
+                  "punctuated_word": "seventy"
+                },
+                {
+                  "word": "five",
+                  "start": 253.76,
+                  "end": 254.31999,
+                  "confidence": 0.98762846,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9729376,
+                  "punctuated_word": "five"
+                },
+                {
+                  "word": "hundred",
+                  "start": 254.31999,
+                  "end": 254.64,
+                  "confidence": 0.95763844,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9729376,
+                  "punctuated_word": "hundred"
+                },
+                {
+                  "word": "pounds",
+                  "start": 254.64,
+                  "end": 255.52,
+                  "confidence": 0.8640464,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9729376,
+                  "punctuated_word": "pounds."
+                },
+                {
+                  "word": "but",
+                  "start": 255.59999,
+                  "end": 256.0,
+                  "confidence": 0.9870429,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9729376,
+                  "punctuated_word": "But"
+                },
+                {
+                  "word": "with",
+                  "start": 256.0,
+                  "end": 256.4,
+                  "confidence": 0.5632809,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9729376,
+                  "punctuated_word": "with"
+                },
+                {
+                  "word": "this",
+                  "start": 256.4,
+                  "end": 256.63998,
+                  "confidence": 0.8281181,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9729376,
+                  "punctuated_word": "this,"
+                },
+                {
+                  "word": "say",
+                  "start": 256.63998,
+                  "end": 257.04,
+                  "confidence": 0.63349164,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9729376,
+                  "punctuated_word": "say,"
+                },
+                {
+                  "word": "25",
+                  "start": 257.44,
+                  "end": 258.0,
+                  "confidence": 0.9937345,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9729376,
+                  "punctuated_word": "25"
+                },
+                {
+                  "word": "pounds",
+                  "start": 258.0,
+                  "end": 258.4,
+                  "confidence": 0.9796172,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9729376,
+                  "punctuated_word": "pounds"
+                },
+                {
+                  "word": "per",
+                  "start": 258.4,
+                  "end": 258.63998,
+                  "confidence": 0.95087415,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9729376,
+                  "punctuated_word": "per"
+                },
+                {
+                  "word": "thousand",
+                  "start": 258.63998,
+                  "end": 259.04,
+                  "confidence": 0.9761451,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9729376,
+                  "punctuated_word": "thousand"
+                },
+                {
+                  "word": "square",
+                  "start": 259.04,
+                  "end": 259.36,
+                  "confidence": 0.9972595,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9729376,
+                  "punctuated_word": "square"
+                },
+                {
+                  "word": "feet",
+                  "start": 259.36,
+                  "end": 259.68,
+                  "confidence": 0.8022492,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9729376,
+                  "punctuated_word": "feet."
+                },
+                {
+                  "word": "so",
+                  "start": 259.895,
+                  "end": 260.135,
+                  "confidence": 0.74073476,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9729376,
+                  "punctuated_word": "So"
+                },
+                {
+                  "word": "this",
+                  "start": 260.135,
+                  "end": 260.375,
+                  "confidence": 0.99601257,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9729376,
+                  "punctuated_word": "this"
+                },
+                {
+                  "word": "is",
+                  "start": 260.375,
+                  "end": 260.535,
+                  "confidence": 0.993536,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9729376,
+                  "punctuated_word": "is"
+                },
+                {
+                  "word": "what",
+                  "start": 260.535,
+                  "end": 260.695,
+                  "confidence": 0.99248177,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9684835,
+                  "punctuated_word": "what"
+                },
+                {
+                  "word": "you",
+                  "start": 260.695,
+                  "end": 260.935,
+                  "confidence": 0.96096605,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9684835,
+                  "punctuated_word": "you"
+                },
+                {
+                  "word": "figure",
+                  "start": 260.935,
+                  "end": 261.255,
+                  "confidence": 0.94335693,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9684835,
+                  "punctuated_word": "figure"
+                },
+                {
+                  "word": "on",
+                  "start": 261.255,
+                  "end": 261.495,
+                  "confidence": 0.95017666,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9684835,
+                  "punctuated_word": "on"
+                },
+                {
+                  "word": "when",
+                  "start": 261.495,
+                  "end": 261.73502,
+                  "confidence": 0.9792746,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9684835,
+                  "punctuated_word": "when"
+                },
+                {
+                  "word": "you",
+                  "start": 261.73502,
+                  "end": 261.895,
+                  "confidence": 0.95250773,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9684835,
+                  "punctuated_word": "you"
+                },
+                {
+                  "word": "put",
+                  "start": 261.895,
+                  "end": 262.135,
+                  "confidence": 0.99694353,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9684835,
+                  "punctuated_word": "put"
+                },
+                {
+                  "word": "out",
+                  "start": 262.135,
+                  "end": 262.295,
+                  "confidence": 0.8895538,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9684835,
+                  "punctuated_word": "out"
+                },
+                {
+                  "word": "fertilizer",
+                  "start": 262.295,
+                  "end": 263.255,
+                  "confidence": 0.9972275,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9684835,
+                  "punctuated_word": "fertilizer"
+                },
+                {
+                  "word": "per",
+                  "start": 263.335,
+                  "end": 263.655,
+                  "confidence": 0.5977421,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9684835,
+                  "punctuated_word": "per"
+                },
+                {
+                  "word": "thousand",
+                  "start": 263.655,
+                  "end": 263.975,
+                  "confidence": 0.99507916,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9684835,
+                  "punctuated_word": "thousand"
+                },
+                {
+                  "word": "square",
+                  "start": 263.975,
+                  "end": 264.375,
+                  "confidence": 0.99748814,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9684835,
+                  "punctuated_word": "square"
+                },
+                {
+                  "word": "feet",
+                  "start": 264.375,
+                  "end": 264.695,
+                  "confidence": 0.74211454,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9684835,
+                  "punctuated_word": "feet."
+                },
+                {
+                  "word": "you",
+                  "start": 264.695,
+                  "end": 264.935,
+                  "confidence": 0.8613481,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9684835,
+                  "punctuated_word": "You"
+                },
+                {
+                  "word": "calculate",
+                  "start": 264.935,
+                  "end": 265.575,
+                  "confidence": 0.91445154,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9684835,
+                  "punctuated_word": "calculate"
+                },
+                {
+                  "word": "on",
+                  "start": 265.575,
+                  "end": 265.895,
+                  "confidence": 0.9453314,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9684835,
+                  "punctuated_word": "on"
+                },
+                {
+                  "word": "25",
+                  "start": 265.895,
+                  "end": 266.855,
+                  "confidence": 0.9906707,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9684835,
+                  "punctuated_word": "25"
+                },
+                {
+                  "word": "pounds",
+                  "start": 266.935,
+                  "end": 267.335,
+                  "confidence": 0.9805787,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9684835,
+                  "punctuated_word": "pounds"
+                },
+                {
+                  "word": "per",
+                  "start": 267.335,
+                  "end": 267.575,
+                  "confidence": 0.9911005,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9684835,
+                  "punctuated_word": "per"
+                },
+                {
+                  "word": "thousand",
+                  "start": 267.575,
+                  "end": 267.975,
+                  "confidence": 0.99268395,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9684835,
+                  "punctuated_word": "thousand"
+                },
+                {
+                  "word": "square",
+                  "start": 267.975,
+                  "end": 268.375,
+                  "confidence": 0.9964204,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9684835,
+                  "punctuated_word": "square"
+                },
+                {
+                  "word": "feet",
+                  "start": 268.375,
+                  "end": 269.015,
+                  "confidence": 0.99217045,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9684835,
+                  "punctuated_word": "feet."
+                },
+                {
+                  "word": "now",
+                  "start": 269.095,
+                  "end": 269.495,
+                  "confidence": 0.99274313,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9684835,
+                  "punctuated_word": "Now"
+                },
+                {
+                  "word": "this",
+                  "start": 269.495,
+                  "end": 270.055,
+                  "confidence": 0.9502111,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9684835,
+                  "punctuated_word": "this"
+                },
+                {
+                  "word": "is",
+                  "start": 270.055,
+                  "end": 270.535,
+                  "confidence": 0.99132067,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9684835,
+                  "punctuated_word": "is"
+                },
+                {
+                  "word": "on",
+                  "start": 270.535,
+                  "end": 271.015,
+                  "confidence": 0.95532453,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9684835,
+                  "punctuated_word": "on"
+                },
+                {
+                  "word": "commercial",
+                  "start": 271.015,
+                  "end": 271.815,
+                  "confidence": 0.9836405,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9684835,
+                  "punctuated_word": "commercial"
+                },
+                {
+                  "word": "farms",
+                  "start": 271.815,
+                  "end": 272.295,
+                  "confidence": 0.8885397,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9684835,
+                  "punctuated_word": "farms."
+                },
+                {
+                  "word": "those",
+                  "start": 504.64,
+                  "end": 504.96002,
+                  "confidence": 0.9811927,
+                  "speaker": 0,
+                  "speaker_confidence": 0.6729967,
+                  "punctuated_word": "Those"
+                },
+                {
+                  "word": "are",
+                  "start": 504.96002,
+                  "end": 505.28,
+                  "confidence": 0.9924185,
+                  "speaker": 0,
+                  "speaker_confidence": 0.6729967,
+                  "punctuated_word": "are"
+                },
+                {
+                  "word": "most",
+                  "start": 505.28,
+                  "end": 505.76,
+                  "confidence": 0.7354921,
+                  "speaker": 0,
+                  "speaker_confidence": 0.6729967,
+                  "punctuated_word": "most"
+                },
+                {
+                  "word": "common",
+                  "start": 505.76,
+                  "end": 506.24002,
+                  "confidence": 0.9932793,
+                  "speaker": 0,
+                  "speaker_confidence": 0.6729967,
+                  "punctuated_word": "common"
+                },
+                {
+                  "word": "forms",
+                  "start": 506.24002,
+                  "end": 506.56,
+                  "confidence": 0.9878484,
+                  "speaker": 0,
+                  "speaker_confidence": 0.6729967,
+                  "punctuated_word": "forms"
+                },
+                {
+                  "word": "of",
+                  "start": 506.56,
+                  "end": 506.72,
+                  "confidence": 0.9941924,
+                  "speaker": 0,
+                  "speaker_confidence": 0.74903184,
+                  "punctuated_word": "of"
+                },
+                {
+                  "word": "calcium",
+                  "start": 506.72,
+                  "end": 507.2,
+                  "confidence": 0.99117684,
+                  "speaker": 0,
+                  "speaker_confidence": 0.74903184,
+                  "punctuated_word": "calcium"
+                },
+                {
+                  "word": "we",
+                  "start": 507.2,
+                  "end": 507.44,
+                  "confidence": 0.76560926,
+                  "speaker": 0,
+                  "speaker_confidence": 0.74903184,
+                  "punctuated_word": "we"
+                },
+                {
+                  "word": "have",
+                  "start": 507.44,
+                  "end": 507.68002,
+                  "confidence": 0.7345783,
+                  "speaker": 0,
+                  "speaker_confidence": 0.74903184,
+                  "punctuated_word": "have"
+                },
+                {
+                  "word": "to",
+                  "start": 507.68002,
+                  "end": 507.84,
+                  "confidence": 0.69372135,
+                  "speaker": 0,
+                  "speaker_confidence": 0.74903184,
+                  "punctuated_word": "to"
+                },
+                {
+                  "word": "restore",
+                  "start": 507.84,
+                  "end": 508.40002,
+                  "confidence": 0.5946231,
+                  "speaker": 0,
+                  "speaker_confidence": 0.74903184,
+                  "punctuated_word": "restore,"
+                },
+                {
+                  "word": "and",
+                  "start": 508.40002,
+                  "end": 508.56,
+                  "confidence": 0.991582,
+                  "speaker": 0,
+                  "speaker_confidence": 0.74903184,
+                  "punctuated_word": "and"
+                },
+                {
+                  "word": "they're",
+                  "start": 508.56,
+                  "end": 508.72,
+                  "confidence": 0.956226,
+                  "speaker": 0,
+                  "speaker_confidence": 0.89673275,
+                  "punctuated_word": "they're"
+                },
+                {
+                  "word": "much",
+                  "start": 508.72,
+                  "end": 509.04,
+                  "confidence": 0.99133366,
+                  "speaker": 0,
+                  "speaker_confidence": 0.89673275,
+                  "punctuated_word": "much"
+                },
+                {
+                  "word": "cheaper",
+                  "start": 509.04,
+                  "end": 509.76,
+                  "confidence": 0.86663353,
+                  "speaker": 0,
+                  "speaker_confidence": 0.89673275,
+                  "punctuated_word": "cheaper."
+                },
+                {
+                  "word": "on",
+                  "start": 510.0,
+                  "end": 510.24002,
+                  "confidence": 0.24051476,
+                  "speaker": 0,
+                  "speaker_confidence": 0.89673275,
+                  "punctuated_word": "On"
+                },
+                {
+                  "word": "burnt",
+                  "start": 510.24002,
+                  "end": 510.56,
+                  "confidence": 0.55902654,
+                  "speaker": 0,
+                  "speaker_confidence": 0.89673275,
+                  "punctuated_word": "burnt"
+                },
+                {
+                  "word": "wine",
+                  "start": 510.56,
+                  "end": 510.96002,
+                  "confidence": 0.387908,
+                  "speaker": 0,
+                  "speaker_confidence": 0.89673275,
+                  "punctuated_word": "wine"
+                },
+                {
+                  "word": "is",
+                  "start": 510.96002,
+                  "end": 511.28,
+                  "confidence": 0.84360886,
+                  "speaker": 0,
+                  "speaker_confidence": 0.89673275,
+                  "punctuated_word": "is"
+                },
+                {
+                  "word": "another",
+                  "start": 511.28,
+                  "end": 511.76,
+                  "confidence": 0.99517655,
+                  "speaker": 0,
+                  "speaker_confidence": 0.89673275,
+                  "punctuated_word": "another"
+                },
+                {
+                  "word": "form",
+                  "start": 511.76,
+                  "end": 512.4,
+                  "confidence": 0.9091219,
+                  "speaker": 0,
+                  "speaker_confidence": 0.89673275,
+                  "punctuated_word": "form,"
+                },
+                {
+                  "word": "and",
+                  "start": 512.48,
+                  "end": 512.64,
+                  "confidence": 0.99182314,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9235194,
+                  "punctuated_word": "and"
+                },
+                {
+                  "word": "all",
+                  "start": 512.64,
+                  "end": 512.88,
+                  "confidence": 0.99415237,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9235194,
+                  "punctuated_word": "all"
+                },
+                {
+                  "word": "of",
+                  "start": 512.88,
+                  "end": 513.04004,
+                  "confidence": 0.9956126,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9235194,
+                  "punctuated_word": "of"
+                },
+                {
+                  "word": "these",
+                  "start": 513.04004,
+                  "end": 513.2,
+                  "confidence": 0.9918241,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9235194,
+                  "punctuated_word": "these"
+                },
+                {
+                  "word": "are",
+                  "start": 513.2,
+                  "end": 513.44,
+                  "confidence": 0.99361455,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9235194,
+                  "punctuated_word": "are"
+                },
+                {
+                  "word": "about",
+                  "start": 513.44,
+                  "end": 513.68,
+                  "confidence": 0.98816144,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9235194,
+                  "punctuated_word": "about"
+                },
+                {
+                  "word": "99%",
+                  "start": 513.68,
+                  "end": 514.96,
+                  "confidence": 0.9745848,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9235194,
+                  "punctuated_word": "99%"
+                },
+                {
+                  "word": "available",
+                  "start": 514.96,
+                  "end": 516.0,
+                  "confidence": 0.98640454,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9235194,
+                  "punctuated_word": "available"
+                },
+                {
+                  "word": "calcium",
+                  "start": 516.16003,
+                  "end": 516.8,
+                  "confidence": 0.7741767,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9235194,
+                  "punctuated_word": "calcium"
+                },
+                {
+                  "word": "through",
+                  "start": 516.8,
+                  "end": 517.2,
+                  "confidence": 0.5142512,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9235194,
+                  "punctuated_word": "through"
+                },
+                {
+                  "word": "the",
+                  "start": 517.2,
+                  "end": 517.76,
+                  "confidence": 0.9776123,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9235194,
+                  "punctuated_word": "the"
+                },
+                {
+                  "word": "plants",
+                  "start": 518.24,
+                  "end": 518.96,
+                  "confidence": 0.5576486,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9235194,
+                  "punctuated_word": "plants."
+                },
+                {
+                  "word": "ramp",
+                  "start": 518.96,
+                  "end": 519.44,
+                  "confidence": 0.46678972,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9235194,
+                  "punctuated_word": "Ramp"
+                },
+                {
+                  "word": "okay",
+                  "start": 1215.6559,
+                  "end": 1216.4559,
+                  "confidence": 0.89086163,
+                  "speaker": 0,
+                  "speaker_confidence": 0.48087245,
+                  "punctuated_word": "Okay?"
+                },
+                {
+                  "word": "yep",
+                  "start": 1216.4559,
+                  "end": 1216.9359,
+                  "confidence": 0.7182512,
+                  "speaker": 0,
+                  "speaker_confidence": 0.48087245,
+                  "punctuated_word": "Yep."
+                },
+                {
+                  "word": "i",
+                  "start": 1216.9359,
+                  "end": 1217.096,
+                  "confidence": 0.9800295,
+                  "speaker": 0,
+                  "speaker_confidence": 0.7241812,
+                  "punctuated_word": "I"
+                },
+                {
+                  "word": "just",
+                  "start": 1217.096,
+                  "end": 1217.3359,
+                  "confidence": 0.9249455,
+                  "speaker": 0,
+                  "speaker_confidence": 0.7241812,
+                  "punctuated_word": "just"
+                },
+                {
+                  "word": "wanted",
+                  "start": 1217.3359,
+                  "end": 1217.736,
+                  "confidence": 0.8254372,
+                  "speaker": 0,
+                  "speaker_confidence": 0.7241812,
+                  "punctuated_word": "wanted"
+                },
+                {
+                  "word": "to",
+                  "start": 1217.736,
+                  "end": 1217.8959,
+                  "confidence": 0.68468165,
+                  "speaker": 0,
+                  "speaker_confidence": 0.7241812,
+                  "punctuated_word": "to"
+                },
+                {
+                  "word": "touch",
+                  "start": 1217.8959,
+                  "end": 1219.0159,
+                  "confidence": 0.43478456,
+                  "speaker": 0,
+                  "speaker_confidence": 0.7241812,
+                  "punctuated_word": "touch"
+                },
+                {
+                  "word": "on",
+                  "start": 1219.0159,
+                  "end": 1219.6559,
+                  "confidence": 0.8740291,
+                  "speaker": 0,
+                  "speaker_confidence": 0.7241812,
+                  "punctuated_word": "on."
+                },
+                {
+                  "word": "water",
+                  "start": 1219.736,
+                  "end": 1220.2959,
+                  "confidence": 0.995105,
+                  "speaker": 0,
+                  "speaker_confidence": 0.7241812,
+                  "punctuated_word": "Water"
+                },
+                {
+                  "word": "is",
+                  "start": 1220.2959,
+                  "end": 1220.5359,
+                  "confidence": 0.99390405,
+                  "speaker": 0,
+                  "speaker_confidence": 0.7241812,
+                  "punctuated_word": "is"
+                },
+                {
+                  "word": "the",
+                  "start": 1220.5359,
+                  "end": 1220.7759,
+                  "confidence": 0.98935497,
+                  "speaker": 0,
+                  "speaker_confidence": 0.7241812,
+                  "punctuated_word": "the"
+                },
+                {
+                  "word": "finest",
+                  "start": 1220.7759,
+                  "end": 1221.256,
+                  "confidence": 0.93482375,
+                  "speaker": 0,
+                  "speaker_confidence": 0.7241812,
+                  "punctuated_word": "finest"
+                },
+                {
+                  "word": "catalyst",
+                  "start": 1221.256,
+                  "end": 1221.8159,
+                  "confidence": 0.3921454,
+                  "speaker": 0,
+                  "speaker_confidence": 0.7241812,
+                  "punctuated_word": "catalyst"
+                },
+                {
+                  "word": "known",
+                  "start": 1221.8159,
+                  "end": 1222.216,
+                  "confidence": 0.99715436,
+                  "speaker": 0,
+                  "speaker_confidence": 0.7241812,
+                  "punctuated_word": "known"
+                },
+                {
+                  "word": "in",
+                  "start": 1222.216,
+                  "end": 1222.5359,
+                  "confidence": 0.8843543,
+                  "speaker": 0,
+                  "speaker_confidence": 0.7241812,
+                  "punctuated_word": "in"
+                },
+                {
+                  "word": "all",
+                  "start": 1222.5359,
+                  "end": 1222.9359,
+                  "confidence": 0.9481183,
+                  "speaker": 0,
+                  "speaker_confidence": 0.7241812,
+                  "punctuated_word": "all"
+                },
+                {
+                  "word": "the",
+                  "start": 1222.9359,
+                  "end": 1223.1759,
+                  "confidence": 0.79262143,
+                  "speaker": 0,
+                  "speaker_confidence": 0.7241812,
+                  "punctuated_word": "the"
+                },
+                {
+                  "word": "the",
+                  "start": 1223.1759,
+                  "end": 1224.216,
+                  "confidence": 0.26897746,
+                  "speaker": 0,
+                  "speaker_confidence": 0.7241812,
+                  "punctuated_word": "the"
+                },
+                {
+                  "word": "entire",
+                  "start": 1224.216,
+                  "end": 1224.6959,
+                  "confidence": 0.49573538,
+                  "speaker": 0,
+                  "speaker_confidence": 0.7241812,
+                  "punctuated_word": "entire"
+                },
+                {
+                  "word": "field",
+                  "start": 1224.6959,
+                  "end": 1225.1759,
+                  "confidence": 0.4641023,
+                  "speaker": 0,
+                  "speaker_confidence": 0.7241812,
+                  "punctuated_word": "field"
+                },
+                {
+                  "word": "of",
+                  "start": 1225.1759,
+                  "end": 1225.4159,
+                  "confidence": 0.58730495,
+                  "speaker": 0,
+                  "speaker_confidence": 0.7241812,
+                  "punctuated_word": "of."
+                }
+              ],
+              "paragraphs": {
+                "transcript": "\nSpeaker 0: Doctor reams agriculture. This is tape five side a and identified by Turner as 1976. Doctor reams agricultural course made in Blue Ridge in February 1976. Take number a five and And then cancel out zeroes, you have approximately 22 you have approximately twenty two and seventy five hundred pounds. But with this, say, 25 pounds per thousand square feet.\n\nSo this is what you figure on when you put out fertilizer per thousand square feet. You calculate on 25 pounds per thousand square feet. Now this is on commercial farms. Those are most common forms of calcium we have to restore, and they're much cheaper. On burnt wine is another form, and all of these are about 99% available calcium through the plants.\n\nRamp Okay? Yep. I just wanted to touch on. Water is the finest catalyst known in all the the entire field of.",
+                "paragraphs": [
+                  {
+                    "sentences": [
+                      {
+                        "text": "Doctor reams agriculture.",
+                        "start": 0.08,
+                        "end": 1.9199998
+                      },
+                      {
+                        "text": "This is tape five side a and identified by Turner as 1976.",
+                        "start": 2.48,
+                        "end": 7.2
+                      },
+                      {
+                        "text": "Doctor reams agricultural course made in Blue Ridge in February 1976.",
+                        "start": 7.9199996,
+                        "end": 14.559999
+                      },
+                      {
+                        "text": "Take number a five and And then cancel out zeroes, you have approximately 22 you have approximately twenty two and seventy five hundred pounds.",
+                        "start": 14.825,
+                        "end": 255.52
+                      },
+                      {
+                        "text": "But with this, say, 25 pounds per thousand square feet.",
+                        "start": 255.59999,
+                        "end": 259.68
+                      }
+                    ],
+                    "speaker": 0,
+                    "num_words": 60,
+                    "start": 0.08,
+                    "end": 259.68
+                  },
+                  {
+                    "sentences": [
+                      {
+                        "text": "So this is what you figure on when you put out fertilizer per thousand square feet.",
+                        "start": 259.895,
+                        "end": 264.695
+                      },
+                      {
+                        "text": "You calculate on 25 pounds per thousand square feet.",
+                        "start": 264.695,
+                        "end": 269.015
+                      },
+                      {
+                        "text": "Now this is on commercial farms.",
+                        "start": 269.095,
+                        "end": 272.295
+                      },
+                      {
+                        "text": "Those are most common forms of calcium we have to restore, and they're much cheaper.",
+                        "start": 504.64,
+                        "end": 509.76
+                      },
+                      {
+                        "text": "On burnt wine is another form, and all of these are about 99% available calcium through the plants.",
+                        "start": 510.0,
+                        "end": 518.96
+                      }
+                    ],
+                    "speaker": 0,
+                    "num_words": 64,
+                    "start": 259.895,
+                    "end": 518.96
+                  },
+                  {
+                    "sentences": [
+                      {
+                        "text": "Ramp Okay?",
+                        "start": 518.96,
+                        "end": 1216.4559
+                      },
+                      {
+                        "text": "Yep.",
+                        "start": 1216.4559,
+                        "end": 1216.9359
+                      },
+                      {
+                        "text": "I just wanted to touch on.",
+                        "start": 1216.9359,
+                        "end": 1219.6559
+                      },
+                      {
+                        "text": "Water is the finest catalyst known in all the the entire field of.",
+                        "start": 1219.736,
+                        "end": 1225.4159
+                      }
+                    ],
+                    "speaker": 0,
+                    "num_words": 22,
+                    "start": 518.96,
+                    "end": 1225.4159
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "utterances": [
+        {
+          "start": 0.08,
+          "end": 1.9199998,
+          "confidence": 0.81164247,
+          "channel": 0,
+          "transcript": "Doctor reams agriculture.",
+          "words": [
+            {
+              "word": "doctor",
+              "start": 0.08,
+              "end": 0.48,
+              "confidence": 0.9344426,
+              "speaker": 0,
+              "speaker_confidence": 0.0,
+              "punctuated_word": "Doctor"
+            },
+            {
+              "word": "reams",
+              "start": 0.48,
+              "end": 0.96,
+              "confidence": 0.7577392,
+              "speaker": 0,
+              "speaker_confidence": 0.0,
+              "punctuated_word": "reams"
+            },
+            {
+              "word": "agriculture",
+              "start": 0.96,
+              "end": 1.9199998,
+              "confidence": 0.74274564,
+              "speaker": 0,
+              "speaker_confidence": 0.0,
+              "punctuated_word": "agriculture."
+            }
+          ],
+          "speaker": 0,
+          "id": "31dd6cef-3a34-471c-9adc-6cfbc8f9b8dc"
+        },
+        {
+          "start": 2.48,
+          "end": 7.2,
+          "confidence": 0.90318036,
+          "channel": 0,
+          "transcript": "This is tape five side a and identified by Turner as 1976.",
+          "words": [
+            {
+              "word": "this",
+              "start": 2.48,
+              "end": 2.72,
+              "confidence": 0.9879624,
+              "speaker": 0,
+              "speaker_confidence": 0.0,
+              "punctuated_word": "This"
+            },
+            {
+              "word": "is",
+              "start": 2.72,
+              "end": 2.8799999,
+              "confidence": 0.9979024,
+              "speaker": 0,
+              "speaker_confidence": 0.0,
+              "punctuated_word": "is"
+            },
+            {
+              "word": "tape",
+              "start": 2.8799999,
+              "end": 3.1999998,
+              "confidence": 0.9770601,
+              "speaker": 0,
+              "speaker_confidence": 0.0,
+              "punctuated_word": "tape"
+            },
+            {
+              "word": "five",
+              "start": 3.1999998,
+              "end": 3.52,
+              "confidence": 0.99309254,
+              "speaker": 0,
+              "speaker_confidence": 0.0,
+              "punctuated_word": "five"
+            },
+            {
+              "word": "side",
+              "start": 3.52,
+              "end": 3.84,
+              "confidence": 0.56116927,
+              "speaker": 0,
+              "speaker_confidence": 0.0,
+              "punctuated_word": "side"
+            },
+            {
+              "word": "a",
+              "start": 3.84,
+              "end": 4.08,
+              "confidence": 0.89686155,
+              "speaker": 0,
+              "speaker_confidence": 0.0,
+              "punctuated_word": "a"
+            },
+            {
+              "word": "and",
+              "start": 4.08,
+              "end": 4.24,
+              "confidence": 0.90614724,
+              "speaker": 0,
+              "speaker_confidence": 0.0,
+              "punctuated_word": "and"
+            },
+            {
+              "word": "identified",
+              "start": 4.24,
+              "end": 4.7999997,
+              "confidence": 0.994582,
+              "speaker": 0,
+              "speaker_confidence": 0.0,
+              "punctuated_word": "identified"
+            },
+            {
+              "word": "by",
+              "start": 4.7999997,
+              "end": 5.04,
+              "confidence": 0.9988148,
+              "speaker": 0,
+              "speaker_confidence": 0.0,
+              "punctuated_word": "by"
+            },
+            {
+              "word": "turner",
+              "start": 5.04,
+              "end": 5.44,
+              "confidence": 0.58769614,
+              "speaker": 0,
+              "speaker_confidence": 0.0,
+              "punctuated_word": "Turner"
+            },
+            {
+              "word": "as",
+              "start": 5.44,
+              "end": 5.68,
+              "confidence": 0.95527357,
+              "speaker": 0,
+              "speaker_confidence": 0.0,
+              "punctuated_word": "as"
+            },
+            {
+              "word": "1976",
+              "start": 5.68,
+              "end": 7.2,
+              "confidence": 0.9816024,
+              "speaker": 0,
+              "speaker_confidence": 0.0,
+              "punctuated_word": "1976."
+            }
+          ],
+          "speaker": 0,
+          "id": "02906eb9-a929-4ea8-b0ee-dfa12209b296"
+        },
+        {
+          "start": 7.9199996,
+          "end": 9.92,
+          "confidence": 0.7721459,
+          "channel": 0,
+          "transcript": "Doctor reams agricultural",
+          "words": [
+            {
+              "word": "doctor",
+              "start": 7.9199996,
+              "end": 8.32,
+              "confidence": 0.98848325,
+              "speaker": 0,
+              "speaker_confidence": 0.26596332,
+              "punctuated_word": "Doctor"
+            },
+            {
+              "word": "reams",
+              "start": 8.32,
+              "end": 8.96,
+              "confidence": 0.9036876,
+              "speaker": 0,
+              "speaker_confidence": 0.26596332,
+              "punctuated_word": "reams"
+            },
+            {
+              "word": "agricultural",
+              "start": 8.96,
+              "end": 9.92,
+              "confidence": 0.42426682,
+              "speaker": 0,
+              "speaker_confidence": 0.26596332,
+              "punctuated_word": "agricultural"
+            }
+          ],
+          "speaker": 0,
+          "id": "d1e7ab1f-7e40-4056-ba05-4f0019f3eac5"
+        },
+        {
+          "start": 9.92,
+          "end": 13.48,
+          "confidence": 0.8868612,
+          "channel": 0,
+          "transcript": "course made in Blue Ridge in February",
+          "words": [
+            {
+              "word": "course",
+              "start": 9.92,
+              "end": 10.639999,
+              "confidence": 0.97381467,
+              "speaker": 0,
+              "speaker_confidence": 0.26596332,
+              "punctuated_word": "course"
+            },
+            {
+              "word": "made",
+              "start": 10.639999,
+              "end": 11.2,
+              "confidence": 0.9163271,
+              "speaker": 0,
+              "speaker_confidence": 0.26596332,
+              "punctuated_word": "made"
+            },
+            {
+              "word": "in",
+              "start": 11.2,
+              "end": 11.44,
+              "confidence": 0.91069454,
+              "speaker": 0,
+              "speaker_confidence": 0.26596332,
+              "punctuated_word": "in"
+            },
+            {
+              "word": "blue",
+              "start": 11.44,
+              "end": 11.679999,
+              "confidence": 0.9179077,
+              "speaker": 0,
+              "speaker_confidence": 0.26596332,
+              "punctuated_word": "Blue"
+            },
+            {
+              "word": "ridge",
+              "start": 11.679999,
+              "end": 12.08,
+              "confidence": 0.76654434,
+              "speaker": 0,
+              "speaker_confidence": 0.26596332,
+              "punctuated_word": "Ridge"
+            },
+            {
+              "word": "in",
+              "start": 12.08,
+              "end": 12.4,
+              "confidence": 0.982473,
+              "speaker": 0,
+              "speaker_confidence": 0.26596332,
+              "punctuated_word": "in"
+            },
+            {
+              "word": "february",
+              "start": 12.4,
+              "end": 13.48,
+              "confidence": 0.74026674,
+              "speaker": 0,
+              "speaker_confidence": 0.26596332,
+              "punctuated_word": "February"
+            }
+          ],
+          "speaker": 0,
+          "id": "f246099e-3f17-469f-a2c9-872bdcf68a11"
+        },
+        {
+          "start": 13.48,
+          "end": 14.559999,
+          "confidence": 0.74026674,
+          "channel": 0,
+          "transcript": "1976.",
+          "words": [
+            {
+              "word": "1976",
+              "start": 13.48,
+              "end": 14.559999,
+              "confidence": 0.74026674,
+              "speaker": 0,
+              "speaker_confidence": 0.26596332,
+              "punctuated_word": "1976."
+            }
+          ],
+          "speaker": 0,
+          "id": "685329f7-0f67-48dc-9248-f7f26939e1b2"
+        },
+        {
+          "start": 14.825,
+          "end": 16.664999,
+          "confidence": 0.8686165,
+          "channel": 0,
+          "transcript": "Take number a five",
+          "words": [
+            {
+              "word": "take",
+              "start": 14.825,
+              "end": 15.224999,
+              "confidence": 0.7035825,
+              "speaker": 0,
+              "speaker_confidence": 0.26596332,
+              "punctuated_word": "Take"
+            },
+            {
+              "word": "number",
+              "start": 15.224999,
+              "end": 15.705,
+              "confidence": 0.9957996,
+              "speaker": 0,
+              "speaker_confidence": 0.26596332,
+              "punctuated_word": "number"
+            },
+            {
+              "word": "a",
+              "start": 15.705,
+              "end": 16.025,
+              "confidence": 0.7843574,
+              "speaker": 0,
+              "speaker_confidence": 0.26596332,
+              "punctuated_word": "a"
+            },
+            {
+              "word": "five",
+              "start": 16.025,
+              "end": 16.664999,
+              "confidence": 0.9907267,
+              "speaker": 0,
+              "speaker_confidence": 0.26596332,
+              "punctuated_word": "five"
+            }
+          ],
+          "speaker": 0,
+          "id": "39e90e97-0cb3-41e8-a3ed-722bcbfccfda"
+        },
+        {
+          "start": 16.904999,
+          "end": 17.545,
+          "confidence": 0.7652464,
+          "channel": 0,
+          "transcript": "and",
+          "words": [
+            {
+              "word": "and",
+              "start": 16.904999,
+              "end": 17.545,
+              "confidence": 0.7652464,
+              "speaker": 0,
+              "speaker_confidence": 0.26596332,
+              "punctuated_word": "and"
+            }
+          ],
+          "speaker": 0,
+          "id": "dc700328-72f7-4f8b-9e54-4159ade9fa1d"
+        },
+        {
+          "start": 246.4,
+          "end": 249.92,
+          "confidence": 0.82308877,
+          "channel": 0,
+          "transcript": "And then cancel out zeroes, you have approximately 22",
+          "words": [
+            {
+              "word": "and",
+              "start": 246.4,
+              "end": 246.64,
+              "confidence": 0.9724506,
+              "speaker": 0,
+              "speaker_confidence": 0.86127305,
+              "punctuated_word": "And"
+            },
+            {
+              "word": "then",
+              "start": 246.64,
+              "end": 246.79999,
+              "confidence": 0.986326,
+              "speaker": 0,
+              "speaker_confidence": 0.86127305,
+              "punctuated_word": "then"
+            },
+            {
+              "word": "cancel",
+              "start": 246.79999,
+              "end": 247.28,
+              "confidence": 0.93063295,
+              "speaker": 0,
+              "speaker_confidence": 0.86127305,
+              "punctuated_word": "cancel"
+            },
+            {
+              "word": "out",
+              "start": 247.28,
+              "end": 247.51999,
+              "confidence": 0.9899629,
+              "speaker": 0,
+              "speaker_confidence": 0.86127305,
+              "punctuated_word": "out"
+            },
+            {
+              "word": "zeroes",
+              "start": 247.51999,
+              "end": 248.15999,
+              "confidence": 0.6152442,
+              "speaker": 0,
+              "speaker_confidence": 0.86127305,
+              "punctuated_word": "zeroes,"
+            },
+            {
+              "word": "you",
+              "start": 248.15999,
+              "end": 248.23999,
+              "confidence": 0.5904876,
+              "speaker": 0,
+              "speaker_confidence": 0.7298374,
+              "punctuated_word": "you"
+            },
+            {
+              "word": "have",
+              "start": 248.23999,
+              "end": 248.4,
+              "confidence": 0.6102534,
+              "speaker": 0,
+              "speaker_confidence": 0.7298374,
+              "punctuated_word": "have"
+            },
+            {
+              "word": "approximately",
+              "start": 248.4,
+              "end": 248.95999,
+              "confidence": 0.7186136,
+              "speaker": 0,
+              "speaker_confidence": 0.7298374,
+              "punctuated_word": "approximately"
+            },
+            {
+              "word": "22",
+              "start": 248.95999,
+              "end": 249.92,
+              "confidence": 0.9938278,
+              "speaker": 0,
+              "speaker_confidence": 0.7298374,
+              "punctuated_word": "22"
+            }
+          ],
+          "speaker": 0,
+          "id": "6b914ba2-f7fa-4b43-8025-31096e80060b"
+        },
+        {
+          "start": 250.64,
+          "end": 252.8,
+          "confidence": 0.7941957,
+          "channel": 0,
+          "transcript": "you have approximately twenty two and",
+          "words": [
+            {
+              "word": "you",
+              "start": 250.64,
+              "end": 250.72,
+              "confidence": 0.63829714,
+              "speaker": 0,
+              "speaker_confidence": 0.7298374,
+              "punctuated_word": "you"
+            },
+            {
+              "word": "have",
+              "start": 250.72,
+              "end": 250.95999,
+              "confidence": 0.48162565,
+              "speaker": 0,
+              "speaker_confidence": 0.7298374,
+              "punctuated_word": "have"
+            },
+            {
+              "word": "approximately",
+              "start": 250.95999,
+              "end": 251.36,
+              "confidence": 0.71593976,
+              "speaker": 0,
+              "speaker_confidence": 0.7298374,
+              "punctuated_word": "approximately"
+            },
+            {
+              "word": "twenty",
+              "start": 251.36,
+              "end": 251.76,
+              "confidence": 0.9901326,
+              "speaker": 0,
+              "speaker_confidence": 0.7298374,
+              "punctuated_word": "twenty"
+            },
+            {
+              "word": "two",
+              "start": 251.76,
+              "end": 252.07999,
+              "confidence": 0.9975068,
+              "speaker": 0,
+              "speaker_confidence": 0.7298374,
+              "punctuated_word": "two"
+            },
+            {
+              "word": "and",
+              "start": 252.07999,
+              "end": 252.8,
+              "confidence": 0.94167274,
+              "speaker": 0,
+              "speaker_confidence": 0.9729376,
+              "punctuated_word": "and"
+            }
+          ],
+          "speaker": 0,
+          "id": "8110e050-35a7-450e-b365-6a3e9cb2e4b7"
+        },
+        {
+          "start": 253.28,
+          "end": 255.52,
+          "confidence": 0.9258975,
+          "channel": 0,
+          "transcript": "seventy five hundred pounds.",
+          "words": [
+            {
+              "word": "seventy",
+              "start": 253.28,
+              "end": 253.76,
+              "confidence": 0.89427674,
+              "speaker": 0,
+              "speaker_confidence": 0.9729376,
+              "punctuated_word": "seventy"
+            },
+            {
+              "word": "five",
+              "start": 253.76,
+              "end": 254.31999,
+              "confidence": 0.98762846,
+              "speaker": 0,
+              "speaker_confidence": 0.9729376,
+              "punctuated_word": "five"
+            },
+            {
+              "word": "hundred",
+              "start": 254.31999,
+              "end": 254.64,
+              "confidence": 0.95763844,
+              "speaker": 0,
+              "speaker_confidence": 0.9729376,
+              "punctuated_word": "hundred"
+            },
+            {
+              "word": "pounds",
+              "start": 254.64,
+              "end": 255.52,
+              "confidence": 0.8640464,
+              "speaker": 0,
+              "speaker_confidence": 0.9729376,
+              "punctuated_word": "pounds."
+            }
+          ],
+          "speaker": 0,
+          "id": "7a28d062-641f-4e01-9040-1f7d63cefb15"
+        },
+        {
+          "start": 255.59999,
+          "end": 257.04,
+          "confidence": 0.75298333,
+          "channel": 0,
+          "transcript": "But with this, say,",
+          "words": [
+            {
+              "word": "but",
+              "start": 255.59999,
+              "end": 256.0,
+              "confidence": 0.9870429,
+              "speaker": 0,
+              "speaker_confidence": 0.9729376,
+              "punctuated_word": "But"
+            },
+            {
+              "word": "with",
+              "start": 256.0,
+              "end": 256.4,
+              "confidence": 0.5632809,
+              "speaker": 0,
+              "speaker_confidence": 0.9729376,
+              "punctuated_word": "with"
+            },
+            {
+              "word": "this",
+              "start": 256.4,
+              "end": 256.63998,
+              "confidence": 0.8281181,
+              "speaker": 0,
+              "speaker_confidence": 0.9729376,
+              "punctuated_word": "this,"
+            },
+            {
+              "word": "say",
+              "start": 256.63998,
+              "end": 257.04,
+              "confidence": 0.63349164,
+              "speaker": 0,
+              "speaker_confidence": 0.9729376,
+              "punctuated_word": "say,"
+            }
+          ],
+          "speaker": 0,
+          "id": "65dea46a-5497-443b-a2db-5654be6423b8"
+        },
+        {
+          "start": 257.44,
+          "end": 263.255,
+          "confidence": 0.94959164,
+          "channel": 0,
+          "transcript": "25 pounds per thousand square feet. So this is what you figure on when you put out fertilizer",
+          "words": [
+            {
+              "word": "25",
+              "start": 257.44,
+              "end": 258.0,
+              "confidence": 0.9937345,
+              "speaker": 0,
+              "speaker_confidence": 0.9729376,
+              "punctuated_word": "25"
+            },
+            {
+              "word": "pounds",
+              "start": 258.0,
+              "end": 258.4,
+              "confidence": 0.9796172,
+              "speaker": 0,
+              "speaker_confidence": 0.9729376,
+              "punctuated_word": "pounds"
+            },
+            {
+              "word": "per",
+              "start": 258.4,
+              "end": 258.63998,
+              "confidence": 0.95087415,
+              "speaker": 0,
+              "speaker_confidence": 0.9729376,
+              "punctuated_word": "per"
+            },
+            {
+              "word": "thousand",
+              "start": 258.63998,
+              "end": 259.04,
+              "confidence": 0.9761451,
+              "speaker": 0,
+              "speaker_confidence": 0.9729376,
+              "punctuated_word": "thousand"
+            },
+            {
+              "word": "square",
+              "start": 259.04,
+              "end": 259.36,
+              "confidence": 0.9972595,
+              "speaker": 0,
+              "speaker_confidence": 0.9729376,
+              "punctuated_word": "square"
+            },
+            {
+              "word": "feet",
+              "start": 259.36,
+              "end": 259.68,
+              "confidence": 0.8022492,
+              "speaker": 0,
+              "speaker_confidence": 0.9729376,
+              "punctuated_word": "feet."
+            },
+            {
+              "word": "so",
+              "start": 259.895,
+              "end": 260.135,
+              "confidence": 0.74073476,
+              "speaker": 0,
+              "speaker_confidence": 0.9729376,
+              "punctuated_word": "So"
+            },
+            {
+              "word": "this",
+              "start": 260.135,
+              "end": 260.375,
+              "confidence": 0.99601257,
+              "speaker": 0,
+              "speaker_confidence": 0.9729376,
+              "punctuated_word": "this"
+            },
+            {
+              "word": "is",
+              "start": 260.375,
+              "end": 260.535,
+              "confidence": 0.993536,
+              "speaker": 0,
+              "speaker_confidence": 0.9729376,
+              "punctuated_word": "is"
+            },
+            {
+              "word": "what",
+              "start": 260.535,
+              "end": 260.695,
+              "confidence": 0.99248177,
+              "speaker": 0,
+              "speaker_confidence": 0.9684835,
+              "punctuated_word": "what"
+            },
+            {
+              "word": "you",
+              "start": 260.695,
+              "end": 260.935,
+              "confidence": 0.96096605,
+              "speaker": 0,
+              "speaker_confidence": 0.9684835,
+              "punctuated_word": "you"
+            },
+            {
+              "word": "figure",
+              "start": 260.935,
+              "end": 261.255,
+              "confidence": 0.94335693,
+              "speaker": 0,
+              "speaker_confidence": 0.9684835,
+              "punctuated_word": "figure"
+            },
+            {
+              "word": "on",
+              "start": 261.255,
+              "end": 261.495,
+              "confidence": 0.95017666,
+              "speaker": 0,
+              "speaker_confidence": 0.9684835,
+              "punctuated_word": "on"
+            },
+            {
+              "word": "when",
+              "start": 261.495,
+              "end": 261.73502,
+              "confidence": 0.9792746,
+              "speaker": 0,
+              "speaker_confidence": 0.9684835,
+              "punctuated_word": "when"
+            },
+            {
+              "word": "you",
+              "start": 261.73502,
+              "end": 261.895,
+              "confidence": 0.95250773,
+              "speaker": 0,
+              "speaker_confidence": 0.9684835,
+              "punctuated_word": "you"
+            },
+            {
+              "word": "put",
+              "start": 261.895,
+              "end": 262.135,
+              "confidence": 0.99694353,
+              "speaker": 0,
+              "speaker_confidence": 0.9684835,
+              "punctuated_word": "put"
+            },
+            {
+              "word": "out",
+              "start": 262.135,
+              "end": 262.295,
+              "confidence": 0.8895538,
+              "speaker": 0,
+              "speaker_confidence": 0.9684835,
+              "punctuated_word": "out"
+            },
+            {
+              "word": "fertilizer",
+              "start": 262.295,
+              "end": 263.255,
+              "confidence": 0.9972275,
+              "speaker": 0,
+              "speaker_confidence": 0.9684835,
+              "punctuated_word": "fertilizer"
+            }
+          ],
+          "speaker": 0,
+          "id": "2998e30f-71ed-4bee-932f-9f717ae6f91e"
+        },
+        {
+          "start": 263.335,
+          "end": 266.855,
+          "confidence": 0.8805282,
+          "channel": 0,
+          "transcript": "per thousand square feet. You calculate on 25",
+          "words": [
+            {
+              "word": "per",
+              "start": 263.335,
+              "end": 263.655,
+              "confidence": 0.5977421,
+              "speaker": 0,
+              "speaker_confidence": 0.9684835,
+              "punctuated_word": "per"
+            },
+            {
+              "word": "thousand",
+              "start": 263.655,
+              "end": 263.975,
+              "confidence": 0.99507916,
+              "speaker": 0,
+              "speaker_confidence": 0.9684835,
+              "punctuated_word": "thousand"
+            },
+            {
+              "word": "square",
+              "start": 263.975,
+              "end": 264.375,
+              "confidence": 0.99748814,
+              "speaker": 0,
+              "speaker_confidence": 0.9684835,
+              "punctuated_word": "square"
+            },
+            {
+              "word": "feet",
+              "start": 264.375,
+              "end": 264.695,
+              "confidence": 0.74211454,
+              "speaker": 0,
+              "speaker_confidence": 0.9684835,
+              "punctuated_word": "feet."
+            },
+            {
+              "word": "you",
+              "start": 264.695,
+              "end": 264.935,
+              "confidence": 0.8613481,
+              "speaker": 0,
+              "speaker_confidence": 0.9684835,
+              "punctuated_word": "You"
+            },
+            {
+              "word": "calculate",
+              "start": 264.935,
+              "end": 265.575,
+              "confidence": 0.91445154,
+              "speaker": 0,
+              "speaker_confidence": 0.9684835,
+              "punctuated_word": "calculate"
+            },
+            {
+              "word": "on",
+              "start": 265.575,
+              "end": 265.895,
+              "confidence": 0.9453314,
+              "speaker": 0,
+              "speaker_confidence": 0.9684835,
+              "punctuated_word": "on"
+            },
+            {
+              "word": "25",
+              "start": 265.895,
+              "end": 266.855,
+              "confidence": 0.9906707,
+              "speaker": 0,
+              "speaker_confidence": 0.9684835,
+              "punctuated_word": "25"
+            }
+          ],
+          "speaker": 0,
+          "id": "d7e8f018-a930-4b80-86f1-1529bfa296f2"
+        },
+        {
+          "start": 266.935,
+          "end": 272.295,
+          "confidence": 0.9740667,
+          "channel": 0,
+          "transcript": "pounds per thousand square feet. Now this is on commercial farms.",
+          "words": [
+            {
+              "word": "pounds",
+              "start": 266.935,
+              "end": 267.335,
+              "confidence": 0.9805787,
+              "speaker": 0,
+              "speaker_confidence": 0.9684835,
+              "punctuated_word": "pounds"
+            },
+            {
+              "word": "per",
+              "start": 267.335,
+              "end": 267.575,
+              "confidence": 0.9911005,
+              "speaker": 0,
+              "speaker_confidence": 0.9684835,
+              "punctuated_word": "per"
+            },
+            {
+              "word": "thousand",
+              "start": 267.575,
+              "end": 267.975,
+              "confidence": 0.99268395,
+              "speaker": 0,
+              "speaker_confidence": 0.9684835,
+              "punctuated_word": "thousand"
+            },
+            {
+              "word": "square",
+              "start": 267.975,
+              "end": 268.375,
+              "confidence": 0.9964204,
+              "speaker": 0,
+              "speaker_confidence": 0.9684835,
+              "punctuated_word": "square"
+            },
+            {
+              "word": "feet",
+              "start": 268.375,
+              "end": 269.015,
+              "confidence": 0.99217045,
+              "speaker": 0,
+              "speaker_confidence": 0.9684835,
+              "punctuated_word": "feet."
+            },
+            {
+              "word": "now",
+              "start": 269.095,
+              "end": 269.495,
+              "confidence": 0.99274313,
+              "speaker": 0,
+              "speaker_confidence": 0.9684835,
+              "punctuated_word": "Now"
+            },
+            {
+              "word": "this",
+              "start": 269.495,
+              "end": 270.055,
+              "confidence": 0.9502111,
+              "speaker": 0,
+              "speaker_confidence": 0.9684835,
+              "punctuated_word": "this"
+            },
+            {
+              "word": "is",
+              "start": 270.055,
+              "end": 270.535,
+              "confidence": 0.99132067,
+              "speaker": 0,
+              "speaker_confidence": 0.9684835,
+              "punctuated_word": "is"
+            },
+            {
+              "word": "on",
+              "start": 270.535,
+              "end": 271.015,
+              "confidence": 0.95532453,
+              "speaker": 0,
+              "speaker_confidence": 0.9684835,
+              "punctuated_word": "on"
+            },
+            {
+              "word": "commercial",
+              "start": 271.015,
+              "end": 271.815,
+              "confidence": 0.9836405,
+              "speaker": 0,
+              "speaker_confidence": 0.9684835,
+              "punctuated_word": "commercial"
+            },
+            {
+              "word": "farms",
+              "start": 271.815,
+              "end": 272.295,
+              "confidence": 0.8885397,
+              "speaker": 0,
+              "speaker_confidence": 0.9684835,
+              "punctuated_word": "farms."
+            }
+          ],
+          "speaker": 0,
+          "id": "c9c8c511-f8f4-4a2b-a107-a965acbd6ac5"
+        },
+        {
+          "start": 504.64,
+          "end": 509.76,
+          "confidence": 0.88466054,
+          "channel": 0,
+          "transcript": "Those are most common forms of calcium we have to restore, and they're much cheaper.",
+          "words": [
+            {
+              "word": "those",
+              "start": 504.64,
+              "end": 504.96002,
+              "confidence": 0.9811927,
+              "speaker": 0,
+              "speaker_confidence": 0.6729967,
+              "punctuated_word": "Those"
+            },
+            {
+              "word": "are",
+              "start": 504.96002,
+              "end": 505.28,
+              "confidence": 0.9924185,
+              "speaker": 0,
+              "speaker_confidence": 0.6729967,
+              "punctuated_word": "are"
+            },
+            {
+              "word": "most",
+              "start": 505.28,
+              "end": 505.76,
+              "confidence": 0.7354921,
+              "speaker": 0,
+              "speaker_confidence": 0.6729967,
+              "punctuated_word": "most"
+            },
+            {
+              "word": "common",
+              "start": 505.76,
+              "end": 506.24002,
+              "confidence": 0.9932793,
+              "speaker": 0,
+              "speaker_confidence": 0.6729967,
+              "punctuated_word": "common"
+            },
+            {
+              "word": "forms",
+              "start": 506.24002,
+              "end": 506.56,
+              "confidence": 0.9878484,
+              "speaker": 0,
+              "speaker_confidence": 0.6729967,
+              "punctuated_word": "forms"
+            },
+            {
+              "word": "of",
+              "start": 506.56,
+              "end": 506.72,
+              "confidence": 0.9941924,
+              "speaker": 0,
+              "speaker_confidence": 0.74903184,
+              "punctuated_word": "of"
+            },
+            {
+              "word": "calcium",
+              "start": 506.72,
+              "end": 507.2,
+              "confidence": 0.99117684,
+              "speaker": 0,
+              "speaker_confidence": 0.74903184,
+              "punctuated_word": "calcium"
+            },
+            {
+              "word": "we",
+              "start": 507.2,
+              "end": 507.44,
+              "confidence": 0.76560926,
+              "speaker": 0,
+              "speaker_confidence": 0.74903184,
+              "punctuated_word": "we"
+            },
+            {
+              "word": "have",
+              "start": 507.44,
+              "end": 507.68002,
+              "confidence": 0.7345783,
+              "speaker": 0,
+              "speaker_confidence": 0.74903184,
+              "punctuated_word": "have"
+            },
+            {
+              "word": "to",
+              "start": 507.68002,
+              "end": 507.84,
+              "confidence": 0.69372135,
+              "speaker": 0,
+              "speaker_confidence": 0.74903184,
+              "punctuated_word": "to"
+            },
+            {
+              "word": "restore",
+              "start": 507.84,
+              "end": 508.40002,
+              "confidence": 0.5946231,
+              "speaker": 0,
+              "speaker_confidence": 0.74903184,
+              "punctuated_word": "restore,"
+            },
+            {
+              "word": "and",
+              "start": 508.40002,
+              "end": 508.56,
+              "confidence": 0.991582,
+              "speaker": 0,
+              "speaker_confidence": 0.74903184,
+              "punctuated_word": "and"
+            },
+            {
+              "word": "they're",
+              "start": 508.56,
+              "end": 508.72,
+              "confidence": 0.956226,
+              "speaker": 0,
+              "speaker_confidence": 0.89673275,
+              "punctuated_word": "they're"
+            },
+            {
+              "word": "much",
+              "start": 508.72,
+              "end": 509.04,
+              "confidence": 0.99133366,
+              "speaker": 0,
+              "speaker_confidence": 0.89673275,
+              "punctuated_word": "much"
+            },
+            {
+              "word": "cheaper",
+              "start": 509.04,
+              "end": 509.76,
+              "confidence": 0.86663353,
+              "speaker": 0,
+              "speaker_confidence": 0.89673275,
+              "punctuated_word": "cheaper."
+            }
+          ],
+          "speaker": 0,
+          "id": "0a0b298c-c77f-44d7-b193-6b9a16587855"
+        },
+        {
+          "start": 510.0,
+          "end": 514.96,
+          "confidence": 0.8357792,
+          "channel": 0,
+          "transcript": "On burnt wine is another form, and all of these are about 99%",
+          "words": [
+            {
+              "word": "on",
+              "start": 510.0,
+              "end": 510.24002,
+              "confidence": 0.24051476,
+              "speaker": 0,
+              "speaker_confidence": 0.89673275,
+              "punctuated_word": "On"
+            },
+            {
+              "word": "burnt",
+              "start": 510.24002,
+              "end": 510.56,
+              "confidence": 0.55902654,
+              "speaker": 0,
+              "speaker_confidence": 0.89673275,
+              "punctuated_word": "burnt"
+            },
+            {
+              "word": "wine",
+              "start": 510.56,
+              "end": 510.96002,
+              "confidence": 0.387908,
+              "speaker": 0,
+              "speaker_confidence": 0.89673275,
+              "punctuated_word": "wine"
+            },
+            {
+              "word": "is",
+              "start": 510.96002,
+              "end": 511.28,
+              "confidence": 0.84360886,
+              "speaker": 0,
+              "speaker_confidence": 0.89673275,
+              "punctuated_word": "is"
+            },
+            {
+              "word": "another",
+              "start": 511.28,
+              "end": 511.76,
+              "confidence": 0.99517655,
+              "speaker": 0,
+              "speaker_confidence": 0.89673275,
+              "punctuated_word": "another"
+            },
+            {
+              "word": "form",
+              "start": 511.76,
+              "end": 512.4,
+              "confidence": 0.9091219,
+              "speaker": 0,
+              "speaker_confidence": 0.89673275,
+              "punctuated_word": "form,"
+            },
+            {
+              "word": "and",
+              "start": 512.48,
+              "end": 512.64,
+              "confidence": 0.99182314,
+              "speaker": 0,
+              "speaker_confidence": 0.9235194,
+              "punctuated_word": "and"
+            },
+            {
+              "word": "all",
+              "start": 512.64,
+              "end": 512.88,
+              "confidence": 0.99415237,
+              "speaker": 0,
+              "speaker_confidence": 0.9235194,
+              "punctuated_word": "all"
+            },
+            {
+              "word": "of",
+              "start": 512.88,
+              "end": 513.04004,
+              "confidence": 0.9956126,
+              "speaker": 0,
+              "speaker_confidence": 0.9235194,
+              "punctuated_word": "of"
+            },
+            {
+              "word": "these",
+              "start": 513.04004,
+              "end": 513.2,
+              "confidence": 0.9918241,
+              "speaker": 0,
+              "speaker_confidence": 0.9235194,
+              "punctuated_word": "these"
+            },
+            {
+              "word": "are",
+              "start": 513.2,
+              "end": 513.44,
+              "confidence": 0.99361455,
+              "speaker": 0,
+              "speaker_confidence": 0.9235194,
+              "punctuated_word": "are"
+            },
+            {
+              "word": "about",
+              "start": 513.44,
+              "end": 513.68,
+              "confidence": 0.98816144,
+              "speaker": 0,
+              "speaker_confidence": 0.9235194,
+              "punctuated_word": "about"
+            },
+            {
+              "word": "99%",
+              "start": 513.68,
+              "end": 514.96,
+              "confidence": 0.9745848,
+              "speaker": 0,
+              "speaker_confidence": 0.9235194,
+              "punctuated_word": "99%"
+            }
+          ],
+          "speaker": 0,
+          "id": "287a8268-ee41-4b40-b9b2-69b636915d20"
+        },
+        {
+          "start": 514.96,
+          "end": 516.0,
+          "confidence": 0.98640454,
+          "channel": 0,
+          "transcript": "available",
+          "words": [
+            {
+              "word": "available",
+              "start": 514.96,
+              "end": 516.0,
+              "confidence": 0.98640454,
+              "speaker": 0,
+              "speaker_confidence": 0.9235194,
+              "punctuated_word": "available"
+            }
+          ],
+          "speaker": 0,
+          "id": "723f13ba-f2ff-4816-9d97-4129e11f648b"
+        },
+        {
+          "start": 516.16003,
+          "end": 517.76,
+          "confidence": 0.7553467,
+          "channel": 0,
+          "transcript": "calcium through the",
+          "words": [
+            {
+              "word": "calcium",
+              "start": 516.16003,
+              "end": 516.8,
+              "confidence": 0.7741767,
+              "speaker": 0,
+              "speaker_confidence": 0.9235194,
+              "punctuated_word": "calcium"
+            },
+            {
+              "word": "through",
+              "start": 516.8,
+              "end": 517.2,
+              "confidence": 0.5142512,
+              "speaker": 0,
+              "speaker_confidence": 0.9235194,
+              "punctuated_word": "through"
+            },
+            {
+              "word": "the",
+              "start": 517.2,
+              "end": 517.76,
+              "confidence": 0.9776123,
+              "speaker": 0,
+              "speaker_confidence": 0.9235194,
+              "punctuated_word": "the"
+            }
+          ],
+          "speaker": 0,
+          "id": "d88f353d-de9e-43c9-aa4d-4455a6aa8432"
+        },
+        {
+          "start": 518.24,
+          "end": 519.44,
+          "confidence": 0.5122192,
+          "channel": 0,
+          "transcript": "plants. Ramp",
+          "words": [
+            {
+              "word": "plants",
+              "start": 518.24,
+              "end": 518.96,
+              "confidence": 0.5576486,
+              "speaker": 0,
+              "speaker_confidence": 0.9235194,
+              "punctuated_word": "plants."
+            },
+            {
+              "word": "ramp",
+              "start": 518.96,
+              "end": 519.44,
+              "confidence": 0.46678972,
+              "speaker": 0,
+              "speaker_confidence": 0.9235194,
+              "punctuated_word": "Ramp"
+            }
+          ],
+          "speaker": 0,
+          "id": "383aa33f-a3f0-475d-a726-95ba2a30bd40"
+        },
+        {
+          "start": 1215.6559,
+          "end": 1216.4559,
+          "confidence": 0.89086163,
+          "channel": 0,
+          "transcript": "Okay?",
+          "words": [
+            {
+              "word": "okay",
+              "start": 1215.6559,
+              "end": 1216.4559,
+              "confidence": 0.89086163,
+              "speaker": 0,
+              "speaker_confidence": 0.48087245,
+              "punctuated_word": "Okay?"
+            }
+          ],
+          "speaker": 0,
+          "id": "9a676d98-bcaa-4f75-b5da-6b40bc6afe46"
+        },
+        {
+          "start": 1216.4559,
+          "end": 1219.0159,
+          "confidence": 0.76135486,
+          "channel": 0,
+          "transcript": "Yep. I just wanted to touch",
+          "words": [
+            {
+              "word": "yep",
+              "start": 1216.4559,
+              "end": 1216.9359,
+              "confidence": 0.7182512,
+              "speaker": 0,
+              "speaker_confidence": 0.48087245,
+              "punctuated_word": "Yep."
+            },
+            {
+              "word": "i",
+              "start": 1216.9359,
+              "end": 1217.096,
+              "confidence": 0.9800295,
+              "speaker": 0,
+              "speaker_confidence": 0.7241812,
+              "punctuated_word": "I"
+            },
+            {
+              "word": "just",
+              "start": 1217.096,
+              "end": 1217.3359,
+              "confidence": 0.9249455,
+              "speaker": 0,
+              "speaker_confidence": 0.7241812,
+              "punctuated_word": "just"
+            },
+            {
+              "word": "wanted",
+              "start": 1217.3359,
+              "end": 1217.736,
+              "confidence": 0.8254372,
+              "speaker": 0,
+              "speaker_confidence": 0.7241812,
+              "punctuated_word": "wanted"
+            },
+            {
+              "word": "to",
+              "start": 1217.736,
+              "end": 1217.8959,
+              "confidence": 0.68468165,
+              "speaker": 0,
+              "speaker_confidence": 0.7241812,
+              "punctuated_word": "to"
+            },
+            {
+              "word": "touch",
+              "start": 1217.8959,
+              "end": 1219.0159,
+              "confidence": 0.43478456,
+              "speaker": 0,
+              "speaker_confidence": 0.7241812,
+              "punctuated_word": "touch"
+            }
+          ],
+          "speaker": 0,
+          "id": "e0849b0e-366f-4dab-bf45-ea87006ccf60"
+        },
+        {
+          "start": 1219.0159,
+          "end": 1224.216,
+          "confidence": 0.8245989,
+          "channel": 0,
+          "transcript": "on. Water is the finest catalyst known in all the the",
+          "words": [
+            {
+              "word": "on",
+              "start": 1219.0159,
+              "end": 1219.6559,
+              "confidence": 0.8740291,
+              "speaker": 0,
+              "speaker_confidence": 0.7241812,
+              "punctuated_word": "on."
+            },
+            {
+              "word": "water",
+              "start": 1219.736,
+              "end": 1220.2959,
+              "confidence": 0.995105,
+              "speaker": 0,
+              "speaker_confidence": 0.7241812,
+              "punctuated_word": "Water"
+            },
+            {
+              "word": "is",
+              "start": 1220.2959,
+              "end": 1220.5359,
+              "confidence": 0.99390405,
+              "speaker": 0,
+              "speaker_confidence": 0.7241812,
+              "punctuated_word": "is"
+            },
+            {
+              "word": "the",
+              "start": 1220.5359,
+              "end": 1220.7759,
+              "confidence": 0.98935497,
+              "speaker": 0,
+              "speaker_confidence": 0.7241812,
+              "punctuated_word": "the"
+            },
+            {
+              "word": "finest",
+              "start": 1220.7759,
+              "end": 1221.256,
+              "confidence": 0.93482375,
+              "speaker": 0,
+              "speaker_confidence": 0.7241812,
+              "punctuated_word": "finest"
+            },
+            {
+              "word": "catalyst",
+              "start": 1221.256,
+              "end": 1221.8159,
+              "confidence": 0.3921454,
+              "speaker": 0,
+              "speaker_confidence": 0.7241812,
+              "punctuated_word": "catalyst"
+            },
+            {
+              "word": "known",
+              "start": 1221.8159,
+              "end": 1222.216,
+              "confidence": 0.99715436,
+              "speaker": 0,
+              "speaker_confidence": 0.7241812,
+              "punctuated_word": "known"
+            },
+            {
+              "word": "in",
+              "start": 1222.216,
+              "end": 1222.5359,
+              "confidence": 0.8843543,
+              "speaker": 0,
+              "speaker_confidence": 0.7241812,
+              "punctuated_word": "in"
+            },
+            {
+              "word": "all",
+              "start": 1222.5359,
+              "end": 1222.9359,
+              "confidence": 0.9481183,
+              "speaker": 0,
+              "speaker_confidence": 0.7241812,
+              "punctuated_word": "all"
+            },
+            {
+              "word": "the",
+              "start": 1222.9359,
+              "end": 1223.1759,
+              "confidence": 0.79262143,
+              "speaker": 0,
+              "speaker_confidence": 0.7241812,
+              "punctuated_word": "the"
+            },
+            {
+              "word": "the",
+              "start": 1223.1759,
+              "end": 1224.216,
+              "confidence": 0.26897746,
+              "speaker": 0,
+              "speaker_confidence": 0.7241812,
+              "punctuated_word": "the"
+            }
+          ],
+          "speaker": 0,
+          "id": "e7d0dcb3-499d-4cc6-9767-9f0f369f5b57"
+        },
+        {
+          "start": 1224.216,
+          "end": 1225.4159,
+          "confidence": 0.5157142,
+          "channel": 0,
+          "transcript": "entire field of.",
+          "words": [
+            {
+              "word": "entire",
+              "start": 1224.216,
+              "end": 1224.6959,
+              "confidence": 0.49573538,
+              "speaker": 0,
+              "speaker_confidence": 0.7241812,
+              "punctuated_word": "entire"
+            },
+            {
+              "word": "field",
+              "start": 1224.6959,
+              "end": 1225.1759,
+              "confidence": 0.4641023,
+              "speaker": 0,
+              "speaker_confidence": 0.7241812,
+              "punctuated_word": "field"
+            },
+            {
+              "word": "of",
+              "start": 1225.1759,
+              "end": 1225.4159,
+              "confidence": 0.58730495,
+              "speaker": 0,
+              "speaker_confidence": 0.7241812,
+              "punctuated_word": "of."
+            }
+          ],
+          "speaker": 0,
+          "id": "b6420253-20a6-485d-a1e8-516481903436"
+        }
+      ]
+    }
+  }
+}

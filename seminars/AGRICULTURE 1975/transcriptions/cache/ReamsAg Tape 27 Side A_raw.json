@@ -1,0 +1,714 @@
+{
+  "audio_file": "seminars/AGRICULTURE 1975/ReamsAg Tape 27 Side A.mp3",
+  "service": "deepgram",
+  "timestamp": "2025-11-04T08:04:42Z",
+  "raw_response": {
+    "metadata": {
+      "transaction_key": "deprecated",
+      "request_id": "5e402739-5955-4180-bbf4-c9ad07146af7",
+      "sha256": "ef153c001fda43e6c66474d621298ddf00a1d330068f356d515e564f8100af61",
+      "created": "2025-11-04T06:04:40.968Z",
+      "duration": 1472.2351,
+      "channels": 1,
+      "models": [
+        "2187e11a-3532-4498-b076-81fa530bdd49"
+      ],
+      "model_info": {
+        "2187e11a-3532-4498-b076-81fa530bdd49": {
+          "name": "general-nova-3",
+          "version": "2025-07-31.0",
+          "arch": "nova-3"
+        }
+      }
+    },
+    "results": {
+      "channels": [
+        {
+          "alternatives": [
+            {
+              "transcript": "Doctor reams agriculture. Possibly 1975, but probably 1976. This is tape 27 side a. This is doctor reams, and is called for. Georgia. July 1976. 5 one, place number 253.",
+              "confidence": 0.8892906,
+              "words": [
+                {
+                  "word": "doctor",
+                  "start": 0.16,
+                  "end": 0.48,
+                  "confidence": 0.9785509,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "Doctor"
+                },
+                {
+                  "word": "reams",
+                  "start": 0.48,
+                  "end": 0.96,
+                  "confidence": 0.85283005,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "reams"
+                },
+                {
+                  "word": "agriculture",
+                  "start": 0.96,
+                  "end": 1.9199998,
+                  "confidence": 0.5572583,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "agriculture."
+                },
+                {
+                  "word": "possibly",
+                  "start": 2.1599998,
+                  "end": 2.56,
+                  "confidence": 0.9935941,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "Possibly"
+                },
+                {
+                  "word": "1975",
+                  "start": 2.56,
+                  "end": 4.16,
+                  "confidence": 0.935987,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "1975,"
+                },
+                {
+                  "word": "but",
+                  "start": 4.16,
+                  "end": 4.24,
+                  "confidence": 0.9944621,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "but"
+                },
+                {
+                  "word": "probably",
+                  "start": 4.24,
+                  "end": 4.72,
+                  "confidence": 0.9930199,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "probably"
+                },
+                {
+                  "word": "1976",
+                  "start": 4.72,
+                  "end": 6.3999996,
+                  "confidence": 0.99569005,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "1976."
+                },
+                {
+                  "word": "this",
+                  "start": 6.3999996,
+                  "end": 6.64,
+                  "confidence": 0.9977189,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "This"
+                },
+                {
+                  "word": "is",
+                  "start": 6.64,
+                  "end": 6.7999997,
+                  "confidence": 0.9980952,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "is"
+                },
+                {
+                  "word": "tape",
+                  "start": 6.7999997,
+                  "end": 7.12,
+                  "confidence": 0.95707846,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "tape"
+                },
+                {
+                  "word": "27",
+                  "start": 7.12,
+                  "end": 7.7599998,
+                  "confidence": 0.9967327,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "27"
+                },
+                {
+                  "word": "side",
+                  "start": 7.7599998,
+                  "end": 8.08,
+                  "confidence": 0.5444532,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "side"
+                },
+                {
+                  "word": "a",
+                  "start": 8.08,
+                  "end": 8.639999,
+                  "confidence": 0.9826113,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "a."
+                },
+                {
+                  "word": "this",
+                  "start": 8.639999,
+                  "end": 8.88,
+                  "confidence": 0.8842044,
+                  "speaker": 1,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "This"
+                },
+                {
+                  "word": "is",
+                  "start": 8.88,
+                  "end": 9.04,
+                  "confidence": 0.9786361,
+                  "speaker": 1,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "is"
+                },
+                {
+                  "word": "doctor",
+                  "start": 9.04,
+                  "end": 9.36,
+                  "confidence": 0.8778524,
+                  "speaker": 1,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "doctor"
+                },
+                {
+                  "word": "reams",
+                  "start": 9.36,
+                  "end": 9.84,
+                  "confidence": 0.68298393,
+                  "speaker": 1,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "reams,"
+                },
+                {
+                  "word": "and",
+                  "start": 9.84,
+                  "end": 10.08,
+                  "confidence": 0.04821695,
+                  "speaker": 1,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "and"
+                },
+                {
+                  "word": "is",
+                  "start": 10.08,
+                  "end": 10.24,
+                  "confidence": 0.8713288,
+                  "speaker": 1,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "is"
+                },
+                {
+                  "word": "called",
+                  "start": 10.24,
+                  "end": 10.48,
+                  "confidence": 0.18502201,
+                  "speaker": 1,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "called"
+                },
+                {
+                  "word": "for",
+                  "start": 10.48,
+                  "end": 10.959999,
+                  "confidence": 0.30385017,
+                  "speaker": 1,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "for."
+                },
+                {
+                  "word": "georgia",
+                  "start": 11.2,
+                  "end": 12.559999,
+                  "confidence": 0.38191783,
+                  "speaker": 1,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "Georgia."
+                },
+                {
+                  "word": "july",
+                  "start": 12.96,
+                  "end": 14.0,
+                  "confidence": 0.84733003,
+                  "speaker": 1,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "July"
+                },
+                {
+                  "word": "1976",
+                  "start": 14.0,
+                  "end": 15.039999,
+                  "confidence": 0.84733003,
+                  "speaker": 1,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "1976."
+                },
+                {
+                  "word": "5",
+                  "start": 15.28,
+                  "end": 15.599999,
+                  "confidence": 0.5815855,
+                  "speaker": 1,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "5"
+                },
+                {
+                  "word": "one",
+                  "start": 15.599999,
+                  "end": 16.0,
+                  "confidence": 0.66188407,
+                  "speaker": 1,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "one,"
+                },
+                {
+                  "word": "place",
+                  "start": 16.0,
+                  "end": 16.48,
+                  "confidence": 0.30611277,
+                  "speaker": 1,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "place"
+                },
+                {
+                  "word": "number",
+                  "start": 16.48,
+                  "end": 16.8,
+                  "confidence": 0.90405333,
+                  "speaker": 1,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "number"
+                },
+                {
+                  "word": "253",
+                  "start": 16.8,
+                  "end": 17.92,
+                  "confidence": 0.58065933,
+                  "speaker": 1,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "253."
+                }
+              ],
+              "paragraphs": {
+                "transcript": "\nSpeaker 0: Doctor reams agriculture. Possibly 1975, but probably 1976. This is tape 27 side a.\n\nSpeaker 1: This is doctor reams, and is called for. Georgia. July 1976. 5 one, place number 253.",
+                "paragraphs": [
+                  {
+                    "sentences": [
+                      {
+                        "text": "Doctor reams agriculture.",
+                        "start": 0.16,
+                        "end": 1.9199998
+                      },
+                      {
+                        "text": "Possibly 1975, but probably 1976.",
+                        "start": 2.1599998,
+                        "end": 6.3999996
+                      },
+                      {
+                        "text": "This is tape 27 side a.",
+                        "start": 6.3999996,
+                        "end": 8.639999
+                      }
+                    ],
+                    "speaker": 0,
+                    "num_words": 14,
+                    "start": 0.16,
+                    "end": 8.639999
+                  },
+                  {
+                    "sentences": [
+                      {
+                        "text": "This is doctor reams, and is called for.",
+                        "start": 8.639999,
+                        "end": 10.959999
+                      },
+                      {
+                        "text": "Georgia.",
+                        "start": 11.2,
+                        "end": 12.559999
+                      },
+                      {
+                        "text": "July 1976.",
+                        "start": 12.96,
+                        "end": 15.039999
+                      },
+                      {
+                        "text": "5 one, place number 253.",
+                        "start": 15.28,
+                        "end": 17.92
+                      }
+                    ],
+                    "speaker": 1,
+                    "num_words": 16,
+                    "start": 8.639999,
+                    "end": 17.92
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "utterances": [
+        {
+          "start": 0.16,
+          "end": 1.9199998,
+          "confidence": 0.7962131,
+          "channel": 0,
+          "transcript": "Doctor reams agriculture.",
+          "words": [
+            {
+              "word": "doctor",
+              "start": 0.16,
+              "end": 0.48,
+              "confidence": 0.9785509,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "Doctor"
+            },
+            {
+              "word": "reams",
+              "start": 0.48,
+              "end": 0.96,
+              "confidence": 0.85283005,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "reams"
+            },
+            {
+              "word": "agriculture",
+              "start": 0.96,
+              "end": 1.9199998,
+              "confidence": 0.5572583,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "agriculture."
+            }
+          ],
+          "speaker": 0,
+          "id": "c29b8833-ab13-45c7-ad93-43b1b2c62e61"
+        },
+        {
+          "start": 2.1599998,
+          "end": 4.16,
+          "confidence": 0.9647906,
+          "channel": 0,
+          "transcript": "Possibly 1975,",
+          "words": [
+            {
+              "word": "possibly",
+              "start": 2.1599998,
+              "end": 2.56,
+              "confidence": 0.9935941,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "Possibly"
+            },
+            {
+              "word": "1975",
+              "start": 2.56,
+              "end": 4.16,
+              "confidence": 0.935987,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "1975,"
+            }
+          ],
+          "speaker": 0,
+          "id": "30a8e250-e21c-4c28-ac87-afee9892035b"
+        },
+        {
+          "start": 4.16,
+          "end": 6.3999996,
+          "confidence": 0.99439067,
+          "channel": 0,
+          "transcript": "but probably 1976.",
+          "words": [
+            {
+              "word": "but",
+              "start": 4.16,
+              "end": 4.24,
+              "confidence": 0.9944621,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "but"
+            },
+            {
+              "word": "probably",
+              "start": 4.24,
+              "end": 4.72,
+              "confidence": 0.9930199,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "probably"
+            },
+            {
+              "word": "1976",
+              "start": 4.72,
+              "end": 6.3999996,
+              "confidence": 0.99569005,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "1976."
+            }
+          ],
+          "speaker": 0,
+          "id": "b8c799c6-c809-432b-85de-6ab6ef0babca"
+        },
+        {
+          "start": 6.3999996,
+          "end": 12.559999,
+          "confidence": 0.7127135,
+          "channel": 0,
+          "transcript": "This is tape 27 side a. This is doctor reams, and is called for. Georgia.",
+          "words": [
+            {
+              "word": "this",
+              "start": 6.3999996,
+              "end": 6.64,
+              "confidence": 0.9977189,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "This"
+            },
+            {
+              "word": "is",
+              "start": 6.64,
+              "end": 6.7999997,
+              "confidence": 0.9980952,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "is"
+            },
+            {
+              "word": "tape",
+              "start": 6.7999997,
+              "end": 7.12,
+              "confidence": 0.95707846,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "tape"
+            },
+            {
+              "word": "27",
+              "start": 7.12,
+              "end": 7.7599998,
+              "confidence": 0.9967327,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "27"
+            },
+            {
+              "word": "side",
+              "start": 7.7599998,
+              "end": 8.08,
+              "confidence": 0.5444532,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "side"
+            },
+            {
+              "word": "a",
+              "start": 8.08,
+              "end": 8.639999,
+              "confidence": 0.9826113,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "a."
+            },
+            {
+              "word": "this",
+              "start": 8.639999,
+              "end": 8.88,
+              "confidence": 0.8842044,
+              "speaker": 1,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "This"
+            },
+            {
+              "word": "is",
+              "start": 8.88,
+              "end": 9.04,
+              "confidence": 0.9786361,
+              "speaker": 1,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "is"
+            },
+            {
+              "word": "doctor",
+              "start": 9.04,
+              "end": 9.36,
+              "confidence": 0.8778524,
+              "speaker": 1,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "doctor"
+            },
+            {
+              "word": "reams",
+              "start": 9.36,
+              "end": 9.84,
+              "confidence": 0.68298393,
+              "speaker": 1,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "reams,"
+            },
+            {
+              "word": "and",
+              "start": 9.84,
+              "end": 10.08,
+              "confidence": 0.04821695,
+              "speaker": 1,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "and"
+            },
+            {
+              "word": "is",
+              "start": 10.08,
+              "end": 10.24,
+              "confidence": 0.8713288,
+              "speaker": 1,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "is"
+            },
+            {
+              "word": "called",
+              "start": 10.24,
+              "end": 10.48,
+              "confidence": 0.18502201,
+              "speaker": 1,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "called"
+            },
+            {
+              "word": "for",
+              "start": 10.48,
+              "end": 10.959999,
+              "confidence": 0.30385017,
+              "speaker": 1,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "for."
+            },
+            {
+              "word": "georgia",
+              "start": 11.2,
+              "end": 12.559999,
+              "confidence": 0.38191783,
+              "speaker": 1,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "Georgia."
+            }
+          ],
+          "speaker": 1,
+          "id": "b98dd704-6ac7-452e-af1d-005307df0d03"
+        },
+        {
+          "start": 12.96,
+          "end": 14.0,
+          "confidence": 0.84733003,
+          "channel": 0,
+          "transcript": "July",
+          "words": [
+            {
+              "word": "july",
+              "start": 12.96,
+              "end": 14.0,
+              "confidence": 0.84733003,
+              "speaker": 1,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "July"
+            }
+          ],
+          "speaker": 1,
+          "id": "0d5f4a64-4d42-4d6f-b840-c9c265e1b798"
+        },
+        {
+          "start": 14.0,
+          "end": 15.039999,
+          "confidence": 0.84733003,
+          "channel": 0,
+          "transcript": "1976.",
+          "words": [
+            {
+              "word": "1976",
+              "start": 14.0,
+              "end": 15.039999,
+              "confidence": 0.84733003,
+              "speaker": 1,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "1976."
+            }
+          ],
+          "speaker": 1,
+          "id": "97dfb8e8-aa61-406d-af50-cf60adb3a6c0"
+        },
+        {
+          "start": 15.28,
+          "end": 17.92,
+          "confidence": 0.606859,
+          "channel": 0,
+          "transcript": "5 one, place number 253.",
+          "words": [
+            {
+              "word": "5",
+              "start": 15.28,
+              "end": 15.599999,
+              "confidence": 0.5815855,
+              "speaker": 1,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "5"
+            },
+            {
+              "word": "one",
+              "start": 15.599999,
+              "end": 16.0,
+              "confidence": 0.66188407,
+              "speaker": 1,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "one,"
+            },
+            {
+              "word": "place",
+              "start": 16.0,
+              "end": 16.48,
+              "confidence": 0.30611277,
+              "speaker": 1,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "place"
+            },
+            {
+              "word": "number",
+              "start": 16.48,
+              "end": 16.8,
+              "confidence": 0.90405333,
+              "speaker": 1,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "number"
+            },
+            {
+              "word": "253",
+              "start": 16.8,
+              "end": 17.92,
+              "confidence": 0.58065933,
+              "speaker": 1,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "253."
+            }
+          ],
+          "speaker": 1,
+          "id": "a3864310-5ac9-477b-b8d9-9bb0f1599977"
+        }
+      ]
+    }
+  }
+}

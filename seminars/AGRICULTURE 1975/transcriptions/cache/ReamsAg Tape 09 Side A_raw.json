@@ -1,0 +1,839 @@
+{
+  "audio_file": "seminars/AGRICULTURE 1975/ReamsAg Tape 09 Side A.mp3",
+  "service": "deepgram",
+  "timestamp": "2025-11-04T07:58:12Z",
+  "raw_response": {
+    "metadata": {
+      "transaction_key": "deprecated",
+      "request_id": "d811ebf2-0cbd-4a68-b347-c85b1c5b54f9",
+      "sha256": "98dc6e22aeddf56d75a42b8e0143b7f129cfe1bbd6b16774f469f0f807067065",
+      "created": "2025-11-04T05:58:11.470Z",
+      "duration": 1288.2808,
+      "channels": 1,
+      "models": [
+        "2187e11a-3532-4498-b076-81fa530bdd49"
+      ],
+      "model_info": {
+        "2187e11a-3532-4498-b076-81fa530bdd49": {
+          "name": "general-nova-3",
+          "version": "2025-07-31.0",
+          "arch": "nova-3"
+        }
+      }
+    },
+    "results": {
+      "channels": [
+        {
+          "alternatives": [
+            {
+              "transcript": "Doctor reams agriculture. This is marked tape nine side a and probably 19 '70 six. Copy. Kid murdered this one also dot with phone calls. About three minutes removed and only the best reams agriculture student will understand what is left.",
+              "confidence": 0.99003905,
+              "words": [
+                {
+                  "word": "doctor",
+                  "start": 0.16,
+                  "end": 0.48,
+                  "confidence": 0.9689882,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "Doctor"
+                },
+                {
+                  "word": "reams",
+                  "start": 0.48,
+                  "end": 0.96,
+                  "confidence": 0.8526589,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "reams"
+                },
+                {
+                  "word": "agriculture",
+                  "start": 0.96,
+                  "end": 1.9199998,
+                  "confidence": 0.81102943,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "agriculture."
+                },
+                {
+                  "word": "this",
+                  "start": 2.1599998,
+                  "end": 2.32,
+                  "confidence": 0.9928059,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "This"
+                },
+                {
+                  "word": "is",
+                  "start": 2.32,
+                  "end": 2.48,
+                  "confidence": 0.9951899,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "is"
+                },
+                {
+                  "word": "marked",
+                  "start": 2.48,
+                  "end": 2.8,
+                  "confidence": 0.7060344,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "marked"
+                },
+                {
+                  "word": "tape",
+                  "start": 2.8,
+                  "end": 3.12,
+                  "confidence": 0.9740199,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "tape"
+                },
+                {
+                  "word": "nine",
+                  "start": 3.12,
+                  "end": 3.36,
+                  "confidence": 0.8357519,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "nine"
+                },
+                {
+                  "word": "side",
+                  "start": 3.36,
+                  "end": 3.6799998,
+                  "confidence": 0.84198517,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "side"
+                },
+                {
+                  "word": "a",
+                  "start": 3.6799998,
+                  "end": 3.9199998,
+                  "confidence": 0.94416356,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "a"
+                },
+                {
+                  "word": "and",
+                  "start": 3.9199998,
+                  "end": 4.08,
+                  "confidence": 0.61950684,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "and"
+                },
+                {
+                  "word": "probably",
+                  "start": 4.08,
+                  "end": 4.48,
+                  "confidence": 0.99003905,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "probably"
+                },
+                {
+                  "word": "19",
+                  "start": 4.48,
+                  "end": 5.04,
+                  "confidence": 0.99410266,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "19"
+                },
+                {
+                  "word": "'70",
+                  "start": 5.04,
+                  "end": 5.6,
+                  "confidence": 0.99920267,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "'70"
+                },
+                {
+                  "word": "six",
+                  "start": 5.6,
+                  "end": 6.24,
+                  "confidence": 0.8975047,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "six."
+                },
+                {
+                  "word": "copy",
+                  "start": 6.24,
+                  "end": 6.64,
+                  "confidence": 0.701295,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "Copy."
+                },
+                {
+                  "word": "kid",
+                  "start": 6.64,
+                  "end": 6.7999997,
+                  "confidence": 0.9871497,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "Kid"
+                },
+                {
+                  "word": "murdered",
+                  "start": 6.7999997,
+                  "end": 7.2,
+                  "confidence": 0.99269336,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "murdered"
+                },
+                {
+                  "word": "this",
+                  "start": 7.2,
+                  "end": 7.44,
+                  "confidence": 0.9731425,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "this"
+                },
+                {
+                  "word": "one",
+                  "start": 7.44,
+                  "end": 7.68,
+                  "confidence": 0.9977386,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "one"
+                },
+                {
+                  "word": "also",
+                  "start": 7.68,
+                  "end": 8.0,
+                  "confidence": 0.9365019,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "also"
+                },
+                {
+                  "word": "dot",
+                  "start": 8.0,
+                  "end": 8.24,
+                  "confidence": 0.921192,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "dot"
+                },
+                {
+                  "word": "with",
+                  "start": 8.24,
+                  "end": 8.48,
+                  "confidence": 0.9731995,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "with"
+                },
+                {
+                  "word": "phone",
+                  "start": 8.48,
+                  "end": 8.72,
+                  "confidence": 0.9994591,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "phone"
+                },
+                {
+                  "word": "calls",
+                  "start": 8.72,
+                  "end": 9.44,
+                  "confidence": 0.89028776,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "calls."
+                },
+                {
+                  "word": "about",
+                  "start": 9.5199995,
+                  "end": 9.84,
+                  "confidence": 0.99693716,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "About"
+                },
+                {
+                  "word": "three",
+                  "start": 9.84,
+                  "end": 10.08,
+                  "confidence": 0.9995289,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "three"
+                },
+                {
+                  "word": "minutes",
+                  "start": 10.08,
+                  "end": 10.32,
+                  "confidence": 0.999482,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "minutes"
+                },
+                {
+                  "word": "removed",
+                  "start": 10.32,
+                  "end": 10.8,
+                  "confidence": 0.9993919,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "removed"
+                },
+                {
+                  "word": "and",
+                  "start": 10.8,
+                  "end": 11.04,
+                  "confidence": 0.76444113,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "and"
+                },
+                {
+                  "word": "only",
+                  "start": 11.04,
+                  "end": 11.28,
+                  "confidence": 0.99945563,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "only"
+                },
+                {
+                  "word": "the",
+                  "start": 11.28,
+                  "end": 11.44,
+                  "confidence": 0.9990625,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "the"
+                },
+                {
+                  "word": "best",
+                  "start": 11.44,
+                  "end": 11.679999,
+                  "confidence": 0.99858934,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "best"
+                },
+                {
+                  "word": "reams",
+                  "start": 11.679999,
+                  "end": 12.08,
+                  "confidence": 0.98384905,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "reams"
+                },
+                {
+                  "word": "agriculture",
+                  "start": 12.08,
+                  "end": 12.719999,
+                  "confidence": 0.9712705,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "agriculture"
+                },
+                {
+                  "word": "student",
+                  "start": 12.719999,
+                  "end": 13.2,
+                  "confidence": 0.9985568,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "student"
+                },
+                {
+                  "word": "will",
+                  "start": 13.2,
+                  "end": 13.44,
+                  "confidence": 0.99890256,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "will"
+                },
+                {
+                  "word": "understand",
+                  "start": 13.44,
+                  "end": 13.92,
+                  "confidence": 0.9998276,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "understand"
+                },
+                {
+                  "word": "what",
+                  "start": 13.92,
+                  "end": 14.24,
+                  "confidence": 0.99960095,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "what"
+                },
+                {
+                  "word": "is",
+                  "start": 14.24,
+                  "end": 14.4,
+                  "confidence": 0.9991873,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "is"
+                },
+                {
+                  "word": "left",
+                  "start": 14.4,
+                  "end": 14.639999,
+                  "confidence": 0.9983162,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "left."
+                }
+              ],
+              "paragraphs": {
+                "transcript": "\nSpeaker 0: Doctor reams agriculture. This is marked tape nine side a and probably 19 '70 six. Copy. Kid murdered this one also dot with phone calls. About three minutes removed and only the best reams agriculture student will understand what is left.",
+                "paragraphs": [
+                  {
+                    "sentences": [
+                      {
+                        "text": "Doctor reams agriculture.",
+                        "start": 0.16,
+                        "end": 1.9199998
+                      },
+                      {
+                        "text": "This is marked tape nine side a and probably 19 '70 six.",
+                        "start": 2.1599998,
+                        "end": 6.24
+                      },
+                      {
+                        "text": "Copy.",
+                        "start": 6.24,
+                        "end": 6.64
+                      },
+                      {
+                        "text": "Kid murdered this one also dot with phone calls.",
+                        "start": 6.64,
+                        "end": 9.44
+                      },
+                      {
+                        "text": "About three minutes removed and only the best reams agriculture student will understand what is left.",
+                        "start": 9.5199995,
+                        "end": 14.639999
+                      }
+                    ],
+                    "speaker": 0,
+                    "num_words": 41,
+                    "start": 0.16,
+                    "end": 14.639999
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "utterances": [
+        {
+          "start": 0.16,
+          "end": 1.9199998,
+          "confidence": 0.8775589,
+          "channel": 0,
+          "transcript": "Doctor reams agriculture.",
+          "words": [
+            {
+              "word": "doctor",
+              "start": 0.16,
+              "end": 0.48,
+              "confidence": 0.9689882,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "Doctor"
+            },
+            {
+              "word": "reams",
+              "start": 0.48,
+              "end": 0.96,
+              "confidence": 0.8526589,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "reams"
+            },
+            {
+              "word": "agriculture",
+              "start": 0.96,
+              "end": 1.9199998,
+              "confidence": 0.81102943,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "agriculture."
+            }
+          ],
+          "speaker": 0,
+          "id": "c356940c-df46-4600-89e3-f1729dc754a8"
+        },
+        {
+          "start": 2.1599998,
+          "end": 14.639999,
+          "confidence": 0.94393057,
+          "channel": 0,
+          "transcript": "This is marked tape nine side a and probably 19 '70 six. Copy. Kid murdered this one also dot with phone calls. About three minutes removed and only the best reams agriculture student will understand what is left.",
+          "words": [
+            {
+              "word": "this",
+              "start": 2.1599998,
+              "end": 2.32,
+              "confidence": 0.9928059,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "This"
+            },
+            {
+              "word": "is",
+              "start": 2.32,
+              "end": 2.48,
+              "confidence": 0.9951899,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "is"
+            },
+            {
+              "word": "marked",
+              "start": 2.48,
+              "end": 2.8,
+              "confidence": 0.7060344,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "marked"
+            },
+            {
+              "word": "tape",
+              "start": 2.8,
+              "end": 3.12,
+              "confidence": 0.9740199,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "tape"
+            },
+            {
+              "word": "nine",
+              "start": 3.12,
+              "end": 3.36,
+              "confidence": 0.8357519,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "nine"
+            },
+            {
+              "word": "side",
+              "start": 3.36,
+              "end": 3.6799998,
+              "confidence": 0.84198517,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "side"
+            },
+            {
+              "word": "a",
+              "start": 3.6799998,
+              "end": 3.9199998,
+              "confidence": 0.94416356,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "a"
+            },
+            {
+              "word": "and",
+              "start": 3.9199998,
+              "end": 4.08,
+              "confidence": 0.61950684,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "and"
+            },
+            {
+              "word": "probably",
+              "start": 4.08,
+              "end": 4.48,
+              "confidence": 0.99003905,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "probably"
+            },
+            {
+              "word": "19",
+              "start": 4.48,
+              "end": 5.04,
+              "confidence": 0.99410266,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "19"
+            },
+            {
+              "word": "'70",
+              "start": 5.04,
+              "end": 5.6,
+              "confidence": 0.99920267,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "'70"
+            },
+            {
+              "word": "six",
+              "start": 5.6,
+              "end": 6.24,
+              "confidence": 0.8975047,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "six."
+            },
+            {
+              "word": "copy",
+              "start": 6.24,
+              "end": 6.64,
+              "confidence": 0.701295,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "Copy."
+            },
+            {
+              "word": "kid",
+              "start": 6.64,
+              "end": 6.7999997,
+              "confidence": 0.9871497,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "Kid"
+            },
+            {
+              "word": "murdered",
+              "start": 6.7999997,
+              "end": 7.2,
+              "confidence": 0.99269336,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "murdered"
+            },
+            {
+              "word": "this",
+              "start": 7.2,
+              "end": 7.44,
+              "confidence": 0.9731425,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "this"
+            },
+            {
+              "word": "one",
+              "start": 7.44,
+              "end": 7.68,
+              "confidence": 0.9977386,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "one"
+            },
+            {
+              "word": "also",
+              "start": 7.68,
+              "end": 8.0,
+              "confidence": 0.9365019,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "also"
+            },
+            {
+              "word": "dot",
+              "start": 8.0,
+              "end": 8.24,
+              "confidence": 0.921192,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "dot"
+            },
+            {
+              "word": "with",
+              "start": 8.24,
+              "end": 8.48,
+              "confidence": 0.9731995,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "with"
+            },
+            {
+              "word": "phone",
+              "start": 8.48,
+              "end": 8.72,
+              "confidence": 0.9994591,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "phone"
+            },
+            {
+              "word": "calls",
+              "start": 8.72,
+              "end": 9.44,
+              "confidence": 0.89028776,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "calls."
+            },
+            {
+              "word": "about",
+              "start": 9.5199995,
+              "end": 9.84,
+              "confidence": 0.99693716,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "About"
+            },
+            {
+              "word": "three",
+              "start": 9.84,
+              "end": 10.08,
+              "confidence": 0.9995289,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "three"
+            },
+            {
+              "word": "minutes",
+              "start": 10.08,
+              "end": 10.32,
+              "confidence": 0.999482,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "minutes"
+            },
+            {
+              "word": "removed",
+              "start": 10.32,
+              "end": 10.8,
+              "confidence": 0.9993919,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "removed"
+            },
+            {
+              "word": "and",
+              "start": 10.8,
+              "end": 11.04,
+              "confidence": 0.76444113,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "and"
+            },
+            {
+              "word": "only",
+              "start": 11.04,
+              "end": 11.28,
+              "confidence": 0.99945563,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "only"
+            },
+            {
+              "word": "the",
+              "start": 11.28,
+              "end": 11.44,
+              "confidence": 0.9990625,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "the"
+            },
+            {
+              "word": "best",
+              "start": 11.44,
+              "end": 11.679999,
+              "confidence": 0.99858934,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "best"
+            },
+            {
+              "word": "reams",
+              "start": 11.679999,
+              "end": 12.08,
+              "confidence": 0.98384905,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "reams"
+            },
+            {
+              "word": "agriculture",
+              "start": 12.08,
+              "end": 12.719999,
+              "confidence": 0.9712705,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "agriculture"
+            },
+            {
+              "word": "student",
+              "start": 12.719999,
+              "end": 13.2,
+              "confidence": 0.9985568,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "student"
+            },
+            {
+              "word": "will",
+              "start": 13.2,
+              "end": 13.44,
+              "confidence": 0.99890256,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "will"
+            },
+            {
+              "word": "understand",
+              "start": 13.44,
+              "end": 13.92,
+              "confidence": 0.9998276,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "understand"
+            },
+            {
+              "word": "what",
+              "start": 13.92,
+              "end": 14.24,
+              "confidence": 0.99960095,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "what"
+            },
+            {
+              "word": "is",
+              "start": 14.24,
+              "end": 14.4,
+              "confidence": 0.9991873,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "is"
+            },
+            {
+              "word": "left",
+              "start": 14.4,
+              "end": 14.639999,
+              "confidence": 0.9983162,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "left."
+            }
+          ],
+          "speaker": 0,
+          "id": "1a028475-fe04-4da2-9f88-1216ca90383e"
+        }
+      ]
+    }
+  }
+}

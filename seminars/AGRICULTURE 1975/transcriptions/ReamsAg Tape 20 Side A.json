@@ -1,0 +1,589 @@
+{
+  "audio_file": "seminars/AGRICULTURE 1975/ReamsAg Tape 20 Side A.mp3",
+  "service": "deepgram",
+  "config": {
+    "speaker_labels": true,
+    "custom_vocabulary": [],
+    "punctuate": true,
+    "format_text": true,
+    "language_code": "en",
+    "max_speakers": 3
+  },
+  "timestamp": "2025-11-04T08:00:01Z",
+  "result": {
+    "text": "Doctor reams agriculture. Possibly 1975, but probably 1976. Tape 20 side a and I cannot tell what copy boy did to degrade this tape.",
+    "speakers": [
+      {
+        "speaker": "Speaker 0",
+        "start_time": 0.16,
+        "end_time": 1.9199998,
+        "text": "Doctor reams agriculture.",
+        "confidence": 0.8585773
+      },
+      {
+        "speaker": "Speaker 0",
+        "start_time": 2.56,
+        "end_time": 4.64,
+        "text": "Possibly 1975,",
+        "confidence": 0.95994806
+      },
+      {
+        "speaker": "Speaker 0",
+        "start_time": 4.64,
+        "end_time": 6.88,
+        "text": "but probably 1976.",
+        "confidence": 0.9865702
+      },
+      {
+        "speaker": "Speaker 0",
+        "start_time": 7.44,
+        "end_time": 11.599999,
+        "text": "Tape 20 side a and I cannot tell what copy boy did to degrade this tape.",
+        "confidence": 0.9153364
+      }
+    ],
+    "confidence": 0.9915415,
+    "audio_duration": 11.599999,
+    "processing_time": 11.889493227005005,
+    "raw_response": {
+      "metadata": {
+        "transaction_key": "deprecated",
+        "request_id": "48c6e1bf-4b1d-4c09-91e7-877639c012a4",
+        "sha256": "58ce3ae719c95dff12e4a93ffbfde6a6b1f2905444d77a684c9cf262ba8ec0d5",
+        "created": "2025-11-04T05:59:59.826Z",
+        "duration": 1419.1543,
+        "channels": 1,
+        "models": [
+          "2187e11a-3532-4498-b076-81fa530bdd49"
+        ],
+        "model_info": {
+          "2187e11a-3532-4498-b076-81fa530bdd49": {
+            "name": "general-nova-3",
+            "version": "2025-07-31.0",
+            "arch": "nova-3"
+          }
+        }
+      },
+      "results": {
+        "channels": [
+          {
+            "alternatives": [
+              {
+                "transcript": "Doctor reams agriculture. Possibly 1975, but probably 1976. Tape 20 side a and I cannot tell what copy boy did to degrade this tape.",
+                "confidence": 0.9915415,
+                "words": [
+                  {
+                    "word": "doctor",
+                    "start": 0.16,
+                    "end": 0.48,
+                    "confidence": 0.9509451,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "Doctor"
+                  },
+                  {
+                    "word": "reams",
+                    "start": 0.48,
+                    "end": 0.96,
+                    "confidence": 0.85501575,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "reams"
+                  },
+                  {
+                    "word": "agriculture",
+                    "start": 0.96,
+                    "end": 1.9199998,
+                    "confidence": 0.7697711,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "agriculture."
+                  },
+                  {
+                    "word": "possibly",
+                    "start": 2.56,
+                    "end": 3.04,
+                    "confidence": 0.99553275,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "Possibly"
+                  },
+                  {
+                    "word": "1975",
+                    "start": 3.04,
+                    "end": 4.64,
+                    "confidence": 0.9243633,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "1975,"
+                  },
+                  {
+                    "word": "but",
+                    "start": 4.64,
+                    "end": 4.72,
+                    "confidence": 0.97181207,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "but"
+                  },
+                  {
+                    "word": "probably",
+                    "start": 4.72,
+                    "end": 5.2,
+                    "confidence": 0.9958627,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "probably"
+                  },
+                  {
+                    "word": "1976",
+                    "start": 5.2,
+                    "end": 6.88,
+                    "confidence": 0.9920359,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "1976."
+                  },
+                  {
+                    "word": "tape",
+                    "start": 7.44,
+                    "end": 7.8399997,
+                    "confidence": 0.9915415,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "Tape"
+                  },
+                  {
+                    "word": "20",
+                    "start": 7.8399997,
+                    "end": 8.16,
+                    "confidence": 0.9724964,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "20"
+                  },
+                  {
+                    "word": "side",
+                    "start": 8.16,
+                    "end": 8.48,
+                    "confidence": 0.3958485,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "side"
+                  },
+                  {
+                    "word": "a",
+                    "start": 8.48,
+                    "end": 8.72,
+                    "confidence": 0.9192009,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "a"
+                  },
+                  {
+                    "word": "and",
+                    "start": 8.72,
+                    "end": 8.88,
+                    "confidence": 0.6524999,
+                    "speaker": 0,
+                    "speaker_confidence": 0.98780084,
+                    "punctuated_word": "and"
+                  },
+                  {
+                    "word": "i",
+                    "start": 8.88,
+                    "end": 9.04,
+                    "confidence": 0.880441,
+                    "speaker": 0,
+                    "speaker_confidence": 0.98780084,
+                    "punctuated_word": "I"
+                  },
+                  {
+                    "word": "cannot",
+                    "start": 9.04,
+                    "end": 9.36,
+                    "confidence": 0.99686027,
+                    "speaker": 0,
+                    "speaker_confidence": 0.98780084,
+                    "punctuated_word": "cannot"
+                  },
+                  {
+                    "word": "tell",
+                    "start": 9.36,
+                    "end": 9.5199995,
+                    "confidence": 0.9993199,
+                    "speaker": 0,
+                    "speaker_confidence": 0.98780084,
+                    "punctuated_word": "tell"
+                  },
+                  {
+                    "word": "what",
+                    "start": 9.5199995,
+                    "end": 9.76,
+                    "confidence": 0.99867755,
+                    "speaker": 0,
+                    "speaker_confidence": 0.98780084,
+                    "punctuated_word": "what"
+                  },
+                  {
+                    "word": "copy",
+                    "start": 9.76,
+                    "end": 10.16,
+                    "confidence": 0.91693765,
+                    "speaker": 0,
+                    "speaker_confidence": 0.98780084,
+                    "punctuated_word": "copy"
+                  },
+                  {
+                    "word": "boy",
+                    "start": 10.16,
+                    "end": 10.4,
+                    "confidence": 0.9276945,
+                    "speaker": 0,
+                    "speaker_confidence": 0.98780084,
+                    "punctuated_word": "boy"
+                  },
+                  {
+                    "word": "did",
+                    "start": 10.4,
+                    "end": 10.639999,
+                    "confidence": 0.9994561,
+                    "speaker": 0,
+                    "speaker_confidence": 0.98780084,
+                    "punctuated_word": "did"
+                  },
+                  {
+                    "word": "to",
+                    "start": 10.639999,
+                    "end": 10.719999,
+                    "confidence": 0.999395,
+                    "speaker": 0,
+                    "speaker_confidence": 0.8399892,
+                    "punctuated_word": "to"
+                  },
+                  {
+                    "word": "degrade",
+                    "start": 10.719999,
+                    "end": 11.12,
+                    "confidence": 0.9981923,
+                    "speaker": 0,
+                    "speaker_confidence": 0.8399892,
+                    "punctuated_word": "degrade"
+                  },
+                  {
+                    "word": "this",
+                    "start": 11.12,
+                    "end": 11.36,
+                    "confidence": 0.9988225,
+                    "speaker": 0,
+                    "speaker_confidence": 0.8399892,
+                    "punctuated_word": "this"
+                  },
+                  {
+                    "word": "tape",
+                    "start": 11.36,
+                    "end": 11.599999,
+                    "confidence": 0.9979986,
+                    "speaker": 0,
+                    "speaker_confidence": 0.8399892,
+                    "punctuated_word": "tape."
+                  }
+                ],
+                "paragraphs": {
+                  "transcript": "\nSpeaker 0: Doctor reams agriculture. Possibly 1975, but probably 1976. Tape 20 side a and I cannot tell what copy boy did to degrade this tape.",
+                  "paragraphs": [
+                    {
+                      "sentences": [
+                        {
+                          "text": "Doctor reams agriculture.",
+                          "start": 0.16,
+                          "end": 1.9199998
+                        },
+                        {
+                          "text": "Possibly 1975, but probably 1976.",
+                          "start": 2.56,
+                          "end": 6.88
+                        },
+                        {
+                          "text": "Tape 20 side a and I cannot tell what copy boy did to degrade this tape.",
+                          "start": 7.44,
+                          "end": 11.599999
+                        }
+                      ],
+                      "speaker": 0,
+                      "num_words": 24,
+                      "start": 0.16,
+                      "end": 11.599999
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "utterances": [
+          {
+            "start": 0.16,
+            "end": 1.9199998,
+            "confidence": 0.8585773,
+            "channel": 0,
+            "transcript": "Doctor reams agriculture.",
+            "words": [
+              {
+                "word": "doctor",
+                "start": 0.16,
+                "end": 0.48,
+                "confidence": 0.9509451,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "Doctor"
+              },
+              {
+                "word": "reams",
+                "start": 0.48,
+                "end": 0.96,
+                "confidence": 0.85501575,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "reams"
+              },
+              {
+                "word": "agriculture",
+                "start": 0.96,
+                "end": 1.9199998,
+                "confidence": 0.7697711,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "agriculture."
+              }
+            ],
+            "speaker": 0,
+            "id": "5941f5e3-833d-4da7-ad07-8d02af12114a"
+          },
+          {
+            "start": 2.56,
+            "end": 4.64,
+            "confidence": 0.95994806,
+            "channel": 0,
+            "transcript": "Possibly 1975,",
+            "words": [
+              {
+                "word": "possibly",
+                "start": 2.56,
+                "end": 3.04,
+                "confidence": 0.99553275,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "Possibly"
+              },
+              {
+                "word": "1975",
+                "start": 3.04,
+                "end": 4.64,
+                "confidence": 0.9243633,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "1975,"
+              }
+            ],
+            "speaker": 0,
+            "id": "c22e9488-f4d9-44d6-ac95-8ab59c0e4ae0"
+          },
+          {
+            "start": 4.64,
+            "end": 6.88,
+            "confidence": 0.9865702,
+            "channel": 0,
+            "transcript": "but probably 1976.",
+            "words": [
+              {
+                "word": "but",
+                "start": 4.64,
+                "end": 4.72,
+                "confidence": 0.97181207,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "but"
+              },
+              {
+                "word": "probably",
+                "start": 4.72,
+                "end": 5.2,
+                "confidence": 0.9958627,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "probably"
+              },
+              {
+                "word": "1976",
+                "start": 5.2,
+                "end": 6.88,
+                "confidence": 0.9920359,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "1976."
+              }
+            ],
+            "speaker": 0,
+            "id": "3b1ebb31-be6d-4429-8df7-3f2680428e03"
+          },
+          {
+            "start": 7.44,
+            "end": 11.599999,
+            "confidence": 0.9153364,
+            "channel": 0,
+            "transcript": "Tape 20 side a and I cannot tell what copy boy did to degrade this tape.",
+            "words": [
+              {
+                "word": "tape",
+                "start": 7.44,
+                "end": 7.8399997,
+                "confidence": 0.9915415,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "Tape"
+              },
+              {
+                "word": "20",
+                "start": 7.8399997,
+                "end": 8.16,
+                "confidence": 0.9724964,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "20"
+              },
+              {
+                "word": "side",
+                "start": 8.16,
+                "end": 8.48,
+                "confidence": 0.3958485,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "side"
+              },
+              {
+                "word": "a",
+                "start": 8.48,
+                "end": 8.72,
+                "confidence": 0.9192009,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "a"
+              },
+              {
+                "word": "and",
+                "start": 8.72,
+                "end": 8.88,
+                "confidence": 0.6524999,
+                "speaker": 0,
+                "speaker_confidence": 0.98780084,
+                "punctuated_word": "and"
+              },
+              {
+                "word": "i",
+                "start": 8.88,
+                "end": 9.04,
+                "confidence": 0.880441,
+                "speaker": 0,
+                "speaker_confidence": 0.98780084,
+                "punctuated_word": "I"
+              },
+              {
+                "word": "cannot",
+                "start": 9.04,
+                "end": 9.36,
+                "confidence": 0.99686027,
+                "speaker": 0,
+                "speaker_confidence": 0.98780084,
+                "punctuated_word": "cannot"
+              },
+              {
+                "word": "tell",
+                "start": 9.36,
+                "end": 9.5199995,
+                "confidence": 0.9993199,
+                "speaker": 0,
+                "speaker_confidence": 0.98780084,
+                "punctuated_word": "tell"
+              },
+              {
+                "word": "what",
+                "start": 9.5199995,
+                "end": 9.76,
+                "confidence": 0.99867755,
+                "speaker": 0,
+                "speaker_confidence": 0.98780084,
+                "punctuated_word": "what"
+              },
+              {
+                "word": "copy",
+                "start": 9.76,
+                "end": 10.16,
+                "confidence": 0.91693765,
+                "speaker": 0,
+                "speaker_confidence": 0.98780084,
+                "punctuated_word": "copy"
+              },
+              {
+                "word": "boy",
+                "start": 10.16,
+                "end": 10.4,
+                "confidence": 0.9276945,
+                "speaker": 0,
+                "speaker_confidence": 0.98780084,
+                "punctuated_word": "boy"
+              },
+              {
+                "word": "did",
+                "start": 10.4,
+                "end": 10.639999,
+                "confidence": 0.9994561,
+                "speaker": 0,
+                "speaker_confidence": 0.98780084,
+                "punctuated_word": "did"
+              },
+              {
+                "word": "to",
+                "start": 10.639999,
+                "end": 10.719999,
+                "confidence": 0.999395,
+                "speaker": 0,
+                "speaker_confidence": 0.8399892,
+                "punctuated_word": "to"
+              },
+              {
+                "word": "degrade",
+                "start": 10.719999,
+                "end": 11.12,
+                "confidence": 0.9981923,
+                "speaker": 0,
+                "speaker_confidence": 0.8399892,
+                "punctuated_word": "degrade"
+              },
+              {
+                "word": "this",
+                "start": 11.12,
+                "end": 11.36,
+                "confidence": 0.9988225,
+                "speaker": 0,
+                "speaker_confidence": 0.8399892,
+                "punctuated_word": "this"
+              },
+              {
+                "word": "tape",
+                "start": 11.36,
+                "end": 11.599999,
+                "confidence": 0.9979986,
+                "speaker": 0,
+                "speaker_confidence": 0.8399892,
+                "punctuated_word": "tape."
+              }
+            ],
+            "speaker": 0,
+            "id": "2ee9395e-a6bc-4a6f-993c-e83a0244f3c1"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,687 @@
+{
+  "audio_file": "seminars/AGRICULTURE 1975/ReamsAg Tape 01 Side A.mp3",
+  "service": "deepgram",
+  "timestamp": "2025-11-04T07:50:42Z",
+  "raw_response": {
+    "metadata": {
+      "transaction_key": "deprecated",
+      "request_id": "e801cb59-9b6a-425c-88b0-a7c2b7c7ba06",
+      "sha256": "fe5d36617a379b1ea0d809b0059819db059ab38df89928389dc945ada67fb960",
+      "created": "2025-11-04T05:50:40.523Z",
+      "duration": 1218.8735,
+      "channels": 1,
+      "models": [
+        "2187e11a-3532-4498-b076-81fa530bdd49"
+      ],
+      "model_info": {
+        "2187e11a-3532-4498-b076-81fa530bdd49": {
+          "name": "general-nova-3",
+          "version": "2025-07-31.0",
+          "arch": "nova-3"
+        }
+      }
+    },
+    "results": {
+      "channels": [
+        {
+          "alternatives": [
+            {
+              "transcript": "Doctor. Reams 1975 first recorded agriculture class. This is tape one a. This is tape number a one of doctor reams first agriculture course to be recorded made in February 1975.",
+              "confidence": 0.98381793,
+              "words": [
+                {
+                  "word": "doctor",
+                  "start": 0.16,
+                  "end": 0.64,
+                  "confidence": 0.7173233,
+                  "speaker": 0,
+                  "speaker_confidence": 0.76662785,
+                  "punctuated_word": "Doctor."
+                },
+                {
+                  "word": "reams",
+                  "start": 0.64,
+                  "end": 0.96,
+                  "confidence": 0.8726026,
+                  "speaker": 0,
+                  "speaker_confidence": 0.76662785,
+                  "punctuated_word": "Reams"
+                },
+                {
+                  "word": "1975",
+                  "start": 0.96,
+                  "end": 2.24,
+                  "confidence": 0.9255224,
+                  "speaker": 0,
+                  "speaker_confidence": 0.76662785,
+                  "punctuated_word": "1975"
+                },
+                {
+                  "word": "first",
+                  "start": 2.24,
+                  "end": 2.6399999,
+                  "confidence": 0.83351266,
+                  "speaker": 0,
+                  "speaker_confidence": 0.76662785,
+                  "punctuated_word": "first"
+                },
+                {
+                  "word": "recorded",
+                  "start": 2.6399999,
+                  "end": 3.04,
+                  "confidence": 0.99696535,
+                  "speaker": 0,
+                  "speaker_confidence": 0.76662785,
+                  "punctuated_word": "recorded"
+                },
+                {
+                  "word": "agriculture",
+                  "start": 3.04,
+                  "end": 3.76,
+                  "confidence": 0.9709202,
+                  "speaker": 0,
+                  "speaker_confidence": 0.76662785,
+                  "punctuated_word": "agriculture"
+                },
+                {
+                  "word": "class",
+                  "start": 3.76,
+                  "end": 4.64,
+                  "confidence": 0.86062664,
+                  "speaker": 0,
+                  "speaker_confidence": 0.76662785,
+                  "punctuated_word": "class."
+                },
+                {
+                  "word": "this",
+                  "start": 4.72,
+                  "end": 4.88,
+                  "confidence": 0.9933349,
+                  "speaker": 0,
+                  "speaker_confidence": 0.76662785,
+                  "punctuated_word": "This"
+                },
+                {
+                  "word": "is",
+                  "start": 4.88,
+                  "end": 5.04,
+                  "confidence": 0.9985562,
+                  "speaker": 0,
+                  "speaker_confidence": 0.76662785,
+                  "punctuated_word": "is"
+                },
+                {
+                  "word": "tape",
+                  "start": 5.04,
+                  "end": 5.3599997,
+                  "confidence": 0.9870725,
+                  "speaker": 0,
+                  "speaker_confidence": 0.76662785,
+                  "punctuated_word": "tape"
+                },
+                {
+                  "word": "one",
+                  "start": 5.3599997,
+                  "end": 5.52,
+                  "confidence": 0.9551905,
+                  "speaker": 0,
+                  "speaker_confidence": 0.76662785,
+                  "punctuated_word": "one"
+                },
+                {
+                  "word": "a",
+                  "start": 5.52,
+                  "end": 6.08,
+                  "confidence": 0.95216084,
+                  "speaker": 0,
+                  "speaker_confidence": 0.76662785,
+                  "punctuated_word": "a."
+                },
+                {
+                  "word": "this",
+                  "start": 6.08,
+                  "end": 6.3999996,
+                  "confidence": 0.98035103,
+                  "speaker": 0,
+                  "speaker_confidence": 0.7666278,
+                  "punctuated_word": "This"
+                },
+                {
+                  "word": "is",
+                  "start": 6.3999996,
+                  "end": 6.56,
+                  "confidence": 0.99653673,
+                  "speaker": 0,
+                  "speaker_confidence": 0.7666278,
+                  "punctuated_word": "is"
+                },
+                {
+                  "word": "tape",
+                  "start": 6.56,
+                  "end": 6.96,
+                  "confidence": 0.98381793,
+                  "speaker": 0,
+                  "speaker_confidence": 0.7666278,
+                  "punctuated_word": "tape"
+                },
+                {
+                  "word": "number",
+                  "start": 6.96,
+                  "end": 7.44,
+                  "confidence": 0.9903948,
+                  "speaker": 0,
+                  "speaker_confidence": 0.7666278,
+                  "punctuated_word": "number"
+                },
+                {
+                  "word": "a",
+                  "start": 7.44,
+                  "end": 7.8399997,
+                  "confidence": 0.953386,
+                  "speaker": 0,
+                  "speaker_confidence": 0.7666278,
+                  "punctuated_word": "a"
+                },
+                {
+                  "word": "one",
+                  "start": 7.8399997,
+                  "end": 8.48,
+                  "confidence": 0.9847632,
+                  "speaker": 0,
+                  "speaker_confidence": 0.7666278,
+                  "punctuated_word": "one"
+                },
+                {
+                  "word": "of",
+                  "start": 8.48,
+                  "end": 8.8,
+                  "confidence": 0.9761313,
+                  "speaker": 0,
+                  "speaker_confidence": 0.7666278,
+                  "punctuated_word": "of"
+                },
+                {
+                  "word": "doctor",
+                  "start": 8.8,
+                  "end": 9.12,
+                  "confidence": 0.81060237,
+                  "speaker": 0,
+                  "speaker_confidence": 0.7666278,
+                  "punctuated_word": "doctor"
+                },
+                {
+                  "word": "reams",
+                  "start": 9.12,
+                  "end": 9.599999,
+                  "confidence": 0.94469285,
+                  "speaker": 0,
+                  "speaker_confidence": 0.7666278,
+                  "punctuated_word": "reams"
+                },
+                {
+                  "word": "first",
+                  "start": 9.599999,
+                  "end": 10.16,
+                  "confidence": 0.9243451,
+                  "speaker": 0,
+                  "speaker_confidence": 0.7666278,
+                  "punctuated_word": "first"
+                },
+                {
+                  "word": "agriculture",
+                  "start": 10.16,
+                  "end": 10.8,
+                  "confidence": 0.6609838,
+                  "speaker": 0,
+                  "speaker_confidence": 0.7666278,
+                  "punctuated_word": "agriculture"
+                },
+                {
+                  "word": "course",
+                  "start": 10.8,
+                  "end": 11.28,
+                  "confidence": 0.98673356,
+                  "speaker": 0,
+                  "speaker_confidence": 0.7666278,
+                  "punctuated_word": "course"
+                },
+                {
+                  "word": "to",
+                  "start": 11.28,
+                  "end": 11.5199995,
+                  "confidence": 0.9929749,
+                  "speaker": 0,
+                  "speaker_confidence": 0.7666278,
+                  "punctuated_word": "to"
+                },
+                {
+                  "word": "be",
+                  "start": 11.5199995,
+                  "end": 11.679999,
+                  "confidence": 0.9993099,
+                  "speaker": 0,
+                  "speaker_confidence": 0.7666278,
+                  "punctuated_word": "be"
+                },
+                {
+                  "word": "recorded",
+                  "start": 11.679999,
+                  "end": 12.48,
+                  "confidence": 0.99946517,
+                  "speaker": 0,
+                  "speaker_confidence": 0.7666278,
+                  "punctuated_word": "recorded"
+                },
+                {
+                  "word": "made",
+                  "start": 12.48,
+                  "end": 13.04,
+                  "confidence": 0.857143,
+                  "speaker": 0,
+                  "speaker_confidence": 0.7666278,
+                  "punctuated_word": "made"
+                },
+                {
+                  "word": "in",
+                  "start": 13.04,
+                  "end": 13.44,
+                  "confidence": 0.9966151,
+                  "speaker": 0,
+                  "speaker_confidence": 0.7666278,
+                  "punctuated_word": "in"
+                },
+                {
+                  "word": "february",
+                  "start": 13.44,
+                  "end": 14.7225,
+                  "confidence": 0.98721886,
+                  "speaker": 0,
+                  "speaker_confidence": 0.7666278,
+                  "punctuated_word": "February"
+                },
+                {
+                  "word": "1975",
+                  "start": 14.7225,
+                  "end": 16.005,
+                  "confidence": 0.98721886,
+                  "speaker": 0,
+                  "speaker_confidence": 0.7666278,
+                  "punctuated_word": "1975."
+                }
+              ],
+              "paragraphs": {
+                "transcript": "\nSpeaker 0: Doctor. Reams 1975 first recorded agriculture class. This is tape one a. This is tape number a one of doctor reams first agriculture course to be recorded made in February 1975.",
+                "paragraphs": [
+                  {
+                    "sentences": [
+                      {
+                        "text": "Doctor.",
+                        "start": 0.16,
+                        "end": 0.64
+                      },
+                      {
+                        "text": "Reams 1975 first recorded agriculture class.",
+                        "start": 0.64,
+                        "end": 4.64
+                      },
+                      {
+                        "text": "This is tape one a.",
+                        "start": 4.72,
+                        "end": 6.08
+                      },
+                      {
+                        "text": "This is tape number a one of doctor reams first agriculture course to be recorded made in February 1975.",
+                        "start": 6.08,
+                        "end": 16.005
+                      }
+                    ],
+                    "speaker": 0,
+                    "num_words": 31,
+                    "start": 0.16,
+                    "end": 16.005
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "utterances": [
+        {
+          "start": 0.16,
+          "end": 2.24,
+          "confidence": 0.8384828,
+          "channel": 0,
+          "transcript": "Doctor. Reams 1975",
+          "words": [
+            {
+              "word": "doctor",
+              "start": 0.16,
+              "end": 0.64,
+              "confidence": 0.7173233,
+              "speaker": 0,
+              "speaker_confidence": 0.76662785,
+              "punctuated_word": "Doctor."
+            },
+            {
+              "word": "reams",
+              "start": 0.64,
+              "end": 0.96,
+              "confidence": 0.8726026,
+              "speaker": 0,
+              "speaker_confidence": 0.76662785,
+              "punctuated_word": "Reams"
+            },
+            {
+              "word": "1975",
+              "start": 0.96,
+              "end": 2.24,
+              "confidence": 0.9255224,
+              "speaker": 0,
+              "speaker_confidence": 0.76662785,
+              "punctuated_word": "1975"
+            }
+          ],
+          "speaker": 0,
+          "id": "2a4baa5a-7377-4e0b-8689-6f5486eada94"
+        },
+        {
+          "start": 2.24,
+          "end": 4.64,
+          "confidence": 0.91550624,
+          "channel": 0,
+          "transcript": "first recorded agriculture class.",
+          "words": [
+            {
+              "word": "first",
+              "start": 2.24,
+              "end": 2.6399999,
+              "confidence": 0.83351266,
+              "speaker": 0,
+              "speaker_confidence": 0.76662785,
+              "punctuated_word": "first"
+            },
+            {
+              "word": "recorded",
+              "start": 2.6399999,
+              "end": 3.04,
+              "confidence": 0.99696535,
+              "speaker": 0,
+              "speaker_confidence": 0.76662785,
+              "punctuated_word": "recorded"
+            },
+            {
+              "word": "agriculture",
+              "start": 3.04,
+              "end": 3.76,
+              "confidence": 0.9709202,
+              "speaker": 0,
+              "speaker_confidence": 0.76662785,
+              "punctuated_word": "agriculture"
+            },
+            {
+              "word": "class",
+              "start": 3.76,
+              "end": 4.64,
+              "confidence": 0.86062664,
+              "speaker": 0,
+              "speaker_confidence": 0.76662785,
+              "punctuated_word": "class."
+            }
+          ],
+          "speaker": 0,
+          "id": "3f862b1e-472e-4d57-8ba0-7e826630bd5f"
+        },
+        {
+          "start": 4.72,
+          "end": 12.48,
+          "confidence": 0.9535402,
+          "channel": 0,
+          "transcript": "This is tape one a. This is tape number a one of doctor reams first agriculture course to be recorded",
+          "words": [
+            {
+              "word": "this",
+              "start": 4.72,
+              "end": 4.88,
+              "confidence": 0.9933349,
+              "speaker": 0,
+              "speaker_confidence": 0.76662785,
+              "punctuated_word": "This"
+            },
+            {
+              "word": "is",
+              "start": 4.88,
+              "end": 5.04,
+              "confidence": 0.9985562,
+              "speaker": 0,
+              "speaker_confidence": 0.76662785,
+              "punctuated_word": "is"
+            },
+            {
+              "word": "tape",
+              "start": 5.04,
+              "end": 5.3599997,
+              "confidence": 0.9870725,
+              "speaker": 0,
+              "speaker_confidence": 0.76662785,
+              "punctuated_word": "tape"
+            },
+            {
+              "word": "one",
+              "start": 5.3599997,
+              "end": 5.52,
+              "confidence": 0.9551905,
+              "speaker": 0,
+              "speaker_confidence": 0.76662785,
+              "punctuated_word": "one"
+            },
+            {
+              "word": "a",
+              "start": 5.52,
+              "end": 6.08,
+              "confidence": 0.95216084,
+              "speaker": 0,
+              "speaker_confidence": 0.76662785,
+              "punctuated_word": "a."
+            },
+            {
+              "word": "this",
+              "start": 6.08,
+              "end": 6.3999996,
+              "confidence": 0.98035103,
+              "speaker": 0,
+              "speaker_confidence": 0.7666278,
+              "punctuated_word": "This"
+            },
+            {
+              "word": "is",
+              "start": 6.3999996,
+              "end": 6.56,
+              "confidence": 0.99653673,
+              "speaker": 0,
+              "speaker_confidence": 0.7666278,
+              "punctuated_word": "is"
+            },
+            {
+              "word": "tape",
+              "start": 6.56,
+              "end": 6.96,
+              "confidence": 0.98381793,
+              "speaker": 0,
+              "speaker_confidence": 0.7666278,
+              "punctuated_word": "tape"
+            },
+            {
+              "word": "number",
+              "start": 6.96,
+              "end": 7.44,
+              "confidence": 0.9903948,
+              "speaker": 0,
+              "speaker_confidence": 0.7666278,
+              "punctuated_word": "number"
+            },
+            {
+              "word": "a",
+              "start": 7.44,
+              "end": 7.8399997,
+              "confidence": 0.953386,
+              "speaker": 0,
+              "speaker_confidence": 0.7666278,
+              "punctuated_word": "a"
+            },
+            {
+              "word": "one",
+              "start": 7.8399997,
+              "end": 8.48,
+              "confidence": 0.9847632,
+              "speaker": 0,
+              "speaker_confidence": 0.7666278,
+              "punctuated_word": "one"
+            },
+            {
+              "word": "of",
+              "start": 8.48,
+              "end": 8.8,
+              "confidence": 0.9761313,
+              "speaker": 0,
+              "speaker_confidence": 0.7666278,
+              "punctuated_word": "of"
+            },
+            {
+              "word": "doctor",
+              "start": 8.8,
+              "end": 9.12,
+              "confidence": 0.81060237,
+              "speaker": 0,
+              "speaker_confidence": 0.7666278,
+              "punctuated_word": "doctor"
+            },
+            {
+              "word": "reams",
+              "start": 9.12,
+              "end": 9.599999,
+              "confidence": 0.94469285,
+              "speaker": 0,
+              "speaker_confidence": 0.7666278,
+              "punctuated_word": "reams"
+            },
+            {
+              "word": "first",
+              "start": 9.599999,
+              "end": 10.16,
+              "confidence": 0.9243451,
+              "speaker": 0,
+              "speaker_confidence": 0.7666278,
+              "punctuated_word": "first"
+            },
+            {
+              "word": "agriculture",
+              "start": 10.16,
+              "end": 10.8,
+              "confidence": 0.6609838,
+              "speaker": 0,
+              "speaker_confidence": 0.7666278,
+              "punctuated_word": "agriculture"
+            },
+            {
+              "word": "course",
+              "start": 10.8,
+              "end": 11.28,
+              "confidence": 0.98673356,
+              "speaker": 0,
+              "speaker_confidence": 0.7666278,
+              "punctuated_word": "course"
+            },
+            {
+              "word": "to",
+              "start": 11.28,
+              "end": 11.5199995,
+              "confidence": 0.9929749,
+              "speaker": 0,
+              "speaker_confidence": 0.7666278,
+              "punctuated_word": "to"
+            },
+            {
+              "word": "be",
+              "start": 11.5199995,
+              "end": 11.679999,
+              "confidence": 0.9993099,
+              "speaker": 0,
+              "speaker_confidence": 0.7666278,
+              "punctuated_word": "be"
+            },
+            {
+              "word": "recorded",
+              "start": 11.679999,
+              "end": 12.48,
+              "confidence": 0.99946517,
+              "speaker": 0,
+              "speaker_confidence": 0.7666278,
+              "punctuated_word": "recorded"
+            }
+          ],
+          "speaker": 0,
+          "id": "c014ca2d-ae6a-4596-a5f8-1e7a2fd7d638"
+        },
+        {
+          "start": 12.48,
+          "end": 14.7225,
+          "confidence": 0.94699234,
+          "channel": 0,
+          "transcript": "made in February",
+          "words": [
+            {
+              "word": "made",
+              "start": 12.48,
+              "end": 13.04,
+              "confidence": 0.857143,
+              "speaker": 0,
+              "speaker_confidence": 0.7666278,
+              "punctuated_word": "made"
+            },
+            {
+              "word": "in",
+              "start": 13.04,
+              "end": 13.44,
+              "confidence": 0.9966151,
+              "speaker": 0,
+              "speaker_confidence": 0.7666278,
+              "punctuated_word": "in"
+            },
+            {
+              "word": "february",
+              "start": 13.44,
+              "end": 14.7225,
+              "confidence": 0.98721886,
+              "speaker": 0,
+              "speaker_confidence": 0.7666278,
+              "punctuated_word": "February"
+            }
+          ],
+          "speaker": 0,
+          "id": "d3501a06-3b23-4176-8369-a5dfcd2312b6"
+        },
+        {
+          "start": 14.7225,
+          "end": 16.005,
+          "confidence": 0.98721886,
+          "channel": 0,
+          "transcript": "1975.",
+          "words": [
+            {
+              "word": "1975",
+              "start": 14.7225,
+              "end": 16.005,
+              "confidence": 0.98721886,
+              "speaker": 0,
+              "speaker_confidence": 0.7666278,
+              "punctuated_word": "1975."
+            }
+          ],
+          "speaker": 0,
+          "id": "bb51a310-67c6-4089-9363-443e68988dc4"
+        }
+      ]
+    }
+  }
+}

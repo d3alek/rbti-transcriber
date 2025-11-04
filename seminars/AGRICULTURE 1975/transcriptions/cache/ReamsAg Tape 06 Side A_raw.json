@@ -1,0 +1,673 @@
+{
+  "audio_file": "seminars/AGRICULTURE 1975/ReamsAg Tape 06 Side A.mp3",
+  "service": "deepgram",
+  "timestamp": "2025-11-04T07:54:52Z",
+  "raw_response": {
+    "metadata": {
+      "transaction_key": "deprecated",
+      "request_id": "899bbadf-9288-4147-881e-de85be43ca30",
+      "sha256": "36f076b67e8106757b3b01842dec4e2e8a773073a996c1fea4aa9cd21d999137",
+      "created": "2025-11-04T05:54:51.795Z",
+      "duration": 460.8784,
+      "channels": 1,
+      "models": [
+        "2187e11a-3532-4498-b076-81fa530bdd49"
+      ],
+      "model_info": {
+        "2187e11a-3532-4498-b076-81fa530bdd49": {
+          "name": "general-nova-3",
+          "version": "2025-07-31.0",
+          "arch": "nova-3"
+        }
+      }
+    },
+    "results": {
+      "channels": [
+        {
+          "alternatives": [
+            {
+              "transcript": "Doctor. Reams agriculture. This is tape six side a and identified by Turner as 1976. Doctor. Reams agricultural course made in February 1976 in Linn, Georgia. A six",
+              "confidence": 0.9389309,
+              "words": [
+                {
+                  "word": "doctor",
+                  "start": 0.16,
+                  "end": 0.64,
+                  "confidence": 0.7075269,
+                  "speaker": 0,
+                  "speaker_confidence": 0.3385743,
+                  "punctuated_word": "Doctor."
+                },
+                {
+                  "word": "reams",
+                  "start": 0.64,
+                  "end": 0.96,
+                  "confidence": 0.8917308,
+                  "speaker": 0,
+                  "speaker_confidence": 0.3385743,
+                  "punctuated_word": "Reams"
+                },
+                {
+                  "word": "agriculture",
+                  "start": 0.96,
+                  "end": 1.9199998,
+                  "confidence": 0.7979939,
+                  "speaker": 0,
+                  "speaker_confidence": 0.3385743,
+                  "punctuated_word": "agriculture."
+                },
+                {
+                  "word": "this",
+                  "start": 2.48,
+                  "end": 2.72,
+                  "confidence": 0.98478544,
+                  "speaker": 0,
+                  "speaker_confidence": 0.3385743,
+                  "punctuated_word": "This"
+                },
+                {
+                  "word": "is",
+                  "start": 2.72,
+                  "end": 2.8799999,
+                  "confidence": 0.9979309,
+                  "speaker": 0,
+                  "speaker_confidence": 0.3385743,
+                  "punctuated_word": "is"
+                },
+                {
+                  "word": "tape",
+                  "start": 2.8799999,
+                  "end": 3.1999998,
+                  "confidence": 0.96791595,
+                  "speaker": 0,
+                  "speaker_confidence": 0.3385743,
+                  "punctuated_word": "tape"
+                },
+                {
+                  "word": "six",
+                  "start": 3.1999998,
+                  "end": 3.4399998,
+                  "confidence": 0.9951675,
+                  "speaker": 0,
+                  "speaker_confidence": 0.3385743,
+                  "punctuated_word": "six"
+                },
+                {
+                  "word": "side",
+                  "start": 3.4399998,
+                  "end": 3.76,
+                  "confidence": 0.67503834,
+                  "speaker": 0,
+                  "speaker_confidence": 0.3385743,
+                  "punctuated_word": "side"
+                },
+                {
+                  "word": "a",
+                  "start": 3.76,
+                  "end": 4.0,
+                  "confidence": 0.8700674,
+                  "speaker": 0,
+                  "speaker_confidence": 0.3385743,
+                  "punctuated_word": "a"
+                },
+                {
+                  "word": "and",
+                  "start": 4.0,
+                  "end": 4.16,
+                  "confidence": 0.8990569,
+                  "speaker": 0,
+                  "speaker_confidence": 0.3385743,
+                  "punctuated_word": "and"
+                },
+                {
+                  "word": "identified",
+                  "start": 4.16,
+                  "end": 4.72,
+                  "confidence": 0.9952554,
+                  "speaker": 0,
+                  "speaker_confidence": 0.3385743,
+                  "punctuated_word": "identified"
+                },
+                {
+                  "word": "by",
+                  "start": 4.72,
+                  "end": 4.96,
+                  "confidence": 0.999127,
+                  "speaker": 0,
+                  "speaker_confidence": 0.3385743,
+                  "punctuated_word": "by"
+                },
+                {
+                  "word": "turner",
+                  "start": 4.96,
+                  "end": 5.3599997,
+                  "confidence": 0.65598553,
+                  "speaker": 0,
+                  "speaker_confidence": 0.3385743,
+                  "punctuated_word": "Turner"
+                },
+                {
+                  "word": "as",
+                  "start": 5.3599997,
+                  "end": 5.6,
+                  "confidence": 0.9797433,
+                  "speaker": 0,
+                  "speaker_confidence": 0.3385743,
+                  "punctuated_word": "as"
+                },
+                {
+                  "word": "1976",
+                  "start": 5.6,
+                  "end": 7.2,
+                  "confidence": 0.99017304,
+                  "speaker": 0,
+                  "speaker_confidence": 0.3385743,
+                  "punctuated_word": "1976."
+                },
+                {
+                  "word": "doctor",
+                  "start": 8.0,
+                  "end": 8.639999,
+                  "confidence": 0.7543484,
+                  "speaker": 0,
+                  "speaker_confidence": 0.6236737,
+                  "punctuated_word": "Doctor."
+                },
+                {
+                  "word": "reams",
+                  "start": 8.8,
+                  "end": 9.12,
+                  "confidence": 0.91475606,
+                  "speaker": 0,
+                  "speaker_confidence": 0.6236737,
+                  "punctuated_word": "Reams"
+                },
+                {
+                  "word": "agricultural",
+                  "start": 9.12,
+                  "end": 10.0,
+                  "confidence": 0.7332356,
+                  "speaker": 0,
+                  "speaker_confidence": 0.6236737,
+                  "punctuated_word": "agricultural"
+                },
+                {
+                  "word": "course",
+                  "start": 10.0,
+                  "end": 10.4,
+                  "confidence": 0.9847265,
+                  "speaker": 0,
+                  "speaker_confidence": 0.6236737,
+                  "punctuated_word": "course"
+                },
+                {
+                  "word": "made",
+                  "start": 10.4,
+                  "end": 10.88,
+                  "confidence": 0.90607804,
+                  "speaker": 0,
+                  "speaker_confidence": 0.6236737,
+                  "punctuated_word": "made"
+                },
+                {
+                  "word": "in",
+                  "start": 10.88,
+                  "end": 11.2,
+                  "confidence": 0.97518426,
+                  "speaker": 0,
+                  "speaker_confidence": 0.58085585,
+                  "punctuated_word": "in"
+                },
+                {
+                  "word": "february",
+                  "start": 11.2,
+                  "end": 12.2,
+                  "confidence": 0.97495925,
+                  "speaker": 0,
+                  "speaker_confidence": 0.58085585,
+                  "punctuated_word": "February"
+                },
+                {
+                  "word": "1976",
+                  "start": 12.2,
+                  "end": 13.2,
+                  "confidence": 0.97495925,
+                  "speaker": 0,
+                  "speaker_confidence": 0.58085585,
+                  "punctuated_word": "1976"
+                },
+                {
+                  "word": "in",
+                  "start": 13.2,
+                  "end": 13.44,
+                  "confidence": 0.16374792,
+                  "speaker": 0,
+                  "speaker_confidence": 0.58085585,
+                  "punctuated_word": "in"
+                },
+                {
+                  "word": "linn",
+                  "start": 13.44,
+                  "end": 13.84,
+                  "confidence": 0.4525214,
+                  "speaker": 0,
+                  "speaker_confidence": 0.58085585,
+                  "punctuated_word": "Linn,"
+                },
+                {
+                  "word": "georgia",
+                  "start": 13.84,
+                  "end": 14.559999,
+                  "confidence": 0.80512416,
+                  "speaker": 0,
+                  "speaker_confidence": 0.58085585,
+                  "punctuated_word": "Georgia."
+                },
+                {
+                  "word": "a",
+                  "start": 14.559999,
+                  "end": 14.88,
+                  "confidence": 0.68781585,
+                  "speaker": 0,
+                  "speaker_confidence": 0.58085585,
+                  "punctuated_word": "A"
+                },
+                {
+                  "word": "six",
+                  "start": 14.88,
+                  "end": 15.599999,
+                  "confidence": 0.8252531,
+                  "speaker": 0,
+                  "speaker_confidence": 0.58085585,
+                  "punctuated_word": "six"
+                }
+              ],
+              "paragraphs": {
+                "transcript": "\nSpeaker 0: Doctor. Reams agriculture. This is tape six side a and identified by Turner as 1976. Doctor. Reams agricultural course made in February 1976 in Linn, Georgia.\n\nA six",
+                "paragraphs": [
+                  {
+                    "sentences": [
+                      {
+                        "text": "Doctor.",
+                        "start": 0.16,
+                        "end": 0.64
+                      },
+                      {
+                        "text": "Reams agriculture.",
+                        "start": 0.64,
+                        "end": 1.9199998
+                      },
+                      {
+                        "text": "This is tape six side a and identified by Turner as 1976.",
+                        "start": 2.48,
+                        "end": 7.2
+                      },
+                      {
+                        "text": "Doctor.",
+                        "start": 8.0,
+                        "end": 8.639999
+                      },
+                      {
+                        "text": "Reams agricultural course made in February 1976 in Linn, Georgia.",
+                        "start": 8.8,
+                        "end": 14.559999
+                      }
+                    ],
+                    "speaker": 0,
+                    "num_words": 26,
+                    "start": 0.16,
+                    "end": 14.559999
+                  },
+                  {
+                    "sentences": [
+                      {
+                        "text": "A six",
+                        "start": 14.559999,
+                        "end": 15.599999
+                      }
+                    ],
+                    "speaker": 0,
+                    "num_words": 2,
+                    "start": 14.559999,
+                    "end": 15.599999
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "utterances": [
+        {
+          "start": 0.16,
+          "end": 1.9199998,
+          "confidence": 0.7990839,
+          "channel": 0,
+          "transcript": "Doctor. Reams agriculture.",
+          "words": [
+            {
+              "word": "doctor",
+              "start": 0.16,
+              "end": 0.64,
+              "confidence": 0.7075269,
+              "speaker": 0,
+              "speaker_confidence": 0.3385743,
+              "punctuated_word": "Doctor."
+            },
+            {
+              "word": "reams",
+              "start": 0.64,
+              "end": 0.96,
+              "confidence": 0.8917308,
+              "speaker": 0,
+              "speaker_confidence": 0.3385743,
+              "punctuated_word": "Reams"
+            },
+            {
+              "word": "agriculture",
+              "start": 0.96,
+              "end": 1.9199998,
+              "confidence": 0.7979939,
+              "speaker": 0,
+              "speaker_confidence": 0.3385743,
+              "punctuated_word": "agriculture."
+            }
+          ],
+          "speaker": 0,
+          "id": "de105e23-bd80-40a7-9473-39f273643896"
+        },
+        {
+          "start": 2.48,
+          "end": 7.2,
+          "confidence": 0.9175206,
+          "channel": 0,
+          "transcript": "This is tape six side a and identified by Turner as 1976.",
+          "words": [
+            {
+              "word": "this",
+              "start": 2.48,
+              "end": 2.72,
+              "confidence": 0.98478544,
+              "speaker": 0,
+              "speaker_confidence": 0.3385743,
+              "punctuated_word": "This"
+            },
+            {
+              "word": "is",
+              "start": 2.72,
+              "end": 2.8799999,
+              "confidence": 0.9979309,
+              "speaker": 0,
+              "speaker_confidence": 0.3385743,
+              "punctuated_word": "is"
+            },
+            {
+              "word": "tape",
+              "start": 2.8799999,
+              "end": 3.1999998,
+              "confidence": 0.96791595,
+              "speaker": 0,
+              "speaker_confidence": 0.3385743,
+              "punctuated_word": "tape"
+            },
+            {
+              "word": "six",
+              "start": 3.1999998,
+              "end": 3.4399998,
+              "confidence": 0.9951675,
+              "speaker": 0,
+              "speaker_confidence": 0.3385743,
+              "punctuated_word": "six"
+            },
+            {
+              "word": "side",
+              "start": 3.4399998,
+              "end": 3.76,
+              "confidence": 0.67503834,
+              "speaker": 0,
+              "speaker_confidence": 0.3385743,
+              "punctuated_word": "side"
+            },
+            {
+              "word": "a",
+              "start": 3.76,
+              "end": 4.0,
+              "confidence": 0.8700674,
+              "speaker": 0,
+              "speaker_confidence": 0.3385743,
+              "punctuated_word": "a"
+            },
+            {
+              "word": "and",
+              "start": 4.0,
+              "end": 4.16,
+              "confidence": 0.8990569,
+              "speaker": 0,
+              "speaker_confidence": 0.3385743,
+              "punctuated_word": "and"
+            },
+            {
+              "word": "identified",
+              "start": 4.16,
+              "end": 4.72,
+              "confidence": 0.9952554,
+              "speaker": 0,
+              "speaker_confidence": 0.3385743,
+              "punctuated_word": "identified"
+            },
+            {
+              "word": "by",
+              "start": 4.72,
+              "end": 4.96,
+              "confidence": 0.999127,
+              "speaker": 0,
+              "speaker_confidence": 0.3385743,
+              "punctuated_word": "by"
+            },
+            {
+              "word": "turner",
+              "start": 4.96,
+              "end": 5.3599997,
+              "confidence": 0.65598553,
+              "speaker": 0,
+              "speaker_confidence": 0.3385743,
+              "punctuated_word": "Turner"
+            },
+            {
+              "word": "as",
+              "start": 5.3599997,
+              "end": 5.6,
+              "confidence": 0.9797433,
+              "speaker": 0,
+              "speaker_confidence": 0.3385743,
+              "punctuated_word": "as"
+            },
+            {
+              "word": "1976",
+              "start": 5.6,
+              "end": 7.2,
+              "confidence": 0.99017304,
+              "speaker": 0,
+              "speaker_confidence": 0.3385743,
+              "punctuated_word": "1976."
+            }
+          ],
+          "speaker": 0,
+          "id": "387909de-e9f0-42cf-b768-444c2875f127"
+        },
+        {
+          "start": 8.0,
+          "end": 8.639999,
+          "confidence": 0.7543484,
+          "channel": 0,
+          "transcript": "Doctor.",
+          "words": [
+            {
+              "word": "doctor",
+              "start": 8.0,
+              "end": 8.639999,
+              "confidence": 0.7543484,
+              "speaker": 0,
+              "speaker_confidence": 0.6236737,
+              "punctuated_word": "Doctor."
+            }
+          ],
+          "speaker": 0,
+          "id": "b2a72e74-c50f-4e29-9e85-b063dd50acb7"
+        },
+        {
+          "start": 8.8,
+          "end": 10.0,
+          "confidence": 0.8239958,
+          "channel": 0,
+          "transcript": "Reams agricultural",
+          "words": [
+            {
+              "word": "reams",
+              "start": 8.8,
+              "end": 9.12,
+              "confidence": 0.91475606,
+              "speaker": 0,
+              "speaker_confidence": 0.6236737,
+              "punctuated_word": "Reams"
+            },
+            {
+              "word": "agricultural",
+              "start": 9.12,
+              "end": 10.0,
+              "confidence": 0.7332356,
+              "speaker": 0,
+              "speaker_confidence": 0.6236737,
+              "punctuated_word": "agricultural"
+            }
+          ],
+          "speaker": 0,
+          "id": "45ecfc7e-99da-4565-8711-a5e4c92a66de"
+        },
+        {
+          "start": 10.0,
+          "end": 12.2,
+          "confidence": 0.960237,
+          "channel": 0,
+          "transcript": "course made in February",
+          "words": [
+            {
+              "word": "course",
+              "start": 10.0,
+              "end": 10.4,
+              "confidence": 0.9847265,
+              "speaker": 0,
+              "speaker_confidence": 0.6236737,
+              "punctuated_word": "course"
+            },
+            {
+              "word": "made",
+              "start": 10.4,
+              "end": 10.88,
+              "confidence": 0.90607804,
+              "speaker": 0,
+              "speaker_confidence": 0.6236737,
+              "punctuated_word": "made"
+            },
+            {
+              "word": "in",
+              "start": 10.88,
+              "end": 11.2,
+              "confidence": 0.97518426,
+              "speaker": 0,
+              "speaker_confidence": 0.58085585,
+              "punctuated_word": "in"
+            },
+            {
+              "word": "february",
+              "start": 11.2,
+              "end": 12.2,
+              "confidence": 0.97495925,
+              "speaker": 0,
+              "speaker_confidence": 0.58085585,
+              "punctuated_word": "February"
+            }
+          ],
+          "speaker": 0,
+          "id": "6b27e90f-eef3-4c34-9767-739d6a7ce62c"
+        },
+        {
+          "start": 12.2,
+          "end": 13.2,
+          "confidence": 0.97495925,
+          "channel": 0,
+          "transcript": "1976",
+          "words": [
+            {
+              "word": "1976",
+              "start": 12.2,
+              "end": 13.2,
+              "confidence": 0.97495925,
+              "speaker": 0,
+              "speaker_confidence": 0.58085585,
+              "punctuated_word": "1976"
+            }
+          ],
+          "speaker": 0,
+          "id": "96a3f04f-8782-4acf-9d5b-48bf6c246abc"
+        },
+        {
+          "start": 13.2,
+          "end": 15.599999,
+          "confidence": 0.5868925,
+          "channel": 0,
+          "transcript": "in Linn, Georgia. A six",
+          "words": [
+            {
+              "word": "in",
+              "start": 13.2,
+              "end": 13.44,
+              "confidence": 0.16374792,
+              "speaker": 0,
+              "speaker_confidence": 0.58085585,
+              "punctuated_word": "in"
+            },
+            {
+              "word": "linn",
+              "start": 13.44,
+              "end": 13.84,
+              "confidence": 0.4525214,
+              "speaker": 0,
+              "speaker_confidence": 0.58085585,
+              "punctuated_word": "Linn,"
+            },
+            {
+              "word": "georgia",
+              "start": 13.84,
+              "end": 14.559999,
+              "confidence": 0.80512416,
+              "speaker": 0,
+              "speaker_confidence": 0.58085585,
+              "punctuated_word": "Georgia."
+            },
+            {
+              "word": "a",
+              "start": 14.559999,
+              "end": 14.88,
+              "confidence": 0.68781585,
+              "speaker": 0,
+              "speaker_confidence": 0.58085585,
+              "punctuated_word": "A"
+            },
+            {
+              "word": "six",
+              "start": 14.88,
+              "end": 15.599999,
+              "confidence": 0.8252531,
+              "speaker": 0,
+              "speaker_confidence": 0.58085585,
+              "punctuated_word": "six"
+            }
+          ],
+          "speaker": 0,
+          "id": "2a54fb9d-d644-498d-953f-44eae6ee518e"
+        }
+      ]
+    }
+  }
+}

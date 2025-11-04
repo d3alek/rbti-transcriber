@@ -69,17 +69,31 @@ class MP3FileScanner:
         # Check file header
         try:
             with open(file_path, 'rb') as f:
-                header = f.read(10)
+                # Read first 32KB to search for MP3 frame headers
+                # Some MP3 files may have padding/metadata before the actual frames
+                file_content = f.read(32 * 1024)
                 
-                if len(header) < 3:
+                if len(file_content) < 3:
                     raise AudioValidationError(f"File too small to be valid MP3: {file_path}")
                 
                 # Check for MP3 signatures
                 is_valid = False
+                
+                # Check for specific known patterns first (ID3 tags typically at start)
                 for signature in self.MP3_HEADERS:
-                    if header.startswith(signature):
+                    if file_content.startswith(signature):
                         is_valid = True
                         break
+                
+                # If not found at start, search for MP3 frame sync pattern
+                # MP3 frame sync is 11 bits: 0xFF followed by byte >= 0xE0
+                # This covers all valid MPEG-1/2/2.5 Layer 3 frame headers
+                if not is_valid:
+                    # Search up to first 32KB for a valid MP3 frame header
+                    for i in range(len(file_content) - 1):
+                        if file_content[i] == 0xFF and file_content[i + 1] >= 0xE0:
+                            is_valid = True
+                            break
                 
                 if not is_valid:
                     raise AudioValidationError(f"Invalid MP3 header: {file_path}")

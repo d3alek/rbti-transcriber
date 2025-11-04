@@ -1,0 +1,972 @@
+{
+  "audio_file": "seminars/AGRICULTURE 1975/ReamsAg Tape 08 Side A.mp3",
+  "service": "deepgram",
+  "config": {
+    "speaker_labels": true,
+    "custom_vocabulary": [],
+    "punctuate": true,
+    "format_text": true,
+    "language_code": "en",
+    "max_speakers": 3
+  },
+  "timestamp": "2025-11-04T07:57:21Z",
+  "result": {
+    "text": "Doctor reams agriculture. This is tape eight side a and identified by Turner as 1970 '6. Copy kid murdered this one also. As a courtesy to him, I removed his open mic telephone credit application, called out Social Security number and other things.",
+    "speakers": [
+      {
+        "speaker": "Speaker 0",
+        "start_time": 0.16,
+        "end_time": 1.9199998,
+        "text": "Doctor reams agriculture.",
+        "confidence": 0.8501118
+      },
+      {
+        "speaker": "Speaker 0",
+        "start_time": 2.48,
+        "end_time": 6.3999996,
+        "text": "This is tape eight side a and identified by Turner as 1970",
+        "confidence": 0.93255734
+      },
+      {
+        "speaker": "Speaker 0",
+        "start_time": 6.3999996,
+        "end_time": 7.12,
+        "text": "'6.",
+        "confidence": 0.99387217
+      },
+      {
+        "speaker": "Speaker 0",
+        "start_time": 7.68,
+        "end_time": 9.919999,
+        "text": "Copy kid murdered this one also.",
+        "confidence": 0.8998609
+      },
+      {
+        "speaker": "Speaker 0",
+        "start_time": 10.4,
+        "end_time": 14.4,
+        "text": "As a courtesy to him, I removed his open mic telephone credit application,",
+        "confidence": 0.9708211
+      },
+      {
+        "speaker": "Speaker 0",
+        "start_time": 14.825,
+        "end_time": 17.545,
+        "text": "called out Social Security number and other things.",
+        "confidence": 0.8983966
+      }
+    ],
+    "confidence": 0.99579537,
+    "audio_duration": 17.545,
+    "processing_time": 11.405622482299805,
+    "raw_response": {
+      "metadata": {
+        "transaction_key": "deprecated",
+        "request_id": "2dc70076-736e-48f0-b949-1ae03a669726",
+        "sha256": "3fc00686f69029f7748215453e192e50fb00e062131828b1be627fdf1262c34f",
+        "created": "2025-11-04T05:57:19.688Z",
+        "duration": 1788.787,
+        "channels": 1,
+        "models": [
+          "2187e11a-3532-4498-b076-81fa530bdd49"
+        ],
+        "model_info": {
+          "2187e11a-3532-4498-b076-81fa530bdd49": {
+            "name": "general-nova-3",
+            "version": "2025-07-31.0",
+            "arch": "nova-3"
+          }
+        }
+      },
+      "results": {
+        "channels": [
+          {
+            "alternatives": [
+              {
+                "transcript": "Doctor reams agriculture. This is tape eight side a and identified by Turner as 1970 '6. Copy kid murdered this one also. As a courtesy to him, I removed his open mic telephone credit application, called out Social Security number and other things.",
+                "confidence": 0.99579537,
+                "words": [
+                  {
+                    "word": "doctor",
+                    "start": 0.16,
+                    "end": 0.48,
+                    "confidence": 0.8520928,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "Doctor"
+                  },
+                  {
+                    "word": "reams",
+                    "start": 0.48,
+                    "end": 0.96,
+                    "confidence": 0.8280196,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "reams"
+                  },
+                  {
+                    "word": "agriculture",
+                    "start": 0.96,
+                    "end": 1.9199998,
+                    "confidence": 0.87022316,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "agriculture."
+                  },
+                  {
+                    "word": "this",
+                    "start": 2.48,
+                    "end": 2.72,
+                    "confidence": 0.9971609,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "This"
+                  },
+                  {
+                    "word": "is",
+                    "start": 2.72,
+                    "end": 2.8799999,
+                    "confidence": 0.99896324,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "is"
+                  },
+                  {
+                    "word": "tape",
+                    "start": 2.8799999,
+                    "end": 3.1999998,
+                    "confidence": 0.9539206,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "tape"
+                  },
+                  {
+                    "word": "eight",
+                    "start": 3.1999998,
+                    "end": 3.4399998,
+                    "confidence": 0.9405143,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "eight"
+                  },
+                  {
+                    "word": "side",
+                    "start": 3.4399998,
+                    "end": 3.6799998,
+                    "confidence": 0.65006816,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "side"
+                  },
+                  {
+                    "word": "a",
+                    "start": 3.6799998,
+                    "end": 3.9199998,
+                    "confidence": 0.9407068,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "a"
+                  },
+                  {
+                    "word": "and",
+                    "start": 3.9199998,
+                    "end": 4.08,
+                    "confidence": 0.9268545,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "and"
+                  },
+                  {
+                    "word": "identified",
+                    "start": 4.08,
+                    "end": 4.64,
+                    "confidence": 0.99579537,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "identified"
+                  },
+                  {
+                    "word": "by",
+                    "start": 4.64,
+                    "end": 4.88,
+                    "confidence": 0.9992397,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "by"
+                  },
+                  {
+                    "word": "turner",
+                    "start": 4.88,
+                    "end": 5.2799997,
+                    "confidence": 0.82642525,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "Turner"
+                  },
+                  {
+                    "word": "as",
+                    "start": 5.2799997,
+                    "end": 5.52,
+                    "confidence": 0.962415,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "as"
+                  },
+                  {
+                    "word": "1970",
+                    "start": 5.52,
+                    "end": 6.3999996,
+                    "confidence": 0.99862444,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "1970"
+                  },
+                  {
+                    "word": "'6",
+                    "start": 6.3999996,
+                    "end": 7.12,
+                    "confidence": 0.99387217,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "'6."
+                  },
+                  {
+                    "word": "copy",
+                    "start": 7.68,
+                    "end": 8.16,
+                    "confidence": 0.9804882,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "Copy"
+                  },
+                  {
+                    "word": "kid",
+                    "start": 8.16,
+                    "end": 8.4,
+                    "confidence": 0.43155667,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "kid"
+                  },
+                  {
+                    "word": "murdered",
+                    "start": 8.4,
+                    "end": 8.8,
+                    "confidence": 0.99623436,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "murdered"
+                  },
+                  {
+                    "word": "this",
+                    "start": 8.8,
+                    "end": 9.04,
+                    "confidence": 0.9975074,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "this"
+                  },
+                  {
+                    "word": "one",
+                    "start": 9.04,
+                    "end": 9.2,
+                    "confidence": 0.9996112,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "one"
+                  },
+                  {
+                    "word": "also",
+                    "start": 9.2,
+                    "end": 9.919999,
+                    "confidence": 0.9937679,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "also."
+                  },
+                  {
+                    "word": "as",
+                    "start": 10.4,
+                    "end": 10.719999,
+                    "confidence": 0.99800664,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "As"
+                  },
+                  {
+                    "word": "a",
+                    "start": 10.719999,
+                    "end": 10.8,
+                    "confidence": 0.9988803,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "a"
+                  },
+                  {
+                    "word": "courtesy",
+                    "start": 10.8,
+                    "end": 11.2,
+                    "confidence": 0.99980074,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "courtesy"
+                  },
+                  {
+                    "word": "to",
+                    "start": 11.2,
+                    "end": 11.44,
+                    "confidence": 0.9998129,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "to"
+                  },
+                  {
+                    "word": "him",
+                    "start": 11.44,
+                    "end": 11.679999,
+                    "confidence": 0.89214885,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "him,"
+                  },
+                  {
+                    "word": "i",
+                    "start": 11.679999,
+                    "end": 11.759999,
+                    "confidence": 0.9216553,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "I"
+                  },
+                  {
+                    "word": "removed",
+                    "start": 11.759999,
+                    "end": 12.08,
+                    "confidence": 0.99896014,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "removed"
+                  },
+                  {
+                    "word": "his",
+                    "start": 12.08,
+                    "end": 12.32,
+                    "confidence": 0.99866366,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "his"
+                  },
+                  {
+                    "word": "open",
+                    "start": 12.32,
+                    "end": 12.559999,
+                    "confidence": 0.88462204,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "open"
+                  },
+                  {
+                    "word": "mic",
+                    "start": 12.559999,
+                    "end": 12.88,
+                    "confidence": 0.9749888,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "mic"
+                  },
+                  {
+                    "word": "telephone",
+                    "start": 12.88,
+                    "end": 13.36,
+                    "confidence": 0.99753284,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "telephone"
+                  },
+                  {
+                    "word": "credit",
+                    "start": 13.36,
+                    "end": 13.759999,
+                    "confidence": 0.99907863,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "credit"
+                  },
+                  {
+                    "word": "application",
+                    "start": 13.759999,
+                    "end": 14.4,
+                    "confidence": 0.95652354,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "application,"
+                  },
+                  {
+                    "word": "called",
+                    "start": 14.825,
+                    "end": 15.224999,
+                    "confidence": 0.99920255,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "called"
+                  },
+                  {
+                    "word": "out",
+                    "start": 15.224999,
+                    "end": 15.465,
+                    "confidence": 0.99966216,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "out"
+                  },
+                  {
+                    "word": "social",
+                    "start": 15.465,
+                    "end": 15.865,
+                    "confidence": 0.6283746,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "Social"
+                  },
+                  {
+                    "word": "security",
+                    "start": 15.865,
+                    "end": 16.345,
+                    "confidence": 0.99709225,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "Security"
+                  },
+                  {
+                    "word": "number",
+                    "start": 16.345,
+                    "end": 16.744999,
+                    "confidence": 0.9912422,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "number"
+                  },
+                  {
+                    "word": "and",
+                    "start": 16.744999,
+                    "end": 17.065,
+                    "confidence": 0.5751295,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "and"
+                  },
+                  {
+                    "word": "other",
+                    "start": 17.065,
+                    "end": 17.305,
+                    "confidence": 0.9997423,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "other"
+                  },
+                  {
+                    "word": "things",
+                    "start": 17.305,
+                    "end": 17.545,
+                    "confidence": 0.9967271,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "things."
+                  }
+                ],
+                "paragraphs": {
+                  "transcript": "\nSpeaker 0: Doctor reams agriculture. This is tape eight side a and identified by Turner as 1970 '6. Copy kid murdered this one also. As a courtesy to him, I removed his open mic telephone credit application, called out Social Security number and other things.",
+                  "paragraphs": [
+                    {
+                      "sentences": [
+                        {
+                          "text": "Doctor reams agriculture.",
+                          "start": 0.16,
+                          "end": 1.9199998
+                        },
+                        {
+                          "text": "This is tape eight side a and identified by Turner as 1970 '6.",
+                          "start": 2.48,
+                          "end": 7.12
+                        },
+                        {
+                          "text": "Copy kid murdered this one also.",
+                          "start": 7.68,
+                          "end": 9.919999
+                        },
+                        {
+                          "text": "As a courtesy to him, I removed his open mic telephone credit application, called out Social Security number and other things.",
+                          "start": 10.4,
+                          "end": 17.545
+                        }
+                      ],
+                      "speaker": 0,
+                      "num_words": 43,
+                      "start": 0.16,
+                      "end": 17.545
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "utterances": [
+          {
+            "start": 0.16,
+            "end": 1.9199998,
+            "confidence": 0.8501118,
+            "channel": 0,
+            "transcript": "Doctor reams agriculture.",
+            "words": [
+              {
+                "word": "doctor",
+                "start": 0.16,
+                "end": 0.48,
+                "confidence": 0.8520928,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "Doctor"
+              },
+              {
+                "word": "reams",
+                "start": 0.48,
+                "end": 0.96,
+                "confidence": 0.8280196,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "reams"
+              },
+              {
+                "word": "agriculture",
+                "start": 0.96,
+                "end": 1.9199998,
+                "confidence": 0.87022316,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "agriculture."
+              }
+            ],
+            "speaker": 0,
+            "id": "7b93aab0-05ce-417c-a6e8-0877397aa9cc"
+          },
+          {
+            "start": 2.48,
+            "end": 6.3999996,
+            "confidence": 0.93255734,
+            "channel": 0,
+            "transcript": "This is tape eight side a and identified by Turner as 1970",
+            "words": [
+              {
+                "word": "this",
+                "start": 2.48,
+                "end": 2.72,
+                "confidence": 0.9971609,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "This"
+              },
+              {
+                "word": "is",
+                "start": 2.72,
+                "end": 2.8799999,
+                "confidence": 0.99896324,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "is"
+              },
+              {
+                "word": "tape",
+                "start": 2.8799999,
+                "end": 3.1999998,
+                "confidence": 0.9539206,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "tape"
+              },
+              {
+                "word": "eight",
+                "start": 3.1999998,
+                "end": 3.4399998,
+                "confidence": 0.9405143,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "eight"
+              },
+              {
+                "word": "side",
+                "start": 3.4399998,
+                "end": 3.6799998,
+                "confidence": 0.65006816,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "side"
+              },
+              {
+                "word": "a",
+                "start": 3.6799998,
+                "end": 3.9199998,
+                "confidence": 0.9407068,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "a"
+              },
+              {
+                "word": "and",
+                "start": 3.9199998,
+                "end": 4.08,
+                "confidence": 0.9268545,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "and"
+              },
+              {
+                "word": "identified",
+                "start": 4.08,
+                "end": 4.64,
+                "confidence": 0.99579537,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "identified"
+              },
+              {
+                "word": "by",
+                "start": 4.64,
+                "end": 4.88,
+                "confidence": 0.9992397,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "by"
+              },
+              {
+                "word": "turner",
+                "start": 4.88,
+                "end": 5.2799997,
+                "confidence": 0.82642525,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "Turner"
+              },
+              {
+                "word": "as",
+                "start": 5.2799997,
+                "end": 5.52,
+                "confidence": 0.962415,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "as"
+              },
+              {
+                "word": "1970",
+                "start": 5.52,
+                "end": 6.3999996,
+                "confidence": 0.99862444,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "1970"
+              }
+            ],
+            "speaker": 0,
+            "id": "d957d8f3-bb32-486b-9c77-fb863200c7a1"
+          },
+          {
+            "start": 6.3999996,
+            "end": 7.12,
+            "confidence": 0.99387217,
+            "channel": 0,
+            "transcript": "'6.",
+            "words": [
+              {
+                "word": "'6",
+                "start": 6.3999996,
+                "end": 7.12,
+                "confidence": 0.99387217,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "'6."
+              }
+            ],
+            "speaker": 0,
+            "id": "af961d5d-3b6c-40eb-83e1-9303d1a3b5bc"
+          },
+          {
+            "start": 7.68,
+            "end": 9.919999,
+            "confidence": 0.8998609,
+            "channel": 0,
+            "transcript": "Copy kid murdered this one also.",
+            "words": [
+              {
+                "word": "copy",
+                "start": 7.68,
+                "end": 8.16,
+                "confidence": 0.9804882,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "Copy"
+              },
+              {
+                "word": "kid",
+                "start": 8.16,
+                "end": 8.4,
+                "confidence": 0.43155667,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "kid"
+              },
+              {
+                "word": "murdered",
+                "start": 8.4,
+                "end": 8.8,
+                "confidence": 0.99623436,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "murdered"
+              },
+              {
+                "word": "this",
+                "start": 8.8,
+                "end": 9.04,
+                "confidence": 0.9975074,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "this"
+              },
+              {
+                "word": "one",
+                "start": 9.04,
+                "end": 9.2,
+                "confidence": 0.9996112,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "one"
+              },
+              {
+                "word": "also",
+                "start": 9.2,
+                "end": 9.919999,
+                "confidence": 0.9937679,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "also."
+              }
+            ],
+            "speaker": 0,
+            "id": "7a940475-e18a-44a0-8cc4-8fe600d3db7c"
+          },
+          {
+            "start": 10.4,
+            "end": 14.4,
+            "confidence": 0.9708211,
+            "channel": 0,
+            "transcript": "As a courtesy to him, I removed his open mic telephone credit application,",
+            "words": [
+              {
+                "word": "as",
+                "start": 10.4,
+                "end": 10.719999,
+                "confidence": 0.99800664,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "As"
+              },
+              {
+                "word": "a",
+                "start": 10.719999,
+                "end": 10.8,
+                "confidence": 0.9988803,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "a"
+              },
+              {
+                "word": "courtesy",
+                "start": 10.8,
+                "end": 11.2,
+                "confidence": 0.99980074,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "courtesy"
+              },
+              {
+                "word": "to",
+                "start": 11.2,
+                "end": 11.44,
+                "confidence": 0.9998129,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "to"
+              },
+              {
+                "word": "him",
+                "start": 11.44,
+                "end": 11.679999,
+                "confidence": 0.89214885,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "him,"
+              },
+              {
+                "word": "i",
+                "start": 11.679999,
+                "end": 11.759999,
+                "confidence": 0.9216553,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "I"
+              },
+              {
+                "word": "removed",
+                "start": 11.759999,
+                "end": 12.08,
+                "confidence": 0.99896014,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "removed"
+              },
+              {
+                "word": "his",
+                "start": 12.08,
+                "end": 12.32,
+                "confidence": 0.99866366,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "his"
+              },
+              {
+                "word": "open",
+                "start": 12.32,
+                "end": 12.559999,
+                "confidence": 0.88462204,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "open"
+              },
+              {
+                "word": "mic",
+                "start": 12.559999,
+                "end": 12.88,
+                "confidence": 0.9749888,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "mic"
+              },
+              {
+                "word": "telephone",
+                "start": 12.88,
+                "end": 13.36,
+                "confidence": 0.99753284,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "telephone"
+              },
+              {
+                "word": "credit",
+                "start": 13.36,
+                "end": 13.759999,
+                "confidence": 0.99907863,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "credit"
+              },
+              {
+                "word": "application",
+                "start": 13.759999,
+                "end": 14.4,
+                "confidence": 0.95652354,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "application,"
+              }
+            ],
+            "speaker": 0,
+            "id": "bcb669ab-21c0-4570-ac2d-ef39147921af"
+          },
+          {
+            "start": 14.825,
+            "end": 17.545,
+            "confidence": 0.8983966,
+            "channel": 0,
+            "transcript": "called out Social Security number and other things.",
+            "words": [
+              {
+                "word": "called",
+                "start": 14.825,
+                "end": 15.224999,
+                "confidence": 0.99920255,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "called"
+              },
+              {
+                "word": "out",
+                "start": 15.224999,
+                "end": 15.465,
+                "confidence": 0.99966216,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "out"
+              },
+              {
+                "word": "social",
+                "start": 15.465,
+                "end": 15.865,
+                "confidence": 0.6283746,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "Social"
+              },
+              {
+                "word": "security",
+                "start": 15.865,
+                "end": 16.345,
+                "confidence": 0.99709225,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "Security"
+              },
+              {
+                "word": "number",
+                "start": 16.345,
+                "end": 16.744999,
+                "confidence": 0.9912422,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "number"
+              },
+              {
+                "word": "and",
+                "start": 16.744999,
+                "end": 17.065,
+                "confidence": 0.5751295,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "and"
+              },
+              {
+                "word": "other",
+                "start": 17.065,
+                "end": 17.305,
+                "confidence": 0.9997423,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "other"
+              },
+              {
+                "word": "things",
+                "start": 17.305,
+                "end": 17.545,
+                "confidence": 0.9967271,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "things."
+              }
+            ],
+            "speaker": 0,
+            "id": "af06a11c-ff83-40b1-9a91-9860c2728255"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,1111 @@
+{
+  "audio_file": "seminars/AGRICULTURE 1975/ReamsAg Tape 21 Side B.mp3",
+  "service": "deepgram",
+  "config": {
+    "speaker_labels": true,
+    "custom_vocabulary": [],
+    "punctuate": true,
+    "format_text": true,
+    "language_code": "en",
+    "max_speakers": 3
+  },
+  "timestamp": "2025-11-04T08:01:41Z",
+  "result": {
+    "text": "Doctor reams agriculture, possibly 1975, but probably 1976. Tape 21 side b. You can listen past copy kids noises. Including the spray materials and your and your tractor, palletization, everything else. In fact, if you have a a spray that will really put it on, you're you can",
+    "speakers": [
+      {
+        "speaker": "Speaker 0",
+        "start_time": 0.16,
+        "end_time": 1.9199998,
+        "text": "Doctor reams agriculture,",
+        "confidence": 0.7890715
+      },
+      {
+        "speaker": "Speaker 0",
+        "start_time": 2.1599998,
+        "end_time": 4.16,
+        "text": "possibly 1975,",
+        "confidence": 0.9579004
+      },
+      {
+        "speaker": "Speaker 0",
+        "start_time": 4.16,
+        "end_time": 6.4,
+        "text": "but probably 1976.",
+        "confidence": 0.9670338
+      },
+      {
+        "speaker": "Speaker 0",
+        "start_time": 6.48,
+        "end_time": 10.48,
+        "text": "Tape 21 side b. You can listen past copy kids noises.",
+        "confidence": 0.9343586
+      },
+      {
+        "speaker": "Speaker 1",
+        "start_time": 414.58,
+        "end_time": 418.9,
+        "text": "Including the spray materials and your and your tractor,",
+        "confidence": 0.8739861
+      },
+      {
+        "speaker": "Speaker 1",
+        "start_time": 419.06,
+        "end_time": 420.02,
+        "text": "palletization,",
+        "confidence": 0.6465954
+      },
+      {
+        "speaker": "Speaker 1",
+        "start_time": 420.02,
+        "end_time": 422.98,
+        "text": "everything else. In fact, if you have a a",
+        "confidence": 0.7015537
+      },
+      {
+        "speaker": "Speaker 1",
+        "start_time": 423.06,
+        "end_time": 426.66,
+        "text": "spray that will really put it on, you're you can",
+        "confidence": 0.8147189
+      }
+    ],
+    "confidence": 0.9658383,
+    "audio_duration": 426.66,
+    "processing_time": 11.167487382888794,
+    "raw_response": {
+      "metadata": {
+        "transaction_key": "deprecated",
+        "request_id": "22ce3e0c-95ba-4881-ac4d-7de820ae15f9",
+        "sha256": "814f7b32ecf64612c5f62941704cbc6e8198c729246ef2cc43d08f0c0fa85880",
+        "created": "2025-11-04T06:01:39.645Z",
+        "duration": 1519.3861,
+        "channels": 1,
+        "models": [
+          "2187e11a-3532-4498-b076-81fa530bdd49"
+        ],
+        "model_info": {
+          "2187e11a-3532-4498-b076-81fa530bdd49": {
+            "name": "general-nova-3",
+            "version": "2025-07-31.0",
+            "arch": "nova-3"
+          }
+        }
+      },
+      "results": {
+        "channels": [
+          {
+            "alternatives": [
+              {
+                "transcript": "Doctor reams agriculture, possibly 1975, but probably 1976. Tape 21 side b. You can listen past copy kids noises. Including the spray materials and your and your tractor, palletization, everything else. In fact, if you have a a spray that will really put it on, you're you can",
+                "confidence": 0.9658383,
+                "words": [
+                  {
+                    "word": "doctor",
+                    "start": 0.16,
+                    "end": 0.48,
+                    "confidence": 0.98470545,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "Doctor"
+                  },
+                  {
+                    "word": "reams",
+                    "start": 0.48,
+                    "end": 0.96,
+                    "confidence": 0.76448107,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "reams"
+                  },
+                  {
+                    "word": "agriculture",
+                    "start": 0.96,
+                    "end": 1.9199998,
+                    "confidence": 0.61802787,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "agriculture,"
+                  },
+                  {
+                    "word": "possibly",
+                    "start": 2.1599998,
+                    "end": 2.6399999,
+                    "confidence": 0.9846138,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "possibly"
+                  },
+                  {
+                    "word": "1975",
+                    "start": 2.6399999,
+                    "end": 4.16,
+                    "confidence": 0.9311871,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "1975,"
+                  },
+                  {
+                    "word": "but",
+                    "start": 4.16,
+                    "end": 4.24,
+                    "confidence": 0.99190444,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "but"
+                  },
+                  {
+                    "word": "probably",
+                    "start": 4.24,
+                    "end": 4.72,
+                    "confidence": 0.9890999,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "probably"
+                  },
+                  {
+                    "word": "1976",
+                    "start": 4.72,
+                    "end": 6.4,
+                    "confidence": 0.92009705,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "1976."
+                  },
+                  {
+                    "word": "tape",
+                    "start": 6.48,
+                    "end": 6.7999997,
+                    "confidence": 0.9528426,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "Tape"
+                  },
+                  {
+                    "word": "21",
+                    "start": 6.7999997,
+                    "end": 7.2799997,
+                    "confidence": 0.9909078,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "21"
+                  },
+                  {
+                    "word": "side",
+                    "start": 7.2799997,
+                    "end": 7.68,
+                    "confidence": 0.9190745,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "side"
+                  },
+                  {
+                    "word": "b",
+                    "start": 7.68,
+                    "end": 8.24,
+                    "confidence": 0.917603,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "b."
+                  },
+                  {
+                    "word": "you",
+                    "start": 8.32,
+                    "end": 8.48,
+                    "confidence": 0.99692315,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "You"
+                  },
+                  {
+                    "word": "can",
+                    "start": 8.48,
+                    "end": 8.639999,
+                    "confidence": 0.99967194,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "can"
+                  },
+                  {
+                    "word": "listen",
+                    "start": 8.639999,
+                    "end": 8.96,
+                    "confidence": 0.9987709,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "listen"
+                  },
+                  {
+                    "word": "past",
+                    "start": 8.96,
+                    "end": 9.36,
+                    "confidence": 0.9817322,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "past"
+                  },
+                  {
+                    "word": "copy",
+                    "start": 9.36,
+                    "end": 9.76,
+                    "confidence": 0.92622054,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "copy"
+                  },
+                  {
+                    "word": "kids",
+                    "start": 9.76,
+                    "end": 10.08,
+                    "confidence": 0.7409168,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "kids"
+                  },
+                  {
+                    "word": "noises",
+                    "start": 10.08,
+                    "end": 10.48,
+                    "confidence": 0.8532815,
+                    "speaker": 0,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "noises."
+                  },
+                  {
+                    "word": "including",
+                    "start": 414.58,
+                    "end": 415.22,
+                    "confidence": 0.9970535,
+                    "speaker": 1,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "Including"
+                  },
+                  {
+                    "word": "the",
+                    "start": 415.22,
+                    "end": 415.38,
+                    "confidence": 0.7543612,
+                    "speaker": 1,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "the"
+                  },
+                  {
+                    "word": "spray",
+                    "start": 415.38,
+                    "end": 415.62,
+                    "confidence": 0.9970739,
+                    "speaker": 1,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "spray"
+                  },
+                  {
+                    "word": "materials",
+                    "start": 415.62,
+                    "end": 416.18,
+                    "confidence": 0.75634164,
+                    "speaker": 1,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "materials"
+                  },
+                  {
+                    "word": "and",
+                    "start": 416.18,
+                    "end": 416.82,
+                    "confidence": 0.90425897,
+                    "speaker": 1,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "and"
+                  },
+                  {
+                    "word": "your",
+                    "start": 416.82,
+                    "end": 417.38,
+                    "confidence": 0.9824868,
+                    "speaker": 1,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "your"
+                  },
+                  {
+                    "word": "and",
+                    "start": 417.38,
+                    "end": 417.78,
+                    "confidence": 0.988853,
+                    "speaker": 1,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "and"
+                  },
+                  {
+                    "word": "your",
+                    "start": 417.78,
+                    "end": 418.02,
+                    "confidence": 0.990333,
+                    "speaker": 1,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "your"
+                  },
+                  {
+                    "word": "tractor",
+                    "start": 418.02,
+                    "end": 418.9,
+                    "confidence": 0.49511352,
+                    "speaker": 1,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "tractor,"
+                  },
+                  {
+                    "word": "palletization",
+                    "start": 419.06,
+                    "end": 420.02,
+                    "confidence": 0.6465954,
+                    "speaker": 1,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "palletization,"
+                  },
+                  {
+                    "word": "everything",
+                    "start": 420.02,
+                    "end": 420.41998,
+                    "confidence": 0.53780687,
+                    "speaker": 1,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "everything"
+                  },
+                  {
+                    "word": "else",
+                    "start": 420.41998,
+                    "end": 420.98,
+                    "confidence": 0.9687336,
+                    "speaker": 1,
+                    "speaker_confidence": 1.0,
+                    "punctuated_word": "else."
+                  },
+                  {
+                    "word": "in",
+                    "start": 421.06,
+                    "end": 421.22,
+                    "confidence": 0.4486976,
+                    "speaker": 1,
+                    "speaker_confidence": 0.8740821,
+                    "punctuated_word": "In"
+                  },
+                  {
+                    "word": "fact",
+                    "start": 421.22,
+                    "end": 421.53998,
+                    "confidence": 0.99587417,
+                    "speaker": 1,
+                    "speaker_confidence": 0.8740821,
+                    "punctuated_word": "fact,"
+                  },
+                  {
+                    "word": "if",
+                    "start": 421.53998,
+                    "end": 421.69998,
+                    "confidence": 0.9495982,
+                    "speaker": 1,
+                    "speaker_confidence": 0.8740821,
+                    "punctuated_word": "if"
+                  },
+                  {
+                    "word": "you",
+                    "start": 421.69998,
+                    "end": 421.86,
+                    "confidence": 0.987931,
+                    "speaker": 1,
+                    "speaker_confidence": 0.8740821,
+                    "punctuated_word": "you"
+                  },
+                  {
+                    "word": "have",
+                    "start": 421.86,
+                    "end": 422.1,
+                    "confidence": 0.89917034,
+                    "speaker": 1,
+                    "speaker_confidence": 0.8740821,
+                    "punctuated_word": "have"
+                  },
+                  {
+                    "word": "a",
+                    "start": 422.1,
+                    "end": 422.25998,
+                    "confidence": 0.43048942,
+                    "speaker": 1,
+                    "speaker_confidence": 0.9610564,
+                    "punctuated_word": "a"
+                  },
+                  {
+                    "word": "a",
+                    "start": 422.25998,
+                    "end": 422.98,
+                    "confidence": 0.095682,
+                    "speaker": 1,
+                    "speaker_confidence": 0.9610564,
+                    "punctuated_word": "a"
+                  },
+                  {
+                    "word": "spray",
+                    "start": 423.06,
+                    "end": 423.38,
+                    "confidence": 0.99086237,
+                    "speaker": 1,
+                    "speaker_confidence": 0.9610564,
+                    "punctuated_word": "spray"
+                  },
+                  {
+                    "word": "that",
+                    "start": 423.38,
+                    "end": 423.62,
+                    "confidence": 0.56265736,
+                    "speaker": 1,
+                    "speaker_confidence": 0.9610564,
+                    "punctuated_word": "that"
+                  },
+                  {
+                    "word": "will",
+                    "start": 423.62,
+                    "end": 423.78,
+                    "confidence": 0.3655012,
+                    "speaker": 1,
+                    "speaker_confidence": 0.9610564,
+                    "punctuated_word": "will"
+                  },
+                  {
+                    "word": "really",
+                    "start": 423.78,
+                    "end": 424.02,
+                    "confidence": 0.8870431,
+                    "speaker": 1,
+                    "speaker_confidence": 0.9610564,
+                    "punctuated_word": "really"
+                  },
+                  {
+                    "word": "put",
+                    "start": 424.02,
+                    "end": 424.18,
+                    "confidence": 0.9630603,
+                    "speaker": 1,
+                    "speaker_confidence": 0.9610564,
+                    "punctuated_word": "put"
+                  },
+                  {
+                    "word": "it",
+                    "start": 424.18,
+                    "end": 424.34,
+                    "confidence": 0.9658383,
+                    "speaker": 1,
+                    "speaker_confidence": 0.98825014,
+                    "punctuated_word": "it"
+                  },
+                  {
+                    "word": "on",
+                    "start": 424.34,
+                    "end": 424.82,
+                    "confidence": 0.7539558,
+                    "speaker": 1,
+                    "speaker_confidence": 0.98825014,
+                    "punctuated_word": "on,"
+                  },
+                  {
+                    "word": "you're",
+                    "start": 424.97998,
+                    "end": 425.38,
+                    "confidence": 0.6662022,
+                    "speaker": 1,
+                    "speaker_confidence": 0.98825014,
+                    "punctuated_word": "you're"
+                  },
+                  {
+                    "word": "you",
+                    "start": 425.53998,
+                    "end": 425.69998,
+                    "confidence": 0.99745864,
+                    "speaker": 1,
+                    "speaker_confidence": 0.98825014,
+                    "punctuated_word": "you"
+                  },
+                  {
+                    "word": "can",
+                    "start": 425.69998,
+                    "end": 426.66,
+                    "confidence": 0.9946102,
+                    "speaker": 1,
+                    "speaker_confidence": 0.98825014,
+                    "punctuated_word": "can"
+                  }
+                ],
+                "paragraphs": {
+                  "transcript": "\nSpeaker 0: Doctor reams agriculture, possibly 1975, but probably 1976. Tape 21 side b. You can listen past copy kids noises.\n\nSpeaker 1: Including the spray materials and your and your tractor, palletization, everything else. In fact, if you have a a spray that will really put it on, you're you can",
+                  "paragraphs": [
+                    {
+                      "sentences": [
+                        {
+                          "text": "Doctor reams agriculture, possibly 1975, but probably 1976.",
+                          "start": 0.16,
+                          "end": 6.4
+                        },
+                        {
+                          "text": "Tape 21 side b.",
+                          "start": 6.48,
+                          "end": 8.24
+                        },
+                        {
+                          "text": "You can listen past copy kids noises.",
+                          "start": 8.32,
+                          "end": 10.48
+                        }
+                      ],
+                      "speaker": 0,
+                      "num_words": 19,
+                      "start": 0.16,
+                      "end": 10.48
+                    },
+                    {
+                      "sentences": [
+                        {
+                          "text": "Including the spray materials and your and your tractor, palletization, everything else.",
+                          "start": 414.58,
+                          "end": 420.98
+                        },
+                        {
+                          "text": "In fact, if you have a a spray that will really put it on, you're you can",
+                          "start": 421.06,
+                          "end": 426.66
+                        }
+                      ],
+                      "speaker": 1,
+                      "num_words": 29,
+                      "start": 414.58,
+                      "end": 426.66
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "utterances": [
+          {
+            "start": 0.16,
+            "end": 1.9199998,
+            "confidence": 0.7890715,
+            "channel": 0,
+            "transcript": "Doctor reams agriculture,",
+            "words": [
+              {
+                "word": "doctor",
+                "start": 0.16,
+                "end": 0.48,
+                "confidence": 0.98470545,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "Doctor"
+              },
+              {
+                "word": "reams",
+                "start": 0.48,
+                "end": 0.96,
+                "confidence": 0.76448107,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "reams"
+              },
+              {
+                "word": "agriculture",
+                "start": 0.96,
+                "end": 1.9199998,
+                "confidence": 0.61802787,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "agriculture,"
+              }
+            ],
+            "speaker": 0,
+            "id": "d8702db5-44a8-4f5d-9286-90e1c8f34aee"
+          },
+          {
+            "start": 2.1599998,
+            "end": 4.16,
+            "confidence": 0.9579004,
+            "channel": 0,
+            "transcript": "possibly 1975,",
+            "words": [
+              {
+                "word": "possibly",
+                "start": 2.1599998,
+                "end": 2.6399999,
+                "confidence": 0.9846138,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "possibly"
+              },
+              {
+                "word": "1975",
+                "start": 2.6399999,
+                "end": 4.16,
+                "confidence": 0.9311871,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "1975,"
+              }
+            ],
+            "speaker": 0,
+            "id": "16c453f7-4f9f-4e44-a89e-9a53727be9ff"
+          },
+          {
+            "start": 4.16,
+            "end": 6.4,
+            "confidence": 0.9670338,
+            "channel": 0,
+            "transcript": "but probably 1976.",
+            "words": [
+              {
+                "word": "but",
+                "start": 4.16,
+                "end": 4.24,
+                "confidence": 0.99190444,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "but"
+              },
+              {
+                "word": "probably",
+                "start": 4.24,
+                "end": 4.72,
+                "confidence": 0.9890999,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "probably"
+              },
+              {
+                "word": "1976",
+                "start": 4.72,
+                "end": 6.4,
+                "confidence": 0.92009705,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "1976."
+              }
+            ],
+            "speaker": 0,
+            "id": "ca0aab55-38dd-4ad9-a70e-55d970fe61b0"
+          },
+          {
+            "start": 6.48,
+            "end": 10.48,
+            "confidence": 0.9343586,
+            "channel": 0,
+            "transcript": "Tape 21 side b. You can listen past copy kids noises.",
+            "words": [
+              {
+                "word": "tape",
+                "start": 6.48,
+                "end": 6.7999997,
+                "confidence": 0.9528426,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "Tape"
+              },
+              {
+                "word": "21",
+                "start": 6.7999997,
+                "end": 7.2799997,
+                "confidence": 0.9909078,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "21"
+              },
+              {
+                "word": "side",
+                "start": 7.2799997,
+                "end": 7.68,
+                "confidence": 0.9190745,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "side"
+              },
+              {
+                "word": "b",
+                "start": 7.68,
+                "end": 8.24,
+                "confidence": 0.917603,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "b."
+              },
+              {
+                "word": "you",
+                "start": 8.32,
+                "end": 8.48,
+                "confidence": 0.99692315,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "You"
+              },
+              {
+                "word": "can",
+                "start": 8.48,
+                "end": 8.639999,
+                "confidence": 0.99967194,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "can"
+              },
+              {
+                "word": "listen",
+                "start": 8.639999,
+                "end": 8.96,
+                "confidence": 0.9987709,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "listen"
+              },
+              {
+                "word": "past",
+                "start": 8.96,
+                "end": 9.36,
+                "confidence": 0.9817322,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "past"
+              },
+              {
+                "word": "copy",
+                "start": 9.36,
+                "end": 9.76,
+                "confidence": 0.92622054,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "copy"
+              },
+              {
+                "word": "kids",
+                "start": 9.76,
+                "end": 10.08,
+                "confidence": 0.7409168,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "kids"
+              },
+              {
+                "word": "noises",
+                "start": 10.08,
+                "end": 10.48,
+                "confidence": 0.8532815,
+                "speaker": 0,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "noises."
+              }
+            ],
+            "speaker": 0,
+            "id": "403c6112-102e-4066-855d-1ccd2a5c6a65"
+          },
+          {
+            "start": 414.58,
+            "end": 418.9,
+            "confidence": 0.8739861,
+            "channel": 0,
+            "transcript": "Including the spray materials and your and your tractor,",
+            "words": [
+              {
+                "word": "including",
+                "start": 414.58,
+                "end": 415.22,
+                "confidence": 0.9970535,
+                "speaker": 1,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "Including"
+              },
+              {
+                "word": "the",
+                "start": 415.22,
+                "end": 415.38,
+                "confidence": 0.7543612,
+                "speaker": 1,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "the"
+              },
+              {
+                "word": "spray",
+                "start": 415.38,
+                "end": 415.62,
+                "confidence": 0.9970739,
+                "speaker": 1,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "spray"
+              },
+              {
+                "word": "materials",
+                "start": 415.62,
+                "end": 416.18,
+                "confidence": 0.75634164,
+                "speaker": 1,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "materials"
+              },
+              {
+                "word": "and",
+                "start": 416.18,
+                "end": 416.82,
+                "confidence": 0.90425897,
+                "speaker": 1,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "and"
+              },
+              {
+                "word": "your",
+                "start": 416.82,
+                "end": 417.38,
+                "confidence": 0.9824868,
+                "speaker": 1,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "your"
+              },
+              {
+                "word": "and",
+                "start": 417.38,
+                "end": 417.78,
+                "confidence": 0.988853,
+                "speaker": 1,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "and"
+              },
+              {
+                "word": "your",
+                "start": 417.78,
+                "end": 418.02,
+                "confidence": 0.990333,
+                "speaker": 1,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "your"
+              },
+              {
+                "word": "tractor",
+                "start": 418.02,
+                "end": 418.9,
+                "confidence": 0.49511352,
+                "speaker": 1,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "tractor,"
+              }
+            ],
+            "speaker": 1,
+            "id": "29c62d15-9c4f-42fc-99eb-82f127eb9691"
+          },
+          {
+            "start": 419.06,
+            "end": 420.02,
+            "confidence": 0.6465954,
+            "channel": 0,
+            "transcript": "palletization,",
+            "words": [
+              {
+                "word": "palletization",
+                "start": 419.06,
+                "end": 420.02,
+                "confidence": 0.6465954,
+                "speaker": 1,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "palletization,"
+              }
+            ],
+            "speaker": 1,
+            "id": "fb866bd9-276f-40f6-91df-8aedccb48913"
+          },
+          {
+            "start": 420.02,
+            "end": 422.98,
+            "confidence": 0.7015537,
+            "channel": 0,
+            "transcript": "everything else. In fact, if you have a a",
+            "words": [
+              {
+                "word": "everything",
+                "start": 420.02,
+                "end": 420.41998,
+                "confidence": 0.53780687,
+                "speaker": 1,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "everything"
+              },
+              {
+                "word": "else",
+                "start": 420.41998,
+                "end": 420.98,
+                "confidence": 0.9687336,
+                "speaker": 1,
+                "speaker_confidence": 1.0,
+                "punctuated_word": "else."
+              },
+              {
+                "word": "in",
+                "start": 421.06,
+                "end": 421.22,
+                "confidence": 0.4486976,
+                "speaker": 1,
+                "speaker_confidence": 0.8740821,
+                "punctuated_word": "In"
+              },
+              {
+                "word": "fact",
+                "start": 421.22,
+                "end": 421.53998,
+                "confidence": 0.99587417,
+                "speaker": 1,
+                "speaker_confidence": 0.8740821,
+                "punctuated_word": "fact,"
+              },
+              {
+                "word": "if",
+                "start": 421.53998,
+                "end": 421.69998,
+                "confidence": 0.9495982,
+                "speaker": 1,
+                "speaker_confidence": 0.8740821,
+                "punctuated_word": "if"
+              },
+              {
+                "word": "you",
+                "start": 421.69998,
+                "end": 421.86,
+                "confidence": 0.987931,
+                "speaker": 1,
+                "speaker_confidence": 0.8740821,
+                "punctuated_word": "you"
+              },
+              {
+                "word": "have",
+                "start": 421.86,
+                "end": 422.1,
+                "confidence": 0.89917034,
+                "speaker": 1,
+                "speaker_confidence": 0.8740821,
+                "punctuated_word": "have"
+              },
+              {
+                "word": "a",
+                "start": 422.1,
+                "end": 422.25998,
+                "confidence": 0.43048942,
+                "speaker": 1,
+                "speaker_confidence": 0.9610564,
+                "punctuated_word": "a"
+              },
+              {
+                "word": "a",
+                "start": 422.25998,
+                "end": 422.98,
+                "confidence": 0.095682,
+                "speaker": 1,
+                "speaker_confidence": 0.9610564,
+                "punctuated_word": "a"
+              }
+            ],
+            "speaker": 1,
+            "id": "d27ed158-27a1-405d-bcdc-e8021c6fb47e"
+          },
+          {
+            "start": 423.06,
+            "end": 426.66,
+            "confidence": 0.8147189,
+            "channel": 0,
+            "transcript": "spray that will really put it on, you're you can",
+            "words": [
+              {
+                "word": "spray",
+                "start": 423.06,
+                "end": 423.38,
+                "confidence": 0.99086237,
+                "speaker": 1,
+                "speaker_confidence": 0.9610564,
+                "punctuated_word": "spray"
+              },
+              {
+                "word": "that",
+                "start": 423.38,
+                "end": 423.62,
+                "confidence": 0.56265736,
+                "speaker": 1,
+                "speaker_confidence": 0.9610564,
+                "punctuated_word": "that"
+              },
+              {
+                "word": "will",
+                "start": 423.62,
+                "end": 423.78,
+                "confidence": 0.3655012,
+                "speaker": 1,
+                "speaker_confidence": 0.9610564,
+                "punctuated_word": "will"
+              },
+              {
+                "word": "really",
+                "start": 423.78,
+                "end": 424.02,
+                "confidence": 0.8870431,
+                "speaker": 1,
+                "speaker_confidence": 0.9610564,
+                "punctuated_word": "really"
+              },
+              {
+                "word": "put",
+                "start": 424.02,
+                "end": 424.18,
+                "confidence": 0.9630603,
+                "speaker": 1,
+                "speaker_confidence": 0.9610564,
+                "punctuated_word": "put"
+              },
+              {
+                "word": "it",
+                "start": 424.18,
+                "end": 424.34,
+                "confidence": 0.9658383,
+                "speaker": 1,
+                "speaker_confidence": 0.98825014,
+                "punctuated_word": "it"
+              },
+              {
+                "word": "on",
+                "start": 424.34,
+                "end": 424.82,
+                "confidence": 0.7539558,
+                "speaker": 1,
+                "speaker_confidence": 0.98825014,
+                "punctuated_word": "on,"
+              },
+              {
+                "word": "you're",
+                "start": 424.97998,
+                "end": 425.38,
+                "confidence": 0.6662022,
+                "speaker": 1,
+                "speaker_confidence": 0.98825014,
+                "punctuated_word": "you're"
+              },
+              {
+                "word": "you",
+                "start": 425.53998,
+                "end": 425.69998,
+                "confidence": 0.99745864,
+                "speaker": 1,
+                "speaker_confidence": 0.98825014,
+                "punctuated_word": "you"
+              },
+              {
+                "word": "can",
+                "start": 425.69998,
+                "end": 426.66,
+                "confidence": 0.9946102,
+                "speaker": 1,
+                "speaker_confidence": 0.98825014,
+                "punctuated_word": "can"
+              }
+            ],
+            "speaker": 1,
+            "id": "33ea8a72-5108-4317-9e23-a353dedcd448"
+          }
+        ]
+      }
+    }
+  }
+}

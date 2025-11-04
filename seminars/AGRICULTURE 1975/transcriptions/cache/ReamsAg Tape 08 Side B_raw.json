@@ -1,0 +1,730 @@
+{
+  "audio_file": "seminars/AGRICULTURE 1975/ReamsAg Tape 08 Side B.mp3",
+  "service": "deepgram",
+  "timestamp": "2025-11-04T07:57:36Z",
+  "raw_response": {
+    "metadata": {
+      "transaction_key": "deprecated",
+      "request_id": "e35da93d-edaf-4581-ba64-b85aea0cd233",
+      "sha256": "ef042e9ef7541b6840699087cd0462178fe739714b6743b6686d840c4465011e",
+      "created": "2025-11-04T05:57:35.890Z",
+      "duration": 286.8245,
+      "channels": 1,
+      "models": [
+        "2187e11a-3532-4498-b076-81fa530bdd49"
+      ],
+      "model_info": {
+        "2187e11a-3532-4498-b076-81fa530bdd49": {
+          "name": "general-nova-3",
+          "version": "2025-07-31.0",
+          "arch": "nova-3"
+        }
+      }
+    },
+    "results": {
+      "channels": [
+        {
+          "alternatives": [
+            {
+              "transcript": "Doctor reams agriculture. This is marked tape eight side b and identified by Turner as 1976. Copykid murdered this one also. I wonder what Copykid was thinking when he so carelessly destroyed valuable information.",
+              "confidence": 0.99455404,
+              "words": [
+                {
+                  "word": "doctor",
+                  "start": 0.16,
+                  "end": 0.48,
+                  "confidence": 0.95417786,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "Doctor"
+                },
+                {
+                  "word": "reams",
+                  "start": 0.48,
+                  "end": 0.96,
+                  "confidence": 0.8279854,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "reams"
+                },
+                {
+                  "word": "agriculture",
+                  "start": 0.96,
+                  "end": 1.9199998,
+                  "confidence": 0.80026996,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "agriculture."
+                },
+                {
+                  "word": "this",
+                  "start": 2.08,
+                  "end": 2.32,
+                  "confidence": 0.99390703,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "This"
+                },
+                {
+                  "word": "is",
+                  "start": 2.32,
+                  "end": 2.48,
+                  "confidence": 0.9977648,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "is"
+                },
+                {
+                  "word": "marked",
+                  "start": 2.48,
+                  "end": 2.8,
+                  "confidence": 0.72416127,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "marked"
+                },
+                {
+                  "word": "tape",
+                  "start": 2.8,
+                  "end": 3.12,
+                  "confidence": 0.96137375,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "tape"
+                },
+                {
+                  "word": "eight",
+                  "start": 3.12,
+                  "end": 3.36,
+                  "confidence": 0.63910735,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "eight"
+                },
+                {
+                  "word": "side",
+                  "start": 3.36,
+                  "end": 3.6,
+                  "confidence": 0.69782835,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "side"
+                },
+                {
+                  "word": "b",
+                  "start": 3.6,
+                  "end": 3.84,
+                  "confidence": 0.96180815,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "b"
+                },
+                {
+                  "word": "and",
+                  "start": 3.84,
+                  "end": 4.08,
+                  "confidence": 0.87552226,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "and"
+                },
+                {
+                  "word": "identified",
+                  "start": 4.08,
+                  "end": 4.56,
+                  "confidence": 0.99455404,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "identified"
+                },
+                {
+                  "word": "by",
+                  "start": 4.56,
+                  "end": 4.7999997,
+                  "confidence": 0.9984439,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "by"
+                },
+                {
+                  "word": "turner",
+                  "start": 4.7999997,
+                  "end": 5.2,
+                  "confidence": 0.6617165,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "Turner"
+                },
+                {
+                  "word": "as",
+                  "start": 5.2,
+                  "end": 5.44,
+                  "confidence": 0.9616967,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "as"
+                },
+                {
+                  "word": "1976",
+                  "start": 5.44,
+                  "end": 7.04,
+                  "confidence": 0.9891019,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "1976."
+                },
+                {
+                  "word": "copykid",
+                  "start": 7.04,
+                  "end": 7.6,
+                  "confidence": 0.8040309,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "Copykid"
+                },
+                {
+                  "word": "murdered",
+                  "start": 7.6,
+                  "end": 8.0,
+                  "confidence": 0.9948219,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "murdered"
+                },
+                {
+                  "word": "this",
+                  "start": 8.0,
+                  "end": 8.24,
+                  "confidence": 0.9978479,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "this"
+                },
+                {
+                  "word": "one",
+                  "start": 8.24,
+                  "end": 8.48,
+                  "confidence": 0.9991873,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "one"
+                },
+                {
+                  "word": "also",
+                  "start": 8.48,
+                  "end": 9.12,
+                  "confidence": 0.9889256,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "also."
+                },
+                {
+                  "word": "i",
+                  "start": 9.36,
+                  "end": 9.5199995,
+                  "confidence": 0.9960069,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "I"
+                },
+                {
+                  "word": "wonder",
+                  "start": 9.5199995,
+                  "end": 9.84,
+                  "confidence": 0.99901855,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "wonder"
+                },
+                {
+                  "word": "what",
+                  "start": 9.84,
+                  "end": 10.08,
+                  "confidence": 0.9991715,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "what"
+                },
+                {
+                  "word": "copykid",
+                  "start": 10.08,
+                  "end": 10.639999,
+                  "confidence": 0.8664372,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "Copykid"
+                },
+                {
+                  "word": "was",
+                  "start": 10.639999,
+                  "end": 10.88,
+                  "confidence": 0.9988379,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "was"
+                },
+                {
+                  "word": "thinking",
+                  "start": 10.88,
+                  "end": 11.2,
+                  "confidence": 0.9997577,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "thinking"
+                },
+                {
+                  "word": "when",
+                  "start": 11.2,
+                  "end": 11.44,
+                  "confidence": 0.99662423,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "when"
+                },
+                {
+                  "word": "he",
+                  "start": 11.44,
+                  "end": 11.599999,
+                  "confidence": 0.99948597,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "he"
+                },
+                {
+                  "word": "so",
+                  "start": 11.599999,
+                  "end": 11.92,
+                  "confidence": 0.9858764,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "so"
+                },
+                {
+                  "word": "carelessly",
+                  "start": 11.92,
+                  "end": 12.4,
+                  "confidence": 0.9991855,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "carelessly"
+                },
+                {
+                  "word": "destroyed",
+                  "start": 12.4,
+                  "end": 12.88,
+                  "confidence": 0.996842,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "destroyed"
+                },
+                {
+                  "word": "valuable",
+                  "start": 12.88,
+                  "end": 13.36,
+                  "confidence": 0.9992986,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "valuable"
+                },
+                {
+                  "word": "information",
+                  "start": 13.36,
+                  "end": 14.0,
+                  "confidence": 0.97034204,
+                  "speaker": 0,
+                  "speaker_confidence": 1.0,
+                  "punctuated_word": "information."
+                }
+              ],
+              "paragraphs": {
+                "transcript": "\nSpeaker 0: Doctor reams agriculture. This is marked tape eight side b and identified by Turner as 1976. Copykid murdered this one also. I wonder what Copykid was thinking when he so carelessly destroyed valuable information.",
+                "paragraphs": [
+                  {
+                    "sentences": [
+                      {
+                        "text": "Doctor reams agriculture.",
+                        "start": 0.16,
+                        "end": 1.9199998
+                      },
+                      {
+                        "text": "This is marked tape eight side b and identified by Turner as 1976.",
+                        "start": 2.08,
+                        "end": 7.04
+                      },
+                      {
+                        "text": "Copykid murdered this one also.",
+                        "start": 7.04,
+                        "end": 9.12
+                      },
+                      {
+                        "text": "I wonder what Copykid was thinking when he so carelessly destroyed valuable information.",
+                        "start": 9.36,
+                        "end": 14.0
+                      }
+                    ],
+                    "speaker": 0,
+                    "num_words": 34,
+                    "start": 0.16,
+                    "end": 14.0
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "utterances": [
+        {
+          "start": 0.16,
+          "end": 1.9199998,
+          "confidence": 0.86081105,
+          "channel": 0,
+          "transcript": "Doctor reams agriculture.",
+          "words": [
+            {
+              "word": "doctor",
+              "start": 0.16,
+              "end": 0.48,
+              "confidence": 0.95417786,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "Doctor"
+            },
+            {
+              "word": "reams",
+              "start": 0.48,
+              "end": 0.96,
+              "confidence": 0.8279854,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "reams"
+            },
+            {
+              "word": "agriculture",
+              "start": 0.96,
+              "end": 1.9199998,
+              "confidence": 0.80026996,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "agriculture."
+            }
+          ],
+          "speaker": 0,
+          "id": "a7aa3439-9fbf-44ef-acab-5c9ee4d2a68a"
+        },
+        {
+          "start": 2.08,
+          "end": 7.04,
+          "confidence": 0.8813066,
+          "channel": 0,
+          "transcript": "This is marked tape eight side b and identified by Turner as 1976.",
+          "words": [
+            {
+              "word": "this",
+              "start": 2.08,
+              "end": 2.32,
+              "confidence": 0.99390703,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "This"
+            },
+            {
+              "word": "is",
+              "start": 2.32,
+              "end": 2.48,
+              "confidence": 0.9977648,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "is"
+            },
+            {
+              "word": "marked",
+              "start": 2.48,
+              "end": 2.8,
+              "confidence": 0.72416127,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "marked"
+            },
+            {
+              "word": "tape",
+              "start": 2.8,
+              "end": 3.12,
+              "confidence": 0.96137375,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "tape"
+            },
+            {
+              "word": "eight",
+              "start": 3.12,
+              "end": 3.36,
+              "confidence": 0.63910735,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "eight"
+            },
+            {
+              "word": "side",
+              "start": 3.36,
+              "end": 3.6,
+              "confidence": 0.69782835,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "side"
+            },
+            {
+              "word": "b",
+              "start": 3.6,
+              "end": 3.84,
+              "confidence": 0.96180815,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "b"
+            },
+            {
+              "word": "and",
+              "start": 3.84,
+              "end": 4.08,
+              "confidence": 0.87552226,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "and"
+            },
+            {
+              "word": "identified",
+              "start": 4.08,
+              "end": 4.56,
+              "confidence": 0.99455404,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "identified"
+            },
+            {
+              "word": "by",
+              "start": 4.56,
+              "end": 4.7999997,
+              "confidence": 0.9984439,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "by"
+            },
+            {
+              "word": "turner",
+              "start": 4.7999997,
+              "end": 5.2,
+              "confidence": 0.6617165,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "Turner"
+            },
+            {
+              "word": "as",
+              "start": 5.2,
+              "end": 5.44,
+              "confidence": 0.9616967,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "as"
+            },
+            {
+              "word": "1976",
+              "start": 5.44,
+              "end": 7.04,
+              "confidence": 0.9891019,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "1976."
+            }
+          ],
+          "speaker": 0,
+          "id": "5bdf6bbe-c8ec-4023-91d4-d768351d58f8"
+        },
+        {
+          "start": 7.04,
+          "end": 9.12,
+          "confidence": 0.9569627,
+          "channel": 0,
+          "transcript": "Copykid murdered this one also.",
+          "words": [
+            {
+              "word": "copykid",
+              "start": 7.04,
+              "end": 7.6,
+              "confidence": 0.8040309,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "Copykid"
+            },
+            {
+              "word": "murdered",
+              "start": 7.6,
+              "end": 8.0,
+              "confidence": 0.9948219,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "murdered"
+            },
+            {
+              "word": "this",
+              "start": 8.0,
+              "end": 8.24,
+              "confidence": 0.9978479,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "this"
+            },
+            {
+              "word": "one",
+              "start": 8.24,
+              "end": 8.48,
+              "confidence": 0.9991873,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "one"
+            },
+            {
+              "word": "also",
+              "start": 8.48,
+              "end": 9.12,
+              "confidence": 0.9889256,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "also."
+            }
+          ],
+          "speaker": 0,
+          "id": "cdde4331-989a-433e-b0b8-00fcd2a4e31e"
+        },
+        {
+          "start": 9.36,
+          "end": 14.0,
+          "confidence": 0.9851449,
+          "channel": 0,
+          "transcript": "I wonder what Copykid was thinking when he so carelessly destroyed valuable information.",
+          "words": [
+            {
+              "word": "i",
+              "start": 9.36,
+              "end": 9.5199995,
+              "confidence": 0.9960069,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "I"
+            },
+            {
+              "word": "wonder",
+              "start": 9.5199995,
+              "end": 9.84,
+              "confidence": 0.99901855,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "wonder"
+            },
+            {
+              "word": "what",
+              "start": 9.84,
+              "end": 10.08,
+              "confidence": 0.9991715,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "what"
+            },
+            {
+              "word": "copykid",
+              "start": 10.08,
+              "end": 10.639999,
+              "confidence": 0.8664372,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "Copykid"
+            },
+            {
+              "word": "was",
+              "start": 10.639999,
+              "end": 10.88,
+              "confidence": 0.9988379,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "was"
+            },
+            {
+              "word": "thinking",
+              "start": 10.88,
+              "end": 11.2,
+              "confidence": 0.9997577,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "thinking"
+            },
+            {
+              "word": "when",
+              "start": 11.2,
+              "end": 11.44,
+              "confidence": 0.99662423,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "when"
+            },
+            {
+              "word": "he",
+              "start": 11.44,
+              "end": 11.599999,
+              "confidence": 0.99948597,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "he"
+            },
+            {
+              "word": "so",
+              "start": 11.599999,
+              "end": 11.92,
+              "confidence": 0.9858764,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "so"
+            },
+            {
+              "word": "carelessly",
+              "start": 11.92,
+              "end": 12.4,
+              "confidence": 0.9991855,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "carelessly"
+            },
+            {
+              "word": "destroyed",
+              "start": 12.4,
+              "end": 12.88,
+              "confidence": 0.996842,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "destroyed"
+            },
+            {
+              "word": "valuable",
+              "start": 12.88,
+              "end": 13.36,
+              "confidence": 0.9992986,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "valuable"
+            },
+            {
+              "word": "information",
+              "start": 13.36,
+              "end": 14.0,
+              "confidence": 0.97034204,
+              "speaker": 0,
+              "speaker_confidence": 1.0,
+              "punctuated_word": "information."
+            }
+          ],
+          "speaker": 0,
+          "id": "3342a99a-1829-4af0-8e01-dc17873cbc46"
+        }
+      ]
+    }
+  }
+}

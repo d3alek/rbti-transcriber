@@ -1,0 +1,3392 @@
+{
+  "audio_file": "seminars/KILIAN TAPES/WRH1061.mp3",
+  "service": "deepgram",
+  "timestamp": "2025-11-04T08:52:51Z",
+  "raw_response": {
+    "metadata": {
+      "transaction_key": "deprecated",
+      "request_id": "0da341e0-d2be-446d-af7a-eb7504d2fb4f",
+      "sha256": "f1fd0156dab0b548982febddd5dc577f71b18a7212d52b3937424849a3353918",
+      "created": "2025-11-04T06:52:50.945Z",
+      "duration": 75.65063,
+      "channels": 1,
+      "models": [
+        "2187e11a-3532-4498-b076-81fa530bdd49"
+      ],
+      "model_info": {
+        "2187e11a-3532-4498-b076-81fa530bdd49": {
+          "name": "general-nova-3",
+          "version": "2025-07-31.0",
+          "arch": "nova-3"
+        }
+      }
+    },
+    "results": {
+      "channels": [
+        {
+          "alternatives": [
+            {
+              "transcript": "Yeah. What about Tuesday? It's ninety three. 90 three, choose life or death. Yeah. Do you want do want me to read it? No. Okay. 90 three. We do look at the eyes to know whether or not the body chemistry is cooperating or not cooperating in each eye. Let me get the important parts. In the sclera of the eye, there are two groups of blood vessels, one running horizontal and one running perpendicular. He doesn't really differentiate. One running horizontal, one running perpendicular. The perpendicular blood vessels indicate loss of delta cells that are not being washed out of the system from above the diaphragm in the upper extremities. The horizontal blood vessels indicate loss of cells below the diaphragm in the lower extremities of the body. It's kind of confusing what he says here, but he doesn't really differentiate. He just says, look. Somewhere I had it, I thought I got it out of here, but I didn't. Okay. What is re",
+              "confidence": 0.99486154,
+              "words": [
+                {
+                  "word": "yeah",
+                  "start": 0.24,
+                  "end": 0.88,
+                  "confidence": 0.96090686,
+                  "speaker": 0,
+                  "speaker_confidence": 0.54651225,
+                  "punctuated_word": "Yeah."
+                },
+                {
+                  "word": "what",
+                  "start": 1.5999999,
+                  "end": 1.92,
+                  "confidence": 0.3342466,
+                  "speaker": 0,
+                  "speaker_confidence": 0.54651225,
+                  "punctuated_word": "What"
+                },
+                {
+                  "word": "about",
+                  "start": 1.92,
+                  "end": 2.08,
+                  "confidence": 0.68419844,
+                  "speaker": 0,
+                  "speaker_confidence": 0.54651225,
+                  "punctuated_word": "about"
+                },
+                {
+                  "word": "tuesday",
+                  "start": 2.08,
+                  "end": 2.8,
+                  "confidence": 0.6617837,
+                  "speaker": 0,
+                  "speaker_confidence": 0.54651225,
+                  "punctuated_word": "Tuesday?"
+                },
+                {
+                  "word": "it's",
+                  "start": 3.12,
+                  "end": 4.3199997,
+                  "confidence": 0.6869788,
+                  "speaker": 0,
+                  "speaker_confidence": 0.54651225,
+                  "punctuated_word": "It's"
+                },
+                {
+                  "word": "ninety",
+                  "start": 4.3199997,
+                  "end": 4.64,
+                  "confidence": 0.74129045,
+                  "speaker": 0,
+                  "speaker_confidence": 0.54651225,
+                  "punctuated_word": "ninety"
+                },
+                {
+                  "word": "three",
+                  "start": 4.64,
+                  "end": 5.28,
+                  "confidence": 0.997003,
+                  "speaker": 0,
+                  "speaker_confidence": 0.54651225,
+                  "punctuated_word": "three."
+                },
+                {
+                  "word": "90",
+                  "start": 6.08,
+                  "end": 6.56,
+                  "confidence": 0.9867662,
+                  "speaker": 0,
+                  "speaker_confidence": 0.022660851,
+                  "punctuated_word": "90"
+                },
+                {
+                  "word": "three",
+                  "start": 6.56,
+                  "end": 6.8799996,
+                  "confidence": 0.7243941,
+                  "speaker": 0,
+                  "speaker_confidence": 0.022660851,
+                  "punctuated_word": "three,"
+                },
+                {
+                  "word": "choose",
+                  "start": 6.8799996,
+                  "end": 7.12,
+                  "confidence": 0.87077516,
+                  "speaker": 0,
+                  "speaker_confidence": 0.022660851,
+                  "punctuated_word": "choose"
+                },
+                {
+                  "word": "life",
+                  "start": 7.12,
+                  "end": 7.3599997,
+                  "confidence": 0.9660713,
+                  "speaker": 0,
+                  "speaker_confidence": 0.022660851,
+                  "punctuated_word": "life"
+                },
+                {
+                  "word": "or",
+                  "start": 7.3599997,
+                  "end": 7.52,
+                  "confidence": 0.9393816,
+                  "speaker": 0,
+                  "speaker_confidence": 0.022660851,
+                  "punctuated_word": "or"
+                },
+                {
+                  "word": "death",
+                  "start": 7.52,
+                  "end": 8.16,
+                  "confidence": 0.93590194,
+                  "speaker": 0,
+                  "speaker_confidence": 0.022660851,
+                  "punctuated_word": "death."
+                },
+                {
+                  "word": "yeah",
+                  "start": 12.32,
+                  "end": 12.639999,
+                  "confidence": 0.90387404,
+                  "speaker": 0,
+                  "speaker_confidence": 0.18370229,
+                  "punctuated_word": "Yeah."
+                },
+                {
+                  "word": "do",
+                  "start": 12.639999,
+                  "end": 12.799999,
+                  "confidence": 0.7557779,
+                  "speaker": 0,
+                  "speaker_confidence": 0.18370229,
+                  "punctuated_word": "Do"
+                },
+                {
+                  "word": "you",
+                  "start": 12.799999,
+                  "end": 12.88,
+                  "confidence": 0.9952945,
+                  "speaker": 0,
+                  "speaker_confidence": 0.18370229,
+                  "punctuated_word": "you"
+                },
+                {
+                  "word": "want",
+                  "start": 12.88,
+                  "end": 12.96,
+                  "confidence": 0.98819774,
+                  "speaker": 0,
+                  "speaker_confidence": 0.18370229,
+                  "punctuated_word": "want"
+                },
+                {
+                  "word": "do",
+                  "start": 12.96,
+                  "end": 13.12,
+                  "confidence": 0.5004183,
+                  "speaker": 0,
+                  "speaker_confidence": 0.18370229,
+                  "punctuated_word": "do"
+                },
+                {
+                  "word": "want",
+                  "start": 13.12,
+                  "end": 13.2,
+                  "confidence": 0.9976829,
+                  "speaker": 0,
+                  "speaker_confidence": 0.18370229,
+                  "punctuated_word": "want"
+                },
+                {
+                  "word": "me",
+                  "start": 13.2,
+                  "end": 13.28,
+                  "confidence": 0.9973253,
+                  "speaker": 0,
+                  "speaker_confidence": 0.18370229,
+                  "punctuated_word": "me"
+                },
+                {
+                  "word": "to",
+                  "start": 13.28,
+                  "end": 13.36,
+                  "confidence": 0.96402884,
+                  "speaker": 0,
+                  "speaker_confidence": 0.5062507,
+                  "punctuated_word": "to"
+                },
+                {
+                  "word": "read",
+                  "start": 13.36,
+                  "end": 13.5199995,
+                  "confidence": 0.9973871,
+                  "speaker": 0,
+                  "speaker_confidence": 0.5062507,
+                  "punctuated_word": "read"
+                },
+                {
+                  "word": "it",
+                  "start": 13.5199995,
+                  "end": 13.679999,
+                  "confidence": 0.958861,
+                  "speaker": 0,
+                  "speaker_confidence": 0.5062507,
+                  "punctuated_word": "it?"
+                },
+                {
+                  "word": "no",
+                  "start": 13.679999,
+                  "end": 13.92,
+                  "confidence": 0.7698978,
+                  "speaker": 0,
+                  "speaker_confidence": 0.5062507,
+                  "punctuated_word": "No."
+                },
+                {
+                  "word": "okay",
+                  "start": 13.92,
+                  "end": 14.32,
+                  "confidence": 0.8481739,
+                  "speaker": 0,
+                  "speaker_confidence": 0.5062507,
+                  "punctuated_word": "Okay."
+                },
+                {
+                  "word": "90",
+                  "start": 15.335,
+                  "end": 15.895,
+                  "confidence": 0.9207418,
+                  "speaker": 0,
+                  "speaker_confidence": 0.5062507,
+                  "punctuated_word": "90"
+                },
+                {
+                  "word": "three",
+                  "start": 15.895,
+                  "end": 16.535,
+                  "confidence": 0.9827785,
+                  "speaker": 0,
+                  "speaker_confidence": 0.5062507,
+                  "punctuated_word": "three."
+                },
+                {
+                  "word": "we",
+                  "start": 21.495,
+                  "end": 21.735,
+                  "confidence": 0.98660547,
+                  "speaker": 0,
+                  "speaker_confidence": 0.3360185,
+                  "punctuated_word": "We"
+                },
+                {
+                  "word": "do",
+                  "start": 21.735,
+                  "end": 21.975,
+                  "confidence": 0.9986129,
+                  "speaker": 0,
+                  "speaker_confidence": 0.3360185,
+                  "punctuated_word": "do"
+                },
+                {
+                  "word": "look",
+                  "start": 21.975,
+                  "end": 22.135,
+                  "confidence": 0.99945885,
+                  "speaker": 0,
+                  "speaker_confidence": 0.3360185,
+                  "punctuated_word": "look"
+                },
+                {
+                  "word": "at",
+                  "start": 22.135,
+                  "end": 22.295,
+                  "confidence": 0.99894303,
+                  "speaker": 0,
+                  "speaker_confidence": 0.3360185,
+                  "punctuated_word": "at"
+                },
+                {
+                  "word": "the",
+                  "start": 22.295,
+                  "end": 22.375,
+                  "confidence": 0.99824667,
+                  "speaker": 0,
+                  "speaker_confidence": 0.3360185,
+                  "punctuated_word": "the"
+                },
+                {
+                  "word": "eyes",
+                  "start": 22.375,
+                  "end": 22.615,
+                  "confidence": 0.995908,
+                  "speaker": 0,
+                  "speaker_confidence": 0.3360185,
+                  "punctuated_word": "eyes"
+                },
+                {
+                  "word": "to",
+                  "start": 22.615,
+                  "end": 22.775,
+                  "confidence": 0.9988832,
+                  "speaker": 0,
+                  "speaker_confidence": 0.3360185,
+                  "punctuated_word": "to"
+                },
+                {
+                  "word": "know",
+                  "start": 22.775,
+                  "end": 22.855,
+                  "confidence": 0.99643075,
+                  "speaker": 0,
+                  "speaker_confidence": 0.3360185,
+                  "punctuated_word": "know"
+                },
+                {
+                  "word": "whether",
+                  "start": 22.855,
+                  "end": 23.095001,
+                  "confidence": 0.99675494,
+                  "speaker": 0,
+                  "speaker_confidence": 0.3360185,
+                  "punctuated_word": "whether"
+                },
+                {
+                  "word": "or",
+                  "start": 23.095001,
+                  "end": 23.175,
+                  "confidence": 0.9819994,
+                  "speaker": 0,
+                  "speaker_confidence": 0.3360185,
+                  "punctuated_word": "or"
+                },
+                {
+                  "word": "not",
+                  "start": 23.175,
+                  "end": 23.255001,
+                  "confidence": 0.99977833,
+                  "speaker": 0,
+                  "speaker_confidence": 0.57281536,
+                  "punctuated_word": "not"
+                },
+                {
+                  "word": "the",
+                  "start": 23.255001,
+                  "end": 23.415,
+                  "confidence": 0.99757844,
+                  "speaker": 0,
+                  "speaker_confidence": 0.57281536,
+                  "punctuated_word": "the"
+                },
+                {
+                  "word": "body",
+                  "start": 23.415,
+                  "end": 23.575,
+                  "confidence": 0.95868117,
+                  "speaker": 0,
+                  "speaker_confidence": 0.57281536,
+                  "punctuated_word": "body"
+                },
+                {
+                  "word": "chemistry",
+                  "start": 23.575,
+                  "end": 23.895,
+                  "confidence": 0.9940019,
+                  "speaker": 0,
+                  "speaker_confidence": 0.57281536,
+                  "punctuated_word": "chemistry"
+                },
+                {
+                  "word": "is",
+                  "start": 23.895,
+                  "end": 24.135,
+                  "confidence": 0.9483974,
+                  "speaker": 0,
+                  "speaker_confidence": 0.57281536,
+                  "punctuated_word": "is"
+                },
+                {
+                  "word": "cooperating",
+                  "start": 24.135,
+                  "end": 24.455,
+                  "confidence": 0.9985039,
+                  "speaker": 0,
+                  "speaker_confidence": 0.57281536,
+                  "punctuated_word": "cooperating"
+                },
+                {
+                  "word": "or",
+                  "start": 24.455,
+                  "end": 24.615,
+                  "confidence": 0.9841738,
+                  "speaker": 0,
+                  "speaker_confidence": 0.57281536,
+                  "punctuated_word": "or"
+                },
+                {
+                  "word": "not",
+                  "start": 24.615,
+                  "end": 24.775002,
+                  "confidence": 0.9973375,
+                  "speaker": 0,
+                  "speaker_confidence": 0.57281536,
+                  "punctuated_word": "not"
+                },
+                {
+                  "word": "cooperating",
+                  "start": 24.775002,
+                  "end": 25.654999,
+                  "confidence": 0.9997574,
+                  "speaker": 0,
+                  "speaker_confidence": 0.57281536,
+                  "punctuated_word": "cooperating"
+                },
+                {
+                  "word": "in",
+                  "start": 25.654999,
+                  "end": 25.895,
+                  "confidence": 0.9159708,
+                  "speaker": 0,
+                  "speaker_confidence": 0.57281536,
+                  "punctuated_word": "in"
+                },
+                {
+                  "word": "each",
+                  "start": 25.895,
+                  "end": 26.215,
+                  "confidence": 0.99966407,
+                  "speaker": 0,
+                  "speaker_confidence": 0.57281536,
+                  "punctuated_word": "each"
+                },
+                {
+                  "word": "eye",
+                  "start": 26.215,
+                  "end": 26.855,
+                  "confidence": 0.9913113,
+                  "speaker": 0,
+                  "speaker_confidence": 0.57281536,
+                  "punctuated_word": "eye."
+                },
+                {
+                  "word": "let",
+                  "start": 27.975,
+                  "end": 28.215,
+                  "confidence": 0.7129153,
+                  "speaker": 0,
+                  "speaker_confidence": 0.57281536,
+                  "punctuated_word": "Let"
+                },
+                {
+                  "word": "me",
+                  "start": 28.215,
+                  "end": 28.375,
+                  "confidence": 0.9987213,
+                  "speaker": 0,
+                  "speaker_confidence": 0.57281536,
+                  "punctuated_word": "me"
+                },
+                {
+                  "word": "get",
+                  "start": 28.375,
+                  "end": 28.535,
+                  "confidence": 0.96129984,
+                  "speaker": 0,
+                  "speaker_confidence": 0.57281536,
+                  "punctuated_word": "get"
+                },
+                {
+                  "word": "the",
+                  "start": 28.535,
+                  "end": 28.615,
+                  "confidence": 0.98988664,
+                  "speaker": 0,
+                  "speaker_confidence": 0.57281536,
+                  "punctuated_word": "the"
+                },
+                {
+                  "word": "important",
+                  "start": 28.615,
+                  "end": 28.935001,
+                  "confidence": 0.9970907,
+                  "speaker": 0,
+                  "speaker_confidence": 0.57281536,
+                  "punctuated_word": "important"
+                },
+                {
+                  "word": "parts",
+                  "start": 28.935001,
+                  "end": 29.175,
+                  "confidence": 0.9869583,
+                  "speaker": 0,
+                  "speaker_confidence": 0.57281536,
+                  "punctuated_word": "parts."
+                },
+                {
+                  "word": "in",
+                  "start": 30.15,
+                  "end": 30.39,
+                  "confidence": 0.9986708,
+                  "speaker": 0,
+                  "speaker_confidence": 0.24035811,
+                  "punctuated_word": "In"
+                },
+                {
+                  "word": "the",
+                  "start": 30.39,
+                  "end": 30.63,
+                  "confidence": 0.98974305,
+                  "speaker": 0,
+                  "speaker_confidence": 0.24035811,
+                  "punctuated_word": "the"
+                },
+                {
+                  "word": "sclera",
+                  "start": 30.63,
+                  "end": 31.11,
+                  "confidence": 0.9914398,
+                  "speaker": 0,
+                  "speaker_confidence": 0.24035811,
+                  "punctuated_word": "sclera"
+                },
+                {
+                  "word": "of",
+                  "start": 31.11,
+                  "end": 31.27,
+                  "confidence": 0.9961357,
+                  "speaker": 0,
+                  "speaker_confidence": 0.24035811,
+                  "punctuated_word": "of"
+                },
+                {
+                  "word": "the",
+                  "start": 31.27,
+                  "end": 31.35,
+                  "confidence": 0.9986644,
+                  "speaker": 0,
+                  "speaker_confidence": 0.24035811,
+                  "punctuated_word": "the"
+                },
+                {
+                  "word": "eye",
+                  "start": 31.35,
+                  "end": 31.59,
+                  "confidence": 0.8892977,
+                  "speaker": 0,
+                  "speaker_confidence": 0.24035811,
+                  "punctuated_word": "eye,"
+                },
+                {
+                  "word": "there",
+                  "start": 31.59,
+                  "end": 31.67,
+                  "confidence": 0.9969189,
+                  "speaker": 0,
+                  "speaker_confidence": 0.29250723,
+                  "punctuated_word": "there"
+                },
+                {
+                  "word": "are",
+                  "start": 31.67,
+                  "end": 31.83,
+                  "confidence": 0.9981229,
+                  "speaker": 0,
+                  "speaker_confidence": 0.29250723,
+                  "punctuated_word": "are"
+                },
+                {
+                  "word": "two",
+                  "start": 31.83,
+                  "end": 32.07,
+                  "confidence": 0.9995004,
+                  "speaker": 0,
+                  "speaker_confidence": 0.29250723,
+                  "punctuated_word": "two"
+                },
+                {
+                  "word": "groups",
+                  "start": 32.07,
+                  "end": 32.31,
+                  "confidence": 0.99913967,
+                  "speaker": 0,
+                  "speaker_confidence": 0.29250723,
+                  "punctuated_word": "groups"
+                },
+                {
+                  "word": "of",
+                  "start": 32.31,
+                  "end": 32.47,
+                  "confidence": 0.9969023,
+                  "speaker": 0,
+                  "speaker_confidence": 0.29250723,
+                  "punctuated_word": "of"
+                },
+                {
+                  "word": "blood",
+                  "start": 32.47,
+                  "end": 32.79,
+                  "confidence": 0.99960285,
+                  "speaker": 0,
+                  "speaker_confidence": 0.29250723,
+                  "punctuated_word": "blood"
+                },
+                {
+                  "word": "vessels",
+                  "start": 32.79,
+                  "end": 33.51,
+                  "confidence": 0.7629229,
+                  "speaker": 0,
+                  "speaker_confidence": 0.29250723,
+                  "punctuated_word": "vessels,"
+                },
+                {
+                  "word": "one",
+                  "start": 33.51,
+                  "end": 33.829998,
+                  "confidence": 0.9958461,
+                  "speaker": 0,
+                  "speaker_confidence": 0.3661573,
+                  "punctuated_word": "one"
+                },
+                {
+                  "word": "running",
+                  "start": 33.829998,
+                  "end": 34.15,
+                  "confidence": 0.9994203,
+                  "speaker": 0,
+                  "speaker_confidence": 0.3661573,
+                  "punctuated_word": "running"
+                },
+                {
+                  "word": "horizontal",
+                  "start": 34.15,
+                  "end": 35.11,
+                  "confidence": 0.99936515,
+                  "speaker": 0,
+                  "speaker_confidence": 0.3661573,
+                  "punctuated_word": "horizontal"
+                },
+                {
+                  "word": "and",
+                  "start": 35.59,
+                  "end": 35.91,
+                  "confidence": 0.6946907,
+                  "speaker": 0,
+                  "speaker_confidence": 0.3661573,
+                  "punctuated_word": "and"
+                },
+                {
+                  "word": "one",
+                  "start": 35.91,
+                  "end": 36.15,
+                  "confidence": 0.99933666,
+                  "speaker": 0,
+                  "speaker_confidence": 0.3661573,
+                  "punctuated_word": "one"
+                },
+                {
+                  "word": "running",
+                  "start": 36.15,
+                  "end": 36.39,
+                  "confidence": 0.9987355,
+                  "speaker": 0,
+                  "speaker_confidence": 0.2767058,
+                  "punctuated_word": "running"
+                },
+                {
+                  "word": "perpendicular",
+                  "start": 36.39,
+                  "end": 37.43,
+                  "confidence": 0.998585,
+                  "speaker": 0,
+                  "speaker_confidence": 0.2767058,
+                  "punctuated_word": "perpendicular."
+                },
+                {
+                  "word": "he",
+                  "start": 39.19,
+                  "end": 39.51,
+                  "confidence": 0.97500616,
+                  "speaker": 0,
+                  "speaker_confidence": 0.3246621,
+                  "punctuated_word": "He"
+                },
+                {
+                  "word": "doesn't",
+                  "start": 39.51,
+                  "end": 39.83,
+                  "confidence": 0.9996265,
+                  "speaker": 0,
+                  "speaker_confidence": 0.3246621,
+                  "punctuated_word": "doesn't"
+                },
+                {
+                  "word": "really",
+                  "start": 39.83,
+                  "end": 40.15,
+                  "confidence": 0.99905616,
+                  "speaker": 0,
+                  "speaker_confidence": 0.3246621,
+                  "punctuated_word": "really"
+                },
+                {
+                  "word": "differentiate",
+                  "start": 40.15,
+                  "end": 40.79,
+                  "confidence": 0.93459153,
+                  "speaker": 0,
+                  "speaker_confidence": 0.3246621,
+                  "punctuated_word": "differentiate."
+                },
+                {
+                  "word": "one",
+                  "start": 42.565,
+                  "end": 42.885,
+                  "confidence": 0.99823785,
+                  "speaker": 0,
+                  "speaker_confidence": 0.3760671,
+                  "punctuated_word": "One"
+                },
+                {
+                  "word": "running",
+                  "start": 42.885,
+                  "end": 43.125,
+                  "confidence": 0.9983265,
+                  "speaker": 0,
+                  "speaker_confidence": 0.3760671,
+                  "punctuated_word": "running"
+                },
+                {
+                  "word": "horizontal",
+                  "start": 43.125,
+                  "end": 43.765,
+                  "confidence": 0.7636893,
+                  "speaker": 0,
+                  "speaker_confidence": 0.3760671,
+                  "punctuated_word": "horizontal,"
+                },
+                {
+                  "word": "one",
+                  "start": 43.765,
+                  "end": 43.925,
+                  "confidence": 0.9706217,
+                  "speaker": 0,
+                  "speaker_confidence": 0.3760671,
+                  "punctuated_word": "one"
+                },
+                {
+                  "word": "running",
+                  "start": 43.925,
+                  "end": 44.165,
+                  "confidence": 0.9992429,
+                  "speaker": 0,
+                  "speaker_confidence": 0.3760671,
+                  "punctuated_word": "running"
+                },
+                {
+                  "word": "perpendicular",
+                  "start": 44.165,
+                  "end": 44.885,
+                  "confidence": 0.9950269,
+                  "speaker": 0,
+                  "speaker_confidence": 0.3760671,
+                  "punctuated_word": "perpendicular."
+                },
+                {
+                  "word": "the",
+                  "start": 44.885,
+                  "end": 45.125,
+                  "confidence": 0.99042386,
+                  "speaker": 0,
+                  "speaker_confidence": 0.63992155,
+                  "punctuated_word": "The"
+                },
+                {
+                  "word": "perpendicular",
+                  "start": 45.125,
+                  "end": 45.844997,
+                  "confidence": 0.9998388,
+                  "speaker": 0,
+                  "speaker_confidence": 0.63992155,
+                  "punctuated_word": "perpendicular"
+                },
+                {
+                  "word": "blood",
+                  "start": 45.844997,
+                  "end": 46.245,
+                  "confidence": 0.99808204,
+                  "speaker": 0,
+                  "speaker_confidence": 0.63992155,
+                  "punctuated_word": "blood"
+                },
+                {
+                  "word": "vessels",
+                  "start": 46.245,
+                  "end": 46.965,
+                  "confidence": 0.9977851,
+                  "speaker": 0,
+                  "speaker_confidence": 0.63992155,
+                  "punctuated_word": "vessels"
+                },
+                {
+                  "word": "indicate",
+                  "start": 47.285,
+                  "end": 47.925,
+                  "confidence": 0.99786216,
+                  "speaker": 0,
+                  "speaker_confidence": 0.63992155,
+                  "punctuated_word": "indicate"
+                },
+                {
+                  "word": "loss",
+                  "start": 47.925,
+                  "end": 48.324997,
+                  "confidence": 0.974482,
+                  "speaker": 0,
+                  "speaker_confidence": 0.63992155,
+                  "punctuated_word": "loss"
+                },
+                {
+                  "word": "of",
+                  "start": 48.324997,
+                  "end": 48.565,
+                  "confidence": 0.9707964,
+                  "speaker": 0,
+                  "speaker_confidence": 0.63992155,
+                  "punctuated_word": "of"
+                },
+                {
+                  "word": "delta",
+                  "start": 48.565,
+                  "end": 48.965,
+                  "confidence": 0.74096,
+                  "speaker": 0,
+                  "speaker_confidence": 0.63992155,
+                  "punctuated_word": "delta"
+                },
+                {
+                  "word": "cells",
+                  "start": 48.965,
+                  "end": 49.524998,
+                  "confidence": 0.99955076,
+                  "speaker": 0,
+                  "speaker_confidence": 0.63992155,
+                  "punctuated_word": "cells"
+                },
+                {
+                  "word": "that",
+                  "start": 49.524998,
+                  "end": 49.765,
+                  "confidence": 0.9949645,
+                  "speaker": 0,
+                  "speaker_confidence": 0.63992155,
+                  "punctuated_word": "that"
+                },
+                {
+                  "word": "are",
+                  "start": 49.765,
+                  "end": 49.925,
+                  "confidence": 0.99931705,
+                  "speaker": 0,
+                  "speaker_confidence": 0.63992155,
+                  "punctuated_word": "are"
+                },
+                {
+                  "word": "not",
+                  "start": 49.925,
+                  "end": 50.085,
+                  "confidence": 0.998307,
+                  "speaker": 0,
+                  "speaker_confidence": 0.63992155,
+                  "punctuated_word": "not"
+                },
+                {
+                  "word": "being",
+                  "start": 50.085,
+                  "end": 50.324997,
+                  "confidence": 0.99688643,
+                  "speaker": 0,
+                  "speaker_confidence": 0.63992155,
+                  "punctuated_word": "being"
+                },
+                {
+                  "word": "washed",
+                  "start": 50.324997,
+                  "end": 50.565,
+                  "confidence": 0.99486154,
+                  "speaker": 0,
+                  "speaker_confidence": 0.63992155,
+                  "punctuated_word": "washed"
+                },
+                {
+                  "word": "out",
+                  "start": 50.565,
+                  "end": 50.725,
+                  "confidence": 0.9980398,
+                  "speaker": 0,
+                  "speaker_confidence": 0.63992155,
+                  "punctuated_word": "out"
+                },
+                {
+                  "word": "of",
+                  "start": 50.725,
+                  "end": 50.885,
+                  "confidence": 0.99163944,
+                  "speaker": 0,
+                  "speaker_confidence": 0.63992155,
+                  "punctuated_word": "of"
+                },
+                {
+                  "word": "the",
+                  "start": 50.885,
+                  "end": 51.045,
+                  "confidence": 0.9925109,
+                  "speaker": 0,
+                  "speaker_confidence": 0.63992155,
+                  "punctuated_word": "the"
+                },
+                {
+                  "word": "system",
+                  "start": 51.045,
+                  "end": 51.285,
+                  "confidence": 0.9985606,
+                  "speaker": 0,
+                  "speaker_confidence": 0.63992155,
+                  "punctuated_word": "system"
+                },
+                {
+                  "word": "from",
+                  "start": 51.285,
+                  "end": 51.605,
+                  "confidence": 0.9582854,
+                  "speaker": 0,
+                  "speaker_confidence": 0.63992155,
+                  "punctuated_word": "from"
+                },
+                {
+                  "word": "above",
+                  "start": 51.605,
+                  "end": 51.925,
+                  "confidence": 0.99596316,
+                  "speaker": 0,
+                  "speaker_confidence": 0.63992155,
+                  "punctuated_word": "above"
+                },
+                {
+                  "word": "the",
+                  "start": 51.925,
+                  "end": 52.085,
+                  "confidence": 0.999059,
+                  "speaker": 0,
+                  "speaker_confidence": 0.63992155,
+                  "punctuated_word": "the"
+                },
+                {
+                  "word": "diaphragm",
+                  "start": 52.085,
+                  "end": 52.565,
+                  "confidence": 0.99611276,
+                  "speaker": 0,
+                  "speaker_confidence": 0.63992155,
+                  "punctuated_word": "diaphragm"
+                },
+                {
+                  "word": "in",
+                  "start": 52.565,
+                  "end": 52.805,
+                  "confidence": 0.66192573,
+                  "speaker": 0,
+                  "speaker_confidence": 0.63992155,
+                  "punctuated_word": "in"
+                },
+                {
+                  "word": "the",
+                  "start": 52.805,
+                  "end": 52.965,
+                  "confidence": 0.9978522,
+                  "speaker": 0,
+                  "speaker_confidence": 0.63992155,
+                  "punctuated_word": "the"
+                },
+                {
+                  "word": "upper",
+                  "start": 52.965,
+                  "end": 53.285,
+                  "confidence": 0.99946445,
+                  "speaker": 0,
+                  "speaker_confidence": 0.63992155,
+                  "punctuated_word": "upper"
+                },
+                {
+                  "word": "extremities",
+                  "start": 53.285,
+                  "end": 54.165,
+                  "confidence": 0.9977976,
+                  "speaker": 0,
+                  "speaker_confidence": 0.63992155,
+                  "punctuated_word": "extremities."
+                },
+                {
+                  "word": "the",
+                  "start": 55.045,
+                  "end": 55.364998,
+                  "confidence": 0.9732058,
+                  "speaker": 0,
+                  "speaker_confidence": 0.63992155,
+                  "punctuated_word": "The"
+                },
+                {
+                  "word": "horizontal",
+                  "start": 55.364998,
+                  "end": 55.925,
+                  "confidence": 0.999602,
+                  "speaker": 0,
+                  "speaker_confidence": 0.63992155,
+                  "punctuated_word": "horizontal"
+                },
+                {
+                  "word": "blood",
+                  "start": 55.925,
+                  "end": 56.245,
+                  "confidence": 0.9992774,
+                  "speaker": 0,
+                  "speaker_confidence": 0.63992155,
+                  "punctuated_word": "blood"
+                },
+                {
+                  "word": "vessels",
+                  "start": 56.245,
+                  "end": 56.565,
+                  "confidence": 0.998979,
+                  "speaker": 0,
+                  "speaker_confidence": 0.63992155,
+                  "punctuated_word": "vessels"
+                },
+                {
+                  "word": "indicate",
+                  "start": 56.565,
+                  "end": 57.524998,
+                  "confidence": 0.9993223,
+                  "speaker": 0,
+                  "speaker_confidence": 0.63992155,
+                  "punctuated_word": "indicate"
+                },
+                {
+                  "word": "loss",
+                  "start": 58.31,
+                  "end": 58.79,
+                  "confidence": 0.9659796,
+                  "speaker": 0,
+                  "speaker_confidence": 0.63992155,
+                  "punctuated_word": "loss"
+                },
+                {
+                  "word": "of",
+                  "start": 58.79,
+                  "end": 58.95,
+                  "confidence": 0.9982224,
+                  "speaker": 0,
+                  "speaker_confidence": 0.63992155,
+                  "punctuated_word": "of"
+                },
+                {
+                  "word": "cells",
+                  "start": 58.95,
+                  "end": 59.19,
+                  "confidence": 0.9984053,
+                  "speaker": 0,
+                  "speaker_confidence": 0.63992155,
+                  "punctuated_word": "cells"
+                },
+                {
+                  "word": "below",
+                  "start": 59.19,
+                  "end": 59.67,
+                  "confidence": 0.52622753,
+                  "speaker": 0,
+                  "speaker_confidence": 0.63992155,
+                  "punctuated_word": "below"
+                },
+                {
+                  "word": "the",
+                  "start": 59.67,
+                  "end": 59.91,
+                  "confidence": 0.9985637,
+                  "speaker": 0,
+                  "speaker_confidence": 0.63992155,
+                  "punctuated_word": "the"
+                },
+                {
+                  "word": "diaphragm",
+                  "start": 59.91,
+                  "end": 60.23,
+                  "confidence": 0.8786398,
+                  "speaker": 0,
+                  "speaker_confidence": 0.63992155,
+                  "punctuated_word": "diaphragm"
+                },
+                {
+                  "word": "in",
+                  "start": 60.23,
+                  "end": 60.47,
+                  "confidence": 0.38780504,
+                  "speaker": 0,
+                  "speaker_confidence": 0.63992155,
+                  "punctuated_word": "in"
+                },
+                {
+                  "word": "the",
+                  "start": 60.47,
+                  "end": 60.55,
+                  "confidence": 0.99525803,
+                  "speaker": 0,
+                  "speaker_confidence": 0.39213222,
+                  "punctuated_word": "the"
+                },
+                {
+                  "word": "lower",
+                  "start": 60.55,
+                  "end": 60.79,
+                  "confidence": 0.99702495,
+                  "speaker": 0,
+                  "speaker_confidence": 0.39213222,
+                  "punctuated_word": "lower"
+                },
+                {
+                  "word": "extremities",
+                  "start": 60.79,
+                  "end": 61.19,
+                  "confidence": 0.98791945,
+                  "speaker": 0,
+                  "speaker_confidence": 0.39213222,
+                  "punctuated_word": "extremities"
+                },
+                {
+                  "word": "of",
+                  "start": 61.19,
+                  "end": 61.35,
+                  "confidence": 0.9899657,
+                  "speaker": 0,
+                  "speaker_confidence": 0.39213222,
+                  "punctuated_word": "of"
+                },
+                {
+                  "word": "the",
+                  "start": 61.35,
+                  "end": 61.51,
+                  "confidence": 0.995031,
+                  "speaker": 0,
+                  "speaker_confidence": 0.39213222,
+                  "punctuated_word": "the"
+                },
+                {
+                  "word": "body",
+                  "start": 61.51,
+                  "end": 61.989998,
+                  "confidence": 0.82272094,
+                  "speaker": 0,
+                  "speaker_confidence": 0.39213222,
+                  "punctuated_word": "body."
+                },
+                {
+                  "word": "it's",
+                  "start": 61.989998,
+                  "end": 62.87,
+                  "confidence": 0.9447454,
+                  "speaker": 0,
+                  "speaker_confidence": 0.39213222,
+                  "punctuated_word": "It's"
+                },
+                {
+                  "word": "kind",
+                  "start": 62.87,
+                  "end": 63.03,
+                  "confidence": 0.51131237,
+                  "speaker": 0,
+                  "speaker_confidence": 0.39213222,
+                  "punctuated_word": "kind"
+                },
+                {
+                  "word": "of",
+                  "start": 63.03,
+                  "end": 63.11,
+                  "confidence": 0.9946332,
+                  "speaker": 0,
+                  "speaker_confidence": 0.37471497,
+                  "punctuated_word": "of"
+                },
+                {
+                  "word": "confusing",
+                  "start": 63.11,
+                  "end": 63.51,
+                  "confidence": 0.9990299,
+                  "speaker": 0,
+                  "speaker_confidence": 0.37471497,
+                  "punctuated_word": "confusing"
+                },
+                {
+                  "word": "what",
+                  "start": 63.51,
+                  "end": 63.75,
+                  "confidence": 0.9900676,
+                  "speaker": 0,
+                  "speaker_confidence": 0.37471497,
+                  "punctuated_word": "what"
+                },
+                {
+                  "word": "he",
+                  "start": 63.75,
+                  "end": 63.83,
+                  "confidence": 0.9968226,
+                  "speaker": 0,
+                  "speaker_confidence": 0.37471497,
+                  "punctuated_word": "he"
+                },
+                {
+                  "word": "says",
+                  "start": 63.83,
+                  "end": 64.07,
+                  "confidence": 0.99773836,
+                  "speaker": 0,
+                  "speaker_confidence": 0.37471497,
+                  "punctuated_word": "says"
+                },
+                {
+                  "word": "here",
+                  "start": 64.07,
+                  "end": 64.39,
+                  "confidence": 0.96965456,
+                  "speaker": 0,
+                  "speaker_confidence": 0.37471497,
+                  "punctuated_word": "here,"
+                },
+                {
+                  "word": "but",
+                  "start": 64.39,
+                  "end": 64.47,
+                  "confidence": 0.99892235,
+                  "speaker": 0,
+                  "speaker_confidence": 0.37471497,
+                  "punctuated_word": "but"
+                },
+                {
+                  "word": "he",
+                  "start": 64.47,
+                  "end": 64.63,
+                  "confidence": 0.8655259,
+                  "speaker": 0,
+                  "speaker_confidence": 0.37471497,
+                  "punctuated_word": "he"
+                },
+                {
+                  "word": "doesn't",
+                  "start": 64.63,
+                  "end": 64.95,
+                  "confidence": 0.99901867,
+                  "speaker": 0,
+                  "speaker_confidence": 0.37471497,
+                  "punctuated_word": "doesn't"
+                },
+                {
+                  "word": "really",
+                  "start": 64.95,
+                  "end": 65.27,
+                  "confidence": 0.99911064,
+                  "speaker": 0,
+                  "speaker_confidence": 0.37471497,
+                  "punctuated_word": "really"
+                },
+                {
+                  "word": "differentiate",
+                  "start": 65.27,
+                  "end": 65.83,
+                  "confidence": 0.9395616,
+                  "speaker": 0,
+                  "speaker_confidence": 0.37471497,
+                  "punctuated_word": "differentiate."
+                },
+                {
+                  "word": "he",
+                  "start": 67.59563,
+                  "end": 67.91563,
+                  "confidence": 0.99425876,
+                  "speaker": 0,
+                  "speaker_confidence": 0.5831292,
+                  "punctuated_word": "He"
+                },
+                {
+                  "word": "just",
+                  "start": 67.91563,
+                  "end": 68.07562,
+                  "confidence": 0.9988354,
+                  "speaker": 0,
+                  "speaker_confidence": 0.5831292,
+                  "punctuated_word": "just"
+                },
+                {
+                  "word": "says",
+                  "start": 68.07562,
+                  "end": 68.31563,
+                  "confidence": 0.60458773,
+                  "speaker": 0,
+                  "speaker_confidence": 0.5831292,
+                  "punctuated_word": "says,"
+                },
+                {
+                  "word": "look",
+                  "start": 68.31563,
+                  "end": 68.79562,
+                  "confidence": 0.66223454,
+                  "speaker": 0,
+                  "speaker_confidence": 0.5831292,
+                  "punctuated_word": "look."
+                },
+                {
+                  "word": "somewhere",
+                  "start": 69.835625,
+                  "end": 70.23563,
+                  "confidence": 0.9830983,
+                  "speaker": 0,
+                  "speaker_confidence": 0.5831292,
+                  "punctuated_word": "Somewhere"
+                },
+                {
+                  "word": "i",
+                  "start": 70.23563,
+                  "end": 70.555626,
+                  "confidence": 0.72646904,
+                  "speaker": 0,
+                  "speaker_confidence": 0.5831292,
+                  "punctuated_word": "I"
+                },
+                {
+                  "word": "had",
+                  "start": 70.555626,
+                  "end": 70.79562,
+                  "confidence": 0.9973717,
+                  "speaker": 0,
+                  "speaker_confidence": 0.5831292,
+                  "punctuated_word": "had"
+                },
+                {
+                  "word": "it",
+                  "start": 70.79562,
+                  "end": 71.35563,
+                  "confidence": 0.73928607,
+                  "speaker": 0,
+                  "speaker_confidence": 0.5831292,
+                  "punctuated_word": "it,"
+                },
+                {
+                  "word": "i",
+                  "start": 71.99563,
+                  "end": 72.155624,
+                  "confidence": 0.9991456,
+                  "speaker": 0,
+                  "speaker_confidence": 0.5831292,
+                  "punctuated_word": "I"
+                },
+                {
+                  "word": "thought",
+                  "start": 72.155624,
+                  "end": 72.39562,
+                  "confidence": 0.9992667,
+                  "speaker": 0,
+                  "speaker_confidence": 0.5831292,
+                  "punctuated_word": "thought"
+                },
+                {
+                  "word": "i",
+                  "start": 72.39562,
+                  "end": 72.475624,
+                  "confidence": 0.9979582,
+                  "speaker": 0,
+                  "speaker_confidence": 0.29596543,
+                  "punctuated_word": "I"
+                },
+                {
+                  "word": "got",
+                  "start": 72.475624,
+                  "end": 72.63563,
+                  "confidence": 0.9991055,
+                  "speaker": 0,
+                  "speaker_confidence": 0.29596543,
+                  "punctuated_word": "got"
+                },
+                {
+                  "word": "it",
+                  "start": 72.63563,
+                  "end": 72.79562,
+                  "confidence": 0.9978315,
+                  "speaker": 0,
+                  "speaker_confidence": 0.29596543,
+                  "punctuated_word": "it"
+                },
+                {
+                  "word": "out",
+                  "start": 72.79562,
+                  "end": 72.95563,
+                  "confidence": 0.9931611,
+                  "speaker": 0,
+                  "speaker_confidence": 0.29596543,
+                  "punctuated_word": "out"
+                },
+                {
+                  "word": "of",
+                  "start": 72.95563,
+                  "end": 73.11562,
+                  "confidence": 0.9465921,
+                  "speaker": 0,
+                  "speaker_confidence": 0.29596543,
+                  "punctuated_word": "of"
+                },
+                {
+                  "word": "here",
+                  "start": 73.11562,
+                  "end": 73.59563,
+                  "confidence": 0.7811303,
+                  "speaker": 0,
+                  "speaker_confidence": 0.29596543,
+                  "punctuated_word": "here,"
+                },
+                {
+                  "word": "but",
+                  "start": 73.59563,
+                  "end": 73.835625,
+                  "confidence": 0.7703955,
+                  "speaker": 0,
+                  "speaker_confidence": 0.0,
+                  "punctuated_word": "but"
+                },
+                {
+                  "word": "i",
+                  "start": 73.835625,
+                  "end": 73.99563,
+                  "confidence": 0.9937644,
+                  "speaker": 0,
+                  "speaker_confidence": 0.0,
+                  "punctuated_word": "I"
+                },
+                {
+                  "word": "didn't",
+                  "start": 73.99563,
+                  "end": 74.39562,
+                  "confidence": 0.97126263,
+                  "speaker": 0,
+                  "speaker_confidence": 0.0,
+                  "punctuated_word": "didn't."
+                },
+                {
+                  "word": "okay",
+                  "start": 74.39562,
+                  "end": 74.79562,
+                  "confidence": 0.9947269,
+                  "speaker": 0,
+                  "speaker_confidence": 0.17220479,
+                  "punctuated_word": "Okay."
+                },
+                {
+                  "word": "what",
+                  "start": 74.79562,
+                  "end": 74.95563,
+                  "confidence": 0.9732241,
+                  "speaker": 0,
+                  "speaker_confidence": 0.17220479,
+                  "punctuated_word": "What"
+                },
+                {
+                  "word": "is",
+                  "start": 74.95563,
+                  "end": 75.195625,
+                  "confidence": 0.96268564,
+                  "speaker": 0,
+                  "speaker_confidence": 0.17220479,
+                  "punctuated_word": "is"
+                },
+                {
+                  "word": "re",
+                  "start": 75.195625,
+                  "end": 75.35562,
+                  "confidence": 0.31776676,
+                  "speaker": 0,
+                  "speaker_confidence": 0.17220479,
+                  "punctuated_word": "re"
+                }
+              ],
+              "paragraphs": {
+                "transcript": "\nSpeaker 0: Yeah. What about Tuesday? It's ninety three. 90 three, choose life or death. Yeah.\n\nDo you want do want me to read it? No. Okay. 90 three. We do look at the eyes to know whether or not the body chemistry is cooperating or not cooperating in each eye.\n\nLet me get the important parts. In the sclera of the eye, there are two groups of blood vessels, one running horizontal and one running perpendicular. He doesn't really differentiate. One running horizontal, one running perpendicular. The perpendicular blood vessels indicate loss of delta cells that are not being washed out of the system from above the diaphragm in the upper extremities.\n\nThe horizontal blood vessels indicate loss of cells below the diaphragm in the lower extremities of the body. It's kind of confusing what he says here, but he doesn't really differentiate. He just says, look. Somewhere I had it, I thought I got it out of here, but I didn't. Okay.\n\nWhat is re",
+                "paragraphs": [
+                  {
+                    "sentences": [
+                      {
+                        "text": "Yeah.",
+                        "start": 0.24,
+                        "end": 0.88
+                      },
+                      {
+                        "text": "What about Tuesday?",
+                        "start": 1.5999999,
+                        "end": 2.8
+                      },
+                      {
+                        "text": "It's ninety three.",
+                        "start": 3.12,
+                        "end": 5.28
+                      },
+                      {
+                        "text": "90 three, choose life or death.",
+                        "start": 6.08,
+                        "end": 8.16
+                      },
+                      {
+                        "text": "Yeah.",
+                        "start": 12.32,
+                        "end": 12.639999
+                      }
+                    ],
+                    "speaker": 0,
+                    "num_words": 14,
+                    "start": 0.24,
+                    "end": 12.639999
+                  },
+                  {
+                    "sentences": [
+                      {
+                        "text": "Do you want do want me to read it?",
+                        "start": 12.639999,
+                        "end": 13.679999
+                      },
+                      {
+                        "text": "No.",
+                        "start": 13.679999,
+                        "end": 13.92
+                      },
+                      {
+                        "text": "Okay.",
+                        "start": 13.92,
+                        "end": 14.32
+                      },
+                      {
+                        "text": "90 three.",
+                        "start": 15.335,
+                        "end": 16.535
+                      },
+                      {
+                        "text": "We do look at the eyes to know whether or not the body chemistry is cooperating or not cooperating in each eye.",
+                        "start": 21.495,
+                        "end": 26.855
+                      }
+                    ],
+                    "speaker": 0,
+                    "num_words": 35,
+                    "start": 12.639999,
+                    "end": 26.855
+                  },
+                  {
+                    "sentences": [
+                      {
+                        "text": "Let me get the important parts.",
+                        "start": 27.975,
+                        "end": 29.175
+                      },
+                      {
+                        "text": "In the sclera of the eye, there are two groups of blood vessels, one running horizontal and one running perpendicular.",
+                        "start": 30.15,
+                        "end": 37.43
+                      },
+                      {
+                        "text": "He doesn't really differentiate.",
+                        "start": 39.19,
+                        "end": 40.79
+                      },
+                      {
+                        "text": "One running horizontal, one running perpendicular.",
+                        "start": 42.565,
+                        "end": 44.885
+                      },
+                      {
+                        "text": "The perpendicular blood vessels indicate loss of delta cells that are not being washed out of the system from above the diaphragm in the upper extremities.",
+                        "start": 44.885,
+                        "end": 54.165
+                      }
+                    ],
+                    "speaker": 0,
+                    "num_words": 62,
+                    "start": 27.975,
+                    "end": 54.165
+                  },
+                  {
+                    "sentences": [
+                      {
+                        "text": "The horizontal blood vessels indicate loss of cells below the diaphragm in the lower extremities of the body.",
+                        "start": 55.045,
+                        "end": 61.989998
+                      },
+                      {
+                        "text": "It's kind of confusing what he says here, but he doesn't really differentiate.",
+                        "start": 61.989998,
+                        "end": 65.83
+                      },
+                      {
+                        "text": "He just says, look.",
+                        "start": 67.59563,
+                        "end": 68.79562
+                      },
+                      {
+                        "text": "Somewhere I had it, I thought I got it out of here, but I didn't.",
+                        "start": 69.835625,
+                        "end": 74.39562
+                      },
+                      {
+                        "text": "Okay.",
+                        "start": 74.39562,
+                        "end": 74.79562
+                      }
+                    ],
+                    "speaker": 0,
+                    "num_words": 51,
+                    "start": 55.045,
+                    "end": 74.79562
+                  },
+                  {
+                    "sentences": [
+                      {
+                        "text": "What is re",
+                        "start": 74.79562,
+                        "end": 75.35562
+                      }
+                    ],
+                    "speaker": 0,
+                    "num_words": 3,
+                    "start": 74.79562,
+                    "end": 75.35562
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "utterances": [
+        {
+          "start": 0.24,
+          "end": 0.88,
+          "confidence": 0.96090686,
+          "channel": 0,
+          "transcript": "Yeah.",
+          "words": [
+            {
+              "word": "yeah",
+              "start": 0.24,
+              "end": 0.88,
+              "confidence": 0.96090686,
+              "speaker": 0,
+              "speaker_confidence": 0.54651225,
+              "punctuated_word": "Yeah."
+            }
+          ],
+          "speaker": 0,
+          "id": "e6db94e7-95a2-46db-8a00-e9d8603531ae"
+        },
+        {
+          "start": 1.5999999,
+          "end": 2.8,
+          "confidence": 0.56007624,
+          "channel": 0,
+          "transcript": "What about Tuesday?",
+          "words": [
+            {
+              "word": "what",
+              "start": 1.5999999,
+              "end": 1.92,
+              "confidence": 0.3342466,
+              "speaker": 0,
+              "speaker_confidence": 0.54651225,
+              "punctuated_word": "What"
+            },
+            {
+              "word": "about",
+              "start": 1.92,
+              "end": 2.08,
+              "confidence": 0.68419844,
+              "speaker": 0,
+              "speaker_confidence": 0.54651225,
+              "punctuated_word": "about"
+            },
+            {
+              "word": "tuesday",
+              "start": 2.08,
+              "end": 2.8,
+              "confidence": 0.6617837,
+              "speaker": 0,
+              "speaker_confidence": 0.54651225,
+              "punctuated_word": "Tuesday?"
+            }
+          ],
+          "speaker": 0,
+          "id": "995a88aa-7ce7-4041-b238-ed50b22dff65"
+        },
+        {
+          "start": 3.12,
+          "end": 4.3199997,
+          "confidence": 0.6869788,
+          "channel": 0,
+          "transcript": "It's",
+          "words": [
+            {
+              "word": "it's",
+              "start": 3.12,
+              "end": 4.3199997,
+              "confidence": 0.6869788,
+              "speaker": 0,
+              "speaker_confidence": 0.54651225,
+              "punctuated_word": "It's"
+            }
+          ],
+          "speaker": 0,
+          "id": "f64e24b2-425b-49b6-a07f-c7ca6ab06915"
+        },
+        {
+          "start": 4.3199997,
+          "end": 5.28,
+          "confidence": 0.8691467,
+          "channel": 0,
+          "transcript": "ninety three.",
+          "words": [
+            {
+              "word": "ninety",
+              "start": 4.3199997,
+              "end": 4.64,
+              "confidence": 0.74129045,
+              "speaker": 0,
+              "speaker_confidence": 0.54651225,
+              "punctuated_word": "ninety"
+            },
+            {
+              "word": "three",
+              "start": 4.64,
+              "end": 5.28,
+              "confidence": 0.997003,
+              "speaker": 0,
+              "speaker_confidence": 0.54651225,
+              "punctuated_word": "three."
+            }
+          ],
+          "speaker": 0,
+          "id": "21ac4de7-de6b-4b33-a0a4-56a42ed27b04"
+        },
+        {
+          "start": 6.08,
+          "end": 8.16,
+          "confidence": 0.9038818,
+          "channel": 0,
+          "transcript": "90 three, choose life or death.",
+          "words": [
+            {
+              "word": "90",
+              "start": 6.08,
+              "end": 6.56,
+              "confidence": 0.9867662,
+              "speaker": 0,
+              "speaker_confidence": 0.022660851,
+              "punctuated_word": "90"
+            },
+            {
+              "word": "three",
+              "start": 6.56,
+              "end": 6.8799996,
+              "confidence": 0.7243941,
+              "speaker": 0,
+              "speaker_confidence": 0.022660851,
+              "punctuated_word": "three,"
+            },
+            {
+              "word": "choose",
+              "start": 6.8799996,
+              "end": 7.12,
+              "confidence": 0.87077516,
+              "speaker": 0,
+              "speaker_confidence": 0.022660851,
+              "punctuated_word": "choose"
+            },
+            {
+              "word": "life",
+              "start": 7.12,
+              "end": 7.3599997,
+              "confidence": 0.9660713,
+              "speaker": 0,
+              "speaker_confidence": 0.022660851,
+              "punctuated_word": "life"
+            },
+            {
+              "word": "or",
+              "start": 7.3599997,
+              "end": 7.52,
+              "confidence": 0.9393816,
+              "speaker": 0,
+              "speaker_confidence": 0.022660851,
+              "punctuated_word": "or"
+            },
+            {
+              "word": "death",
+              "start": 7.52,
+              "end": 8.16,
+              "confidence": 0.93590194,
+              "speaker": 0,
+              "speaker_confidence": 0.022660851,
+              "punctuated_word": "death."
+            }
+          ],
+          "speaker": 0,
+          "id": "4aa90907-ca4f-4325-8e4f-1313a181654c"
+        },
+        {
+          "start": 12.32,
+          "end": 14.32,
+          "confidence": 0.8897433,
+          "channel": 0,
+          "transcript": "Yeah. Do you want do want me to read it? No. Okay.",
+          "words": [
+            {
+              "word": "yeah",
+              "start": 12.32,
+              "end": 12.639999,
+              "confidence": 0.90387404,
+              "speaker": 0,
+              "speaker_confidence": 0.18370229,
+              "punctuated_word": "Yeah."
+            },
+            {
+              "word": "do",
+              "start": 12.639999,
+              "end": 12.799999,
+              "confidence": 0.7557779,
+              "speaker": 0,
+              "speaker_confidence": 0.18370229,
+              "punctuated_word": "Do"
+            },
+            {
+              "word": "you",
+              "start": 12.799999,
+              "end": 12.88,
+              "confidence": 0.9952945,
+              "speaker": 0,
+              "speaker_confidence": 0.18370229,
+              "punctuated_word": "you"
+            },
+            {
+              "word": "want",
+              "start": 12.88,
+              "end": 12.96,
+              "confidence": 0.98819774,
+              "speaker": 0,
+              "speaker_confidence": 0.18370229,
+              "punctuated_word": "want"
+            },
+            {
+              "word": "do",
+              "start": 12.96,
+              "end": 13.12,
+              "confidence": 0.5004183,
+              "speaker": 0,
+              "speaker_confidence": 0.18370229,
+              "punctuated_word": "do"
+            },
+            {
+              "word": "want",
+              "start": 13.12,
+              "end": 13.2,
+              "confidence": 0.9976829,
+              "speaker": 0,
+              "speaker_confidence": 0.18370229,
+              "punctuated_word": "want"
+            },
+            {
+              "word": "me",
+              "start": 13.2,
+              "end": 13.28,
+              "confidence": 0.9973253,
+              "speaker": 0,
+              "speaker_confidence": 0.18370229,
+              "punctuated_word": "me"
+            },
+            {
+              "word": "to",
+              "start": 13.28,
+              "end": 13.36,
+              "confidence": 0.96402884,
+              "speaker": 0,
+              "speaker_confidence": 0.5062507,
+              "punctuated_word": "to"
+            },
+            {
+              "word": "read",
+              "start": 13.36,
+              "end": 13.5199995,
+              "confidence": 0.9973871,
+              "speaker": 0,
+              "speaker_confidence": 0.5062507,
+              "punctuated_word": "read"
+            },
+            {
+              "word": "it",
+              "start": 13.5199995,
+              "end": 13.679999,
+              "confidence": 0.958861,
+              "speaker": 0,
+              "speaker_confidence": 0.5062507,
+              "punctuated_word": "it?"
+            },
+            {
+              "word": "no",
+              "start": 13.679999,
+              "end": 13.92,
+              "confidence": 0.7698978,
+              "speaker": 0,
+              "speaker_confidence": 0.5062507,
+              "punctuated_word": "No."
+            },
+            {
+              "word": "okay",
+              "start": 13.92,
+              "end": 14.32,
+              "confidence": 0.8481739,
+              "speaker": 0,
+              "speaker_confidence": 0.5062507,
+              "punctuated_word": "Okay."
+            }
+          ],
+          "speaker": 0,
+          "id": "4cc7e3df-e9fe-4065-9e08-7bf8e1f6c2ca"
+        },
+        {
+          "start": 15.335,
+          "end": 16.535,
+          "confidence": 0.9517602,
+          "channel": 0,
+          "transcript": "90 three.",
+          "words": [
+            {
+              "word": "90",
+              "start": 15.335,
+              "end": 15.895,
+              "confidence": 0.9207418,
+              "speaker": 0,
+              "speaker_confidence": 0.5062507,
+              "punctuated_word": "90"
+            },
+            {
+              "word": "three",
+              "start": 15.895,
+              "end": 16.535,
+              "confidence": 0.9827785,
+              "speaker": 0,
+              "speaker_confidence": 0.5062507,
+              "punctuated_word": "three."
+            }
+          ],
+          "speaker": 0,
+          "id": "4e1ed499-088e-4d05-a426-7ec180ef2618"
+        },
+        {
+          "start": 21.495,
+          "end": 25.654999,
+          "confidence": 0.9910554,
+          "channel": 0,
+          "transcript": "We do look at the eyes to know whether or not the body chemistry is cooperating or not cooperating",
+          "words": [
+            {
+              "word": "we",
+              "start": 21.495,
+              "end": 21.735,
+              "confidence": 0.98660547,
+              "speaker": 0,
+              "speaker_confidence": 0.3360185,
+              "punctuated_word": "We"
+            },
+            {
+              "word": "do",
+              "start": 21.735,
+              "end": 21.975,
+              "confidence": 0.9986129,
+              "speaker": 0,
+              "speaker_confidence": 0.3360185,
+              "punctuated_word": "do"
+            },
+            {
+              "word": "look",
+              "start": 21.975,
+              "end": 22.135,
+              "confidence": 0.99945885,
+              "speaker": 0,
+              "speaker_confidence": 0.3360185,
+              "punctuated_word": "look"
+            },
+            {
+              "word": "at",
+              "start": 22.135,
+              "end": 22.295,
+              "confidence": 0.99894303,
+              "speaker": 0,
+              "speaker_confidence": 0.3360185,
+              "punctuated_word": "at"
+            },
+            {
+              "word": "the",
+              "start": 22.295,
+              "end": 22.375,
+              "confidence": 0.99824667,
+              "speaker": 0,
+              "speaker_confidence": 0.3360185,
+              "punctuated_word": "the"
+            },
+            {
+              "word": "eyes",
+              "start": 22.375,
+              "end": 22.615,
+              "confidence": 0.995908,
+              "speaker": 0,
+              "speaker_confidence": 0.3360185,
+              "punctuated_word": "eyes"
+            },
+            {
+              "word": "to",
+              "start": 22.615,
+              "end": 22.775,
+              "confidence": 0.9988832,
+              "speaker": 0,
+              "speaker_confidence": 0.3360185,
+              "punctuated_word": "to"
+            },
+            {
+              "word": "know",
+              "start": 22.775,
+              "end": 22.855,
+              "confidence": 0.99643075,
+              "speaker": 0,
+              "speaker_confidence": 0.3360185,
+              "punctuated_word": "know"
+            },
+            {
+              "word": "whether",
+              "start": 22.855,
+              "end": 23.095001,
+              "confidence": 0.99675494,
+              "speaker": 0,
+              "speaker_confidence": 0.3360185,
+              "punctuated_word": "whether"
+            },
+            {
+              "word": "or",
+              "start": 23.095001,
+              "end": 23.175,
+              "confidence": 0.9819994,
+              "speaker": 0,
+              "speaker_confidence": 0.3360185,
+              "punctuated_word": "or"
+            },
+            {
+              "word": "not",
+              "start": 23.175,
+              "end": 23.255001,
+              "confidence": 0.99977833,
+              "speaker": 0,
+              "speaker_confidence": 0.57281536,
+              "punctuated_word": "not"
+            },
+            {
+              "word": "the",
+              "start": 23.255001,
+              "end": 23.415,
+              "confidence": 0.99757844,
+              "speaker": 0,
+              "speaker_confidence": 0.57281536,
+              "punctuated_word": "the"
+            },
+            {
+              "word": "body",
+              "start": 23.415,
+              "end": 23.575,
+              "confidence": 0.95868117,
+              "speaker": 0,
+              "speaker_confidence": 0.57281536,
+              "punctuated_word": "body"
+            },
+            {
+              "word": "chemistry",
+              "start": 23.575,
+              "end": 23.895,
+              "confidence": 0.9940019,
+              "speaker": 0,
+              "speaker_confidence": 0.57281536,
+              "punctuated_word": "chemistry"
+            },
+            {
+              "word": "is",
+              "start": 23.895,
+              "end": 24.135,
+              "confidence": 0.9483974,
+              "speaker": 0,
+              "speaker_confidence": 0.57281536,
+              "punctuated_word": "is"
+            },
+            {
+              "word": "cooperating",
+              "start": 24.135,
+              "end": 24.455,
+              "confidence": 0.9985039,
+              "speaker": 0,
+              "speaker_confidence": 0.57281536,
+              "punctuated_word": "cooperating"
+            },
+            {
+              "word": "or",
+              "start": 24.455,
+              "end": 24.615,
+              "confidence": 0.9841738,
+              "speaker": 0,
+              "speaker_confidence": 0.57281536,
+              "punctuated_word": "or"
+            },
+            {
+              "word": "not",
+              "start": 24.615,
+              "end": 24.775002,
+              "confidence": 0.9973375,
+              "speaker": 0,
+              "speaker_confidence": 0.57281536,
+              "punctuated_word": "not"
+            },
+            {
+              "word": "cooperating",
+              "start": 24.775002,
+              "end": 25.654999,
+              "confidence": 0.9997574,
+              "speaker": 0,
+              "speaker_confidence": 0.57281536,
+              "punctuated_word": "cooperating"
+            }
+          ],
+          "speaker": 0,
+          "id": "283aae90-fe51-4002-b8db-8fac3fb88298"
+        },
+        {
+          "start": 25.654999,
+          "end": 26.855,
+          "confidence": 0.96898204,
+          "channel": 0,
+          "transcript": "in each eye.",
+          "words": [
+            {
+              "word": "in",
+              "start": 25.654999,
+              "end": 25.895,
+              "confidence": 0.9159708,
+              "speaker": 0,
+              "speaker_confidence": 0.57281536,
+              "punctuated_word": "in"
+            },
+            {
+              "word": "each",
+              "start": 25.895,
+              "end": 26.215,
+              "confidence": 0.99966407,
+              "speaker": 0,
+              "speaker_confidence": 0.57281536,
+              "punctuated_word": "each"
+            },
+            {
+              "word": "eye",
+              "start": 26.215,
+              "end": 26.855,
+              "confidence": 0.9913113,
+              "speaker": 0,
+              "speaker_confidence": 0.57281536,
+              "punctuated_word": "eye."
+            }
+          ],
+          "speaker": 0,
+          "id": "9f432328-8326-4ff8-9fce-6c2eebcf382c"
+        },
+        {
+          "start": 27.975,
+          "end": 29.175,
+          "confidence": 0.9411454,
+          "channel": 0,
+          "transcript": "Let me get the important parts.",
+          "words": [
+            {
+              "word": "let",
+              "start": 27.975,
+              "end": 28.215,
+              "confidence": 0.7129153,
+              "speaker": 0,
+              "speaker_confidence": 0.57281536,
+              "punctuated_word": "Let"
+            },
+            {
+              "word": "me",
+              "start": 28.215,
+              "end": 28.375,
+              "confidence": 0.9987213,
+              "speaker": 0,
+              "speaker_confidence": 0.57281536,
+              "punctuated_word": "me"
+            },
+            {
+              "word": "get",
+              "start": 28.375,
+              "end": 28.535,
+              "confidence": 0.96129984,
+              "speaker": 0,
+              "speaker_confidence": 0.57281536,
+              "punctuated_word": "get"
+            },
+            {
+              "word": "the",
+              "start": 28.535,
+              "end": 28.615,
+              "confidence": 0.98988664,
+              "speaker": 0,
+              "speaker_confidence": 0.57281536,
+              "punctuated_word": "the"
+            },
+            {
+              "word": "important",
+              "start": 28.615,
+              "end": 28.935001,
+              "confidence": 0.9970907,
+              "speaker": 0,
+              "speaker_confidence": 0.57281536,
+              "punctuated_word": "important"
+            },
+            {
+              "word": "parts",
+              "start": 28.935001,
+              "end": 29.175,
+              "confidence": 0.9869583,
+              "speaker": 0,
+              "speaker_confidence": 0.57281536,
+              "punctuated_word": "parts."
+            }
+          ],
+          "speaker": 0,
+          "id": "9a463e26-d5a4-47db-84a1-1bbe6c0721b3"
+        },
+        {
+          "start": 30.15,
+          "end": 35.11,
+          "confidence": 0.97573084,
+          "channel": 0,
+          "transcript": "In the sclera of the eye, there are two groups of blood vessels, one running horizontal",
+          "words": [
+            {
+              "word": "in",
+              "start": 30.15,
+              "end": 30.39,
+              "confidence": 0.9986708,
+              "speaker": 0,
+              "speaker_confidence": 0.24035811,
+              "punctuated_word": "In"
+            },
+            {
+              "word": "the",
+              "start": 30.39,
+              "end": 30.63,
+              "confidence": 0.98974305,
+              "speaker": 0,
+              "speaker_confidence": 0.24035811,
+              "punctuated_word": "the"
+            },
+            {
+              "word": "sclera",
+              "start": 30.63,
+              "end": 31.11,
+              "confidence": 0.9914398,
+              "speaker": 0,
+              "speaker_confidence": 0.24035811,
+              "punctuated_word": "sclera"
+            },
+            {
+              "word": "of",
+              "start": 31.11,
+              "end": 31.27,
+              "confidence": 0.9961357,
+              "speaker": 0,
+              "speaker_confidence": 0.24035811,
+              "punctuated_word": "of"
+            },
+            {
+              "word": "the",
+              "start": 31.27,
+              "end": 31.35,
+              "confidence": 0.9986644,
+              "speaker": 0,
+              "speaker_confidence": 0.24035811,
+              "punctuated_word": "the"
+            },
+            {
+              "word": "eye",
+              "start": 31.35,
+              "end": 31.59,
+              "confidence": 0.8892977,
+              "speaker": 0,
+              "speaker_confidence": 0.24035811,
+              "punctuated_word": "eye,"
+            },
+            {
+              "word": "there",
+              "start": 31.59,
+              "end": 31.67,
+              "confidence": 0.9969189,
+              "speaker": 0,
+              "speaker_confidence": 0.29250723,
+              "punctuated_word": "there"
+            },
+            {
+              "word": "are",
+              "start": 31.67,
+              "end": 31.83,
+              "confidence": 0.9981229,
+              "speaker": 0,
+              "speaker_confidence": 0.29250723,
+              "punctuated_word": "are"
+            },
+            {
+              "word": "two",
+              "start": 31.83,
+              "end": 32.07,
+              "confidence": 0.9995004,
+              "speaker": 0,
+              "speaker_confidence": 0.29250723,
+              "punctuated_word": "two"
+            },
+            {
+              "word": "groups",
+              "start": 32.07,
+              "end": 32.31,
+              "confidence": 0.99913967,
+              "speaker": 0,
+              "speaker_confidence": 0.29250723,
+              "punctuated_word": "groups"
+            },
+            {
+              "word": "of",
+              "start": 32.31,
+              "end": 32.47,
+              "confidence": 0.9969023,
+              "speaker": 0,
+              "speaker_confidence": 0.29250723,
+              "punctuated_word": "of"
+            },
+            {
+              "word": "blood",
+              "start": 32.47,
+              "end": 32.79,
+              "confidence": 0.99960285,
+              "speaker": 0,
+              "speaker_confidence": 0.29250723,
+              "punctuated_word": "blood"
+            },
+            {
+              "word": "vessels",
+              "start": 32.79,
+              "end": 33.51,
+              "confidence": 0.7629229,
+              "speaker": 0,
+              "speaker_confidence": 0.29250723,
+              "punctuated_word": "vessels,"
+            },
+            {
+              "word": "one",
+              "start": 33.51,
+              "end": 33.829998,
+              "confidence": 0.9958461,
+              "speaker": 0,
+              "speaker_confidence": 0.3661573,
+              "punctuated_word": "one"
+            },
+            {
+              "word": "running",
+              "start": 33.829998,
+              "end": 34.15,
+              "confidence": 0.9994203,
+              "speaker": 0,
+              "speaker_confidence": 0.3661573,
+              "punctuated_word": "running"
+            },
+            {
+              "word": "horizontal",
+              "start": 34.15,
+              "end": 35.11,
+              "confidence": 0.99936515,
+              "speaker": 0,
+              "speaker_confidence": 0.3661573,
+              "punctuated_word": "horizontal"
+            }
+          ],
+          "speaker": 0,
+          "id": "f8a57a06-367f-4476-ad4f-11358374e8a1"
+        },
+        {
+          "start": 35.59,
+          "end": 37.43,
+          "confidence": 0.92283696,
+          "channel": 0,
+          "transcript": "and one running perpendicular.",
+          "words": [
+            {
+              "word": "and",
+              "start": 35.59,
+              "end": 35.91,
+              "confidence": 0.6946907,
+              "speaker": 0,
+              "speaker_confidence": 0.3661573,
+              "punctuated_word": "and"
+            },
+            {
+              "word": "one",
+              "start": 35.91,
+              "end": 36.15,
+              "confidence": 0.99933666,
+              "speaker": 0,
+              "speaker_confidence": 0.3661573,
+              "punctuated_word": "one"
+            },
+            {
+              "word": "running",
+              "start": 36.15,
+              "end": 36.39,
+              "confidence": 0.9987355,
+              "speaker": 0,
+              "speaker_confidence": 0.2767058,
+              "punctuated_word": "running"
+            },
+            {
+              "word": "perpendicular",
+              "start": 36.39,
+              "end": 37.43,
+              "confidence": 0.998585,
+              "speaker": 0,
+              "speaker_confidence": 0.2767058,
+              "punctuated_word": "perpendicular."
+            }
+          ],
+          "speaker": 0,
+          "id": "1e60c178-5db8-4af4-8691-0edb3dfc84e6"
+        },
+        {
+          "start": 39.19,
+          "end": 40.79,
+          "confidence": 0.9770701,
+          "channel": 0,
+          "transcript": "He doesn't really differentiate.",
+          "words": [
+            {
+              "word": "he",
+              "start": 39.19,
+              "end": 39.51,
+              "confidence": 0.97500616,
+              "speaker": 0,
+              "speaker_confidence": 0.3246621,
+              "punctuated_word": "He"
+            },
+            {
+              "word": "doesn't",
+              "start": 39.51,
+              "end": 39.83,
+              "confidence": 0.9996265,
+              "speaker": 0,
+              "speaker_confidence": 0.3246621,
+              "punctuated_word": "doesn't"
+            },
+            {
+              "word": "really",
+              "start": 39.83,
+              "end": 40.15,
+              "confidence": 0.99905616,
+              "speaker": 0,
+              "speaker_confidence": 0.3246621,
+              "punctuated_word": "really"
+            },
+            {
+              "word": "differentiate",
+              "start": 40.15,
+              "end": 40.79,
+              "confidence": 0.93459153,
+              "speaker": 0,
+              "speaker_confidence": 0.3246621,
+              "punctuated_word": "differentiate."
+            }
+          ],
+          "speaker": 0,
+          "id": "27205739-1c23-41ee-b7fe-de21328df85e"
+        },
+        {
+          "start": 42.565,
+          "end": 46.965,
+          "confidence": 0.9711275,
+          "channel": 0,
+          "transcript": "One running horizontal, one running perpendicular. The perpendicular blood vessels",
+          "words": [
+            {
+              "word": "one",
+              "start": 42.565,
+              "end": 42.885,
+              "confidence": 0.99823785,
+              "speaker": 0,
+              "speaker_confidence": 0.3760671,
+              "punctuated_word": "One"
+            },
+            {
+              "word": "running",
+              "start": 42.885,
+              "end": 43.125,
+              "confidence": 0.9983265,
+              "speaker": 0,
+              "speaker_confidence": 0.3760671,
+              "punctuated_word": "running"
+            },
+            {
+              "word": "horizontal",
+              "start": 43.125,
+              "end": 43.765,
+              "confidence": 0.7636893,
+              "speaker": 0,
+              "speaker_confidence": 0.3760671,
+              "punctuated_word": "horizontal,"
+            },
+            {
+              "word": "one",
+              "start": 43.765,
+              "end": 43.925,
+              "confidence": 0.9706217,
+              "speaker": 0,
+              "speaker_confidence": 0.3760671,
+              "punctuated_word": "one"
+            },
+            {
+              "word": "running",
+              "start": 43.925,
+              "end": 44.165,
+              "confidence": 0.9992429,
+              "speaker": 0,
+              "speaker_confidence": 0.3760671,
+              "punctuated_word": "running"
+            },
+            {
+              "word": "perpendicular",
+              "start": 44.165,
+              "end": 44.885,
+              "confidence": 0.9950269,
+              "speaker": 0,
+              "speaker_confidence": 0.3760671,
+              "punctuated_word": "perpendicular."
+            },
+            {
+              "word": "the",
+              "start": 44.885,
+              "end": 45.125,
+              "confidence": 0.99042386,
+              "speaker": 0,
+              "speaker_confidence": 0.63992155,
+              "punctuated_word": "The"
+            },
+            {
+              "word": "perpendicular",
+              "start": 45.125,
+              "end": 45.844997,
+              "confidence": 0.9998388,
+              "speaker": 0,
+              "speaker_confidence": 0.63992155,
+              "punctuated_word": "perpendicular"
+            },
+            {
+              "word": "blood",
+              "start": 45.844997,
+              "end": 46.245,
+              "confidence": 0.99808204,
+              "speaker": 0,
+              "speaker_confidence": 0.63992155,
+              "punctuated_word": "blood"
+            },
+            {
+              "word": "vessels",
+              "start": 46.245,
+              "end": 46.965,
+              "confidence": 0.9977851,
+              "speaker": 0,
+              "speaker_confidence": 0.63992155,
+              "punctuated_word": "vessels"
+            }
+          ],
+          "speaker": 0,
+          "id": "6f9ed5b9-5dc5-4dae-aa70-278e1b2d6bd3"
+        },
+        {
+          "start": 47.285,
+          "end": 54.165,
+          "confidence": 0.96614546,
+          "channel": 0,
+          "transcript": "indicate loss of delta cells that are not being washed out of the system from above the diaphragm in the upper extremities.",
+          "words": [
+            {
+              "word": "indicate",
+              "start": 47.285,
+              "end": 47.925,
+              "confidence": 0.99786216,
+              "speaker": 0,
+              "speaker_confidence": 0.63992155,
+              "punctuated_word": "indicate"
+            },
+            {
+              "word": "loss",
+              "start": 47.925,
+              "end": 48.324997,
+              "confidence": 0.974482,
+              "speaker": 0,
+              "speaker_confidence": 0.63992155,
+              "punctuated_word": "loss"
+            },
+            {
+              "word": "of",
+              "start": 48.324997,
+              "end": 48.565,
+              "confidence": 0.9707964,
+              "speaker": 0,
+              "speaker_confidence": 0.63992155,
+              "punctuated_word": "of"
+            },
+            {
+              "word": "delta",
+              "start": 48.565,
+              "end": 48.965,
+              "confidence": 0.74096,
+              "speaker": 0,
+              "speaker_confidence": 0.63992155,
+              "punctuated_word": "delta"
+            },
+            {
+              "word": "cells",
+              "start": 48.965,
+              "end": 49.524998,
+              "confidence": 0.99955076,
+              "speaker": 0,
+              "speaker_confidence": 0.63992155,
+              "punctuated_word": "cells"
+            },
+            {
+              "word": "that",
+              "start": 49.524998,
+              "end": 49.765,
+              "confidence": 0.9949645,
+              "speaker": 0,
+              "speaker_confidence": 0.63992155,
+              "punctuated_word": "that"
+            },
+            {
+              "word": "are",
+              "start": 49.765,
+              "end": 49.925,
+              "confidence": 0.99931705,
+              "speaker": 0,
+              "speaker_confidence": 0.63992155,
+              "punctuated_word": "are"
+            },
+            {
+              "word": "not",
+              "start": 49.925,
+              "end": 50.085,
+              "confidence": 0.998307,
+              "speaker": 0,
+              "speaker_confidence": 0.63992155,
+              "punctuated_word": "not"
+            },
+            {
+              "word": "being",
+              "start": 50.085,
+              "end": 50.324997,
+              "confidence": 0.99688643,
+              "speaker": 0,
+              "speaker_confidence": 0.63992155,
+              "punctuated_word": "being"
+            },
+            {
+              "word": "washed",
+              "start": 50.324997,
+              "end": 50.565,
+              "confidence": 0.99486154,
+              "speaker": 0,
+              "speaker_confidence": 0.63992155,
+              "punctuated_word": "washed"
+            },
+            {
+              "word": "out",
+              "start": 50.565,
+              "end": 50.725,
+              "confidence": 0.9980398,
+              "speaker": 0,
+              "speaker_confidence": 0.63992155,
+              "punctuated_word": "out"
+            },
+            {
+              "word": "of",
+              "start": 50.725,
+              "end": 50.885,
+              "confidence": 0.99163944,
+              "speaker": 0,
+              "speaker_confidence": 0.63992155,
+              "punctuated_word": "of"
+            },
+            {
+              "word": "the",
+              "start": 50.885,
+              "end": 51.045,
+              "confidence": 0.9925109,
+              "speaker": 0,
+              "speaker_confidence": 0.63992155,
+              "punctuated_word": "the"
+            },
+            {
+              "word": "system",
+              "start": 51.045,
+              "end": 51.285,
+              "confidence": 0.9985606,
+              "speaker": 0,
+              "speaker_confidence": 0.63992155,
+              "punctuated_word": "system"
+            },
+            {
+              "word": "from",
+              "start": 51.285,
+              "end": 51.605,
+              "confidence": 0.9582854,
+              "speaker": 0,
+              "speaker_confidence": 0.63992155,
+              "punctuated_word": "from"
+            },
+            {
+              "word": "above",
+              "start": 51.605,
+              "end": 51.925,
+              "confidence": 0.99596316,
+              "speaker": 0,
+              "speaker_confidence": 0.63992155,
+              "punctuated_word": "above"
+            },
+            {
+              "word": "the",
+              "start": 51.925,
+              "end": 52.085,
+              "confidence": 0.999059,
+              "speaker": 0,
+              "speaker_confidence": 0.63992155,
+              "punctuated_word": "the"
+            },
+            {
+              "word": "diaphragm",
+              "start": 52.085,
+              "end": 52.565,
+              "confidence": 0.99611276,
+              "speaker": 0,
+              "speaker_confidence": 0.63992155,
+              "punctuated_word": "diaphragm"
+            },
+            {
+              "word": "in",
+              "start": 52.565,
+              "end": 52.805,
+              "confidence": 0.66192573,
+              "speaker": 0,
+              "speaker_confidence": 0.63992155,
+              "punctuated_word": "in"
+            },
+            {
+              "word": "the",
+              "start": 52.805,
+              "end": 52.965,
+              "confidence": 0.9978522,
+              "speaker": 0,
+              "speaker_confidence": 0.63992155,
+              "punctuated_word": "the"
+            },
+            {
+              "word": "upper",
+              "start": 52.965,
+              "end": 53.285,
+              "confidence": 0.99946445,
+              "speaker": 0,
+              "speaker_confidence": 0.63992155,
+              "punctuated_word": "upper"
+            },
+            {
+              "word": "extremities",
+              "start": 53.285,
+              "end": 54.165,
+              "confidence": 0.9977976,
+              "speaker": 0,
+              "speaker_confidence": 0.63992155,
+              "punctuated_word": "extremities."
+            }
+          ],
+          "speaker": 0,
+          "id": "3ac14303-b685-4f10-b699-d2e003bba3ba"
+        },
+        {
+          "start": 55.045,
+          "end": 57.524998,
+          "confidence": 0.9940773,
+          "channel": 0,
+          "transcript": "The horizontal blood vessels indicate",
+          "words": [
+            {
+              "word": "the",
+              "start": 55.045,
+              "end": 55.364998,
+              "confidence": 0.9732058,
+              "speaker": 0,
+              "speaker_confidence": 0.63992155,
+              "punctuated_word": "The"
+            },
+            {
+              "word": "horizontal",
+              "start": 55.364998,
+              "end": 55.925,
+              "confidence": 0.999602,
+              "speaker": 0,
+              "speaker_confidence": 0.63992155,
+              "punctuated_word": "horizontal"
+            },
+            {
+              "word": "blood",
+              "start": 55.925,
+              "end": 56.245,
+              "confidence": 0.9992774,
+              "speaker": 0,
+              "speaker_confidence": 0.63992155,
+              "punctuated_word": "blood"
+            },
+            {
+              "word": "vessels",
+              "start": 56.245,
+              "end": 56.565,
+              "confidence": 0.998979,
+              "speaker": 0,
+              "speaker_confidence": 0.63992155,
+              "punctuated_word": "vessels"
+            },
+            {
+              "word": "indicate",
+              "start": 56.565,
+              "end": 57.524998,
+              "confidence": 0.9993223,
+              "speaker": 0,
+              "speaker_confidence": 0.63992155,
+              "punctuated_word": "indicate"
+            }
+          ],
+          "speaker": 0,
+          "id": "fce60c39-aedc-4269-ac1b-f89219784fcd"
+        },
+        {
+          "start": 58.31,
+          "end": 62.87,
+          "confidence": 0.8918934,
+          "channel": 0,
+          "transcript": "loss of cells below the diaphragm in the lower extremities of the body. It's",
+          "words": [
+            {
+              "word": "loss",
+              "start": 58.31,
+              "end": 58.79,
+              "confidence": 0.9659796,
+              "speaker": 0,
+              "speaker_confidence": 0.63992155,
+              "punctuated_word": "loss"
+            },
+            {
+              "word": "of",
+              "start": 58.79,
+              "end": 58.95,
+              "confidence": 0.9982224,
+              "speaker": 0,
+              "speaker_confidence": 0.63992155,
+              "punctuated_word": "of"
+            },
+            {
+              "word": "cells",
+              "start": 58.95,
+              "end": 59.19,
+              "confidence": 0.9984053,
+              "speaker": 0,
+              "speaker_confidence": 0.63992155,
+              "punctuated_word": "cells"
+            },
+            {
+              "word": "below",
+              "start": 59.19,
+              "end": 59.67,
+              "confidence": 0.52622753,
+              "speaker": 0,
+              "speaker_confidence": 0.63992155,
+              "punctuated_word": "below"
+            },
+            {
+              "word": "the",
+              "start": 59.67,
+              "end": 59.91,
+              "confidence": 0.9985637,
+              "speaker": 0,
+              "speaker_confidence": 0.63992155,
+              "punctuated_word": "the"
+            },
+            {
+              "word": "diaphragm",
+              "start": 59.91,
+              "end": 60.23,
+              "confidence": 0.8786398,
+              "speaker": 0,
+              "speaker_confidence": 0.63992155,
+              "punctuated_word": "diaphragm"
+            },
+            {
+              "word": "in",
+              "start": 60.23,
+              "end": 60.47,
+              "confidence": 0.38780504,
+              "speaker": 0,
+              "speaker_confidence": 0.63992155,
+              "punctuated_word": "in"
+            },
+            {
+              "word": "the",
+              "start": 60.47,
+              "end": 60.55,
+              "confidence": 0.99525803,
+              "speaker": 0,
+              "speaker_confidence": 0.39213222,
+              "punctuated_word": "the"
+            },
+            {
+              "word": "lower",
+              "start": 60.55,
+              "end": 60.79,
+              "confidence": 0.99702495,
+              "speaker": 0,
+              "speaker_confidence": 0.39213222,
+              "punctuated_word": "lower"
+            },
+            {
+              "word": "extremities",
+              "start": 60.79,
+              "end": 61.19,
+              "confidence": 0.98791945,
+              "speaker": 0,
+              "speaker_confidence": 0.39213222,
+              "punctuated_word": "extremities"
+            },
+            {
+              "word": "of",
+              "start": 61.19,
+              "end": 61.35,
+              "confidence": 0.9899657,
+              "speaker": 0,
+              "speaker_confidence": 0.39213222,
+              "punctuated_word": "of"
+            },
+            {
+              "word": "the",
+              "start": 61.35,
+              "end": 61.51,
+              "confidence": 0.995031,
+              "speaker": 0,
+              "speaker_confidence": 0.39213222,
+              "punctuated_word": "the"
+            },
+            {
+              "word": "body",
+              "start": 61.51,
+              "end": 61.989998,
+              "confidence": 0.82272094,
+              "speaker": 0,
+              "speaker_confidence": 0.39213222,
+              "punctuated_word": "body."
+            },
+            {
+              "word": "it's",
+              "start": 61.989998,
+              "end": 62.87,
+              "confidence": 0.9447454,
+              "speaker": 0,
+              "speaker_confidence": 0.39213222,
+              "punctuated_word": "It's"
+            }
+          ],
+          "speaker": 0,
+          "id": "81892692-61c4-497f-ae08-3c1041fcceed"
+        },
+        {
+          "start": 62.87,
+          "end": 65.83,
+          "confidence": 0.9384498,
+          "channel": 0,
+          "transcript": "kind of confusing what he says here, but he doesn't really differentiate.",
+          "words": [
+            {
+              "word": "kind",
+              "start": 62.87,
+              "end": 63.03,
+              "confidence": 0.51131237,
+              "speaker": 0,
+              "speaker_confidence": 0.39213222,
+              "punctuated_word": "kind"
+            },
+            {
+              "word": "of",
+              "start": 63.03,
+              "end": 63.11,
+              "confidence": 0.9946332,
+              "speaker": 0,
+              "speaker_confidence": 0.37471497,
+              "punctuated_word": "of"
+            },
+            {
+              "word": "confusing",
+              "start": 63.11,
+              "end": 63.51,
+              "confidence": 0.9990299,
+              "speaker": 0,
+              "speaker_confidence": 0.37471497,
+              "punctuated_word": "confusing"
+            },
+            {
+              "word": "what",
+              "start": 63.51,
+              "end": 63.75,
+              "confidence": 0.9900676,
+              "speaker": 0,
+              "speaker_confidence": 0.37471497,
+              "punctuated_word": "what"
+            },
+            {
+              "word": "he",
+              "start": 63.75,
+              "end": 63.83,
+              "confidence": 0.9968226,
+              "speaker": 0,
+              "speaker_confidence": 0.37471497,
+              "punctuated_word": "he"
+            },
+            {
+              "word": "says",
+              "start": 63.83,
+              "end": 64.07,
+              "confidence": 0.99773836,
+              "speaker": 0,
+              "speaker_confidence": 0.37471497,
+              "punctuated_word": "says"
+            },
+            {
+              "word": "here",
+              "start": 64.07,
+              "end": 64.39,
+              "confidence": 0.96965456,
+              "speaker": 0,
+              "speaker_confidence": 0.37471497,
+              "punctuated_word": "here,"
+            },
+            {
+              "word": "but",
+              "start": 64.39,
+              "end": 64.47,
+              "confidence": 0.99892235,
+              "speaker": 0,
+              "speaker_confidence": 0.37471497,
+              "punctuated_word": "but"
+            },
+            {
+              "word": "he",
+              "start": 64.47,
+              "end": 64.63,
+              "confidence": 0.8655259,
+              "speaker": 0,
+              "speaker_confidence": 0.37471497,
+              "punctuated_word": "he"
+            },
+            {
+              "word": "doesn't",
+              "start": 64.63,
+              "end": 64.95,
+              "confidence": 0.99901867,
+              "speaker": 0,
+              "speaker_confidence": 0.37471497,
+              "punctuated_word": "doesn't"
+            },
+            {
+              "word": "really",
+              "start": 64.95,
+              "end": 65.27,
+              "confidence": 0.99911064,
+              "speaker": 0,
+              "speaker_confidence": 0.37471497,
+              "punctuated_word": "really"
+            },
+            {
+              "word": "differentiate",
+              "start": 65.27,
+              "end": 65.83,
+              "confidence": 0.9395616,
+              "speaker": 0,
+              "speaker_confidence": 0.37471497,
+              "punctuated_word": "differentiate."
+            }
+          ],
+          "speaker": 0,
+          "id": "f11221ea-fc92-42dc-9887-16b66470791b"
+        },
+        {
+          "start": 67.59563,
+          "end": 68.79562,
+          "confidence": 0.81497914,
+          "channel": 0,
+          "transcript": "He just says, look.",
+          "words": [
+            {
+              "word": "he",
+              "start": 67.59563,
+              "end": 67.91563,
+              "confidence": 0.99425876,
+              "speaker": 0,
+              "speaker_confidence": 0.5831292,
+              "punctuated_word": "He"
+            },
+            {
+              "word": "just",
+              "start": 67.91563,
+              "end": 68.07562,
+              "confidence": 0.9988354,
+              "speaker": 0,
+              "speaker_confidence": 0.5831292,
+              "punctuated_word": "just"
+            },
+            {
+              "word": "says",
+              "start": 68.07562,
+              "end": 68.31563,
+              "confidence": 0.60458773,
+              "speaker": 0,
+              "speaker_confidence": 0.5831292,
+              "punctuated_word": "says,"
+            },
+            {
+              "word": "look",
+              "start": 68.31563,
+              "end": 68.79562,
+              "confidence": 0.66223454,
+              "speaker": 0,
+              "speaker_confidence": 0.5831292,
+              "punctuated_word": "look."
+            }
+          ],
+          "speaker": 0,
+          "id": "8a5467a1-b741-48ee-b15e-5b856aaa39f1"
+        },
+        {
+          "start": 69.835625,
+          "end": 71.35563,
+          "confidence": 0.8615563,
+          "channel": 0,
+          "transcript": "Somewhere I had it,",
+          "words": [
+            {
+              "word": "somewhere",
+              "start": 69.835625,
+              "end": 70.23563,
+              "confidence": 0.9830983,
+              "speaker": 0,
+              "speaker_confidence": 0.5831292,
+              "punctuated_word": "Somewhere"
+            },
+            {
+              "word": "i",
+              "start": 70.23563,
+              "end": 70.555626,
+              "confidence": 0.72646904,
+              "speaker": 0,
+              "speaker_confidence": 0.5831292,
+              "punctuated_word": "I"
+            },
+            {
+              "word": "had",
+              "start": 70.555626,
+              "end": 70.79562,
+              "confidence": 0.9973717,
+              "speaker": 0,
+              "speaker_confidence": 0.5831292,
+              "punctuated_word": "had"
+            },
+            {
+              "word": "it",
+              "start": 70.79562,
+              "end": 71.35563,
+              "confidence": 0.73928607,
+              "speaker": 0,
+              "speaker_confidence": 0.5831292,
+              "punctuated_word": "it,"
+            }
+          ],
+          "speaker": 0,
+          "id": "f329557e-926f-4ee6-9042-41e255c8b326"
+        },
+        {
+          "start": 71.99563,
+          "end": 75.35562,
+          "confidence": 0.9132012,
+          "channel": 0,
+          "transcript": "I thought I got it out of here, but I didn't. Okay. What is re",
+          "words": [
+            {
+              "word": "i",
+              "start": 71.99563,
+              "end": 72.155624,
+              "confidence": 0.9991456,
+              "speaker": 0,
+              "speaker_confidence": 0.5831292,
+              "punctuated_word": "I"
+            },
+            {
+              "word": "thought",
+              "start": 72.155624,
+              "end": 72.39562,
+              "confidence": 0.9992667,
+              "speaker": 0,
+              "speaker_confidence": 0.5831292,
+              "punctuated_word": "thought"
+            },
+            {
+              "word": "i",
+              "start": 72.39562,
+              "end": 72.475624,
+              "confidence": 0.9979582,
+              "speaker": 0,
+              "speaker_confidence": 0.29596543,
+              "punctuated_word": "I"
+            },
+            {
+              "word": "got",
+              "start": 72.475624,
+              "end": 72.63563,
+              "confidence": 0.9991055,
+              "speaker": 0,
+              "speaker_confidence": 0.29596543,
+              "punctuated_word": "got"
+            },
+            {
+              "word": "it",
+              "start": 72.63563,
+              "end": 72.79562,
+              "confidence": 0.9978315,
+              "speaker": 0,
+              "speaker_confidence": 0.29596543,
+              "punctuated_word": "it"
+            },
+            {
+              "word": "out",
+              "start": 72.79562,
+              "end": 72.95563,
+              "confidence": 0.9931611,
+              "speaker": 0,
+              "speaker_confidence": 0.29596543,
+              "punctuated_word": "out"
+            },
+            {
+              "word": "of",
+              "start": 72.95563,
+              "end": 73.11562,
+              "confidence": 0.9465921,
+              "speaker": 0,
+              "speaker_confidence": 0.29596543,
+              "punctuated_word": "of"
+            },
+            {
+              "word": "here",
+              "start": 73.11562,
+              "end": 73.59563,
+              "confidence": 0.7811303,
+              "speaker": 0,
+              "speaker_confidence": 0.29596543,
+              "punctuated_word": "here,"
+            },
+            {
+              "word": "but",
+              "start": 73.59563,
+              "end": 73.835625,
+              "confidence": 0.7703955,
+              "speaker": 0,
+              "speaker_confidence": 0.0,
+              "punctuated_word": "but"
+            },
+            {
+              "word": "i",
+              "start": 73.835625,
+              "end": 73.99563,
+              "confidence": 0.9937644,
+              "speaker": 0,
+              "speaker_confidence": 0.0,
+              "punctuated_word": "I"
+            },
+            {
+              "word": "didn't",
+              "start": 73.99563,
+              "end": 74.39562,
+              "confidence": 0.97126263,
+              "speaker": 0,
+              "speaker_confidence": 0.0,
+              "punctuated_word": "didn't."
+            },
+            {
+              "word": "okay",
+              "start": 74.39562,
+              "end": 74.79562,
+              "confidence": 0.9947269,
+              "speaker": 0,
+              "speaker_confidence": 0.17220479,
+              "punctuated_word": "Okay."
+            },
+            {
+              "word": "what",
+              "start": 74.79562,
+              "end": 74.95563,
+              "confidence": 0.9732241,
+              "speaker": 0,
+              "speaker_confidence": 0.17220479,
+              "punctuated_word": "What"
+            },
+            {
+              "word": "is",
+              "start": 74.95563,
+              "end": 75.195625,
+              "confidence": 0.96268564,
+              "speaker": 0,
+              "speaker_confidence": 0.17220479,
+              "punctuated_word": "is"
+            },
+            {
+              "word": "re",
+              "start": 75.195625,
+              "end": 75.35562,
+              "confidence": 0.31776676,
+              "speaker": 0,
+              "speaker_confidence": 0.17220479,
+              "punctuated_word": "re"
+            }
+          ],
+          "speaker": 0,
+          "id": "ec7f1845-7310-406e-ab69-cfbad155759f"
+        }
+      ]
+    }
+  }
+}

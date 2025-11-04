@@ -1,23 +1,23 @@
 {
   "batch_summary": {
-    "total_files": 1,
-    "completed_files": 1,
+    "total_files": 61,
+    "completed_files": 61,
     "failed_files": 0,
     "skipped_files": 0,
     "success_rate": 100.0,
     "progress_percentage": 100.0
   },
   "timing": {
-    "start_time": "2025-11-04T00:36:39.506186",
-    "end_time": "2025-11-04T00:36:46.088064",
-    "elapsed_time_seconds": 6.581878185272217,
-    "elapsed_time_formatted": "0:00:06"
+    "start_time": "2025-11-04T08:14:45.372440",
+    "end_time": "2025-11-04T09:06:34.910370",
+    "elapsed_time_seconds": 3109.5379297733307,
+    "elapsed_time_formatted": "0:51:49"
   },
   "performance": {
-    "files_per_minute": 9.118517020052435,
-    "mb_per_minute": 12.304296816870337,
-    "total_size_processed_mb": 1.349374771118164,
-    "average_file_size_mb": 1.349374771118164
+    "files_per_minute": 1.1774244655942947,
+    "mb_per_minute": 9.686761426578343,
+    "total_size_processed_mb": 501.85168075561523,
+    "average_file_size_mb": 8.22707673369861
   },
   "errors": {},
   "output_formats": {}

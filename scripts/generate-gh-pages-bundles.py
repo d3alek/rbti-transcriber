@@ -919,6 +919,13 @@ LIGHT_EDITOR_TEMPLATE = r'''<!DOCTYPE html>
             return `${{m}}:${{String(s).padStart(2, '0')}}.${{String(ms).padStart(2, '0')}}`;
         }}
         
+        // Normalize word: lowercase and strip punctuation (for 'word' field)
+        function normalizeWord(wordText) {{
+            if (!wordText) return wordText;
+            // Convert to lowercase and remove punctuation
+            return wordText.toLowerCase().trim().replace(/[.,!?;:"()\\[\\]{{}}]+/g, '');
+        }}
+        
         // Edit word
         function editWord(wordIndex, wordElement) {{
             const word = originalWords[wordIndex];
@@ -1163,10 +1170,15 @@ LIGHT_EDITOR_TEMPLATE = r'''<!DOCTYPE html>
                 const correctedWords = words.map((word, index) => {{
                     const correction = wordCorrections.get(index);
                     if (correction) {{
+                        // Normalize word field: lowercase and strip punctuation
+                        const normalizedWord = normalizeWord(correction.corrected_word);
+                        // Keep punctuated_word with proper capitalization and punctuation
+                        const punctuatedWord = correction.corrected_word;
+                        
                         return {{
                             ...word,
-                            word: correction.corrected_word,
-                            punctuated_word: correction.corrected_word,
+                            word: normalizedWord,
+                            punctuated_word: punctuatedWord,
                             corrected: true,
                             original_word: correction.original_word,
                             original_punct: correction.original_punct
@@ -1520,6 +1532,13 @@ HTML_TEMPLATE = r'''<!DOCTYPE html>
             
             const originalTranscriptData = JSON.parse(JSON.stringify(transcriptData)); // Deep copy for comparison
             
+            // Normalize word: lowercase and strip punctuation (for 'word' field)
+            function normalizeWord(wordText) {{
+                if (!wordText) return wordText;
+                // Convert to lowercase and remove punctuation
+                return wordText.toLowerCase().trim().replace(/[.,!?;:"()\\[\\]{{}}]+/g, '');
+            }}
+            
             // Media URL (relative to this HTML file)
             const mediaUrl = './{audio_filename}';
             
@@ -1696,14 +1715,19 @@ HTML_TEMPLATE = r'''<!DOCTYPE html>
                                 const isFirst = wordIdx === 0;
                                 const isLast = wordIdx === blockWords.length - 1;
                                 
+                                // Get the punctuated word (with proper capitalization)
+                                const punctuatedWord = word.punct || word.word || word.text || '';
+                                // Normalize word field: lowercase and strip punctuation
+                                const normalizedWord = normalizeWord(punctuatedWord);
+                                
                                 allWords.push({{
-                                    word: word.word || word.text || '',
+                                    word: normalizedWord,
                                     start: word.start,
                                     end: word.end,
                                     confidence: word.confidence || 0.9,
                                     speaker: speakerIndex,
                                     speaker_confidence: word.confidence || 0.9,
-                                    punctuated_word: word.punct || word.word || word.text || '',
+                                    punctuated_word: punctuatedWord,
                                     paragraph_start: isFirst,
                                     paragraph_end: isLast,
                                     // Preserve correction metadata if present

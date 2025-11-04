@@ -13,7 +13,7 @@ class AudioValidator:
     """Comprehensive audio file validator with quality checks."""
     
     # Validation thresholds
-    MIN_DURATION_SECONDS = 10      # Minimum 10 seconds
+    MIN_DURATION_SECONDS = 5       # Minimum 5 seconds
     MAX_DURATION_SECONDS = 14400   # Maximum 4 hours
     MIN_FILE_SIZE_BYTES = 50000    # Minimum 50KB
     MAX_FILE_SIZE_BYTES = 500 * 1024 * 1024  # Maximum 500MB

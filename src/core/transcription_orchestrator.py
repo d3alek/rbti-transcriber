@@ -109,6 +109,12 @@ class TranscriptionOrchestrator:
                     error_msg = f"Found {validation_results['summary']['invalid_count']} invalid files"
                     workflow_result['errors'].append(error_msg)
                     
+                    # Add detailed error messages for invalid files
+                    for invalid_file in validation_results['invalid_files']:
+                        file_result = validation_results['validation_results'][str(invalid_file)]
+                        for error in file_result.get('errors', []):
+                            workflow_result['errors'].append(f"  - {invalid_file.name}: {error}")
+                    
                     if self.fail_fast:
                         return workflow_result
                 

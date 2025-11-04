@@ -11,7 +11,7 @@ INDEX_TEMPLATE = '''<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Transcribed Lectures</title>
+    <title>RBTI Transcribed Lectures</title>
     <style>
         * {{
             margin: 0;
@@ -178,8 +178,8 @@ INDEX_TEMPLATE = '''<!DOCTYPE html>
 <body>
     <div class="container">
         <header>
-            <h1>Transcribed Lectures</h1>
-            <p class="subtitle">Browse and view transcripts of recorded lectures</p>
+            <h1>RBTI Transcribed Lectures</h1>
+            <p class="subtitle">Browse, view and correct transcripts of recorded lectures</p>
             <div class="stats">
                 <div class="stat">
                     <strong>{total_seminars}</strong> Seminar{plural_seminars}

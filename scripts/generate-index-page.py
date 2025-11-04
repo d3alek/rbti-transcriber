@@ -196,7 +196,7 @@ INDEX_TEMPLATE = '''<!DOCTYPE html>
 </html>
 '''
 
-SEMINAR_SECTION_TEMPLATE = '''        <div class="seminar-section">
+SEMINAR_SECTION_TEMPLATE = '''        <div class="seminar-section" id="seminar-{seminar_id}">
             <div class="seminar-header">
                 <span>{seminar_name}</span>
                 <span class="seminar-toggle">▼</span>
@@ -249,8 +249,15 @@ def generate_index_page(manifest_path: Path, output_dir: Path):
                     lecture_path=lecture['path']
                 ))
             
+            # Create a sanitized ID for the seminar section (URL-safe)
+            seminar_id = seminar_name.lower().replace(' ', '-').replace('_', '-')
+            # Remove any characters that aren't alphanumeric, dash, or underscore
+            import re
+            seminar_id = re.sub(r'[^a-z0-9\-_]', '', seminar_id)
+            
             seminar_sections.append(SEMINAR_SECTION_TEMPLATE.format(
                 seminar_name=seminar_name,
+                seminar_id=seminar_id,
                 lecture_items=''.join(lecture_items)
             ))
         

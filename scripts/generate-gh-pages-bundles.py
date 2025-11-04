@@ -212,7 +212,10 @@ VIEWER_TEMPLATE = r'''<!DOCTYPE html>
     <div class="container">
         <div class="header">
             <h1>{title}</h1>
-            <a href="light-editor.html" class="edit-button" style="background-color: #2196F3;">✏️ EDIT</a>
+            <div style="display: flex; gap: 10px; align-items: center;">
+                <a href="../../index.html#seminar-{seminar_id}" class="edit-button" style="background-color: #6c757d;">← Back to List</a>
+                <a href="light-editor.html" class="edit-button" style="background-color: #2196F3;">✏️ EDIT</a>
+            </div>
         </div>
         
         <div class="main-content">
@@ -1856,10 +1859,15 @@ def generate_bundle(transcription_path: Path, output_dir: Path, base_dir: Path) 
     transcript_json_str = json.dumps(transcript_data, indent=2)
     
     # Generate viewer HTML (lightweight vanilla JS)
+    # Create a sanitized ID for the seminar section (URL-safe)
+    import re
+    seminar_id = re.sub(r'[^a-z0-9\-_]', '', seminar_group.lower().replace(' ', '-').replace('_', '-'))
+    
     viewer_html = VIEWER_TEMPLATE.format(
         title=lecture_name,
         transcript_json='__TRANSCRIPT_JSON_PLACEHOLDER__',
-        audio_filename=audio_filename
+        audio_filename=audio_filename,
+        seminar_id=seminar_id
     )
     viewer_html = viewer_html.replace('__TRANSCRIPT_JSON_PLACEHOLDER__', transcript_json_str)
     

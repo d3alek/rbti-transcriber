@@ -1,0 +1,247 @@
+{
+  "batch_progress": {
+    "total_files": 26,
+    "completed_files": 26,
+    "failed_files": 0,
+    "skipped_files": 0,
+    "start_time": 1762840829.5531979,
+    "end_time": 1762842402.0186763
+  },
+  "file_progress": {
+    "/home/alek/rbti/domagoj/Anatomy2_Archive/Anatomy2-01.mp3": {
+      "status": "completed",
+      "start_time": 1762840829.5546668,
+      "end_time": 1762840918.160509,
+      "error_message": null,
+      "file_size_mb": 75.27353858947754,
+      "processing_time": 88.60229420661926,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/Anatomy2_Archive/Anatomy2-02.mp3": {
+      "status": "completed",
+      "start_time": 1762840918.1607313,
+      "end_time": 1762841007.119392,
+      "error_message": null,
+      "file_size_mb": 76.97978496551514,
+      "processing_time": 88.92118167877197,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/Anatomy2_Archive/Anatomy2-03.mp3": {
+      "status": "completed",
+      "start_time": 1762841007.1196742,
+      "end_time": 1762841089.6369104,
+      "error_message": null,
+      "file_size_mb": 74.86992740631104,
+      "processing_time": 82.47896480560303,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/Anatomy2_Archive/Anatomy2-04.mp3": {
+      "status": "completed",
+      "start_time": 1762841089.6371639,
+      "end_time": 1762841163.4939184,
+      "error_message": null,
+      "file_size_mb": 78.84095859527588,
+      "processing_time": 73.84549880027771,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/Anatomy2_Archive/Anatomy2-05-01.mp3": {
+      "status": "completed",
+      "start_time": 1762841163.494195,
+      "end_time": 1762841200.3188007,
+      "error_message": null,
+      "file_size_mb": 29.008358001708984,
+      "processing_time": 36.81525278091431,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/Anatomy2_Archive/Anatomy2-05-02.mp3": {
+      "status": "completed",
+      "start_time": 1762841200.3190002,
+      "end_time": 1762841253.1627753,
+      "error_message": null,
+      "file_size_mb": 39.00409984588623,
+      "processing_time": 52.8418915271759,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/Anatomy2_Archive/Anatomy2-06-01.mp3": {
+      "status": "completed",
+      "start_time": 1762841253.163126,
+      "end_time": 1762841298.2775614,
+      "error_message": null,
+      "file_size_mb": 38.84868144989014,
+      "processing_time": 45.1031174659729,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/Anatomy2_Archive/Anatomy2-06-02.mp3": {
+      "status": "completed",
+      "start_time": 1762841298.2778769,
+      "end_time": 1762841358.5968049,
+      "error_message": null,
+      "file_size_mb": 42.227481842041016,
+      "processing_time": 60.30864334106445,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/Anatomy2_Archive/Anatomy2-07-01.mp3": {
+      "status": "completed",
+      "start_time": 1762841358.5970416,
+      "end_time": 1762841413.3028207,
+      "error_message": null,
+      "file_size_mb": 42.1170711517334,
+      "processing_time": 54.69522738456726,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/Anatomy2_Archive/Anatomy2-07-02.mp3": {
+      "status": "completed",
+      "start_time": 1762841413.303085,
+      "end_time": 1762841475.7937822,
+      "error_message": null,
+      "file_size_mb": 39.66544532775879,
+      "processing_time": 62.454246044158936,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/Anatomy2_Archive/Anatomy2-08-01.mp3": {
+      "status": "completed",
+      "start_time": 1762841475.7940645,
+      "end_time": 1762841538.8738225,
+      "error_message": null,
+      "file_size_mb": 40.20549774169922,
+      "processing_time": 63.06985259056091,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/Anatomy2_Archive/Anatomy2-08-02.mp3": {
+      "status": "completed",
+      "start_time": 1762841538.8741612,
+      "end_time": 1762841599.2806184,
+      "error_message": null,
+      "file_size_mb": 39.08363628387451,
+      "processing_time": 60.40500473976135,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/Anatomy2_Archive/Anatomy2-09-01.mp3": {
+      "status": "completed",
+      "start_time": 1762841599.2810888,
+      "end_time": 1762841662.6126814,
+      "error_message": null,
+      "file_size_mb": 39.17709159851074,
+      "processing_time": 63.31950044631958,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/Anatomy2_Archive/Anatomy2-09-02.mp3": {
+      "status": "completed",
+      "start_time": 1762841662.6131017,
+      "end_time": 1762841722.1074884,
+      "error_message": null,
+      "file_size_mb": 41.242255210876465,
+      "processing_time": 59.482306241989136,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/Anatomy2_Archive/Anatomy2-10-01.mp3": {
+      "status": "completed",
+      "start_time": 1762841722.1079423,
+      "end_time": 1762841770.0870564,
+      "error_message": null,
+      "file_size_mb": 39.70322513580322,
+      "processing_time": 47.96860194206238,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/Anatomy2_Archive/Anatomy2-10-02.mp3": {
+      "status": "completed",
+      "start_time": 1762841770.0876236,
+      "end_time": 1762841836.4667008,
+      "error_message": null,
+      "file_size_mb": 40.48268222808838,
+      "processing_time": 66.36743688583374,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/Anatomy2_Archive/Anatomy2-11-01.mp3": {
+      "status": "completed",
+      "start_time": 1762841836.46716,
+      "end_time": 1762841891.282922,
+      "error_message": null,
+      "file_size_mb": 39.49285125732422,
+      "processing_time": 54.8042426109314,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/Anatomy2_Archive/Anatomy2-11-02.mp3": {
+      "status": "completed",
+      "start_time": 1762841891.2837358,
+      "end_time": 1762841949.0421684,
+      "error_message": null,
+      "file_size_mb": 40.037278175354004,
+      "processing_time": 57.747437715530396,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/Anatomy2_Archive/Anatomy2-12-01.mp3": {
+      "status": "completed",
+      "start_time": 1762841949.0427306,
+      "end_time": 1762842009.4777184,
+      "error_message": null,
+      "file_size_mb": 41.73625183105469,
+      "processing_time": 60.4227876663208,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/Anatomy2_Archive/Anatomy2-12-02.mp3": {
+      "status": "completed",
+      "start_time": 1762842009.4781885,
+      "end_time": 1762842064.7488408,
+      "error_message": null,
+      "file_size_mb": 38.538414001464844,
+      "processing_time": 55.2593195438385,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/Anatomy2_Archive/Anatomy2-13-01.mp3": {
+      "status": "completed",
+      "start_time": 1762842064.749479,
+      "end_time": 1762842122.2544732,
+      "error_message": null,
+      "file_size_mb": 41.171467781066895,
+      "processing_time": 57.492891788482666,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/Anatomy2_Archive/Anatomy2-13-02.mp3": {
+      "status": "completed",
+      "start_time": 1762842122.254958,
+      "end_time": 1762842182.373694,
+      "error_message": null,
+      "file_size_mb": 40.16254806518555,
+      "processing_time": 60.10574507713318,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/Anatomy2_Archive/Anatomy2-14-01.mp3": {
+      "status": "completed",
+      "start_time": 1762842182.3741646,
+      "end_time": 1762842233.1297498,
+      "error_message": null,
+      "file_size_mb": 37.69493007659912,
+      "processing_time": 50.7450954914093,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/Anatomy2_Archive/Anatomy2-14-02.mp3": {
+      "status": "completed",
+      "start_time": 1762842233.130805,
+      "end_time": 1762842279.4788926,
+      "error_message": null,
+      "file_size_mb": 37.37002372741699,
+      "processing_time": 46.338144302368164,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/Anatomy2_Archive/Anatomy2-15-01.mp3": {
+      "status": "completed",
+      "start_time": 1762842279.4795606,
+      "end_time": 1762842335.6849701,
+      "error_message": null,
+      "file_size_mb": 38.43183517456055,
+      "processing_time": 56.194252729415894,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/Anatomy2_Archive/Anatomy2-15-02.mp3": {
+      "status": "completed",
+      "start_time": 1762842335.685586,
+      "end_time": 1762842402.0178611,
+      "error_message": null,
+      "file_size_mb": 38.771928787231445,
+      "processing_time": 66.32042193412781,
+      "output_formats": []
+    }
+  },
+  "last_updated": 1762842402.0186994
+}

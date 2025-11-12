@@ -1,0 +1,94 @@
+{
+  "batch_progress": {
+    "total_files": 9,
+    "completed_files": 9,
+    "failed_files": 0,
+    "skipped_files": 0,
+    "start_time": 1762868308.5260165,
+    "end_time": 1762868799.5729473
+  },
+  "file_progress": {
+    "seminars/RBTI-Ses-5_Archive/RBTI-Ses-5-T12.mp3": {
+      "status": "completed",
+      "start_time": 1762868308.5281363,
+      "end_time": 1762868396.2144265,
+      "error_message": null,
+      "file_size_mb": 190.64535522460938,
+      "processing_time": 87.68286037445068,
+      "output_formats": []
+    },
+    "seminars/RBTI-Ses-5_Archive/RBTI-Ses-5-T13.mp3": {
+      "status": "completed",
+      "start_time": 1762868396.2147145,
+      "end_time": 1762868438.2593522,
+      "error_message": null,
+      "file_size_mb": 106.41952610015869,
+      "processing_time": 42.043112993240356,
+      "output_formats": []
+    },
+    "seminars/RBTI-Ses-5_Archive/RBTI-Ses-5-T14.mp3": {
+      "status": "completed",
+      "start_time": 1762868438.2595153,
+      "end_time": 1762868508.9978287,
+      "error_message": null,
+      "file_size_mb": 152.19785594940186,
+      "processing_time": 70.72575545310974,
+      "output_formats": []
+    },
+    "seminars/RBTI-Ses-5_Archive/RBTI-Ses-5-T15.mp3": {
+      "status": "completed",
+      "start_time": 1762868508.9981294,
+      "end_time": 1762868556.9871612,
+      "error_message": null,
+      "file_size_mb": 123.64799404144287,
+      "processing_time": 47.97620415687561,
+      "output_formats": []
+    },
+    "seminars/RBTI-Ses-5_Archive/RBTI-Ses-5-T16.mp3": {
+      "status": "completed",
+      "start_time": 1762868556.9874809,
+      "end_time": 1762868633.6946144,
+      "error_message": null,
+      "file_size_mb": 174.42743110656738,
+      "processing_time": 76.70418381690979,
+      "output_formats": []
+    },
+    "seminars/RBTI-Ses-5_Archive/RBTI-Ses-5-T17.mp3": {
+      "status": "completed",
+      "start_time": 1762868633.6948373,
+      "end_time": 1762868696.1765413,
+      "error_message": null,
+      "file_size_mb": 148.00226593017578,
+      "processing_time": 62.473252058029175,
+      "output_formats": []
+    },
+    "seminars/RBTI-Ses-5_Archive/RBTI-Ses-5-T18.mp3": {
+      "status": "completed",
+      "start_time": 1762868696.176765,
+      "end_time": 1762868729.7642982,
+      "error_message": null,
+      "file_size_mb": 65.35650825500488,
+      "processing_time": 33.578291177749634,
+      "output_formats": []
+    },
+    "seminars/RBTI-Ses-5_Archive/RBTI-Ses-5-T19.mp3": {
+      "status": "completed",
+      "start_time": 1762868729.7645988,
+      "end_time": 1762868774.5371668,
+      "error_message": null,
+      "file_size_mb": 136.6659393310547,
+      "processing_time": 44.760096311569214,
+      "output_formats": []
+    },
+    "seminars/RBTI-Ses-5_Archive/RBTI-Ses-5-T20.mp3": {
+      "status": "completed",
+      "start_time": 1762868774.537789,
+      "end_time": 1762868799.5727184,
+      "error_message": null,
+      "file_size_mb": 61.9763822555542,
+      "processing_time": 25.033929586410522,
+      "output_formats": []
+    }
+  },
+  "last_updated": 1762868799.5729558
+}

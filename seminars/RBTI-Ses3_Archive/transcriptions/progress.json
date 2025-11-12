@@ -1,0 +1,121 @@
+{
+  "batch_progress": {
+    "total_files": 12,
+    "completed_files": 12,
+    "failed_files": 0,
+    "skipped_files": 0,
+    "start_time": 1762865550.4005687,
+    "end_time": 1762866276.667524
+  },
+  "file_progress": {
+    "seminars/RBTI-Ses3_Archive/RBTI-Ses3-T01.mp3": {
+      "status": "completed",
+      "start_time": 1762865550.4119759,
+      "end_time": 1762865621.965553,
+      "error_message": null,
+      "file_size_mb": 29.175271034240723,
+      "processing_time": 71.54987168312073,
+      "output_formats": []
+    },
+    "seminars/RBTI-Ses3_Archive/RBTI-Ses3-T02.mp3": {
+      "status": "completed",
+      "start_time": 1762865621.9659328,
+      "end_time": 1762865696.2328079,
+      "error_message": null,
+      "file_size_mb": 24.277342796325684,
+      "processing_time": 74.26452326774597,
+      "output_formats": []
+    },
+    "seminars/RBTI-Ses3_Archive/RBTI-Ses3-T03.mp3": {
+      "status": "completed",
+      "start_time": 1762865696.2329895,
+      "end_time": 1762865746.5276086,
+      "error_message": null,
+      "file_size_mb": 20.94431972503662,
+      "processing_time": 50.29245138168335,
+      "output_formats": []
+    },
+    "seminars/RBTI-Ses3_Archive/RBTI-Ses3-T04.mp3": {
+      "status": "completed",
+      "start_time": 1762865746.5278046,
+      "end_time": 1762865790.0086267,
+      "error_message": null,
+      "file_size_mb": 19.308260917663574,
+      "processing_time": 43.4703254699707,
+      "output_formats": []
+    },
+    "seminars/RBTI-Ses3_Archive/RBTI-Ses3-T05.mp3": {
+      "status": "completed",
+      "start_time": 1762865790.0089831,
+      "end_time": 1762865830.672094,
+      "error_message": null,
+      "file_size_mb": 13.794504165649414,
+      "processing_time": 40.656193017959595,
+      "output_formats": []
+    },
+    "seminars/RBTI-Ses3_Archive/RBTI-Ses3-T06.mp3": {
+      "status": "completed",
+      "start_time": 1762865830.672276,
+      "end_time": 1762865887.2390513,
+      "error_message": null,
+      "file_size_mb": 22.091273307800293,
+      "processing_time": 56.5567569732666,
+      "output_formats": []
+    },
+    "seminars/RBTI-Ses3_Archive/RBTI-Ses3-T07.mp3": {
+      "status": "completed",
+      "start_time": 1762865887.23931,
+      "end_time": 1762865927.640263,
+      "error_message": null,
+      "file_size_mb": 15.863800048828125,
+      "processing_time": 40.36595559120178,
+      "output_formats": []
+    },
+    "seminars/RBTI-Ses3_Archive/RBTI-Ses3-T08.mp3": {
+      "status": "completed",
+      "start_time": 1762865927.6405506,
+      "end_time": 1762866003.5985465,
+      "error_message": null,
+      "file_size_mb": 26.4589262008667,
+      "processing_time": 75.94594621658325,
+      "output_formats": []
+    },
+    "seminars/RBTI-Ses3_Archive/RBTI-Ses3-T09.mp3": {
+      "status": "completed",
+      "start_time": 1762866003.5988145,
+      "end_time": 1762866023.2793138,
+      "error_message": null,
+      "file_size_mb": 6.733358383178711,
+      "processing_time": 19.673035860061646,
+      "output_formats": []
+    },
+    "seminars/RBTI-Ses3_Archive/RBTI-Ses3-T10.mp3": {
+      "status": "completed",
+      "start_time": 1762866023.279547,
+      "end_time": 1762866113.2172484,
+      "error_message": null,
+      "file_size_mb": 27.057254791259766,
+      "processing_time": 89.92363500595093,
+      "output_formats": []
+    },
+    "seminars/RBTI-Ses3_Archive/RBTI-Ses3-T11.mp3": {
+      "status": "completed",
+      "start_time": 1762866113.2175415,
+      "end_time": 1762866191.3057725,
+      "error_message": null,
+      "file_size_mb": 27.806032180786133,
+      "processing_time": 78.0762026309967,
+      "output_formats": []
+    },
+    "seminars/RBTI-Ses3_Archive/RBTI-Ses3-T12.mp3": {
+      "status": "completed",
+      "start_time": 1762866191.30601,
+      "end_time": 1762866276.667156,
+      "error_message": null,
+      "file_size_mb": 30.259894371032715,
+      "processing_time": 85.35201835632324,
+      "output_formats": []
+    }
+  },
+  "last_updated": 1762866276.6675394
+}

@@ -1,0 +1,103 @@
+{
+  "batch_progress": {
+    "total_files": 13,
+    "completed_files": 9,
+    "failed_files": 1,
+    "skipped_files": 0,
+    "start_time": 1762880661.9639924,
+    "end_time": 1762881232.6203926
+  },
+  "file_progress": {
+    "seminars/RBTI-Ses2_Archive/RBTI-Ses2-T02.mp3": {
+      "status": "completed",
+      "start_time": 1762880661.9761233,
+      "end_time": 1762880775.910953,
+      "error_message": null,
+      "file_size_mb": 33.17392063140869,
+      "processing_time": 113.92935109138489,
+      "output_formats": []
+    },
+    "seminars/RBTI-Ses2_Archive/RBTI-Ses2-T03.mp3": {
+      "status": "completed",
+      "start_time": 1762880775.9111385,
+      "end_time": 1762880871.7742987,
+      "error_message": null,
+      "file_size_mb": 20.916495323181152,
+      "processing_time": 95.85173082351685,
+      "output_formats": []
+    },
+    "seminars/RBTI-Ses2_Archive/RBTI-Ses2-T04.mp3": {
+      "status": "completed",
+      "start_time": 1762880871.774505,
+      "end_time": 1762880921.1468594,
+      "error_message": null,
+      "file_size_mb": 20.054553031921387,
+      "processing_time": 49.36828327178955,
+      "output_formats": []
+    },
+    "seminars/RBTI-Ses2_Archive/RBTI-Ses2-T05.mp3": {
+      "status": "completed",
+      "start_time": 1762880921.1472483,
+      "end_time": 1762880970.4111302,
+      "error_message": null,
+      "file_size_mb": 17.374478340148926,
+      "processing_time": 49.23125386238098,
+      "output_formats": []
+    },
+    "seminars/RBTI-Ses2_Archive/RBTI-Ses2-T06.mp3": {
+      "status": "completed",
+      "start_time": 1762880970.4113693,
+      "end_time": 1762881053.2403843,
+      "error_message": null,
+      "file_size_mb": 30.418170928955078,
+      "processing_time": 82.81614851951599,
+      "output_formats": []
+    },
+    "seminars/RBTI-Ses2_Archive/RBTI-Ses2-T07.mp3": {
+      "status": "completed",
+      "start_time": 1762881053.2406113,
+      "end_time": 1762881116.559209,
+      "error_message": null,
+      "file_size_mb": 27.037571907043457,
+      "processing_time": 63.30764365196228,
+      "output_formats": []
+    },
+    "seminars/RBTI-Ses2_Archive/RBTI-Ses2-T08.mp3": {
+      "status": "completed",
+      "start_time": 1762881116.5594423,
+      "end_time": 1762881151.1951056,
+      "error_message": null,
+      "file_size_mb": 11.74217700958252,
+      "processing_time": 34.625590324401855,
+      "output_formats": []
+    },
+    "seminars/RBTI-Ses2_Archive/RBTI-Ses2-T09.mp3": {
+      "status": "completed",
+      "start_time": 1762881151.1953442,
+      "end_time": 1762881210.1549702,
+      "error_message": null,
+      "file_size_mb": 20.667426109313965,
+      "processing_time": 58.94927477836609,
+      "output_formats": []
+    },
+    "seminars/RBTI-Ses2_Archive/RBTI-Ses2-T10.mp3": {
+      "status": "completed",
+      "start_time": 1762881210.1552372,
+      "end_time": 1762881228.0393004,
+      "error_message": null,
+      "file_size_mb": 5.975703239440918,
+      "processing_time": 17.874796390533447,
+      "output_formats": []
+    },
+    "seminars/RBTI-Ses2_Archive/RBTI-Ses2-T11.mp3": {
+      "status": "failed",
+      "start_time": 1762881228.0397506,
+      "end_time": 1762881232.6193721,
+      "error_message": "Audio compression failed (required): FFmpeg compression failed for seminars/RBTI-Ses2_Archive/RBTI-Ses2-T11.mp3: ffmpeg version n8.0 Copyright (c) 2000-2025 the FFmpeg developers\n  built with gcc 15.2.1 (GCC) 20250813\n  configuration: --prefix=/usr --disable-debug --disable-static --disable-stripping --enable-amf --enable-avisynth --enable-cuda-llvm --enable-lto --enable-fontconfig --enable-frei0r --enable-gmp --enable-gnutls --enable-gpl --enable-ladspa --enable-libaom --enable-libass --enable-libbluray --enable-libbs2b --enable-libdav1d --enable-libdrm --enable-libdvdnav --enable-libdvdread --enable-libfreetype --enable-libfribidi --enable-libglslang --enable-libgsm --enable-libharfbuzz --enable-libiec61883 --enable-libjack --enable-libjxl --enable-libmodplug --enable-libmp3lame --enable-libopencore_amrnb --enable-libopencore_amrwb --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-libplacebo --enable-libpulse --enable-librav1e --enable-librsvg --enable-librubberband --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libtheora --enable-libv4l2 --enable-libvidstab --enable-libvmaf --enable-libvorbis --enable-libvpl --enable-libvpx --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxcb --enable-libxml2 --enable-libxvid --enable-libzimg --enable-libzmq --enable-nvdec --enable-nvenc --enable-opencl --enable-opengl --enable-shared --enable-vapoursynth --enable-version3 --enable-vulkan\n  libavutil      60.  8.100 / 60.  8.100\n  libavcodec     62. 11.100 / 62. 11.100\n  libavformat    62.  3.100 / 62.  3.100\n  libavdevice    62.  1.100 / 62.  1.100\n  libavfilter    11.  4.100 / 11.  4.100\n  libswscale      9.  1.100 /  9.  1.100\n  libswresample   6.  1.100 /  6.  1.100\n[mp3 @ 0x56270e630240] Estimating duration from bitrate, this may be inaccurate\nInput #0, mp3, from 'seminars/RBTI-Ses2_Archive/RBTI-Ses2-T11.mp3':\n  Metadata:\n    artist          : Reams\n    album           : Tinker Mt\n    track           : 20\n    genre           : RBTI\n    title           : Cause & Effect\n    date            : 1976-00-00\n    id3v2_priv.XMP  : <?xpacket begin=\"\\xef\\xbb\\xbf\" id=\"W5M0MpCehiHzreSzNTczkc9d\"?>\\x0a<x:xmpmeta xmlns:x=\"adobe:ns:meta/\" x:xmptk=\"Adobe XMP Core 7.0-c000 79.217bca6, 2021/06/14-18:28:11        \">\\x0a <rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\\x0a  <rd\n  Duration: 01:01:33.84, start: 0.000000, bitrate: 56 kb/s\n  Stream #0:0: Audio: mp3 (mp3float), 44100 Hz, mono, fltp, 56 kb/s\nStream mapping:\n  Stream #0:0 -> #0:0 (mp3 (mp3float) -> opus (libopus))\nPress [q] to stop, [?] for help\nOutput #0, webm, to 'seminars/RBTI-Ses2_Archive/transcriptions/temp_compressed/RBTI-Ses2-T11_63fd4cc265c7_compressed.webm':\n  Metadata:\n    artist          : Reams\n    album           : Tinker Mt\n    PART_NUMBER     : 20\n    genre           : RBTI\n    title           : Cause & Effect\n    date            : 1976-00-00\n    id3v2_priv.XMP  : <?xpacket begin=\"\\xef\\xbb\\xbf\" id=\"W5M0MpCehiHzreSzNTczkc9d\"?>\\x0a<x:xmpmeta xmlns:x=\"adobe:ns:meta/\" x:xmptk=\"Adobe XMP Core 7.0-c000 79.217bca6, 2021/06/14-18:28:11        \">\\x0a <rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\\x0a  <rd\n    encoder         : Lavf62.3.100\n  Stream #0:0: Audio: opus, 16000 Hz, mono, flt, 32 kb/s\n    Metadata:\n      encoder         : Lavc62.11.100 libopus\nsize=     152KiB time=00:00:37.49 bitrate=  33.3kbits/s speed=  75x elapsed=0:00:00.50    \nsize=     256KiB time=00:01:16.47 bitrate=  27.4kbits/s speed=76.5x elapsed=0:00:01.00    \nsize=     256KiB time=00:01:51.25 bitrate=  18.9kbits/s speed=74.2x elapsed=0:00:01.50    \nsize=     512KiB time=00:02:36.27 bitrate=  26.8kbits/s speed=78.1x elapsed=0:00:02.00    \nsize=     768KiB time=00:03:06.75 bitrate=  33.7kbits/s speed=74.7x elapsed=0:00:02.50    \nsize=     768KiB time=00:03:42.03 bitrate=  28.3kbits/s speed=  74x elapsed=0:00:03.00    \nsize=    1024KiB time=00:04:17.81 bitrate=  32.5kbits/s speed=73.6x elapsed=0:00:03.50    \nsize=    1024KiB time=00:04:53.37 bitrate=  28.6kbits/s speed=73.3x elapsed=0:00:04.00    \n[out#0/webm @ 0x56270e634c40] video:0KiB audio:1332KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 7.924460%\nsize=    1437KiB time=00:05:30.78 bitrate=  35.6kbits/s speed=73.3x elapsed=0:00:04.51    \nExiting normally, received signal 2.\n",
+      "file_size_mb": 24.66627597808838,
+      "processing_time": 0.0,
+      "output_formats": []
+    }
+  },
+  "last_updated": 1762881232.6204128
+}

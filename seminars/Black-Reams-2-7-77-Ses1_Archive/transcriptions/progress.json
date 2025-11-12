@@ -1,0 +1,247 @@
+{
+  "batch_progress": {
+    "total_files": 26,
+    "completed_files": 26,
+    "failed_files": 0,
+    "skipped_files": 0,
+    "start_time": 1762843053.4765122,
+    "end_time": 1762845681.3823347
+  },
+  "file_progress": {
+    "/home/alek/rbti/domagoj/Black-Reams-2-7-77-Ses1_Archive/Black-Reams-2-7-77-Ses1-T01.mp3": {
+      "status": "completed",
+      "start_time": 1762843053.4801757,
+      "end_time": 1762843163.3963056,
+      "error_message": null,
+      "file_size_mb": 195.37304878234863,
+      "processing_time": 109.90968704223633,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/Black-Reams-2-7-77-Ses1_Archive/Black-Reams-2-7-77-Ses1-T02.mp3": {
+      "status": "completed",
+      "start_time": 1762843163.396587,
+      "end_time": 1762843241.4265492,
+      "error_message": null,
+      "file_size_mb": 139.82074356079102,
+      "processing_time": 78.01617813110352,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/Black-Reams-2-7-77-Ses1_Archive/Black-Reams-2-7-77-Ses1-T03.mp3": {
+      "status": "completed",
+      "start_time": 1762843241.4268084,
+      "end_time": 1762843361.4088352,
+      "error_message": null,
+      "file_size_mb": 192.84988498687744,
+      "processing_time": 119.9688310623169,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/Black-Reams-2-7-77-Ses1_Archive/Black-Reams-2-7-77-Ses1-T04.mp3": {
+      "status": "completed",
+      "start_time": 1762843361.4090784,
+      "end_time": 1762843479.0699937,
+      "error_message": null,
+      "file_size_mb": 205.80051612854004,
+      "processing_time": 117.6478340625763,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/Black-Reams-2-7-77-Ses1_Archive/Black-Reams-2-7-77-Ses1-T05.mp3": {
+      "status": "completed",
+      "start_time": 1762843479.0702667,
+      "end_time": 1762843559.6500275,
+      "error_message": null,
+      "file_size_mb": 140.20160293579102,
+      "processing_time": 80.56648397445679,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/Black-Reams-2-7-77-Ses1_Archive/Black-Reams-2-7-77-Ses1-T06.mp3": {
+      "status": "completed",
+      "start_time": 1762843559.6503265,
+      "end_time": 1762843674.905714,
+      "error_message": null,
+      "file_size_mb": 203.87286758422852,
+      "processing_time": 115.21549987792969,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/Black-Reams-2-7-77-Ses1_Archive/Black-Reams-2-7-77-Ses1-T07.mp3": {
+      "status": "completed",
+      "start_time": 1762843674.906259,
+      "end_time": 1762843695.7131462,
+      "error_message": null,
+      "file_size_mb": 32.79697608947754,
+      "processing_time": 20.79688286781311,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/Black-Reams-2-7-77-Ses1_Archive/Black-Reams-2-7-77-Ses1-T08.mp3": {
+      "status": "completed",
+      "start_time": 1762843695.7137218,
+      "end_time": 1762843819.372042,
+      "error_message": null,
+      "file_size_mb": 195.73337745666504,
+      "processing_time": 123.64400458335876,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/Black-Reams-2-7-77-Ses1_Archive/Black-Reams-2-7-77-Ses1-T09.mp3": {
+      "status": "completed",
+      "start_time": 1762843819.3723645,
+      "end_time": 1762843943.7187889,
+      "error_message": null,
+      "file_size_mb": 206.8707675933838,
+      "processing_time": 124.33215498924255,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/Black-Reams-2-7-77-Ses1_Archive/Black-Reams-2-7-77-Ses1-T10.mp3": {
+      "status": "completed",
+      "start_time": 1762843943.719142,
+      "end_time": 1762843999.13735,
+      "error_message": null,
+      "file_size_mb": 98.24161720275879,
+      "processing_time": 55.40685963630676,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/Black-Reams-2-7-77-Ses1_Archive/Black-Reams-2-7-77-Ses1-T11.mp3": {
+      "status": "completed",
+      "start_time": 1762843999.137702,
+      "end_time": 1762844042.7251742,
+      "error_message": null,
+      "file_size_mb": 52.91202735900879,
+      "processing_time": 43.58519983291626,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/Black-Reams-2-7-77-Ses1_Archive/Black-Reams-2-7-77-Ses1-T12.mp3": {
+      "status": "completed",
+      "start_time": 1762844042.725739,
+      "end_time": 1762844123.4979455,
+      "error_message": null,
+      "file_size_mb": 127.75821876525879,
+      "processing_time": 80.75929498672485,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/Black-Reams-2-7-77-Ses1_Archive/Black-Reams-2-7-77-Ses1-T13.mp3": {
+      "status": "completed",
+      "start_time": 1762844123.4984007,
+      "end_time": 1762844262.0107794,
+      "error_message": null,
+      "file_size_mb": 198.84845352172852,
+      "processing_time": 138.497656583786,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/Black-Reams-2-7-77-Ses1_Archive/Black-Reams-2-7-77-Ses1-T14.mp3": {
+      "status": "completed",
+      "start_time": 1762844262.0112345,
+      "end_time": 1762844335.6601112,
+      "error_message": null,
+      "file_size_mb": 111.18026828765869,
+      "processing_time": 73.61051678657532,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/Black-Reams-2-7-77-Ses1_Archive/Black-Reams-2-7-77-Ses1-T15.mp3": {
+      "status": "completed",
+      "start_time": 1762844335.6608171,
+      "end_time": 1762844464.130272,
+      "error_message": null,
+      "file_size_mb": 201.7364902496338,
+      "processing_time": 128.45622873306274,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/Black-Reams-2-7-77-Ses1_Archive/Black-Reams-2-7-77-Ses1-T16.mp3": {
+      "status": "completed",
+      "start_time": 1762844464.1308537,
+      "end_time": 1762844629.2630699,
+      "error_message": null,
+      "file_size_mb": 187.5462350845337,
+      "processing_time": 165.1190333366394,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/Black-Reams-2-7-77-Ses1_Archive/Black-Reams-2-7-77-Ses1-T17.mp3": {
+      "status": "completed",
+      "start_time": 1762844629.2637181,
+      "end_time": 1762844745.9754226,
+      "error_message": null,
+      "file_size_mb": 201.7529697418213,
+      "processing_time": 116.6974835395813,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/Black-Reams-2-7-77-Ses1_Archive/Black-Reams-2-7-77-Ses1-T18.mp3": {
+      "status": "completed",
+      "start_time": 1762844745.9760466,
+      "end_time": 1762844834.58928,
+      "error_message": null,
+      "file_size_mb": 117.50431251525879,
+      "processing_time": 88.5996663570404,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/Black-Reams-2-7-77-Ses1_Archive/Black-Reams-2-7-77-Ses1-T19.mp3": {
+      "status": "completed",
+      "start_time": 1762844834.589748,
+      "end_time": 1762844949.8942616,
+      "error_message": null,
+      "file_size_mb": 202.79392433166504,
+      "processing_time": 115.28863406181335,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/Black-Reams-2-7-77-Ses1_Archive/Black-Reams-2-7-77-Ses1-T20.mp3": {
+      "status": "completed",
+      "start_time": 1762844949.8947275,
+      "end_time": 1762845049.2076645,
+      "error_message": null,
+      "file_size_mb": 175.58262062072754,
+      "processing_time": 99.29906463623047,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/Black-Reams-2-7-77-Ses1_Archive/Black-Reams-2-7-77-Ses1-T21.mp3": {
+      "status": "completed",
+      "start_time": 1762845049.2081053,
+      "end_time": 1762845164.9361002,
+      "error_message": null,
+      "file_size_mb": 204.81948947906494,
+      "processing_time": 115.72069597244263,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/Black-Reams-2-7-77-Ses1_Archive/Black-Reams-2-7-77-Ses1-T22.mp3": {
+      "status": "completed",
+      "start_time": 1762845164.9366257,
+      "end_time": 1762845281.8473976,
+      "error_message": null,
+      "file_size_mb": 197.8294382095337,
+      "processing_time": 116.89518570899963,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/Black-Reams-2-7-77-Ses1_Archive/Black-Reams-2-7-77-Ses1-T23.mp3": {
+      "status": "completed",
+      "start_time": 1762845281.847968,
+      "end_time": 1762845378.5326989,
+      "error_message": null,
+      "file_size_mb": 170.5192575454712,
+      "processing_time": 96.67048716545105,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/Black-Reams-2-7-77-Ses1_Archive/Black-Reams-2-7-77-Ses1-T24.mp3": {
+      "status": "completed",
+      "start_time": 1762845378.533365,
+      "end_time": 1762845491.5467353,
+      "error_message": null,
+      "file_size_mb": 200.9696969985962,
+      "processing_time": 113.00047779083252,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/Black-Reams-2-7-77-Ses1_Archive/Black-Reams-2-7-77-Ses1-T25.mp3": {
+      "status": "completed",
+      "start_time": 1762845491.547419,
+      "end_time": 1762845607.9912276,
+      "error_message": null,
+      "file_size_mb": 205.77346897125244,
+      "processing_time": 116.40350341796875,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/Black-Reams-2-7-77-Ses1_Archive/Black-Reams-2-7-77-Ses1-T26-Banquet.mp3": {
+      "status": "completed",
+      "start_time": 1762845607.9917388,
+      "end_time": 1762845681.3814123,
+      "error_message": null,
+      "file_size_mb": 138.58291721343994,
+      "processing_time": 73.3506269454956,
+      "output_formats": []
+    }
+  },
+  "last_updated": 1762845681.3823621
+}

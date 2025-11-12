@@ -1,0 +1,112 @@
+{
+  "batch_progress": {
+    "total_files": 11,
+    "completed_files": 11,
+    "failed_files": 0,
+    "skipped_files": 0,
+    "start_time": 1762878365.0224185,
+    "end_time": 1762879399.4368773
+  },
+  "file_progress": {
+    "seminars/ReamsBlackJune271977_Archive/ReamsBlackT01.mp3": {
+      "status": "completed",
+      "start_time": 1762878365.0261517,
+      "end_time": 1762878446.0712857,
+      "error_message": null,
+      "file_size_mb": 205.6993112564087,
+      "processing_time": 81.0429105758667,
+      "output_formats": []
+    },
+    "seminars/ReamsBlackJune271977_Archive/ReamsBlackT02.mp3": {
+      "status": "completed",
+      "start_time": 1762878446.071437,
+      "end_time": 1762878541.9661572,
+      "error_message": null,
+      "file_size_mb": 212.15972423553467,
+      "processing_time": 95.89139461517334,
+      "output_formats": []
+    },
+    "seminars/ReamsBlackJune271977_Archive/ReamsBlackT03.mp3": {
+      "status": "completed",
+      "start_time": 1762878541.966356,
+      "end_time": 1762878592.8549929,
+      "error_message": null,
+      "file_size_mb": 100.04837131500244,
+      "processing_time": 50.8869731426239,
+      "output_formats": []
+    },
+    "seminars/ReamsBlackJune271977_Archive/ReamsBlackT04.mp3": {
+      "status": "completed",
+      "start_time": 1762878592.8551722,
+      "end_time": 1762878756.1468327,
+      "error_message": null,
+      "file_size_mb": 233.26492404937744,
+      "processing_time": 163.28066682815552,
+      "output_formats": []
+    },
+    "seminars/ReamsBlackJune271977_Archive/ReamsBlackT05.mp3": {
+      "status": "completed",
+      "start_time": 1762878756.1470342,
+      "end_time": 1762878846.763417,
+      "error_message": null,
+      "file_size_mb": 212.6408395767212,
+      "processing_time": 90.6078736782074,
+      "output_formats": []
+    },
+    "seminars/ReamsBlackJune271977_Archive/ReamsBlackT07.mp3": {
+      "status": "completed",
+      "start_time": 1762878846.7636487,
+      "end_time": 1762878945.8253727,
+      "error_message": null,
+      "file_size_mb": 212.27371311187744,
+      "processing_time": 99.05223083496094,
+      "output_formats": []
+    },
+    "seminars/ReamsBlackJune271977_Archive/ReamsBlackT08.mp3": {
+      "status": "completed",
+      "start_time": 1762878945.825634,
+      "end_time": 1762879029.4937642,
+      "error_message": null,
+      "file_size_mb": 207.6493844985962,
+      "processing_time": 83.6663019657135,
+      "output_formats": []
+    },
+    "seminars/ReamsBlackJune271977_Archive/ReamsBlackT09.mp3": {
+      "status": "completed",
+      "start_time": 1762879029.4939778,
+      "end_time": 1762879094.3963306,
+      "error_message": null,
+      "file_size_mb": 150.55069065093994,
+      "processing_time": 64.89238214492798,
+      "output_formats": []
+    },
+    "seminars/ReamsBlackJune271977_Archive/ReamsBlackT10.mp3": {
+      "status": "completed",
+      "start_time": 1762879094.396597,
+      "end_time": 1762879204.2361798,
+      "error_message": null,
+      "file_size_mb": 208.86428928375244,
+      "processing_time": 109.83800029754639,
+      "output_formats": []
+    },
+    "seminars/ReamsBlackJune271977_Archive/ReamsBlackT11.mp3": {
+      "status": "completed",
+      "start_time": 1762879204.2364624,
+      "end_time": 1762879305.6005561,
+      "error_message": null,
+      "file_size_mb": 209.0263376235962,
+      "processing_time": 101.36122274398804,
+      "output_formats": []
+    },
+    "seminars/ReamsBlackJune271977_Archive/ReamsBlackT12.mp3": {
+      "status": "completed",
+      "start_time": 1762879305.6008291,
+      "end_time": 1762879399.4365838,
+      "error_message": null,
+      "file_size_mb": 206.9261178970337,
+      "processing_time": 93.82435703277588,
+      "output_formats": []
+    }
+  },
+  "last_updated": 1762879399.4368858
+}

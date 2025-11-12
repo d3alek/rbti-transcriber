@@ -1,0 +1,436 @@
+{
+  "batch_progress": {
+    "total_files": 47,
+    "completed_files": 47,
+    "failed_files": 0,
+    "skipped_files": 0,
+    "start_time": 1762870480.345317,
+    "end_time": 1762872486.0772781
+  },
+  "file_progress": {
+    "seminars/Ses3-4-770627_Archive/Ses3-4-770627-T06-S2.mp3": {
+      "status": "completed",
+      "start_time": 1762870480.3477995,
+      "end_time": 1762870536.1289868,
+      "error_message": null,
+      "file_size_mb": 95.39803123474121,
+      "processing_time": 55.77914071083069,
+      "output_formats": []
+    },
+    "seminars/Ses3-4-770627_Archive/Ses3-4-770627-T07-S1.mp3": {
+      "status": "completed",
+      "start_time": 1762870536.1291578,
+      "end_time": 1762870591.1619425,
+      "error_message": null,
+      "file_size_mb": 101.0970516204834,
+      "processing_time": 55.02374815940857,
+      "output_formats": []
+    },
+    "seminars/Ses3-4-770627_Archive/Ses3-4-770627-T07-S2.mp3": {
+      "status": "completed",
+      "start_time": 1762870591.1623902,
+      "end_time": 1762870634.2092307,
+      "error_message": null,
+      "file_size_mb": 98.67068672180176,
+      "processing_time": 43.04541611671448,
+      "output_formats": []
+    },
+    "seminars/Ses3-4-770627_Archive/Ses3-4-770627-T08-S1.mp3": {
+      "status": "completed",
+      "start_time": 1762870634.2094169,
+      "end_time": 1762870665.9450324,
+      "error_message": null,
+      "file_size_mb": 65.5020694732666,
+      "processing_time": 31.7344012260437,
+      "output_formats": []
+    },
+    "seminars/Ses3-4-770627_Archive/Ses3-4-770627-T08-S2.mp3": {
+      "status": "completed",
+      "start_time": 1762870665.9452178,
+      "end_time": 1762870699.1465409,
+      "error_message": null,
+      "file_size_mb": 66.01482200622559,
+      "processing_time": 33.20000696182251,
+      "output_formats": []
+    },
+    "seminars/Ses3-4-770627_Archive/Ses3-4-770627-T09-S1.mp3": {
+      "status": "completed",
+      "start_time": 1762870699.1467574,
+      "end_time": 1762870747.7927785,
+      "error_message": null,
+      "file_size_mb": 67.07816123962402,
+      "processing_time": 48.636831521987915,
+      "output_formats": []
+    },
+    "seminars/Ses3-4-770627_Archive/Ses3-4-770627-T09-S2.mp3": {
+      "status": "completed",
+      "start_time": 1762870747.7930486,
+      "end_time": 1762870783.9499424,
+      "error_message": null,
+      "file_size_mb": 60.33770561218262,
+      "processing_time": 36.155762910842896,
+      "output_formats": []
+    },
+    "seminars/Ses3-4-770627_Archive/Ses3-4-770627-T10-S1.mp3": {
+      "status": "completed",
+      "start_time": 1762870783.9501543,
+      "end_time": 1762870831.739109,
+      "error_message": null,
+      "file_size_mb": 97.57548713684082,
+      "processing_time": 47.77817916870117,
+      "output_formats": []
+    },
+    "seminars/Ses3-4-770627_Archive/Ses3-4-770627-T10-S2.mp3": {
+      "status": "completed",
+      "start_time": 1762870831.7393425,
+      "end_time": 1762870883.7186394,
+      "error_message": null,
+      "file_size_mb": 98.14399528503418,
+      "processing_time": 51.968231201171875,
+      "output_formats": []
+    },
+    "seminars/Ses3-4-770627_Archive/Ses3-4-770627-T11-S1.mp3": {
+      "status": "completed",
+      "start_time": 1762870883.719,
+      "end_time": 1762870929.880084,
+      "error_message": null,
+      "file_size_mb": 82.17299842834473,
+      "processing_time": 46.15037393569946,
+      "output_formats": []
+    },
+    "seminars/Ses3-4-770627_Archive/Ses3-4-770627-T11-S2.mp3": {
+      "status": "completed",
+      "start_time": 1762870929.8803232,
+      "end_time": 1762870981.0225663,
+      "error_message": null,
+      "file_size_mb": 83.9173526763916,
+      "processing_time": 51.132808208465576,
+      "output_formats": []
+    },
+    "seminars/Ses3-4-770627_Archive/Ses3-4-770627-T12-S1.mp3": {
+      "status": "completed",
+      "start_time": 1762870981.0229394,
+      "end_time": 1762871016.4578607,
+      "error_message": null,
+      "file_size_mb": 67.20261573791504,
+      "processing_time": 35.433403968811035,
+      "output_formats": []
+    },
+    "seminars/Ses3-4-770627_Archive/Ses3-4-770627-T12-S2.mp3": {
+      "status": "completed",
+      "start_time": 1762871016.4581661,
+      "end_time": 1762871046.220409,
+      "error_message": null,
+      "file_size_mb": 56.16399955749512,
+      "processing_time": 29.752097368240356,
+      "output_formats": []
+    },
+    "seminars/Ses3-4-770627_Archive/Ses3-4-770627-T13-S1.mp3": {
+      "status": "completed",
+      "start_time": 1762871046.220668,
+      "end_time": 1762871095.9781127,
+      "error_message": null,
+      "file_size_mb": 104.65645027160645,
+      "processing_time": 49.74910855293274,
+      "output_formats": []
+    },
+    "seminars/Ses3-4-770627_Archive/Ses3-4-770627-T13-S2.mp3": {
+      "status": "completed",
+      "start_time": 1762871095.978421,
+      "end_time": 1762871148.5536256,
+      "error_message": null,
+      "file_size_mb": 106.02943229675293,
+      "processing_time": 52.56582856178284,
+      "output_formats": []
+    },
+    "seminars/Ses3-4-770627_Archive/Ses3-4-770627-T14-S1.mp3": {
+      "status": "completed",
+      "start_time": 1762871148.553968,
+      "end_time": 1762871185.5671103,
+      "error_message": null,
+      "file_size_mb": 66.91587257385254,
+      "processing_time": 37.00167179107666,
+      "output_formats": []
+    },
+    "seminars/Ses3-4-770627_Archive/Ses3-4-770627-T14-S2.mp3": {
+      "status": "completed",
+      "start_time": 1762871185.5674274,
+      "end_time": 1762871220.810457,
+      "error_message": null,
+      "file_size_mb": 67.54511451721191,
+      "processing_time": 35.232563495635986,
+      "output_formats": []
+    },
+    "seminars/Ses3-4-770627_Archive/Ses3-4-770627-T15-S1.mp3": {
+      "status": "completed",
+      "start_time": 1762871220.8107586,
+      "end_time": 1762871258.508435,
+      "error_message": null,
+      "file_size_mb": 93.12300300598145,
+      "processing_time": 37.68590784072876,
+      "output_formats": []
+    },
+    "seminars/Ses3-4-770627_Archive/Ses3-4-770627-T15-S2.mp3": {
+      "status": "completed",
+      "start_time": 1762871258.5090325,
+      "end_time": 1762871305.7401397,
+      "error_message": null,
+      "file_size_mb": 93.88566017150879,
+      "processing_time": 47.22010517120361,
+      "output_formats": []
+    },
+    "seminars/Ses3-4-770627_Archive/Ses3-4-770627-T16-S1.mp3": {
+      "status": "completed",
+      "start_time": 1762871305.7405636,
+      "end_time": 1762871346.5548964,
+      "error_message": null,
+      "file_size_mb": 80.59292411804199,
+      "processing_time": 40.81260442733765,
+      "output_formats": []
+    },
+    "seminars/Ses3-4-770627_Archive/Ses3-4-770627-T16-S2.mp3": {
+      "status": "completed",
+      "start_time": 1762871346.5553486,
+      "end_time": 1762871358.2930388,
+      "error_message": null,
+      "file_size_mb": 12.650724411010742,
+      "processing_time": 11.73710560798645,
+      "output_formats": []
+    },
+    "seminars/Ses3-4-770627_Archive/Ses3-4-770627-T17-S1.mp3": {
+      "status": "completed",
+      "start_time": 1762871358.2935295,
+      "end_time": 1762871413.6076531,
+      "error_message": null,
+      "file_size_mb": 101.47838020324707,
+      "processing_time": 55.312304973602295,
+      "output_formats": []
+    },
+    "seminars/Ses3-4-770627_Archive/Ses3-4-770627-T17-S2.mp3": {
+      "status": "completed",
+      "start_time": 1762871413.6080804,
+      "end_time": 1762871463.9772618,
+      "error_message": null,
+      "file_size_mb": 101.04328727722168,
+      "processing_time": 50.36745738983154,
+      "output_formats": []
+    },
+    "seminars/Ses3-4-770627_Archive/Ses3-4-770627-T18-S1.mp3": {
+      "status": "completed",
+      "start_time": 1762871463.9776504,
+      "end_time": 1762871504.4879863,
+      "error_message": null,
+      "file_size_mb": 67.54013633728027,
+      "processing_time": 40.49989676475525,
+      "output_formats": []
+    },
+    "seminars/Ses3-4-770627_Archive/Ses3-4-770627-T18-S2.mp3": {
+      "status": "completed",
+      "start_time": 1762871504.488413,
+      "end_time": 1762871539.5084882,
+      "error_message": null,
+      "file_size_mb": 68.18431282043457,
+      "processing_time": 35.01083016395569,
+      "output_formats": []
+    },
+    "seminars/Ses3-4-770627_Archive/Ses3-4-770627-T19-S1.mp3": {
+      "status": "completed",
+      "start_time": 1762871539.5089972,
+      "end_time": 1762871558.9024162,
+      "error_message": null,
+      "file_size_mb": 33.73529624938965,
+      "processing_time": 19.383023262023926,
+      "output_formats": []
+    },
+    "seminars/Ses3-4-770627_Archive/Ses3-4-770627-T19-S2.mp3": {
+      "status": "completed",
+      "start_time": 1762871558.9029639,
+      "end_time": 1762871573.9558053,
+      "error_message": null,
+      "file_size_mb": 23.04416847229004,
+      "processing_time": 15.052113771438599,
+      "output_formats": []
+    },
+    "seminars/Ses3-4-770627_Archive/Ses3-4-770627-T20-S1.mp3": {
+      "status": "completed",
+      "start_time": 1762871573.9563358,
+      "end_time": 1762871621.608806,
+      "error_message": null,
+      "file_size_mb": 102.16835594177246,
+      "processing_time": 47.648947954177856,
+      "output_formats": []
+    },
+    "seminars/Ses3-4-770627_Archive/Ses3-4-770627-T20-S2.mp3": {
+      "status": "completed",
+      "start_time": 1762871621.6093583,
+      "end_time": 1762871670.283013,
+      "error_message": null,
+      "file_size_mb": 82.20285606384277,
+      "processing_time": 48.662352561950684,
+      "output_formats": []
+    },
+    "seminars/Ses3-4-770627_Archive/Ses3-4-770627-T21-S1.mp3": {
+      "status": "completed",
+      "start_time": 1762871670.2835221,
+      "end_time": 1762871719.616562,
+      "error_message": null,
+      "file_size_mb": 99.32581520080566,
+      "processing_time": 49.32270121574402,
+      "output_formats": []
+    },
+    "seminars/Ses3-4-770627_Archive/Ses3-4-770627-T21-S2.mp3": {
+      "status": "completed",
+      "start_time": 1762871719.6171381,
+      "end_time": 1762871777.469424,
+      "error_message": null,
+      "file_size_mb": 97.52769660949707,
+      "processing_time": 57.84019470214844,
+      "output_formats": []
+    },
+    "seminars/Ses3-4-770627_Archive/Ses3-4-770627-T22-S1.mp3": {
+      "status": "completed",
+      "start_time": 1762871777.4699378,
+      "end_time": 1762871831.8851957,
+      "error_message": null,
+      "file_size_mb": 101.26701831817627,
+      "processing_time": 54.403058767318726,
+      "output_formats": []
+    },
+    "seminars/Ses3-4-770627_Archive/Ses3-4-770627-T22-S2.mp3": {
+      "status": "completed",
+      "start_time": 1762871831.8857899,
+      "end_time": 1762871879.3839872,
+      "error_message": null,
+      "file_size_mb": 102.93669986724854,
+      "processing_time": 47.48576045036316,
+      "output_formats": []
+    },
+    "seminars/Ses3-4-770627_Archive/Ses3-4-770627-T23-S1.mp3": {
+      "status": "completed",
+      "start_time": 1762871879.384628,
+      "end_time": 1762871922.701799,
+      "error_message": null,
+      "file_size_mb": 101.5998477935791,
+      "processing_time": 43.3053183555603,
+      "output_formats": []
+    },
+    "seminars/Ses3-4-770627_Archive/Ses3-4-770627-T23-S2.mp3": {
+      "status": "completed",
+      "start_time": 1762871922.702551,
+      "end_time": 1762871968.7364345,
+      "error_message": null,
+      "file_size_mb": 103.46367835998535,
+      "processing_time": 46.021496534347534,
+      "output_formats": []
+    },
+    "seminars/Ses3-4-770627_Archive/Ses3-4-770627-T24-S1.mp3": {
+      "status": "completed",
+      "start_time": 1762871968.7370467,
+      "end_time": 1762872010.2629607,
+      "error_message": null,
+      "file_size_mb": 97.30865669250488,
+      "processing_time": 41.513328075408936,
+      "output_formats": []
+    },
+    "seminars/Ses3-4-770627_Archive/Ses3-4-770627-T24-S2.mp3": {
+      "status": "completed",
+      "start_time": 1762872010.2637503,
+      "end_time": 1762872063.233389,
+      "error_message": null,
+      "file_size_mb": 93.36565113067627,
+      "processing_time": 52.957205057144165,
+      "output_formats": []
+    },
+    "seminars/Ses3-4-770627_Archive/Ses3-4-770627-T25-S1.mp3": {
+      "status": "completed",
+      "start_time": 1762872063.2340245,
+      "end_time": 1762872106.6073303,
+      "error_message": null,
+      "file_size_mb": 66.04639530181885,
+      "processing_time": 43.36127066612244,
+      "output_formats": []
+    },
+    "seminars/Ses3-4-770627_Archive/Ses3-4-770627-T25-S2.mp3": {
+      "status": "completed",
+      "start_time": 1762872106.607907,
+      "end_time": 1762872139.847899,
+      "error_message": null,
+      "file_size_mb": 67.28994464874268,
+      "processing_time": 33.227890729904175,
+      "output_formats": []
+    },
+    "seminars/Ses3-4-770627_Archive/Ses3-4-770627-T26-S1.mp3": {
+      "status": "completed",
+      "start_time": 1762872139.8486307,
+      "end_time": 1762872188.2674456,
+      "error_message": null,
+      "file_size_mb": 100.23952198028564,
+      "processing_time": 48.40651345252991,
+      "output_formats": []
+    },
+    "seminars/Ses3-4-770627_Archive/Ses3-4-770627-T26-S2.mp3": {
+      "status": "completed",
+      "start_time": 1762872188.2683527,
+      "end_time": 1762872239.3840907,
+      "error_message": null,
+      "file_size_mb": 101.1584939956665,
+      "processing_time": 51.10414958000183,
+      "output_formats": []
+    },
+    "seminars/Ses3-4-770627_Archive/Ses3-4-770627-T27-S1.mp3": {
+      "status": "completed",
+      "start_time": 1762872239.3847432,
+      "end_time": 1762872287.5763905,
+      "error_message": null,
+      "file_size_mb": 99.44600009918213,
+      "processing_time": 48.18019390106201,
+      "output_formats": []
+    },
+    "seminars/Ses3-4-770627_Archive/Ses3-4-770627-T27-S2.mp3": {
+      "status": "completed",
+      "start_time": 1762872287.577189,
+      "end_time": 1762872334.1878269,
+      "error_message": null,
+      "file_size_mb": 87.27634143829346,
+      "processing_time": 46.608717918395996,
+      "output_formats": []
+    },
+    "seminars/Ses3-4-770627_Archive/Ses3-4-770627-T28-S1.mp3": {
+      "status": "completed",
+      "start_time": 1762872334.188452,
+      "end_time": 1762872382.423787,
+      "error_message": null,
+      "file_size_mb": 100.5421953201294,
+      "processing_time": 48.223071575164795,
+      "output_formats": []
+    },
+    "seminars/Ses3-4-770627_Archive/Ses3-4-770627-T28-S2.mp3": {
+      "status": "completed",
+      "start_time": 1762872382.424547,
+      "end_time": 1762872433.1806114,
+      "error_message": null,
+      "file_size_mb": 100.82296466827393,
+      "processing_time": 50.74452829360962,
+      "output_formats": []
+    },
+    "seminars/Ses3-4-770627_Archive/Ses3-4-770627-T29-S1.mp3": {
+      "status": "completed",
+      "start_time": 1762872433.1814542,
+      "end_time": 1762872459.0300179,
+      "error_message": null,
+      "file_size_mb": 51.18254566192627,
+      "processing_time": 25.83818292617798,
+      "output_formats": []
+    },
+    "seminars/Ses3-4-770627_Archive/Ses3-4-770627-T29-S2.mp3": {
+      "status": "completed",
+      "start_time": 1762872459.0306578,
+      "end_time": 1762872486.0765173,
+      "error_message": null,
+      "file_size_mb": 49.95990467071533,
+      "processing_time": 27.035528421401978,
+      "output_formats": []
+    }
+  },
+  "last_updated": 1762872486.0773153
+}

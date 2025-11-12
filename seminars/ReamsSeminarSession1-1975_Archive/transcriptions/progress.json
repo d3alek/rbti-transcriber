@@ -1,0 +1,139 @@
+{
+  "batch_progress": {
+    "total_files": 14,
+    "completed_files": 14,
+    "failed_files": 0,
+    "skipped_files": 0,
+    "start_time": 1762849755.2117195,
+    "end_time": 1762851678.0882552
+  },
+  "file_progress": {
+    "/home/alek/rbti/domagoj/ReamsSeminarSession1-1975_Archive/ReamsSeminarSession1-1975-T01.mp3": {
+      "status": "completed",
+      "start_time": 1762849755.213997,
+      "end_time": 1762849896.3505313,
+      "error_message": null,
+      "file_size_mb": 242.29114246368408,
+      "processing_time": 141.12940859794617,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/ReamsSeminarSession1-1975_Archive/ReamsSeminarSession1-1975-T02.mp3": {
+      "status": "completed",
+      "start_time": 1762849896.3507574,
+      "end_time": 1762850032.1650848,
+      "error_message": null,
+      "file_size_mb": 255.33825302124023,
+      "processing_time": 135.79922890663147,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/ReamsSeminarSession1-1975_Archive/ReamsSeminarSession1-1975-T03.mp3": {
+      "status": "completed",
+      "start_time": 1762850032.1653252,
+      "end_time": 1762850173.0822942,
+      "error_message": null,
+      "file_size_mb": 265.2564821243286,
+      "processing_time": 140.9017837047577,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/ReamsSeminarSession1-1975_Archive/ReamsSeminarSession1-1975-T04.mp3": {
+      "status": "completed",
+      "start_time": 1762850173.082542,
+      "end_time": 1762850303.602977,
+      "error_message": null,
+      "file_size_mb": 259.0539665222168,
+      "processing_time": 130.5158281326294,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/ReamsSeminarSession1-1975_Archive/ReamsSeminarSession1-1975-T05.mp3": {
+      "status": "completed",
+      "start_time": 1762850303.6034284,
+      "end_time": 1762850461.2964816,
+      "error_message": null,
+      "file_size_mb": 269.39880084991455,
+      "processing_time": 157.678071975708,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/ReamsSeminarSession1-1975_Archive/ReamsSeminarSession1-1975-T06.mp3": {
+      "status": "completed",
+      "start_time": 1762850461.296852,
+      "end_time": 1762850611.233757,
+      "error_message": null,
+      "file_size_mb": 270.34019947052,
+      "processing_time": 149.9220654964447,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/ReamsSeminarSession1-1975_Archive/ReamsSeminarSession1-1975-T07.mp3": {
+      "status": "completed",
+      "start_time": 1762850611.2340384,
+      "end_time": 1762850652.8211246,
+      "error_message": null,
+      "file_size_mb": 66.21261978149414,
+      "processing_time": 41.57655096054077,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/ReamsSeminarSession1-1975_Archive/ReamsSeminarSession1-1975-T08.mp3": {
+      "status": "completed",
+      "start_time": 1762850652.8215294,
+      "end_time": 1762850767.053983,
+      "error_message": null,
+      "file_size_mb": 239.83391284942627,
+      "processing_time": 114.2186188697815,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/ReamsSeminarSession1-1975_Archive/ReamsSeminarSession1-1975-T09.mp3": {
+      "status": "completed",
+      "start_time": 1762850767.0543296,
+      "end_time": 1762850894.3575695,
+      "error_message": null,
+      "file_size_mb": 259.7944231033325,
+      "processing_time": 127.2893078327179,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/ReamsSeminarSession1-1975_Archive/ReamsSeminarSession1-1975-T11.mp3": {
+      "status": "completed",
+      "start_time": 1762850894.3579285,
+      "end_time": 1762851024.8640122,
+      "error_message": null,
+      "file_size_mb": 201.3615312576294,
+      "processing_time": 130.49199199676514,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/ReamsSeminarSession1-1975_Archive/ReamsSeminarSession1-1975-T14.mp3": {
+      "status": "completed",
+      "start_time": 1762851024.8644662,
+      "end_time": 1762851183.126113,
+      "error_message": null,
+      "file_size_mb": 264.99923610687256,
+      "processing_time": 158.24620652198792,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/ReamsSeminarSession1-1975_Archive/ReamsSeminarSession1-1975-T15.mp3": {
+      "status": "completed",
+      "start_time": 1762851183.1264687,
+      "end_time": 1762851359.31593,
+      "error_message": null,
+      "file_size_mb": 266.5305242538452,
+      "processing_time": 176.17286443710327,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/ReamsSeminarSession1-1975_Archive/ReamsSeminarSession1-1975-T17.mp3": {
+      "status": "completed",
+      "start_time": 1762851359.3163524,
+      "end_time": 1762851536.2148914,
+      "error_message": null,
+      "file_size_mb": 268.40729808807373,
+      "processing_time": 176.8823790550232,
+      "output_formats": []
+    },
+    "/home/alek/rbti/domagoj/ReamsSeminarSession1-1975_Archive/ReamsSeminarSession1-1975-T18.mp3": {
+      "status": "completed",
+      "start_time": 1762851536.215449,
+      "end_time": 1762851678.0877044,
+      "error_message": null,
+      "file_size_mb": 267.9174451828003,
+      "processing_time": 141.85636401176453,
+      "output_formats": []
+    }
+  },
+  "last_updated": 1762851678.0882728
+}

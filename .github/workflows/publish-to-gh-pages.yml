@@ -5,7 +5,7 @@ on:
     paths:
       - '**/transcriptions/*.json'
       - '.github/workflows/publish-to-gh-pages.yml'
-      - 'scripts/generate-gh-pages-bundles.py'
+      - 'scripts/generate-gh-page-bundles.py'
       - 'scripts/generate-index-page.py'
   workflow_dispatch:  # Allow manual triggering
 
@@ -59,7 +59,7 @@ jobs:
       
       - name: Generate bundles and index
         run: |
-          python scripts/generate-gh-pages-bundles.py
+          python scripts/generate-gh-page-bundles.py
           python scripts/generate-index-page.py
       
       - name: Setup Pages

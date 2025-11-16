@@ -3,9 +3,14 @@
 Generate self-contained HTML bundles for each transcription.
 
 Each bundle includes:
-- The compressed WebM/Opus audio file
+- Reference to compressed WebM/Opus audio file via GitHub raw URL (not copied to save space)
 - The transcript JSON file (RichWordsTranscript format)
 - A standalone HTML file with react-transcript-editor preloaded
+
+NOTE: Audio files are NOT copied into the bundles. Instead, they are referenced
+via GitHub raw URLs (e.g., https://github.com/user/repo/raw/main/path/to/audio.webm).
+This avoids exceeding the 14GB GitHub Pages limit since the audio files remain
+in the main repository and are served directly from there.
 """
 
 import json
@@ -14,6 +19,7 @@ import shutil
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 import base64
+from urllib.parse import quote
 
 # Lightweight vanilla JS viewer template (default)
 VIEWER_TEMPLATE = r'''<!DOCTYPE html>
@@ -221,8 +227,8 @@ VIEWER_TEMPLATE = r'''<!DOCTYPE html>
         <div class="main-content">
             <div class="audio-player-container">
                 <audio id="audioPlayer" class="audio-player" controls preload="metadata">
-                    <source src="./{audio_filename}" type="audio/webm">
-                    <source src="./{audio_filename}" type="audio/opus">
+                    <source src="{audio_url}" type="audio/webm">
+                    <source src="{audio_url}" type="audio/opus">
                     Your browser does not support the audio element.
                 </audio>
             </div>
@@ -904,8 +910,8 @@ LIGHT_EDITOR_TEMPLATE = r'''<!DOCTYPE html>
             <div class="sticky-header-section">
                 <div class="audio-player-container">
                     <audio id="audioPlayer" class="audio-player" controls preload="metadata">
-                        <source src="./{audio_filename}" type="audio/webm">
-                        <source src="./{audio_filename}" type="audio/opus">
+                        <source src="{audio_url}" type="audio/webm">
+                        <source src="{audio_url}" type="audio/opus">
                         Your browser does not support the audio element.
                     </audio>
                 </div>
@@ -1827,9 +1833,46 @@ def load_transcript_json(transcription_path: Path) -> Dict:
     return data
 
 
+def get_github_raw_url(file_path: Path, base_dir: Path) -> str:
+    """
+    Get GitHub raw URL for a file.
+    
+    Uses GitHub Actions environment variables if available, otherwise defaults.
+    """
+    # Get repository info from environment (available in GitHub Actions)
+    github_repository = os.environ.get('GITHUB_REPOSITORY', 'd3alek/rbti-transcriber')
+    github_ref = os.environ.get('GITHUB_REF', 'refs/heads/main')
+    
+    # Extract branch name from ref (e.g., "refs/heads/main" -> "main")
+    if github_ref.startswith('refs/heads/'):
+        branch = github_ref.replace('refs/heads/', '')
+    else:
+        branch = 'main'
+    
+    # Get relative path from base directory
+    try:
+        relative_path = file_path.relative_to(base_dir)
+    except ValueError:
+        # If file is not relative to base_dir, use absolute path components
+        # This shouldn't happen in normal usage, but handle it gracefully
+        relative_path = Path(*file_path.parts)
+    
+    # URL encode each part of the path
+    path_parts = [quote(str(part), safe='') for part in relative_path.parts]
+    encoded_path = '/'.join(path_parts)
+    
+    # Construct GitHub raw URL
+    github_raw_url = f"https://github.com/{github_repository}/raw/{branch}/{encoded_path}"
+    
+    return github_raw_url
+
+
 def generate_bundle(transcription_path: Path, output_dir: Path, base_dir: Path) -> Tuple[str, str]:
     """
     Generate a bundle for a single transcription.
+    
+    NOTE: Audio files are NOT copied to the bundle. Instead, they are referenced
+    via GitHub raw URLs to avoid exceeding the 14GB GitHub Pages limit.
     
     Returns:
         (seminar_group, lecture_name) tuple
@@ -1851,11 +1894,11 @@ def generate_bundle(transcription_path: Path, output_dir: Path, base_dir: Path) 
     bundle_dir = output_dir / seminar_group / lecture_name
     bundle_dir.mkdir(parents=True, exist_ok=True)
     
-    # Copy audio file
-    audio_filename = audio_path.name
-    shutil.copy2(audio_path, bundle_dir / audio_filename)
+    # Get GitHub raw URL for audio file (don't copy - saves 7GB+)
+    audio_url = get_github_raw_url(audio_path, base_dir)
+    audio_filename = audio_path.name  # Keep filename for display purposes
     
-    # Copy transcript JSON (for reference)
+    # Copy transcript JSON (small file, so we can include it)
     shutil.copy2(transcription_path, bundle_dir / "transcript.json")
     
     # Prepare transcript JSON string
@@ -1869,6 +1912,7 @@ def generate_bundle(transcription_path: Path, output_dir: Path, base_dir: Path) 
     viewer_html = VIEWER_TEMPLATE.format(
         title=lecture_name,
         transcript_json='__TRANSCRIPT_JSON_PLACEHOLDER__',
+        audio_url=audio_url,  # Use GitHub raw URL instead of local filename
         audio_filename=audio_filename,
         seminar_id=seminar_id
     )
@@ -1881,6 +1925,7 @@ def generate_bundle(transcription_path: Path, output_dir: Path, base_dir: Path) 
     light_editor_html = LIGHT_EDITOR_TEMPLATE.format(
         title=lecture_name,
         transcript_json='__TRANSCRIPT_JSON_PLACEHOLDER__',
+        audio_url=audio_url,  # Use GitHub raw URL instead of local filename
         audio_filename=audio_filename
     )
     light_editor_html = light_editor_html.replace('__TRANSCRIPT_JSON_PLACEHOLDER__', transcript_json_str)
@@ -1888,7 +1933,7 @@ def generate_bundle(transcription_path: Path, output_dir: Path, base_dir: Path) 
     with open(bundle_dir / "light-editor.html", 'w', encoding='utf-8') as f:
         f.write(light_editor_html)
     
-    print(f"✅ Generated bundle: {seminar_group}/{lecture_name} (viewer + editor)")
+    print(f"✅ Generated bundle: {seminar_group}/{lecture_name} (viewer + editor, audio: {audio_url})")
     return seminar_group, lecture_name
 
 
@@ -1910,6 +1955,7 @@ def main():
         return
     
     print(f"📝 Found {len(transcriptions)} transcription file(s)")
+    print("ℹ️  Audio files will be referenced via GitHub raw URLs (not copied to save space)")
     
     # Generate bundles
     bundles = {}

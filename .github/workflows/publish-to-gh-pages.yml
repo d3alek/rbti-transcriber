@@ -61,6 +61,11 @@ jobs:
         run: |
           python scripts/generate-gh-pages-bundles.py
           python scripts/generate-index-page.py
+          echo "📊 Bundle directory size:"
+          du -sh ./gh-pages-output || echo "Directory not found"
+          echo ""
+          echo "💾 Disk usage:"
+          df -h
       
       - name: Setup Pages
         uses: actions/configure-pages@v4

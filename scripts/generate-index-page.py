@@ -196,7 +196,7 @@ INDEX_TEMPLATE = '''<!DOCTYPE html>
 </html>
 '''
 
-SEMINAR_SECTION_TEMPLATE = '''        <div class="seminar-section" id="seminar-{seminar_id}">
+SEMINAR_SECTION_TEMPLATE = '''        <div class="seminar-section collapsed" id="seminar-{seminar_id}">
             <div class="seminar-header">
                 <span>{seminar_name}</span>
                 <span class="seminar-toggle">▼</span>

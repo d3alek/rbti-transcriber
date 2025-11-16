@@ -220,7 +220,7 @@ VIEWER_TEMPLATE = r'''<!DOCTYPE html>
             <h1>{title}</h1>
             <div style="display: flex; gap: 10px; align-items: center;">
                 <a href="../../index.html#seminar-{seminar_id}" class="edit-button" style="background-color: #6c757d;">← Back to List</a>
-                <a href="light-editor.html" class="edit-button" style="background-color: #2196F3;">✏️ EDIT</a>
+                <a id="editLink" href="light-editor.html" class="edit-button" style="background-color: #2196F3;">✏️ EDIT</a>
             </div>
         </div>
         
@@ -242,10 +242,52 @@ VIEWER_TEMPLATE = r'''<!DOCTYPE html>
     </div>
     
     <script>
-        // Transcript data
-        const transcriptData = {transcript_json};
+        // Get URLs from query parameters or use defaults
+        const urlParams = new URLSearchParams(window.location.search);
+        const audioUrl = urlParams.get('audio_url') || '{audio_url}';
+        const transcriptUrl = urlParams.get('transcript_url') || '{transcript_url}';
+        const title = urlParams.get('title') || '{title}';
+        const seminarId = urlParams.get('seminar_id') || '{seminar_id}';
+        
+        // Update title if from query param
+        if (title && title !== '{{title}}') {{
+            document.title = title + ' - Transcript';
+            const titleEl = document.querySelector('.header h1');
+            if (titleEl) titleEl.textContent = title;
+        }}
+        
+        // Update audio source if from query param
+        if (audioUrl && audioUrl !== '{{audio_url}}') {{
+            const audioPlayer = document.getElementById('audioPlayer');
+            if (audioPlayer) {{
+                audioPlayer.innerHTML = `<source src="${{audioUrl}}" type="audio/webm"><source src="${{audioUrl}}" type="audio/opus">Your browser does not support the audio element.`;
+            }}
+        }}
+        
+        // Update back link if seminar_id provided
+        if (seminarId && seminarId !== '{{seminar_id}}') {{
+            const backLink = document.querySelector('a[href*="index.html#seminar"]');
+            if (backLink) {{
+                backLink.href = '../../index.html#seminar-' + seminarId;
+            }}
+        }}
+        
+        // Update edit link if transcript_url provided
+        if (transcriptUrl && transcriptUrl !== '{{transcript_url}}') {{
+            const editLink = document.getElementById('editLink');
+            if (editLink) {{
+                const editParams = new URLSearchParams({{
+                    audio_url: audioUrl,
+                    transcript_url: transcriptUrl,
+                    title: title
+                }});
+                editLink.href = '../../light-editor.html?' + editParams.toString();
+            }}
+        }}
+        
         const audioPlayer = document.getElementById('audioPlayer');
         const transcriptContent = document.getElementById('transcriptContent');
+        let transcriptData = null;
         
         // Normalize transcript data to RichWordsTranscript format
         function normalizeTranscript(data) {{
@@ -379,8 +421,27 @@ VIEWER_TEMPLATE = r'''<!DOCTYPE html>
             return `${{m}}:${{String(s).padStart(2, '0')}}.${{String(ms).padStart(2, '0')}}`;
         }}
         
+        // Load transcript from URL
+        async function loadTranscript() {{
+            try {{
+                transcriptContent.innerHTML = '<div class="loading">Loading transcript...</div>';
+                const response = await fetch(transcriptUrl);
+                if (!response.ok) {{
+                    throw new Error(`Failed to load transcript: ${{response.status}} ${{response.statusText}}`);
+                }}
+                transcriptData = await response.json();
+                renderTranscript();
+            }} catch (error) {{
+                console.error('Error loading transcript:', error);
+                transcriptContent.innerHTML = '<div class="loading" style="color: red;">Error loading transcript: ' + error.message + '</div>';
+            }}
+        }}
+        
         // Render transcript
         function renderTranscript() {{
+            if (!transcriptData) {{
+                return;
+            }}
             try {{
                 const normalized = normalizeTranscript(transcriptData);
                 const words = normalized.words || [];
@@ -528,8 +589,8 @@ VIEWER_TEMPLATE = r'''<!DOCTYPE html>
             }}
         }}
         
-        // Render viewer
-        renderTranscript();
+        // Load and render transcript on page load
+        loadTranscript();
     </script>
 </body>
 </html>
@@ -901,7 +962,7 @@ LIGHT_EDITOR_TEMPLATE = r'''<!DOCTYPE html>
         <div class="header">
             <h1>{title} - Light Editor</h1>
             <div class="header-buttons">
-                <a href="index.html" class="button back-button">← Back to Viewer</a>
+                <a id="backLink" href="index.html" class="button back-button">← Back to Viewer</a>
                 <button id="saveButton" class="button save-button" onclick="saveCorrections()">💾 Share Corrections</button>
             </div>
     </div>
@@ -937,9 +998,44 @@ LIGHT_EDITOR_TEMPLATE = r'''<!DOCTYPE html>
     </div>
     
     <script>
-        // Transcript data
-        let transcriptData = {transcript_json};
-        const STORAGE_KEY = 'transcript_edits_' + '{audio_filename}';
+        // Get URLs from query parameters or use defaults
+        const urlParams = new URLSearchParams(window.location.search);
+        const audioUrl = urlParams.get('audio_url') || '{audio_url}';
+        const transcriptUrl = urlParams.get('transcript_url') || '{transcript_url}';
+        const title = urlParams.get('title') || '{title}';
+        
+        // Update title if from query param
+        if (title && title !== '{{title}}') {{
+            document.title = title + ' - Light Editor';
+            const titleEl = document.querySelector('.header h1');
+            if (titleEl) titleEl.textContent = title + ' - Light Editor';
+        }}
+        
+        // Update audio source if from query param
+        if (audioUrl && audioUrl !== '{{audio_url}}') {{
+            const audioPlayer = document.getElementById('audioPlayer');
+            if (audioPlayer) {{
+                audioPlayer.innerHTML = `<source src="${{audioUrl}}" type="audio/webm"><source src="${{audioUrl}}" type="audio/opus">Your browser does not support the audio element.`;
+            }}
+        }}
+        
+        // Extract audio filename for storage key
+        const audioFilename = audioUrl.split('/').pop() || '{audio_filename}';
+        const STORAGE_KEY = 'transcript_edits_' + audioFilename;
+        
+        // Update back link if URLs provided
+        if (transcriptUrl && transcriptUrl !== '{{transcript_url}}') {{
+            const backLink = document.getElementById('backLink');
+            if (backLink) {{
+                const viewerParams = new URLSearchParams({{
+                    audio_url: audioUrl,
+                    transcript_url: transcriptUrl,
+                    title: title,
+                    seminar_id: urlParams.get('seminar_id') || ''
+                }});
+                backLink.href = '../../viewer.html?' + viewerParams.toString();
+            }}
+        }}
         let originalWords = []; // Store original word data
         let wordCorrections = new Map(); // Map word index to corrections
         let speakerNameChanges = new Map(); // Map speaker index to new name (for "replace all")
@@ -949,6 +1045,7 @@ LIGHT_EDITOR_TEMPLATE = r'''<!DOCTYPE html>
         const saveButton = document.getElementById('saveButton');
         const resetButton = document.getElementById('resetButton');
         const changesSummary = document.getElementById('changesSummary');
+        let transcriptData = null;
         
         // Save edits to localStorage
         function saveEditsToStorage() {{
@@ -1416,8 +1513,27 @@ LIGHT_EDITOR_TEMPLATE = r'''<!DOCTYPE html>
             }});
         }}
         
+        // Load transcript from URL
+        async function loadTranscript() {{
+            try {{
+                transcriptContent.innerHTML = '<div class="loading">Loading transcript...</div>';
+                const response = await fetch(transcriptUrl);
+                if (!response.ok) {{
+                    throw new Error(`Failed to load transcript: ${{response.status}} ${{response.statusText}}`);
+                }}
+                transcriptData = await response.json();
+                renderTranscript();
+            }} catch (error) {{
+                console.error('Error loading transcript:', error);
+                transcriptContent.innerHTML = '<div class="loading" style="color: red;">Error loading transcript: ' + error.message + '</div>';
+            }}
+        }}
+        
         // Render transcript
         function renderTranscript() {{
+            if (!transcriptData) {{
+                return;
+            }}
             try {{
                 const normalized = normalizeTranscript(transcriptData);
                 const words = normalized.words || [];
@@ -1729,8 +1845,8 @@ LIGHT_EDITOR_TEMPLATE = r'''<!DOCTYPE html>
         // Update summary display after loading edits
         updateChangesSummary();
         
-        // Render transcript on load
-        renderTranscript();
+        // Load and render transcript on page load
+        loadTranscript();
     </script>
 </body>
 </html>
@@ -1835,8 +1951,9 @@ def load_transcript_json(transcription_path: Path) -> Dict:
 
 def get_github_raw_url(file_path: Path, base_dir: Path) -> str:
     """
-    Get GitHub raw URL for a file.
+    Get jsDelivr CDN URL for a file (supports CORS, unlike GitHub raw URLs).
     
+    jsDelivr mirrors GitHub repos and provides CORS-enabled access to files.
     Uses GitHub Actions environment variables if available, otherwise defaults.
     """
     # Get repository info from environment (available in GitHub Actions)
@@ -1861,25 +1978,25 @@ def get_github_raw_url(file_path: Path, base_dir: Path) -> str:
     path_parts = [quote(str(part), safe='') for part in relative_path.parts]
     encoded_path = '/'.join(path_parts)
     
-    # Construct GitHub raw URL
-    github_raw_url = f"https://github.com/{github_repository}/raw/{branch}/{encoded_path}"
+    # Construct jsDelivr CDN URL (supports CORS)
+    # Format: https://cdn.jsdelivr.net/gh/{user}/{repo}@{branch}/{path}
+    jsdelivr_url = f"https://cdn.jsdelivr.net/gh/{github_repository}@{branch}/{encoded_path}"
     
-    return github_raw_url
+    return jsdelivr_url
 
 
 def generate_bundle(transcription_path: Path, output_dir: Path, base_dir: Path) -> Tuple[str, str]:
     """
     Generate a bundle for a single transcription.
     
-    NOTE: Audio files are NOT copied to the bundle. Instead, they are referenced
-    via GitHub raw URLs to avoid exceeding the 14GB GitHub Pages limit.
+    NOTE: Audio and transcript files are NOT copied to the bundle. Instead, they are 
+    referenced via GitHub raw URLs to avoid exceeding the 14GB GitHub Pages limit.
+    Each lecture directory only contains minimal index.html files that load shared
+    viewer/editor templates with the appropriate URLs.
     
     Returns:
         (seminar_group, lecture_name) tuple
     """
-    # Load transcript data
-    transcript_data = load_transcript_json(transcription_path)
-    
     # Find compressed audio
     audio_path = find_compressed_audio(transcription_path)
     if not audio_path:
@@ -1894,46 +2011,67 @@ def generate_bundle(transcription_path: Path, output_dir: Path, base_dir: Path) 
     bundle_dir = output_dir / seminar_group / lecture_name
     bundle_dir.mkdir(parents=True, exist_ok=True)
     
-    # Get GitHub raw URL for audio file (don't copy - saves 7GB+)
+    # Get GitHub raw URLs for audio and transcript (don't copy - saves 7GB+)
     audio_url = get_github_raw_url(audio_path, base_dir)
+    transcript_url = get_github_raw_url(transcription_path, base_dir)
     audio_filename = audio_path.name  # Keep filename for display purposes
     
-    # Copy transcript JSON (small file, so we can include it)
-    shutil.copy2(transcription_path, bundle_dir / "transcript.json")
-    
-    # Prepare transcript JSON string
-    transcript_json_str = json.dumps(transcript_data, indent=2)
-    
-    # Generate viewer HTML (lightweight vanilla JS)
     # Create a sanitized ID for the seminar section (URL-safe)
     import re
     seminar_id = re.sub(r'[^a-z0-9\-_]', '', seminar_group.lower().replace(' ', '-').replace('_', '-'))
     
-    viewer_html = VIEWER_TEMPLATE.format(
-        title=lecture_name,
-        transcript_json='__TRANSCRIPT_JSON_PLACEHOLDER__',
-        audio_url=audio_url,  # Use GitHub raw URL instead of local filename
-        audio_filename=audio_filename,
-        seminar_id=seminar_id
-    )
-    viewer_html = viewer_html.replace('__TRANSCRIPT_JSON_PLACEHOLDER__', transcript_json_str)
+    # Generate minimal index.html that loads shared viewer with query params
+    index_html = f'''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{lecture_name} - Transcript</title>
+    <script>
+        // Redirect to shared viewer with parameters
+        const params = new URLSearchParams({{
+            audio_url: "{audio_url}",
+            transcript_url: "{transcript_url}",
+            title: "{lecture_name}",
+            seminar_id: "{seminar_id}"
+        }});
+        window.location.href = "../../viewer.html?" + params.toString();
+    </script>
+</head>
+<body>
+    <p>Redirecting...</p>
+</body>
+</html>'''
     
     with open(bundle_dir / "index.html", 'w', encoding='utf-8') as f:
-        f.write(viewer_html)
+        f.write(index_html)
     
-    # Generate light editor HTML (lightweight vanilla JS with editing)
-    light_editor_html = LIGHT_EDITOR_TEMPLATE.format(
-        title=lecture_name,
-        transcript_json='__TRANSCRIPT_JSON_PLACEHOLDER__',
-        audio_url=audio_url,  # Use GitHub raw URL instead of local filename
-        audio_filename=audio_filename
-    )
-    light_editor_html = light_editor_html.replace('__TRANSCRIPT_JSON_PLACEHOLDER__', transcript_json_str)
+    # Generate minimal light-editor.html that loads shared editor with query params
+    light_editor_html = f'''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{lecture_name} - Light Editor</title>
+    <script>
+        // Redirect to shared editor with parameters
+        const params = new URLSearchParams({{
+            audio_url: "{audio_url}",
+            transcript_url: "{transcript_url}",
+            title: "{lecture_name}"
+        }});
+        window.location.href = "../../light-editor.html?" + params.toString();
+    </script>
+</head>
+<body>
+    <p>Redirecting...</p>
+</body>
+</html>'''
     
     with open(bundle_dir / "light-editor.html", 'w', encoding='utf-8') as f:
         f.write(light_editor_html)
     
-    print(f"✅ Generated bundle: {seminar_group}/{lecture_name} (viewer + editor, audio: {audio_url})")
+    print(f"✅ Generated bundle: {seminar_group}/{lecture_name} (minimal redirects, audio: {audio_url}, transcript: {transcript_url})")
     return seminar_group, lecture_name
 
 
@@ -1955,7 +2093,7 @@ def main():
         return
     
     print(f"📝 Found {len(transcriptions)} transcription file(s)")
-    print("ℹ️  Audio files will be referenced via GitHub raw URLs (not copied to save space)")
+    print("ℹ️  Audio and transcript files will be referenced via GitHub raw URLs (not copied to save space)")
     
     # Generate bundles
     bundles = {}
@@ -1973,6 +2111,31 @@ def main():
             print(f"❌ Error processing {transcription_path}: {e}")
             import traceback
             traceback.print_exc()
+    
+    # Generate shared viewer.html and light-editor.html in root output directory
+    # These are the actual viewer/editor templates that load data from URLs
+    viewer_html = VIEWER_TEMPLATE.format(
+        title='{title}',
+        transcript_url='{transcript_url}',
+        audio_url='{audio_url}',
+        audio_filename='{audio_filename}',
+        seminar_id='{seminar_id}'
+    )
+    
+    with open(output_dir / "viewer.html", 'w', encoding='utf-8') as f:
+        f.write(viewer_html)
+    
+    light_editor_html = LIGHT_EDITOR_TEMPLATE.format(
+        title='{title}',
+        transcript_url='{transcript_url}',
+        audio_url='{audio_url}',
+        audio_filename='{audio_filename}'
+    )
+    
+    with open(output_dir / "light-editor.html", 'w', encoding='utf-8') as f:
+        f.write(light_editor_html)
+    
+    print("✅ Generated shared viewer.html and light-editor.html templates")
     
     # Save bundle manifest for index page generation
     manifest_path = output_dir / "bundles-manifest.json"
